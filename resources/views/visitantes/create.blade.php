@@ -1,12 +1,14 @@
 @extends('layouts.plantilla')
+@section('content')
 <h1>Esta es la vista Crear Visitante</h1>
 
-<div class="containermt-5">
+<div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col md-7 mt-5">
             
             <div class="card">
-                <form action="" method="POST">
+                <form action="{{url ('/store')}}" method="POST">
+                    @csrf
                     <div class="card-header text-center">AGREGAR NUEVO VISITANTE</div>
                     <div class="card-body">
                         
@@ -140,3 +142,4 @@
     </div>
 
 </div>
+@endsection

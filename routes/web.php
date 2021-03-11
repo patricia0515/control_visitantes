@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\VisitanteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('visitantes.create');
-});
+/* Route::get('/', function () {
+    return view('visitantes.index');
+}); */
+
+
+Route::get('/', 'VisitanteController@index');
+Route::get('/visitantes', 'VisitanteController@create')->name('visitantes.create');
+Route::post('/visitantes', 'VisitanteController@store')->name('visitantes.store');

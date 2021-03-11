@@ -4,7 +4,7 @@ namespace control_visitantes\Providers;
 
 use Illuminate\Support\ServiceProvider;
 /* Añadimos la libreria para poder trabajar con base de datos Maria DB */
-use Illuminate\Support\Facades\Schema;
+/* use Illuminate\Support\Facades\Schema; */
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,6 +26,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         // Ponemos en el metodo Boot la sigiente linea de codigo. llamamos al metodo estatico de Schema y le indicamos la longitud de las cadenas.
-        Schema::defaultStringLength(191);
+        /* Schema::defaultStringLength(191); */
     }
 }

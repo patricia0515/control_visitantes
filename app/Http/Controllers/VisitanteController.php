@@ -4,11 +4,13 @@ namespace control_visitantes\Http\Controllers;
 
 use Illuminate\Http\Request;
 use control_visitantes\Visitante;
-use Illuminate\Support\Facades\Redirect;
+use control_visitantes\Http\Requests\VisitanteFormRequest;
 
 
 class VisitanteController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +18,11 @@ class VisitanteController extends Controller
      */
     public function index()
     {
-        //
+        
+        $visitantes = Visitante::All();
+        /* dd($visitantes); */
+        return view('visitantes.index', compact('visitantes'));
+        /* return response()->json($visitantes); */
     }
 
     /**
@@ -35,9 +41,21 @@ class VisitanteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(VisitanteFormRequest $request)
     {
-        //
+        /* $visitante = new Visitante;
+
+        $visitante->documento = $request->get('documento');
+        $visitante->nombre = $request->get('nombre');
+        $visitante->apellido = $request->get('apellido');
+        $visitante->empresa = $request->get('empresa');
+        $visitante->contacto = $request->get('contacto');
+        $visitante->rh = $request->get('rh');
+        $visitante->eps = $request->get('eps');
+        $visitante->t_visita = $request->get('t_visita');
+
+        $visitante->save();
+        return Redirect::to('visitantes'); */
     }
 
     /**

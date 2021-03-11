@@ -16,7 +16,7 @@ class VisitsController extends Controller
     {
         $visits = Visits::all();
 
-        return view('', compact('visits'));
+        return view('visitas.index', compact('visits'));
     }
 
     /**
