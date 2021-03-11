@@ -3,9 +3,11 @@
 namespace control_visitantes\Http\Controllers;
 
 use Illuminate\Http\Request;
-use control_visitantes\Visits;
+use control_visitantes\Visitante;
+use Illuminate\Support\Facades\Redirect;
 
-class VisitsController extends Controller
+
+class VisitanteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +16,7 @@ class VisitsController extends Controller
      */
     public function index()
     {
-        $visits = Visits::all();
-
-        return view('', compact('visits'));
+        //
     }
 
     /**
@@ -26,7 +26,7 @@ class VisitsController extends Controller
      */
     public function create()
     {
-        //
+        return view('visitantes.create');
     }
 
     /**

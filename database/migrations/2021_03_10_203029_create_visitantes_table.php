@@ -15,12 +15,14 @@ class CreateVisitantesTable extends Migration
     {
         Schema::create('visitantes', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('empresa');
             $table->string('nombre');
             $table->string('apellido');
-            $table->string('tel');
+            $table->string('contacto');
             $table->string('rh');
             $table->string('eps');
-            $table->string('doc');
+            $table->string('t_visita');
+            $table->string('documento');
             /* Este campo viene siendo la FK con la tabla visitas */
             $table->string('visitas')->nullable();
 

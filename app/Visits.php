@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace control_visitantes;
 
 use Illuminate\Database\Eloquent\Model;
 

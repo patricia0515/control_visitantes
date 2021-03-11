@@ -39,7 +39,8 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    /* Estamos en modo desarrollo, asi que ponemos el debug en modo desarrollo */
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -66,8 +67,8 @@ return [
     | ahead and set this to a sensible default for you out of the box.
     |
     */
-
-    'timezone' => 'UTC',
+    /* Modifico la zona horaria con la de nuestra ciudad Bogotá DC */
+    'timezone' => 'America/Bogota',
 
     /*
     |--------------------------------------------------------------------------
@@ -80,7 +81,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------
@@ -169,11 +170,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        control_visitantes\Providers\AppServiceProvider::class,
+        control_visitantes\Providers\AuthServiceProvider::class,
+        // control_visitantes\Providers\BroadcastServiceProvider::class,
+        control_visitantes\Providers\EventServiceProvider::class,
+        control_visitantes\Providers\RouteServiceProvider::class,
 
     ],
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace control_visitantes\Providers;
 
 use Illuminate\Support\ServiceProvider;
 /* Añadimos la libreria para poder trabajar con base de datos Maria DB */
