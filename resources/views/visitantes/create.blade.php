@@ -2,12 +2,26 @@
 @section('content')
 <h1>Esta es la vista Crear Visitante</h1>
 
+
+
+
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col md-7 mt-5">
             
             <div class="card">
-                <form action="{{url ('/store')}}" method="POST">
+                {{-- Estoy imprimiendo los errores que surgen desde el VisitanteFormRequest --}}
+                @if (count($errors)>0)
+                    <div class="alert alert-danger">
+                        <ul>
+                        @foreach ($errors->all() as $error)	
+                            <li> {{$error}} </li>
+                        @endforeach	
+                        </ul>			
+                    </div>
+                @endif
+
+                <form action="{{ route('visitantes.store')}}" method="POST">
                     @csrf
                     <div class="card-header text-center">AGREGAR NUEVO VISITANTE</div>
                     <div class="card-body">

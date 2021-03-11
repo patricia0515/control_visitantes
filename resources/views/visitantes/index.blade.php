@@ -1,7 +1,20 @@
 @extends('layouts.plantilla')
 @section('content')
-<h1>Esta es la vista Index de los Visitantes</h1>
+<h1>Esta es la vista Index(Listar) Visitantes</h1>
 <div class="container">
+
+    {{-- Si esxiste un mensaje lo imprime por pantalla --}}
+    @if ($message = Session::get('success')) 
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
+
+    <div class="row" align="left">
+        <div class="pull-right">
+            <a class="btn btn-success" href="{{ route('visitantes.create')}}">Nuevo</a>
+        </div>
+    </div>
     <div class="row">
         <div class="col-xl-12">
             <div class="table-resposive">

@@ -18,7 +18,7 @@ class VisitanteController extends Controller
      */
     public function index()
     {
-        
+
         $visitantes = Visitante::All();
         /* dd($visitantes); */
         return view('visitantes.index', compact('visitantes'));
@@ -43,19 +43,20 @@ class VisitanteController extends Controller
      */
     public function store(VisitanteFormRequest $request)
     {
-        /* $visitante = new Visitante;
+        Visitante::create([
 
-        $visitante->documento = $request->get('documento');
-        $visitante->nombre = $request->get('nombre');
-        $visitante->apellido = $request->get('apellido');
-        $visitante->empresa = $request->get('empresa');
-        $visitante->contacto = $request->get('contacto');
-        $visitante->rh = $request->get('rh');
-        $visitante->eps = $request->get('eps');
-        $visitante->t_visita = $request->get('t_visita');
-
-        $visitante->save();
-        return Redirect::to('visitantes'); */
+            'documento' => $request->documento,
+            'nombre' => $request->nombre,
+            'apellido' => $request->apellido,
+            'empresa' => $request->empresa,
+            'contacto' => $request->contacto,
+            'rh' => $request->rh,
+            'eps' => $request->eps,
+            't_visita' => $request->t_visita,
+            'created_at' => now(),
+        ]);
+        /* Guardo los datos en la base de datos y retorno a la vista con el mensaje de confirmación */
+        return redirect()->route('visitantes.index')->with('success', 'El visitante a sido añadido con exito');
     }
 
     /**
