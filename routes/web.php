@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('visitantes', function () {
     return view('visitantes.create');
+});
+Route::get('inicio', function () {
+    return view('inicio.index');
 });
