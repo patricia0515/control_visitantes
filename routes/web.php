@@ -20,13 +20,15 @@ use App\Http\Controllers\VisitanteController;
 }); */
 
 
-Route::get('/', 'VisitanteController@index');
-Route::get('/visitantes', 'VisitanteController@create')->name('visitantes.create');
-Route::post('/visitantes', 'VisitanteController@store')->name('visitantes.store');
+Route::get('/', 'VisitsController@index');
 
-Route::post('/', 'VisitanteController@index')->name('visitantes.index');
 
-/* A las siguientes rutas les paso el registro que hay que modificar */
-Route::get('/visitantes/{visitante}', 'VisitanteController@edit')->name('visitantes.edit');
-Route::post('/visitantes/{visitante}', 'VisitanteController@update')->name('visitantes.update');
-Route::delete('/visitantes/{visitante}', 'VisitanteController@destroy')->name('visitantes.destroy');
+// Route::get('/visitantes', 'VisitanteController@create')->name('visitantes.create');
+// Route::post('/visitantes', 'VisitanteController@store')->name('visitantes.store');
+
+// Route::post('/', 'VisitanteController@index')->name('visitantes.index');
+
+// /* A las siguientes rutas les paso el registro que hay que modificar */
+// Route::get('/visitantes/{visitante}', 'VisitanteController@edit')->name('visitantes.edit');
+// Route::post('/visitantes/{visitante}', 'VisitanteController@update')->name('visitantes.update');
+// Route::delete('/visitantes/{visitante}', 'VisitanteController@destroy')->name('visitantes.destroy');
