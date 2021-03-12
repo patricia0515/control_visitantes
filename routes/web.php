@@ -46,3 +46,5 @@ Route::resource('/visitantes', 'VisitanteController');
 // Route::post('/visitantes/{visitante}', 'VisitanteController@update')->name('visitantes.update');
 // Route::delete('/visitantes/{visitante}', 'VisitanteController@destroy')->name('visitantes.destroy');
 
+//Ruta home
+Route::view('/', 'welcome')->name('index');
