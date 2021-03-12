@@ -9,7 +9,7 @@
         <div class="card-option">
             <input type="text" name="" id="">
             <button type="submit" id='btnSearch'><i class="fas fa-search"></i></button>
-            <button type="submit" id='btnViewUser'><i class="far fa-eye"></i></button>
+            <button type="button" id='btnViewUser'><i class="far fa-eye"></i></button>
         </div>
     </div>
     
@@ -19,8 +19,9 @@
 @section('modal')
 
     <!-- Modal create -->
-    <div class="modal fade" id="modalCreate" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+    <div class="modal fade" id="modalCreate" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalCreateTitle"></h5>
@@ -30,9 +31,8 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col">
-                                    <form action="" method="POST">
+
                                         <div class="card-body">
-    
                                             <div class="row form-group">
                                                 <label for="" class="col-2">Empresa</label>
                                                 <input type="text" name="empresa" class="form-control col-md-9" required>
@@ -162,9 +162,7 @@
                                                     <a href="" class="btn btn-danger">Cancelar</a>
                                                 </div>
                                             </div>
-    
                                         </div>
-                                    </form>
                                 </div>
                                 <div class="col">
                                     <img src="imagenes/logo.png" alt="" width="200px" height="200px">
@@ -222,8 +220,7 @@
                 <div class="modal-footer">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <a href="" class="btn btn-light">Aceptar</a>
-                        <button class="btn btn-dark" id="btnRegisterVisit"><i
-                                class="far fa-edit pe-1"></i></i>Registrar</button>
+                        <a class="btn btn-dark" id="btnRegisterVisit"><i lass="far fa-edit pe-1"></i></i>Registrar</a>
                     </div>
                 </div>
             </div>
