@@ -16,7 +16,6 @@ use App\Http\Controllers\VisitanteController;
 */
 
 
-
 Route::get('visitantes', function () {
     return view('visitantes.create');
 });
@@ -35,10 +34,6 @@ Route::get('visitas', function(){
     return view('visitas.index');
 });
 
-/* A las siguientes rutas les paso el registro que hay que modificar */
-Route::get('/visitantes/{visitante}', 'VisitanteController@edit')->name('visitantes.edit');
-
-
 Route::resource('/visitantes', 'VisitanteController');
 
 // Route::get('/visitantes', 'VisitanteController@create')->name('visitantes.create');
@@ -51,5 +46,5 @@ Route::resource('/visitantes', 'VisitanteController');
 // Route::post('/visitantes/{visitante}', 'VisitanteController@update')->name('visitantes.update');
 // Route::delete('/visitantes/{visitante}', 'VisitanteController@destroy')->name('visitantes.destroy');
 
+//Ruta home
 Route::view('/', 'welcome')->name('index');
-
