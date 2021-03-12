@@ -9,8 +9,6 @@ use control_visitantes\Http\Requests\VisitanteFormRequest;
 
 class VisitanteController extends Controller
 {
-
-
     /**
      * Display a listing of the resource.
      *
@@ -18,11 +16,8 @@ class VisitanteController extends Controller
      */
     public function index()
     {
-
-        $visitantes = Visitante::All();
-        /* dd($visitantes); */
+        $visitantes = Visitante::latest()->first()->paginate();
         return view('visitantes.index', compact('visitantes'));
-        /* return response()->json($visitantes); */
     }
 
     /**

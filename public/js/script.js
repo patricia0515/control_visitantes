@@ -1,4 +1,7 @@
-$(document).ready( function() {
+$(document).ready(function () {
+
+
+
 
     $('body').on('click', '#btnSearch', function () {
         Swal.fire({
@@ -12,10 +15,11 @@ $(document).ready( function() {
             if (result.value) {
                 $('#modalCreateTitle').html('Registro de nuevo visitante')
                 $('#modalCreate').modal('show')
-            } else if (result.isDenied) {
-              Swal.fire('Changes are not saved', '', 'info')
+            } else {
+                Swal.fire('Changes are not saved', '', 'info')
             }
         })
+
     })
 
 
@@ -32,3 +36,4 @@ $(document).ready( function() {
     })
 
 })
+
