@@ -19,3 +19,4 @@ Route::get('visitantes', function () {
 Route::get('inicio', function () {
     return view('inicio.index');
 });
+
