@@ -2,6 +2,7 @@
 
 namespace control_visitantes\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use control_visitantes\Visitante;
 use Illuminate\Support\Facades\Redirect;
@@ -16,7 +17,9 @@ class VisitanteController extends Controller
      */
     public function index()
     {
-        //
+        $visitantes = Visitante::all();
+
+        return view('visitantes.index', compact('visitantes'));
     }
 
     /**

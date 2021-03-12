@@ -13,7 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('visitantes', function () {
-    return view('visitantes.create');
+Route::get('/', function () {
+    return view('inicio.index');
 });
+
+// Route::get('/visitantes', function () {
+//     return view('visitantes.create');
+// });
+
+Route::resource('visitas', 'VisitsController');
+
+Route::resource('/visitantes', 'VisitanteController');
+
+// Route::view('/consulta', 'visitantes.index');
+
+
 

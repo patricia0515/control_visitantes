@@ -16,7 +16,7 @@ class VisitsController extends Controller
     {
         $visits = Visits::all();
 
-        return view('', compact('visits'));
+        return view('visitas.index', compact('visits'));
     }
 
     /**
@@ -26,7 +26,7 @@ class VisitsController extends Controller
      */
     public function create()
     {
-        //
+        return view('visitas.create');
     }
 
     /**
