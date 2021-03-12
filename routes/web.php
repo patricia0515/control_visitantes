@@ -16,11 +16,33 @@ use App\Http\Controllers\VisitanteController;
 */
 
 
+Route::get('visitantes', function () {
+    return view('visitantes.create');
+});
+Route::get('inicio', function () {
+    return view('inicio.index');
+});
+
+
+/* Route::get('/', function () {
+    return view('visitantes.index');
+}); */
+
 // Route::get('/', 'VisitanteController@index');
 
-/* A las siguientes rutas les paso el registro que hay que modificar */
-Route::get('/visitantes/{visitante}', 'VisitanteController@edit')->name('visitantes.edit');
+Route::get('visitas', function(){
+    return view('visitas.index');
+});
 
 Route::resource('/visitantes', 'VisitanteController');
 
-Route::view('/', 'welcome')->name('index');
+// Route::get('/visitantes', 'VisitanteController@create')->name('visitantes.create');
+// Route::post('/visitantes', 'VisitanteController@store')->name('visitantes.store');
+
+// Route::post('/', 'VisitanteController@index')->name('visitantes.index');
+
+// /* A las siguientes rutas les paso el registro que hay que modificar */
+// Route::get('/visitantes/{visitante}', 'VisitanteController@edit')->name('visitantes.edit');
+// Route::post('/visitantes/{visitante}', 'VisitanteController@update')->name('visitantes.update');
+// Route::delete('/visitantes/{visitante}', 'VisitanteController@destroy')->name('visitantes.destroy');
+
