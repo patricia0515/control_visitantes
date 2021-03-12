@@ -50,6 +50,8 @@
                     </tbody>
                 </table>
             </div>
+            {{-- metodo de laravel que me permite paginar los datos. --}}
+           {{ $visitantes->links() }}
         </div>
 
     </div>
