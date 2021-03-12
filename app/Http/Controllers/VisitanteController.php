@@ -18,7 +18,9 @@ class VisitanteController extends Controller
     public function index()
     {
 
-        $visitantes = Visitante::orderBy('id', 'desc')->simplePaginate(3);
+
+        $visitantes = Visitante::orderBy('id', 'desc')
+            ->simplePaginate(3);
         /* dd($visitantes); */
         return view('visitantes.index', compact('visitantes'));
     }
@@ -63,9 +65,21 @@ class VisitanteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        if ($request) {
+            /* 
+            Si viene algun dato desde el buscador
+            lo almaceno en la variable $query sin 
+            espacios en blaco con el metodo trim */
+            $searchText = trim($request->get('searchText'));
+            $visitantes = Visitante::orderBy('id', 'desc')
+                ->where('documento', '=', $searchText)
+                ->simplePaginate(3);
+            return view('visitantes.show', compact('visitantes', 'searchText'));
+
+            /* return response()->json($visitantes); */
+        }
     }
 
     /**
