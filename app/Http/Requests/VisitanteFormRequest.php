@@ -31,22 +31,7 @@ class VisitanteFormRequest extends FormRequest
             'contacto' => 'required|max:20',
             'rh' => 'required',
             'eps' => 'required',
-            't_visita' => 'required',
-            
-
-
-            'direccion' => 'required|max:50',
-            'barrio' => 'required|max:50',
-
-            'email' => 'required|max:50',
-            'nombre_acudiente' => 'required|max:50',
-            'apellidos_acudiente' => 'required|max:50',
-            'tel_acudiente' => 'required|max:15',
-            'email_acudiente' => 'required|max:50',
-            'parentesco_acu' => 'required|max:50',
-            'funcionario' => 'required',
-            'categoria' => 'required',
-            'foto' => 'mimes:jpeg,bmp,png'
+            't_visita' => 'required'
         ];
     }
 }
