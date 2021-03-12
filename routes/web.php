@@ -16,10 +16,29 @@ use App\Http\Controllers\VisitanteController;
 |
 */
 
+
+Route::get('visitantes', function () {
+    return view('visitantes.create');
+});
+Route::get('inicio', function () {
+    return view('inicio.index');
+});
+
+
 /* Route::get('/', function () {
     return view('visitantes.index');
 }); */
 
+// Route::get('/', 'VisitanteController@index');
+
+Route::get('visitas', function(){
+    return view('visitas.index');
+});
+
+Route::resource('/visitantes', 'VisitanteController');
+
+// Route::get('/visitantes', 'VisitanteController@create')->name('visitantes.create');
+// Route::post('/visitantes', 'VisitanteController@store')->name('visitantes.store');
 
 /* Route::get('/', 'VisitanteController@index');
 Route::get('/visitantes', 'VisitanteController@create')->name('visitantes.create');
@@ -38,3 +57,5 @@ Route::get('/', 'VisitanteController@index');
 
 
 Route::resource('/visitantes', 'VisitanteController');
+
+Route::view('/welcome', 'welcome')->name('index');

@@ -10,8 +10,6 @@ use Illuminate\Support\Facades\DB;
 
 class VisitanteController extends Controller
 {
-
-
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +23,6 @@ class VisitanteController extends Controller
             ->simplePaginate(3);
         /* dd($visitantes); */
         return view('visitantes.index', compact('visitantes'));
-        /* return response()->json($visitantes); */
     }
 
     /**
