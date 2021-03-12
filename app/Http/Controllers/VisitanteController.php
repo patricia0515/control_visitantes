@@ -5,6 +5,7 @@ namespace control_visitantes\Http\Controllers;
 use Illuminate\Http\Request;
 use control_visitantes\Visitante;
 use control_visitantes\Http\Requests\VisitanteFormRequest;
+use Illuminate\Support\Facades\DB;
 
 
 class VisitanteController extends Controller
@@ -16,7 +17,9 @@ class VisitanteController extends Controller
      */
     public function index()
     {
-        $visitantes = Visitante::latest()->first()->paginate();
+
+        $visitantes = Visitante::orderBy('id', 'desc')->simplePaginate(3);
+        /* dd($visitantes); */
         return view('visitantes.index', compact('visitantes'));
     }
 
