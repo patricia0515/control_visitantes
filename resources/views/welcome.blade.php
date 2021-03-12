@@ -1,1 +1,1 @@
-<h1>Hola desde la plantilla Blade</h1>
+<h1>Hola desde Welcome</h1>
