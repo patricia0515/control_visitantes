@@ -7,7 +7,7 @@ $(document).ready(function () {
         Swal.fire({
             type: 'error',
             title: 'Error',
-            text: 'El usuario no se encuentra registradro',
+            text: 'El usuario no se encuentra registrado',
             showDenyButton: true,
             showCancelButton: true,
             confirmButtonText: `Registrar!`,
@@ -29,7 +29,12 @@ $(document).ready(function () {
     })
 
     $('body').on('click', '#btnRegisterVisit', function () {
+<<<<<<< HEAD
+
+
+=======
         
+>>>>>>> 57359d13c0debb075a999ed934862b9a042f2fe7
         $('#modalRegisterVisitTitle').html('Registrar visita')
         $('#modalRegisterVisit').modal('show')
     })
