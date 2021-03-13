@@ -18,8 +18,8 @@
 
 @section('modal')
 
-    <!-- Modal create -->
-    <div class="modal fade" id="modalCreate" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+<!-- Modal create -->
+<div class="modal fade" id="modalCreate" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">

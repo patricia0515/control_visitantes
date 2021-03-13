@@ -19,9 +19,8 @@ class VisitanteController extends Controller
     {
 
 
-        $visitantes = Visitante::orderBy('id', 'desc')
-            ->simplePaginate(3);
-        /* dd($visitantes); */
+        $visitantes = DB::table('visitantes')->orderBy('id', 'desc')->paginate();
+
         return view('visitantes.index', compact('visitantes'));
     }
 

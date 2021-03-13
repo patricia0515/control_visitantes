@@ -37,16 +37,16 @@
 
     
 
-    <h1>AQUI DEBE IR EL SEARCH</h1>
+        {{-- <h1>AQUI DEBE IR EL SEARCH</h1>
 
-    @include ('visitantes.search')
     
+        
 
-    <div class="row" align="left">
-        <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('visitantes.create')}}">Nuevo</a>
-        </div>
-    </div>
+        <div class="row" align="left">
+            <div class="pull-right">
+                <a class="btn btn-success" href="{{ route('visitantes.create')}}">Nuevo</a>
+            </div>
+        </div> --}}
 
 @endsection
 
