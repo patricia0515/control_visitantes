@@ -16,8 +16,11 @@ class VisitanteController extends Controller
      */
     public function index()
     {
+
         $visitantes = DB::table('visitantes')->orderBy('id', 'desc')->paginate();
+
         return view('visitantes.index', compact('visitantes'));
+        
     }
 
     /**

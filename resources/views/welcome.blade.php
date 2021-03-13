@@ -9,7 +9,7 @@
         <div class="card-option">
             <input type="text" name="" id="">
             <button type="submit" id='btnSearch'><i class="fas fa-search"></i></button>
-            <button type="button" id='btnViewUser'><i class="far fa-eye"></i></button>
+            <button type="submit" id='btnViewUser'><i class="far fa-eye"></i></button>
         </div>
     </div>
     
@@ -19,8 +19,7 @@
 @section('modal')
 
     <!-- Modal create -->
-    <div class="modal fade" id="modalCreate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel"  aria-hidden="true">
+    <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tapindex="-1" id="modalCreate" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -31,7 +30,7 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col">
-
+                                    <form action="" method="POST">
                                         <div class="card-body">
     
                                             <div class="row form-group mt-2">
@@ -163,13 +162,14 @@
                                                     <a href="" class="btn btn-danger">Cancelar</a>
                                                 </div>
                                             </div>
+    
                                         </div>
+                                    </form>
                                 </div>
                                 <div class="col">
                                     <div class="text-center">
                                         <img src="imagenes/logo.png" alt="" width="200px" height="200px">
                                     </div>
-                                    
                                     <div class="custom-control custom-checkbox mt-3">
                                         <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                                         <label class="form-check-label" for="flexCheckDefault">
@@ -203,6 +203,7 @@
     <!-- Show user modal -->
     <div class="modal fade" id="modalShowUser" aria-hidden="true">
         <div class="modal-dialog modal-dialog modal-dialog-scrollable">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalTitleShowUser"></h5>
@@ -232,7 +233,7 @@
     </div>
 
     <!-- modal create visit -->
-    <div class="modal fade" id="modalRegisterVisit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    <div class="modal fade" id="modalRegisterVisit" data-bs-backdrop="static" data-bs-keyboard="false" tapindex="-1" id="modalCreate" aria-hidden="true"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">

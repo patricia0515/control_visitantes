@@ -35,7 +35,6 @@
             </tbody>
         </table>
 
-    
 
     {{-- <h1>AQUI DEBE IR EL SEARCH</h1>
 
