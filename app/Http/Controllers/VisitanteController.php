@@ -2,10 +2,10 @@
 
 namespace control_visitantes\Http\Controllers;
 
-
 use Illuminate\Http\Request;
 use control_visitantes\Visitante;
-use Illuminate\Support\Facades\Redirect;
+use control_visitantes\Http\Requests\VisitanteFormRequest;
+use DB;
 
 
 class VisitanteController extends Controller
@@ -17,9 +17,11 @@ class VisitanteController extends Controller
      */
     public function index()
     {
-        $visitantes = Visitante::all();
+
+        $visitantes = DB::table('visitantes')->orderBy('id', 'desc')->paginate();
 
         return view('visitantes.index', compact('visitantes'));
+        
     }
 
     /**
@@ -38,9 +40,22 @@ class VisitanteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(VisitanteFormRequest $request)
     {
-        //
+        Visitante::create([
+
+            'documento' => $request->documento,
+            'nombre' => $request->nombre,
+            'apellido' => $request->apellido,
+            'empresa' => $request->empresa,
+            'contacto' => $request->contacto,
+            'rh' => $request->rh,
+            'eps' => $request->eps,
+            't_visita' => $request->t_visita,
+            'created_at' => now(),
+        ]);
+        /* Guardo los datos en la base de datos y retorno a la vista con el mensaje de confirmación */
+        return redirect()->route('visitantes.index')->with('success', 'El visitante a sido añadido con exito');
     }
 
     /**

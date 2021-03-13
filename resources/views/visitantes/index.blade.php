@@ -1,58 +1,53 @@
 @extends('layouts.plantilla')
-
-@section('namePage', 'Datos basicos visitantes')
-
 @section('content')
 
-<div class="container">
-    <form action="" method="POST">
-        @csrf
-        <div class="row">
-            <div class="col-md-12">
-                <h3 class="text-center mt-5">Datos basicos</h3><br>
-                <div class="row">
-                    <div class="form-group col-6">
-                        <label for="empresa">Empresa:</label>
-                        <input type="text" class="form-control" name="empresa" disabled>
-                    </div>
-                    
-                    <div class="form-group col-md-6">
-                        <label for="rh">RH:</label>
-                        <input type="text" class="form-control" name="rh" disabled>
-                    </div>       
-                    <div class="form-group col-md-6">
-                        <label for="nombre">Nombre:</label>
-                        <input type="text" class="form-control" name="rh" disabled>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="eps">EPS:</label>
-                        <input type="text" class="form-control" name="eps" disabled>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="apellido">Apellido:</label>
-                        <input type="text" class="form-control" name="apellido" disabled>
-                    </div>
-                    <div class="form-group col-6">
-                        <label for="cedula">C.C:</label>
-                        <input type="text" class="form-control" name="cedula" disabled>
-                    </div>
-                        <div class="col-md-6">
-                            <label for="contacto">Contacto de confianza:</label>
-                            <input type="text" class="form-control" name="contacto" disabled>
-                        </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-12 text-end">
-                        <a type="button" href="{{ route('visitas.create') }}" class="btn btn-success">Registrar visita</a>
-                    </div>
-                </div>
-                <br>
-                <br>
-                <br>
-            </div>
-        </div>
-    </form>
-</div>
+    <div class="card-table">
+        <table id="tableVisitor" class="table table-striped table-hover table-responsive-lg" style="width:100%">
+            <caption>
+                <span id="visitantes-total">{{ $visitantes->total() }}</span> registro |
+                p&aacute;gina {{ $visitantes->currentPage() }} de {{ $visitantes->lastPage() }}
+            </caption>
+            <thead class="text-center" style="border-bottom: 2px solid #e7e7e7;  border-top: 2px solid #e7e7e7;">
+                <tr>
+                    <th>Visitas</th>
+                    <th>Empresa</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Tel&eacute;fono</th>
+                    <th>RH</th>
+                    <th>EPS</th>
+                    <th>C&eacute;dula</th>
+                </tr>
+            </thead>
+            <tbody class="text-center">
+                @foreach($visitantes as $visitante)
+                <tr>
+                    <td>{{ $visitante->visitas }}</td>
+                    <td>{{ $visitante->empresa }}</td>
+                    <td>{{ $visitante->nombre }}</td>
+                    <td>{{ $visitante->apellido }}</td>
+                    <td>{{ $visitante->contacto }}</td>
+                    <td>{{ $visitante->rh }}</td>
+                    <td>{{ $visitante->eps }}</td>
+                    <td>{{ $visitante->documento }}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+
+        {{ $visitantes->links() }}
+    </div>
+
+@endsection
+
+@section('script')
+
+    <!-- Boostrap-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+    <!-- SweetAlert -->
+    <script src="{{ asset('assets/sweetAlert2/sweetalert2.all.min.js')}}"></script>
+    <!-- Scripts -->
+    <script src="{{ asset('js/script.js') }}"></script>
 
 @endsection

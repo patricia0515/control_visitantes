@@ -1,10 +1,13 @@
-$(document).ready( function() {
+$(document).ready(function () {
+
+
+
 
     $('body').on('click', '#btnSearch', function () {
         Swal.fire({
             type: 'error',
             title: 'Error',
-            text: 'El usuario no se encuentra registradro',
+            text: 'El usuario no se encuentra registrado',
             showDenyButton: true,
             showCancelButton: true,
             confirmButtonText: `Registrar!`,
@@ -12,10 +15,11 @@ $(document).ready( function() {
             if (result.value) {
                 $('#modalCreateTitle').html('Registro de nuevo visitante')
                 $('#modalCreate').modal('show')
-            } else if (result.isDenied) {
-              Swal.fire('Changes are not saved', '', 'info')
+            } else {
+                Swal.fire('Changes are not saved', '', 'info')
             }
         })
+
     })
 
 
@@ -26,9 +30,10 @@ $(document).ready( function() {
 
     $('body').on('click', '#btnRegisterVisit', function () {
 
-        $('#modalShowUser').modal('hide')
+
         $('#modalRegisterVisitTitle').html('Registrar visita')
         $('#modalRegisterVisit').modal('show')
     })
 
 })
+
