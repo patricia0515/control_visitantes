@@ -29,8 +29,12 @@ $(document).ready(function () {
     })
 
     $('body').on('click', '#btnRegisterVisit', function () {
+<<<<<<< HEAD
 
 
+=======
+        
+>>>>>>> 57359d13c0debb075a999ed934862b9a042f2fe7
         $('#modalRegisterVisitTitle').html('Registrar visita')
         $('#modalRegisterVisit').modal('show')
     })

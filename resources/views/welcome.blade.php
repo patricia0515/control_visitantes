@@ -202,7 +202,11 @@
 
     <!-- Show user modal -->
     <div class="modal fade" id="modalShowUser" aria-hidden="true">
+<<<<<<< HEAD
         <div class="modal-dialog modal-dialog-scrollable">
+=======
+        <div class="modal-dialog">
+>>>>>>> 57359d13c0debb075a999ed934862b9a042f2fe7
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalTitleShowUser"></h5>
@@ -224,8 +228,7 @@
                 <div class="modal-footer">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <a href="" class="btn btn-light">Aceptar</a>
-                        <button class="btn btn-dark" id="btnRegisterVisit"><i
-                                class="far fa-edit pe-1"></i></i>Registrar</button>
+                        <a class="btn btn-dark" id="btnRegisterVisit"><i lass="far fa-edit pe-1"></i></i>Registrar</a>
                     </div>
                 </div>
             </div>

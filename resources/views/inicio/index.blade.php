@@ -10,8 +10,7 @@
     </nav>
 
     <div class="container">
-       
-    
+
         
         <!-- Modal Visitantes -->
         <div class="modal fade" id="modal1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalvisitantes" aria-hidden="true">

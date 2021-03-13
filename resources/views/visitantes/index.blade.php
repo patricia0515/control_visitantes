@@ -35,6 +35,7 @@
             </tbody>
         </table>
 
+<<<<<<< HEAD
         {{ $visitantes->links() }}
     </div>
 
@@ -51,3 +52,31 @@
     <script src="{{ asset('js/script.js') }}"></script>
 
 @endsection
+=======
+    
+
+    <h1>AQUI DEBE IR EL SEARCH</h1>
+
+    @include ('visitantes.search')
+    
+
+    <div class="row" align="left">
+        <div class="pull-right">
+            <a class="btn btn-success" href="{{ route('visitantes.create')}}">Nuevo</a>
+        </div>
+    </div>
+
+@endsection
+
+@section('script')
+
+    <!-- Boostrap-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+    <!-- SweetAlert -->
+    <script src="{{ asset('assets/sweetAlert2/sweetalert2.all.min.js')}}"></script>
+    <!-- Scripts -->
+    <script src="{{ asset('js/script.js') }}"></script>
+
+@endsection
+>>>>>>> 57359d13c0debb075a999ed934862b9a042f2fe7
