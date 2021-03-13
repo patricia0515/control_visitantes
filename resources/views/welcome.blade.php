@@ -19,8 +19,9 @@
 @section('modal')
 
     <!-- Modal create -->
-    <div class="modal fade" id="modalCreate" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+    <div class="modal fade" id="modalCreate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel"  aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalCreateTitle"></h5>
@@ -33,27 +34,27 @@
                                     <form action="" method="POST">
                                         <div class="card-body">
     
-                                            <div class="row form-group">
+                                            <div class="row form-group mt-2">
                                                 <label for="" class="col-2">Empresa</label>
                                                 <input type="text" name="empresa" class="form-control col-md-9" required>
                                             </div>
     
-                                            <div class="row form-group">
+                                            <div class="row form-group mt-2">
                                                 <label for="" class="col-2">Nombre</label>
                                                 <input type="text" name="nombre" class="form-control col-md-9" required>
                                             </div>
     
-                                            <div class="row form-group">
+                                            <div class="row form-group mt-2">
                                                 <label for="" class="col-2">Apellido</label>
                                                 <input type="text" name="apellido" class="form-control col-md-9" required>
                                             </div>
     
-                                            <div class="row form-group">
+                                            <div class="row form-group mt-2">
                                                 <label for="">Telefono de emergencia</label>
                                                 <input type="text" name="contacto" class="form-control col-md-9" required>
                                             </div>
     
-                                            <div class="row form-group">
+                                            <div class="row form-group mt-2">
                                                 <label for="" class="col-2">RH</label>
                                                 <select name="rh" required value="{{old('rh')}}" class="form-control">
                                                     <option disabled selected>Seleccione...</option>
@@ -68,10 +69,10 @@
                                                 </select>
                                             </div>
     
-                                            <div class="row form-group">
+                                            <div class="row form-group mt-2">
                                                 <label for="" class="col-2">EPS</label>
                                                 <select name="eps" required value="{{old('eps')}}" class="form-control">
-                                                    <option value="">Seleccione...</option>
+                                                    <option value="" disabled selected>Seleccione...</option>
                                                     <option value="Colisalud">Colisalud</option>
                                                     <option value="Caprecom">Caprecom</option>
                                                     <option value="Cafesalud">Cafesalud</option>
@@ -136,11 +137,11 @@
                                                 </select>
                                             </div>
     
-                                            <div class="row form-group">
+                                            <div class="row form-group mt-2">
                                                 <label for="">Tipo de Visitante</label>
                                                 <select name="t_visita" required value="{{old('t_visita')}}"
                                                     class="form-control">
-                                                    <option value="">Seleccione...</option>
+                                                    <option value="" disabled selected>Seleccione...</option>
                                                     <option value="Contratista">Contratista</option>
                                                     <option value="Proveedor">Proveedor</option>
                                                     <option value="Cliente">Cliente</option>
@@ -148,7 +149,7 @@
                                                 </select>
                                             </div>
     
-                                            <div class="row form-group">
+                                            <div class="row form-group mt-2">
                                                 <label for="" class="col-2">C.C</label>
                                                 <input type="text" name="documento" class="form-control col-md-9" required>
                                             </div>
@@ -167,7 +168,10 @@
                                     </form>
                                 </div>
                                 <div class="col">
-                                    <img src="imagenes/logo.png" alt="" width="200px" height="200px">
+                                    <div class="text-center">
+                                        <img src="imagenes/logo.png" alt="" width="200px" height="200px">
+                                    </div>
+                                    
                                     <div class="custom-control custom-checkbox mt-3">
                                         <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                                         <label class="form-check-label" for="flexCheckDefault">
@@ -200,7 +204,7 @@
 
     <!-- Show user modal -->
     <div class="modal fade" id="modalShowUser" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalTitleShowUser"></h5>

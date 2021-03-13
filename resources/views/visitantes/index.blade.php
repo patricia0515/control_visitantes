@@ -1,53 +1,42 @@
 @extends('layouts.plantilla')
 @section('content')
-<h1>Esta es la vista Index(Listar) Visitantes</h1>
-<div class="container">
 
-    {{-- Si esxiste un mensaje lo imprime por pantalla --}}
-    @if ($message = Session::get('success')) 
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
-    @endif
+    <div class="card-table">
+        <table id="tableVisitor" class="table table-striped table-hover table-responsive-lg" style="width:100%">
+            <caption>
+                <span id="visitantes-total">{{ $visitantes->total() }}</span> registro |
+                p&aacute;gina {{ $visitantes->currentPage() }} de {{ $visitantes->lastPage() }}
+            </caption>
+            <thead class="text-center" style="border-bottom: 2px solid #e7e7e7;  border-top: 2px solid #e7e7e7;">
+                <tr>
+                    <th>Visitas</th>
+                    <th>Empresa</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Tel&eacute;fono</th>
+                    <th>RH</th>
+                    <th>EPS</th>
+                    <th>C&eacute;dula</th>
+                </tr>
+            </thead>
+            <tbody class="text-center">
+                @foreach($visitantes as $visitante)
+                <tr>
+                    <td>{{ $visitante->visitas }}</td>
+                    <td>{{ $visitante->empresa }}</td>
+                    <td>{{ $visitante->nombre }}</td>
+                    <td>{{ $visitante->apellido }}</td>
+                    <td>{{ $visitante->contacto }}</td>
+                    <td>{{ $visitante->rh }}</td>
+                    <td>{{ $visitante->eps }}</td>
+                    <td>{{ $visitante->documento }}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
 
         {{ $visitantes->links() }}
     </div>
-    <div class="row">
-        <div class="col-xl-12">
-            <div class="table-resposive">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Visitas</th>
-                            <th>Empresa</th>
-                            <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>Telefono</th>
-                            <th>Rh</th>
-                            <th>Eps</th>
-                            <th>Documento</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                         	
-                        
-                        @foreach($visitantes as $visitante)
-                        <tr>
-                            <td>{{ $visitante->visitas }}</td>
-                            <td>{{ $visitante->empresa }}</td>
-                            <td>{{ $visitante->nombre }}</td>
-                            <td>{{ $visitante->apellido }}</td>
-                            <td>{{ $visitante->contacto }}</td>
-                            <td>{{ $visitante->rh }}</td>
-                            <td>{{ $visitante->eps }}</td>
-                            <td>{{ $visitante->documento }}</td>
-                        </tr>
-                    
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </div>
 
 @endsection
 
