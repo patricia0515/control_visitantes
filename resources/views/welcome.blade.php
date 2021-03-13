@@ -9,7 +9,7 @@
         <div class="card-option">
             <input type="text" name="" id="">
             <button type="submit" id='btnSearch'><i class="fas fa-search"></i></button>
-            <button type="submit" id='btnViewUser'><i class="far fa-eye"></i></button>
+            <button type="button" id='btnViewUser'><i class="far fa-eye"></i></button>
         </div>
     </div>
     
@@ -31,7 +31,7 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col">
-                                    <form action="" method="POST">
+
                                         <div class="card-body">
     
                                             <div class="row form-group mt-2">
@@ -163,9 +163,7 @@
                                                     <a href="" class="btn btn-danger">Cancelar</a>
                                                 </div>
                                             </div>
-    
                                         </div>
-                                    </form>
                                 </div>
                                 <div class="col">
                                     <div class="text-center">
@@ -226,8 +224,7 @@
                 <div class="modal-footer">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <a href="" class="btn btn-light">Aceptar</a>
-                        <button class="btn btn-dark" id="btnRegisterVisit"><i
-                                class="far fa-edit pe-1"></i></i>Registrar</button>
+                        <a class="btn btn-dark" id="btnRegisterVisit"><i lass="far fa-edit pe-1"></i></i>Registrar</a>
                     </div>
                 </div>
             </div>

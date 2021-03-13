@@ -23,6 +23,14 @@ class CreateVisitantesTable extends Migration
             $table->string('eps');
             $table->string('t_visita');
             $table->string('documento');
+
+            $table->text('politica_confidencialidad')->nullable();
+            $table->text('proteccion_datos')->nullable();
+            $table->text('politica_seguridad_datos')->nullable();
+
+            /* este campo hace referencia a el estado del vivisitante
+            en el sistema Activo/Inactivo */
+            $table->string('estado');
             /* Este campo viene siendo la FK con la tabla visitas */
             $table->string('visitas')->nullable();
 
