@@ -31,9 +31,9 @@ Route::get('inicio', function () {
 
 // Route::get('/', 'VisitanteController@index');
 
-Route::get('visitas', function(){
-    return view('visitas.index');
-});
+// Route::get('visitas', function(){
+//     return view('visitas.index');
+// });
 
 Route::resource('/visitantes', 'VisitanteController');
 
@@ -53,9 +53,9 @@ Route::delete('/visitantes/{visitante}', 'VisitanteController@destroy')->name('v
 
 // Vamos a crear una ruta de tipo Resource para el manejo de la CRUD visitantes
 // Pero inicialmente hay que asegurarnos que el controlador exista
-Route::get('/', 'VisitanteController@index');
-
 
 Route::resource('/visitantes', 'VisitanteController');
 
-Route::view('/welcome', 'welcome')->name('index');
+Route::resource('/visitas', 'VisitsController');
+
+Route::view('/', 'welcome')->name('index');

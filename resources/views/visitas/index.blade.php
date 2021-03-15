@@ -20,7 +20,7 @@
                 </tr>
             </thead>
             <tbody class="text-center">
-                @foreach($visitantes as $visitante)
+                @forelse($visitantes as $visitante)
                 <tr>
                     <td>{{ $visitante->visitas }}</td>
                     <td>{{ $visitante->empresa }}</td>
@@ -31,7 +31,9 @@
                     <td>{{ $visitante->eps }}</td>
                     <td>{{ $visitante->documento }}</td>
                 </tr>
-                @endforeach
+                @empty
+                    <h3>No hay visitantes registrados</h3>
+                @endforelse
             </tbody>
         </table>
 

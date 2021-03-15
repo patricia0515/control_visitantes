@@ -202,11 +202,7 @@
 
     <!-- Show user modal -->
     <div class="modal fade" id="modalShowUser" aria-hidden="true">
-<<<<<<< HEAD
         <div class="modal-dialog modal-dialog-scrollable">
-=======
-        <div class="modal-dialog">
->>>>>>> 57359d13c0debb075a999ed934862b9a042f2fe7
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalTitleShowUser"></h5>
@@ -243,7 +239,8 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalRegisterVisitTitle"></h5>
                 </div>
-                <form name="departmentForm" id="departments" action="" method="POST">
+                <form name="departmentForm" id="departments" action="{{ route('visitas.store') }}" method="POST">
+                    @csrf
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -321,7 +318,7 @@
                                 </div>
 
                                 <div class="form-group mt-2">
-                                    <label for="gender">Veh&iacute;culo? *</label>
+                                    <label for="gender">¿Veh&iacute;culo? *</label>
                                     <select name="gender" class="form-control" id="btnGender">
                                         <option selected="true" disabled="disabled">Seleccione ...</option>
                                         <option value="">Si</option>
@@ -330,9 +327,14 @@
                                 </div>
 
                                 <div class="input-group mt-3">
-                                    <input type="file" class="form-control" id="inputGroupFile04"
+                                    <input type="file" class="form-control" id="inputGroupFile04" name="files"
                                         aria-describedby="inputGroupFileAddon04" aria-label="Upload">
                                 </div>
+                                <!-- error al cargar un archivo que no sea imagen -->
+                                @error('files')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+
                             </div>
                         </div>
                     </div>
