@@ -1,7 +1,8 @@
 $(document).ready(function () {
     
-    $("#btnViewUser").hide();
-    loadTableVisitor();
+    $("#btnViewUser").hide()    
+    loadTableVisitor()
+    loadTableVisitas()
 
   
     $('body').on('click', '#btnSearch', function () {
@@ -76,6 +77,7 @@ const loadTableVisitor = () => {
     })
 }
 
+
 /**
  * Realiza la carga
  * de los datos en la datatable
@@ -100,6 +102,59 @@ const dataTableVisitor = (data) => {
             { "data": "rh" },
             { "data": "eps" },
             { "data": "documento" },
+        ],
+
+        //Para cambiar el lenguaje a español
+        "language": {
+            "lengthMenu": "Mostrar _MENU_ registros",
+            "zeroRecords": "No se encontraron resultados",
+            "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "infroFiltered": "(Filtrado de un total de _MAX_ registros)",
+            "sSearch": "Buscar: ",
+            "oPaginate": {
+                "sFirst": "Primero",
+                "sLast": "Último",
+                "sNext": "Siguiente",
+                "sPrevious": "Anterior"
+            },
+            "sProcessing": "Procesando...",
+        }
+    });
+
+}
+const loadTableVisitas = () => {
+
+    $.get('/visitas', ( data ) => {
+
+        datatableVisitas(data)
+
+    }).fail( function() {
+        console.log('Error en la tabla');
+    })
+}
+
+const datatableVisitas=(tablavisitas)=>{
+    $('#tableVisitas').DataTable({
+
+        //Datos
+        "data" : tablavisitas,
+        
+        // Columnas que estan el la tabla
+        "columns": [
+            // { "data": "cedula" },
+            // { "data": "fecha" },
+            { "data": "reg_pertenencias" },
+            { "data": "sede" },
+            { "data": "descripcion" },
+            { "data": "tip_visitante" },
+            { "data": "serial" },
+            { "data": "visita" },
+            { "data": "motivo" },
+            { "data": "resp_visita" },
+            { "data": "vehiculo" },
+            { "data": "reg_vehiculo" },
+            // { "data": "imagen_vehiculo" },
+            { "defaultContent": "<div class='text-center'><button class='btn btn-outline-info btnBorrar'><i class='fas fa-eye'></i></button></div>" }
         ],
 
         //Para cambiar el lenguaje a español

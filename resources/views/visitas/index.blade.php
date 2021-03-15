@@ -2,45 +2,34 @@
 @section('content')
 
     <div class="card-table">
-        <table id="tableVisitor" class="table table-striped table-hover table-responsive-lg" style="width:100%">
-            <caption>
-                <span id="visitas-total">{{ $visitas->total() }}</span> registro |
-                p&aacute;gina {{ $visitas->currentPage() }} de {{ $visitas->lastPage() }}
-            </caption>
-            <thead class="text-center" style="border-bottom: 2px solid #e7e7e7;  border-top: 2px solid #e7e7e7;">
-                <tr>
-                    <th>Cantidad</th>
-                    <th>C&eacute;dula</th>
-                    <th>Fecha</th>
-                    <th>Registro de pertenencias</th>
-                    <th>serial</th>
-                    <th>Sede</th>
-                    <th>Motivo</th>
-                    <th>Tipo de visitante</th>
-                    <th>Visita a</th>
-                    <th>Veh&iacute;culo</th>
-                    <th>Imagen ve&iacute;culo</th>
-                </tr>
-            </thead>
-            <tbody class="text-center">
-                @foreach($visitantes as $visitante)
-                <tr>
-                    <td>{{ $visitante->cedula }}</td>
-                    <td>{{ $visitante->fecha }}</td>
-                    <td>{{ $visitante->registro_de_pertencias }}</td>
-                    <td>{{ $visitante->serial }}</td>
-                    <td>{{ $visitante->sede }}</td>
-                    <td>{{ $visitante->motivo }}</td>
-                    <td>{{ $visitante->tipo_de_visitante }}</td>
-                    <td>{{ $visitante->visita }}</td>
-                    <td>{{$visitante->vehiculo}}</td>
-                    <td>{{$visitante->imagen_vehiculo}}</td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-
-        {{ $visitas->links() }}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="table-responsive mt-4 mb-4">
+                        <table id="tableVisitas" class="table  table-hover table-borderless" style="width:100%">
+                            <thead class="text-center">
+                                <tr>
+                                   
+                                    <th>reg_pertenencias</th>
+                                    <th>sede</th>
+                                    <th>descripcion</th>
+                                    <th>tip_visitante</th>
+                                    <th>serial</th>
+                                    <th>visita</th>
+                                    <th>motivo</th>
+                                    <th>resp_visita</th>
+                                    <th>vehiculo</th>
+                                    <th>reg_vehiculo</th>
+                                    <th>imagen_vehiculo</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 @endsection

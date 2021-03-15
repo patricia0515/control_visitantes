@@ -25,3 +25,6 @@ Route::view('/', 'welcome')->name('index');
 
 /* Retorna la tabla de los visitantes */
 Route::view('/visitor', 'visitantes/index')->name('visitor');
+
+/* Retorna la tabla de los visitantes */
+Route::view('/visits', 'visitas/index')->name('visits');
