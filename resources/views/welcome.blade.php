@@ -184,22 +184,22 @@
                                         <img src="imagenes/logo.png" alt="" width="200px" height="200px">
                                     </div>
                                     <div class="custom-control custom-checkbox mt-3">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <input class="form-check-input" name="politica_confidencialidad" type="checkbox" value="Estoy de acuerdo" id="flexCheckDefault" required>
                                         <label class="form-check-label" for="flexCheckDefault">
                                             Recibe información y firma de politicas de confidencialidad
                                         </label>
                                     </div>
     
                                     <div class="custom-control custom-checkbox mt-3">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                        <input class="form-check-input" name="proteccion_datos" type="checkbox" value="Estoy de acuerdo" id="flexCheckChecked" required>
                                         <label class="form-check-label" for="flexCheckChecked">
-                                            Recibe y firma información de politica de protección y tratamiento de datos
+                                            Recibe y firma información de politica de protección y tratamiento de datos 
                                             personales
                                         </label>
                                     </div>
     
                                     <div class="custom-control custom-checkbox mt-3">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                        <input class="form-check-input" name="seguridad_salud_trabajo" type="checkbox" value="Estoy de acuerdo" id="flexCheckChecked" required>
                                         <label class="form-check-label" for="flexCheckChecked">
                                             Recibe y firma de seguridad y salud en el trabajo
                                         </label>
