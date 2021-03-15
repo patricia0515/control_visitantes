@@ -6,10 +6,15 @@ $(document).ready(function () {
 
   
     $('body').on('click', '#btnSearch', function () {
-
+        
+        
         let visitor_number = $.trim($('#SearchText').val()); 
         let token = $("meta[name='csrf-token']").attr("content");
-    
+        
+        /* Esta es una banderita para vr que trae la variable-se visualiza desde la consola del navegador */
+        console.log(visitor_number)
+
+        /* si la variable no viene vacia ejecuta la petición ajax =se la asignamos a "id" */
         if (visitor_number) {
             $.ajax({
                 type: "GET",
@@ -18,7 +23,9 @@ $(document).ready(function () {
                     "id": visitor_number, 
                     "_token": token
                 },
+                /* si la respuesta es correcta, trajo un dato sin errores,  */
                 success: function (response) {
+                    /* si la respuesta no viene vacia muestra el boton del ojito */
                     if( response.length ) {
         
                         $("#btnViewUser").show();
@@ -33,8 +40,11 @@ $(document).ready(function () {
                                 confirmButtonText: `Registrar!`,
                             }).then((result) => {
                                 if (result.value) {
+
+                                    // let visitor_number = $.trim($('#SearchText').val());
                                     $('#modalCreateTitle').html('Registro de nuevo visitante')
                                     $('#modalCreate').modal('show')
+                                    $('#searchText2').val($.trim($('#SearchText').val()))
                                 }
                             })
                     }

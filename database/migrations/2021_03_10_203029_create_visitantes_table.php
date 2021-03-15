@@ -24,6 +24,7 @@ class CreateVisitantesTable extends Migration
             $table->string('t_visita');
             $table->string('documento');
 
+            
             $table->text('politica_confidencialidad')->nullable();
             $table->text('proteccion_datos')->nullable();
             $table->text('politica_seguridad_datos')->nullable();
