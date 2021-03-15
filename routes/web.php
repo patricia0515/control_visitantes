@@ -37,25 +37,9 @@ Route::get('visitas', function(){
 
 Route::resource('/visitantes', 'VisitanteController');
 
-// Route::get('/visitantes', 'VisitanteController@create')->name('visitantes.create');
-// Route::post('/visitantes', 'VisitanteController@store')->name('visitantes.store');
 
-/* Route::get('/', 'VisitanteController@index');
-Route::get('/visitantes', 'VisitanteController@create')->name('visitantes.create');
-Route::post('/visitantes', 'VisitanteController@store')->name('visitantes.store');
+//Retorna la vista base
+Route::view('/', 'welcome')->name('index');
 
-Route::post('/', 'VisitanteController@index')->name('visitantes.index'); */
-
-/* A las siguientes rutas les paso el registro que hay que modificar */
-/* Route::get('/visitantes/{visitante}', 'VisitanteController@edit')->name('visitantes.edit');
-Route::post('/visitantes/{visitante}', 'VisitanteController@update')->name('visitantes.update');
-Route::delete('/visitantes/{visitante}', 'VisitanteController@destroy')->name('visitantes.destroy'); */
-
-// Vamos a crear una ruta de tipo Resource para el manejo de la CRUD visitantes
-// Pero inicialmente hay que asegurarnos que el controlador exista
-Route::get('/', 'VisitanteController@index');
-
-
-Route::resource('/visitantes', 'VisitanteController');
-
-Route::view('/welcome', 'welcome')->name('index');
+//Retorna la tabla de los visitantes
+Route::view('/visitor', 'visitantes/index')->name('visitor');

@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-
+    loadTableVisitor();
 
 
     $('body').on('click', '#btnSearch', function () {
@@ -29,15 +29,74 @@ $(document).ready(function () {
     })
 
     $('body').on('click', '#btnRegisterVisit', function () {
-<<<<<<< HEAD
-
-
-=======
         
->>>>>>> 57359d13c0debb075a999ed934862b9a042f2fe7
         $('#modalRegisterVisitTitle').html('Registrar visita')
         $('#modalRegisterVisit').modal('show')
     })
 
 })
+
+
+/**
+ * Captura los datos para
+ * luego ponerlos en la datatable
+ *
+ * @return void
+*/
+
+const loadTableVisitor = () => {
+
+    $.get('/visitantes', ( data ) => {
+
+        dataTableVisitor(data)
+
+    }).fail( function() {
+        console.log('Algo salio mal loadTableAVisit');
+    })
+}
+
+/**
+ * Realiza la carga
+ * de los datos en la datatable
+ *
+ * @return void
+*/
+
+const dataTableVisitor = (data) => {
+
+    $('#tableVisitor').DataTable({
+
+        //Datos
+        "data" : data,
+        
+        // Columnas que estan el la tabla
+        "columns": [
+            { "data": "visitas" },
+            { "data": "empresa" },
+            { "data": "nombre" },
+            { "data": "apellido" },
+            { "data": "contacto" },
+            { "data": "rh" },
+            { "data": "eps" },
+            { "data": "documento" },
+        ],
+
+        //Para cambiar el lenguaje a español
+        "language": {
+            "lengthMenu": "Mostrar _MENU_ registros",
+            "zeroRecords": "No se encontraron resultados",
+            "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "infroFiltered": "(Filtrado de un total de _MAX_ registros)",
+            "sSearch": "Buscar: ",
+            "oPaginate": {
+                "sFirst": "Primero",
+                "sLast": "Último",
+                "sNext": "Siguiente",
+                "sPrevious": "Anterior"
+            },
+            "sProcessing": "Procesando...",
+        }
+    });
+
+}
 

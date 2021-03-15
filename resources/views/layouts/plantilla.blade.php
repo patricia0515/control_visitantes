@@ -23,9 +23,13 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
     
     <!-- Icons -->
     <script src="https://kit.fontawesome.com/f89bfe8215.js" crossorigin="anonymous"></script>
+
+    <!-- Datatables -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
 </head>
 
 <body>
@@ -52,7 +56,7 @@
                 </div>
                 <ul class="menu-list">
                     <li><a href="{{ route('index')}}"><i class="cont-icons fas fa-home"></i>inicio</a></li>
-                    <li><a href="{{ route('visitantes.index')}}"><i class="cont-icons fas fa-book-open"></i>visitantes</a></li>
+                    <li><a href="{{ route('visitor')}}"><i class="cont-icons fas fa-book-open"></i>visitantes</a></li>
                     <li><a href="#"><i class="cont-icons fas fa-book"></i>registro</a></li>
                 </ul>
             </div>
