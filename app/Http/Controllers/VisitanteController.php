@@ -50,6 +50,10 @@ class VisitanteController extends Controller
             'contacto' => $request->contacto,
             'rh' => $request->rh,
             'eps' => $request->eps,
+            'estado' => 'Activo',
+            'politica_confidencialidad' => $request->politica_confidencialidad,
+            'proteccion_datos' => $request->proteccion_datos,
+            'seguridad_salud_trabajo' => $request->seguridad_salud_trabajo,
             't_visita' => $request->t_visita,
             'created_at' => now(),
         ]);

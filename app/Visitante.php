@@ -20,7 +20,11 @@ class Visitante extends Model
         'contacto',
         'rh',
         'eps',
-        't_visita'
+        't_visita',
+        'estado',
+        'politica_confidencialidad',
+        'proteccion_datos',
+        'seguridad_salud_trabajo'
 
     ];
 
