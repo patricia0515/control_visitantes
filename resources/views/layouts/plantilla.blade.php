@@ -53,7 +53,7 @@
                 <ul class="menu-list">
                     <li><a href="{{ route('index')}}"><i class="cont-icons fas fa-home"></i>inicio</a></li>
                     <li><a href="{{ route('visitantes.index')}}"><i class="cont-icons fas fa-book-open"></i>visitantes</a></li>
-                    <li><a href="#"><i class="cont-icons fas fa-book"></i>registro</a></li>
+                    <li><a href="{{ route('visitas.index')}}"><i class="cont-icons fas fa-book"></i>registro</a></li>
                 </ul>
             </div>
         </div> 

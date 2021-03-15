@@ -4,6 +4,8 @@ namespace control_visitantes\Http\Controllers;
 
 use Illuminate\Http\Request;
 use control_visitantes\Visits;
+use control_visitantes\Visitante;
+use DB;
 
 class VisitsController extends Controller
 {
@@ -14,9 +16,9 @@ class VisitsController extends Controller
      */
     public function index()
     {
-        $visits = Visits::all();
-
-        return view('visitas.index', compact('visits'));
+        $visitantes=Visitante::all();
+        $visitas = DB::table('visitas')->orderBy('id', 'desc')->paginate();
+        return view('visitas.index', compact('visitas', 'visitantes'));
     }
 
     /**
