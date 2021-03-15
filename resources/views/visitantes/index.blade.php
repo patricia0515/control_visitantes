@@ -7,6 +7,7 @@
                 <span id="visitantes-total">{{ $visitantes->total() }}</span> registro |
                 p&aacute;gina {{ $visitantes->currentPage() }} de {{ $visitantes->lastPage() }}
             </caption>
+            
             <thead class="text-center" style="border-bottom: 2px solid #e7e7e7;  border-top: 2px solid #e7e7e7;">
                 <tr>
                     <th>Visitas</th>
@@ -34,14 +35,7 @@
                 @endforeach
             </tbody>
         </table>
-
-    
-
-    <h1>AQUI DEBE IR EL SEARCH</h1>
-
-    @include ('visitantes.search')
-    
-
+   
     <div class="row" align="left">
         <div class="pull-right">
             <a class="btn btn-success" href="{{ route('visitantes.create')}}">Nuevo</a>
