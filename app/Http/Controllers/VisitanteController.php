@@ -17,11 +17,11 @@ class VisitanteController extends Controller
     public function index()
     {
 
-        $visitantes = DB::table('visitantes')->orderBy('id', 'desc')->paginate();
+        $visitantes = Visitante::all();
 
-        return view('visitantes.index', compact('visitantes'));
-        
+        return $visitantes->toArray();
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -54,7 +54,7 @@ class VisitanteController extends Controller
             'created_at' => now(),
         ]);
         /* Guardo los datos en la base de datos y retorno a la vista con el mensaje de confirmación */
-        return redirect()->route('visitantes.index')->with('success', 'El visitante a sido añadido con exito');
+        return redirect()->route('index')->with('success', 'El visitante a sido añadido con exito');
     }
 
     /**
@@ -63,21 +63,24 @@ class VisitanteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request)
+    public function show($id)
     {
-        if ($request) {
-            /* 
+
+        /* 
             Si viene algun dato desde el buscador
             lo almaceno en la variable $query sin 
             espacios en blaco con el metodo trim */
-            $searchText = trim($request->get('searchText'));
-            $visitantes = Visitante::orderBy('id', 'desc')
-                ->where('documento', '=', $searchText)
-                ->simplePaginate(3);
-            return view('visitantes.show', compact('visitantes', 'searchText'));
+        // $searchText = trim($request->get('searchText'));
+        // $visitantes = Visitante::orderBy('id', 'desc')
+        //     ->where('documento', '=', $searchText)
+        //     ->simplePaginate(3);
+        // return view('visitantes.show', compact('visitantes', 'searchText'));
 
-            /* return response()->json($visitantes); */
-        }
+        /* return response()->json($visitantes); */
+
+        $visitantes = Visitante::where('documento', '=', $id)->get();
+
+        return response()->json($visitantes);
     }
 
     /**

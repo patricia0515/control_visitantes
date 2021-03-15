@@ -2,16 +2,28 @@
 
 @section('content')
 
+    
+
+    {{-- Sime esta retornando un mensaje desde el controlador, me lo imprime por pantalla --}}
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <p>{{$message}}.</p>
+        </div>
+    @endif
+        
+    {{-- ESTE EL EL SEARCH --}}
     <div class="card-search">
         <h3 class="card-title">
             Ingresar n&uacute;mero de c&eacute;dula:
         </h3>
         <div class="card-option">
-            <input type="text" name="" id="">
-            <button type="submit" id='btnSearch'><i class="fas fa-search"></i></button>
-            <button type="submit" id='btnViewUser'><i class="far fa-eye"></i></button>
+            <input type="text" id="SearchText">
+            <a id='btnSearch' class="btn-card-option"><i class="fas fa-search"></i></a>
+            <a id='btnViewUser' class="btn-card-option"><i class="far fa-eye"></i></a>
         </div>
     </div>
+
+    
     
 @endsection
 
@@ -25,12 +37,13 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalCreateTitle"></h5>
                 </div>
-                <form name="departmentForm" id="departments" action="" method="POST">
+                
                     <div class="modal-body">
                         <div class="container">
                             <div class="row">
                                 <div class="col">
-                                    <form action="" method="POST">
+                                    <form action="{{ route('visitantes.store')}}" method="POST">
+                                        @csrf
                                         <div class="card-body">
     
                                             <div class="row form-group mt-2">
@@ -150,7 +163,7 @@
     
                                             <div class="row form-group mt-2">
                                                 <label for="" class="col-2">C.C</label>
-                                                <input type="text" name="documento" class="form-control col-md-9" required>
+                                                <input type="text" id="searchText2" name="documento" class="form-control col-md-9" readonly>
                                             </div>
     
                                             <br>
@@ -203,14 +216,13 @@
     <!-- Show user modal -->
     <div class="modal fade" id="modalShowUser" aria-hidden="true">
         <div class="modal-dialog modal-dialog modal-dialog-scrollable">
-        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalTitleShowUser"></h5>
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-xs-10 col-sm-10 col-md-10 " id="table">
+                        {{-- <div class="col-xs-10 col-sm-10 col-md-10 " id="table">
                             <ul>
                                 <li>test</li>
                                 <li>test</li>
@@ -219,13 +231,99 @@
                                 <li>test</li>
                                 <li>test</li>
                             </ul>
+                        </div> --}}
+
+                        {{-- EN ESTE FORMULARIO VOY A MOSTRAR LOS DATOS DEL USUARIO REGISTRADO --}}
+                        <div class="col">
+
+                            {{-- aqui estoy mostrando los datos que vienen de la consulta si existe un usuario registrado --}}
+                            {{-- <div class="card-body">
+
+                                @foreach ($visitantes as $visitante)
+                                    
+                                
+
+                                <div class="row form-group mt-2">
+                                    <label for="" class="col-2">Empresa</label>
+                                    <input type="text" name="empresa" class="form-control col-md-9" value="{{$visitante->empresa}}" readonly>
+                                </div>
+
+                                <div class="row form-group mt-2">
+                                    <label for="" class="col-2">Nombre</label>
+                                    <input type="text" name="nombre" class="form-control col-md-9" value="{{$visitante->nombre}}" readonly>
+                                </div>
+
+                                <div class="row form-group mt-2">
+                                    <label for="" class="col-2">Apellido</label>
+                                    <input type="text" name="apellido" class="form-control col-md-9" value="{{$visitante->apellido}}" readonly>
+                                </div>
+
+                                <div class="row form-group mt-2">
+                                    <label for="">Telefono de emergencia</label>
+                                    <input type="text" name="contacto" class="form-control col-md-9" value="{{$visitante->contacto}}" readonly>
+                                </div>
+
+                                <div class="row form-group mt-2">
+                                    <label for="" class="col-2">RH</label>
+                                    <input type="text" name="rh" class="form-control col-md-9" value="{{$visitante->rh}}" readonly>
+                                    
+                                </div>
+
+                                <div class="row form-group mt-2">
+                                    <label for="" class="col-2">EPS</label>
+                                    <input type="text" name="eps" class="form-control col-md-9" value="{{$visitante->eps}}" readonly>
+                                </div>
+
+                                <div class="row form-group mt-2">
+                                    <label for="">Tipo de Visitante</label>
+                                    <input type="text" name="t_visita" class="form-control col-md-9" value="{{$visitante->t_visita}}" readonly>
+                                </div>
+
+                                <div class="row form-group mt-2">
+                                    <label for="" class="col-2">C.C</label>
+                                    <input type="text" name="documento" class="form-control col-md-9" value="{{$visitante->documento}}" readonly>
+                                </div>
+
+                                <br>
+                                @endforeach
+                            </div> --}}
+                    </div>
+                    <div class="col">
+                        <div class="text-center">
+                            <img src="imagenes/logo.png" alt="" width="200px" height="200px">
                         </div>
+                        
+                        <div class="custom-control custom-checkbox mt-3">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Recibe información y firma de politicas de confidencialidad
+                            </label>
+                        </div>
+
+                        <div class="custom-control custom-checkbox mt-3">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                            <label class="form-check-label" for="flexCheckChecked">
+                                Recibe y firma información de politica de protección y tratamiento de datos
+                                personales
+                            </label>
+                        </div>
+
+                        <div class="custom-control custom-checkbox mt-3">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                            <label class="form-check-label" for="flexCheckChecked">
+                                Recibe y firma de seguridad y salud en el trabajo
+                            </label>
+                        </div>
+                    </div>
+
+                    {{-- FINAL DE FORMULARIO QUE ME MUESTRA LOS DATOS DEL USUARIO QUE YA EXISTE EN LA BASE DE DATOS --}}
+                        
                     </div>
                 </div>
                 <div class="modal-footer">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <a href="" class="btn btn-light">Aceptar</a>
-                        <a class="btn btn-dark" id="btnRegisterVisit"><i lass="far fa-edit pe-1"></i></i>Registrar</a>
+                        <a class="btn btn-dark" id="btnRegisterVisit"><i lass="far fa-edit pe-1"></i></i>Registrar Visita</a>
                     </div>
                 </div>
             </div>
