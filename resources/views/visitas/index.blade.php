@@ -9,7 +9,6 @@
                         <table id="tableVisitas" class="table  table-hover table-borderless" style="width:100%">
                             <thead class="text-center">
                                 <tr>
-                                   
                                     <th>reg_pertenencias</th>
                                     <th>sede</th>
                                     <th>descripcion</th>
