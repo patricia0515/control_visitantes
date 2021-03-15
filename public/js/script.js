@@ -1,25 +1,45 @@
 $(document).ready(function () {
-
+    
+    $("#btnViewUser").hide();
     loadTableVisitor();
 
-
+  
     $('body').on('click', '#btnSearch', function () {
-        Swal.fire({
-            type: 'error',
-            title: 'Error',
-            text: 'El usuario no se encuentra registrado',
-            showDenyButton: true,
-            showCancelButton: true,
-            confirmButtonText: `Registrar!`,
-        }).then((result) => {
-            if (result.value) {
-                $('#modalCreateTitle').html('Registro de nuevo visitante')
-                $('#modalCreate').modal('show')
-            } else {
-                Swal.fire('Changes are not saved', '', 'info')
-            }
-        })
 
+        let visitor_number = $.trim($('#SearchText').val()); 
+        let token = $("meta[name='csrf-token']").attr("content");
+    
+        if (visitor_number) {
+            $.ajax({
+                type: "GET",
+                url: `/visitantes/${visitor_number}`,
+                data: { 
+                    "id": visitor_number, 
+                    "_token": token
+                },
+                success: function (response) {
+                    if( response.length ) {
+        
+                        $("#btnViewUser").show();
+        
+                    }else {
+                            $("#btnViewUser").hide();
+                            Swal.fire({
+                                type: 'error',
+                                title: 'Error',
+                                text: 'El usuario no se encuentra registrado',
+                                showCancelButton: true,
+                                confirmButtonText: `Registrar!`,
+                            }).then((result) => {
+                                if (result.value) {
+                                    $('#modalCreateTitle').html('Registro de nuevo visitante')
+                                    $('#modalCreate').modal('show')
+                                }
+                            })
+                    }
+                }
+            })
+        } 
     })
 
 

@@ -7,9 +7,9 @@
             Ingresar n&uacute;mero de c&eacute;dula:
         </h3>
         <div class="card-option">
-            <input type="text" name="" id="">
-            <button type="submit" id='btnSearch'><i class="fas fa-search"></i></button>
-            <button type="submit" id='btnViewUser'><i class="far fa-eye"></i></button>
+            <input type="text" id="SearchText">
+            <a id='btnSearch' class="btn-card-option"><i class="fas fa-search"></i></a>
+            <a id='btnViewUser' class="btn-card-option"><i class="far fa-eye"></i></a>
         </div>
     </div>
     
@@ -202,11 +202,7 @@
 
     <!-- Show user modal -->
     <div class="modal fade" id="modalShowUser" aria-hidden="true">
-<<<<<<< HEAD
-        <div class="modal-dialog modal-dialog-scrollable">
-=======
         <div class="modal-dialog">
->>>>>>> 57359d13c0debb075a999ed934862b9a042f2fe7
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalTitleShowUser"></h5>
