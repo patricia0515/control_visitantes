@@ -1,16 +1,6 @@
 @extends('layouts.plantilla')
 
 @section('content')
-
-    
-
-    {{-- Sime esta retornando un mensaje desde el controlador, me lo imprime por pantalla --}}
-    @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{$message}}.</p>
-        </div>
-    @endif
-        
     {{-- ESTE EL EL SEARCH --}}
     <div class="card-search">
         <h3 class="card-title">
@@ -21,10 +11,14 @@
             <a id='btnSearch' class="btn-card-option"><i class="fas fa-search"></i></a>
             <a id='btnViewUser' class="btn-card-option"><i class="far fa-eye"></i></a>
         </div>
+        <br>
+        {{-- Si me esta retornando un mensaje desde el controlador, me lo imprime por pantalla --}}
+        @if ($message = Session::get('success'))
+            <div class="alert alert-success">
+                <p>{{$message}}.</p>
+            </div>
+        @endif
     </div>
-
-    
-    
 @endsection
 
 
@@ -178,6 +172,7 @@
     
                                         </div>
                                     </form>
+                                    
                                 </div>
                                 <div class="col">
                                     <div class="text-center">
