@@ -169,7 +169,7 @@
     color: #3a3b3f;
 }
 
-.card-search button {
+.btn-card-option {
     background-color: #1b2733;
     border: none;
     cursor: pointer;
@@ -178,9 +178,14 @@
     border-radius: 10px;
     border: 1px solid #E6E6E6;
     transition: all .1s linear;
+    
 }
 
-.card-search button:active {
+.card-search a:hover {
+    color: #f3f3f3;
+}
+
+.btn-card-option:active {
     transform: translateY(3px);
     outline: none;
 }

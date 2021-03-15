@@ -1144,7 +1144,7 @@
         
         
         <h6>
-            <div class="alert alert-info" role="alert">Usuario noencontrado</div>
+            <div class="alert alert-info" role="alert">Usuario no encontrado</div>
             <button type="button" class="btn btn-outline-warning btn-sm" data-bs-toggle="modal" data-bs-target="#modal3">Nuevo</button>
         </h6>
     </div>
