@@ -7,7 +7,6 @@ use control_visitantes\Visitante;
 use control_visitantes\Http\Requests\VisitanteFormRequest;
 use DB;
 
-
 class VisitanteController extends Controller
 {
     /**
