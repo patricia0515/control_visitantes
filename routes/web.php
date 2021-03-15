@@ -16,26 +16,12 @@ use App\Http\Controllers\VisitanteController;
 |
 */
 
-
-Route::get('visitantes', function () {
-    return view('visitantes.create');
-});
-Route::get('inicio', function () {
-    return view('inicio.index');
-});
-
-
-Route::get('/', function () {
-    return view('visitantes.index');
-});
-
-// Route::get('/', 'VisitanteController@index');
-
-/* Route::get('visitas', function(){
-    return view('visitas.index');
-});
-
- */
 Route::resource('/visitantes', 'VisitanteController');
+Route::resource('/visitas', 'VisitsController');
 
-Route::view('/welcome', 'welcome')->name('index');
+
+/* Retorna la vista base */
+Route::view('/', 'welcome')->name('index');
+
+/* Retorna la tabla de los visitantes */
+Route::view('/visitor', 'visitantes/index')->name('visitor');
