@@ -60,8 +60,7 @@ $(document).ready(function () {
     })
 
     $('body').on('click', '#btnRegisterVisit', function () {
-
-
+        
         $('#modalRegisterVisitTitle').html('Registrar visita')
         $('#modalRegisterVisit').modal('show')
     })
