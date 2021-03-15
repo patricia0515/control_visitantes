@@ -2,40 +2,34 @@
 @section('content')
 
     <div class="card-table">
-        <table id="tableVisitor" class="table table-striped table-hover table-responsive-lg" style="width:100%">
-            <caption>
-                <span id="visitantes-total">{{ $visitantes->total() }}</span> registro |
-                p&aacute;gina {{ $visitantes->currentPage() }} de {{ $visitantes->lastPage() }}
-            </caption>
-            <thead class="text-center" style="border-bottom: 2px solid #e7e7e7;  border-top: 2px solid #e7e7e7;">
-                <tr>
-                    <th>Visitas</th>
-                    <th>Empresa</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Tel&eacute;fono</th>
-                    <th>RH</th>
-                    <th>EPS</th>
-                    <th>C&eacute;dula</th>
-                </tr>
-            </thead>
-            <tbody class="text-center">
-                @foreach($visitantes as $visitante)
-                <tr>
-                    <td>{{ $visitante->visitas }}</td>
-                    <td>{{ $visitante->empresa }}</td>
-                    <td>{{ $visitante->nombre }}</td>
-                    <td>{{ $visitante->apellido }}</td>
-                    <td>{{ $visitante->contacto }}</td>
-                    <td>{{ $visitante->rh }}</td>
-                    <td>{{ $visitante->eps }}</td>
-                    <td>{{ $visitante->documento }}</td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-
-        {{ $visitantes->links() }}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="table-responsive mt-4 mb-4">
+                        <table id="tableVisitas" class="table  table-hover table-borderless" style="width:100%">
+                            <thead class="text-center">
+                                <tr>
+                                   
+                                    <th>reg_pertenencias</th>
+                                    <th>sede</th>
+                                    <th>descripcion</th>
+                                    <th>tip_visitante</th>
+                                    <th>serial</th>
+                                    <th>visita</th>
+                                    <th>motivo</th>
+                                    <th>resp_visita</th>
+                                    <th>vehiculo</th>
+                                    <th>reg_vehiculo</th>
+                                    <th>imagen_vehiculo</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 @endsection
