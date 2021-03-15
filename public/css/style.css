@@ -140,6 +140,7 @@
     font-size: 18px;
     font-family: 'Roboto Condensed', sans-serif;
     color: #65737e;
+    /* border: 1px solid #65737e ; */
 }
 
 .card-table {
@@ -150,6 +151,7 @@
     justify-content: flex-start;
     padding-top: 50px;
     flex-direction: column;
+    /* border: 1px solid red;    */
 }
 
 .card-search {
@@ -169,6 +171,12 @@
     color: #3a3b3f;
 }
 
+.card-search input:focus {
+    border-radius: 10px;
+    outline: 2px solid #dbdbe2;
+}
+
+
 .btn-card-option {
     background-color: #1b2733;
     border: none;
@@ -177,22 +185,24 @@
     color: #f3f3f3;
     border-radius: 10px;
     border: 1px solid #E6E6E6;
-    transition: all .1s linear;
-    
+    transition: all .1s linear;   
 }
 
 .card-search a:hover {
     color: #f3f3f3;
 }
 
-.btn-card-option:active {
-    transform: translateY(3px);
+.card-search a:active {
     outline: none;
+    background-color: #5e6875;
 }
 
+.hideClass {
+    display: none;
+}
 
 .mt-3 {
     position: relative;
     top:    1%;
     transform: translateY(1%);
-  }
+}
