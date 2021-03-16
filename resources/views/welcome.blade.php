@@ -1,7 +1,7 @@
 @extends('layouts.plantilla')
 
 @section('content')
-
+    {{-- ESTE EL EL SEARCH --}}
     <div class="card-search">
         <h3 class="card-title">
             Ingresar n&uacute;mero de c&eacute;dula:
@@ -9,10 +9,17 @@
         <div class="card-option">
             <input type="text" id="SearchText">
             <a id='btnSearch' class="btn-card-option"><i class="fas fa-search"></i></a>
-            <a id='btnViewUser' class="btn-card-option"><i class="far fa-eye"></i></a>
+            <a id='btnViewUser' class="btn-card-option hideClass"><i class="far fa-eye"></i></a>
         </div>
+        <br>
+        {{-- Si me esta retornando un mensaje desde el controlador, me lo imprime por pantalla --}}
+        @if ($message = Session::get('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <p>{{ $message }}.</p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
     </div>
-    
 @endsection
 
 
@@ -29,32 +36,32 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col">
-                                    <form action="{{ route('visitantes.store') }}" method="POST">
+                                    <form action="{{ route('visitantes.store')}}" method="POST">
                                         @csrf
                                         <div class="card-body">
     
                                             <div class="row form-group mt-2">
-                                                <label for="" class="col-2">Empresa</label>
+                                                <label for="empresa" class="col-2">Empresa:</label>
                                                 <input type="text" name="empresa" class="form-control col-md-9" required>
                                             </div>
     
                                             <div class="row form-group mt-2">
-                                                <label for="" class="col-2">Nombre</label>
+                                                <label for="nombre" class="col-2">Nombre:</label>
                                                 <input type="text" name="nombre" class="form-control col-md-9" required>
                                             </div>
     
                                             <div class="row form-group mt-2">
-                                                <label for="" class="col-2">Apellido</label>
+                                                <label for="apellido" class="col-2">Apellido:</label>
                                                 <input type="text" name="apellido" class="form-control col-md-9" required>
                                             </div>
     
                                             <div class="row form-group mt-2">
-                                                <label for="">Telefono de emergencia</label>
+                                                <label for="contacto">Tel&eacute;fono de emergencia:</label>
                                                 <input type="text" name="contacto" class="form-control col-md-9" required>
                                             </div>
     
                                             <div class="row form-group mt-2">
-                                                <label for="" class="col-2">RH</label>
+                                                <label for="" class="col-2">RH:</label>
                                                 <select name="rh" required value="{{old('rh')}}" class="form-control">
                                                     <option disabled selected>Seleccione...</option>
                                                     <option>A+</option>
@@ -69,7 +76,7 @@
                                             </div>
     
                                             <div class="row form-group mt-2">
-                                                <label for="" class="col-2">EPS</label>
+                                                <label for="eps" class="col-2">EPS:</label>
                                                 <select name="eps" required value="{{old('eps')}}" class="form-control">
                                                     <option value="" disabled selected>Seleccione...</option>
                                                     <option value="Colisalud">Colisalud</option>
@@ -137,7 +144,7 @@
                                             </div>
     
                                             <div class="row form-group mt-2">
-                                                <label for="">Tipo de Visitante</label>
+                                                <label for="t_visita">Tipo de visitante:</label>
                                                 <select name="t_visita" required value="{{old('t_visita')}}"
                                                     class="form-control">
                                                     <option value="" disabled selected>Seleccione...</option>
@@ -147,53 +154,54 @@
                                                     <option value="OTRO">Otro</option>
                                                 </select>
                                             </div>
-    
-                                            <div class="row form-group mt-2">
-                                                <label for="" class="col-2">C.C</label>
-                                                <input type="text" name="documento" class="form-control col-md-9" required>
-                                            </div>
-    
-                                            <br>
-    
                                             <div class="modal-footer">
                                                 <div class="col-xs-12 col-sm-12 col-md-12">
-                                                    <button type="submit" id="btn_save"
+                                                    <button type="submit" 
                                                         class="btn btn-primary">Guardar</button>
                                                     <a href="" class="btn btn-danger">Cancelar</a>
                                                 </div>
                                             </div>
-    
+                                            
+                                            <br>
+                                            
                                         </div>
-                                    </form>
+                                    
                                 </div>
                                 <div class="col">
                                     <div class="text-center">
                                         <img src="imagenes/logo.png" alt="" width="200px" height="200px">
                                     </div>
+                                    <div class="row form-group mt-2">
+                                        <label for="documento" class="col-2">CC:</label>
+                                        <input type="text" id="searchText2" name="documento" class="form-control col-md-9" readonly>
+                                    </div>
                                     <div class="custom-control custom-checkbox mt-3">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <input class="form-check-input" name="politica_confidencialidad" type="checkbox" value="Estoy de acuerdo" id="flexCheckDefault" required>
                                         <label class="form-check-label" for="flexCheckDefault">
-                                            Recibe información y firma de politicas de confidencialidad
+                                            Recibe informaci&oacute;n y firma de politicas de confidencialidad
                                         </label>
                                     </div>
     
                                     <div class="custom-control custom-checkbox mt-3">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                        <input class="form-check-input" name="proteccion_datos" type="checkbox" value="Estoy de acuerdo" id="flexCheckChecked" required>
                                         <label class="form-check-label" for="flexCheckChecked">
-                                            Recibe y firma información de politica de protección y tratamiento de datos
+                                            Recibe y firma informaci&oacute;n de politica de protecci&oacute;n y tratamiento de datos 
                                             personales
                                         </label>
                                     </div>
     
                                     <div class="custom-control custom-checkbox mt-3">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                        <input class="form-check-input" name="seguridad_salud_trabajo" type="checkbox" value="Estoy de acuerdo" id="flexCheckChecked" required>
                                         <label class="form-check-label" for="flexCheckChecked">
                                             Recibe y firma de seguridad y salud en el trabajo
                                         </label>
                                     </div>
+                                    <br>
+                                    
                                 </div>
                             </div>
                         </div>
+                    </form>
                     </div>
                 </div>
             </div>
@@ -201,35 +209,31 @@
     </div>
 
     <!-- Show user modal -->
-    <div class="modal fade" id="modalShowUser" aria-hidden="true">
-        <div class="modal-dialog">
+    <div class="modal fade" id="modalShowUser" data-bs-backdrop="static" data-bs-keyboard="false" tapindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog modal-dialog-scrollable modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalTitleShowUser"></h5>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
-                        <div class="col-xs-10 col-sm-10 col-md-10 " id="table">
-                            <ul>
-                                <li>test</li>
-                                <li>test</li>
-                                <li>test</li>
-                                <li>test</li>
-                                <li>test</li>
-                                <li>test</li>
-                            </ul>
+                    <div class="row"> 
+                        <div class="col-xs-12 col-sm-12 col-md-12" id="inputs">
+
                         </div>
                     </div>
+
+                    {{-- FINAL DE FORMULARIO QUE ME MUESTRA LOS DATOS DEL USUARIO QUE YA EXISTE EN LA BASE DE DATOS --}}
                 </div>
                 <div class="modal-footer">
                     <div class="col-xs-12 col-sm-12 col-md-12">
-                        <a href="" class="btn btn-light">Aceptar</a>
-                        <a class="btn btn-dark" id="btnRegisterVisit"><i lass="far fa-edit pe-1"></i></i>Registrar</a>
+                        <a href="{{ route('index')}}" class="btn btn-light">Aceptar</a>
+                        <a class="btn btn-dark" id="btnRegisterVisit"><i lass="far fa-edit pe-1"></i></i>Registrar Visita</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
     <!-- modal create visit -->
     <div class="modal fade" id="modalRegisterVisit" data-bs-backdrop="static" data-bs-keyboard="false" tapindex="-1" id="modalCreate" aria-hidden="true"
@@ -244,7 +248,6 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
-
                                 <div class="form-group mt-2">
                                     <label for="gender">Registro de pertenencias: *</label>
                                     <select name="reg_pertenencias" class="form-control" id="btnGender">
@@ -345,8 +348,8 @@
                     </div>
                     <div class="modal-footer">
                         <div class="col-xs-12 col-sm-12 col-md-12">
-                            <button type="submit" id="btn_save" class="btn btn-primary">Guardar</button>
-                            <a href="" class="btn btn-danger">Cancelar</a>
+                            <button type="submit"  class="btn btn-primary">Guardar</button>
+                            <a href="{{ route('index')}}" class="btn btn-danger">Cancelar</a>
                         </div>
                     </div>
                 </form>

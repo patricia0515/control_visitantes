@@ -16,14 +16,17 @@ use Illuminate\Support\Facades\Route;
 |  
 */
 
-
 Route::resource('/visitantes', 'VisitanteController');
+Route::resource('/visitas', 'VisitsController');
 
 Route::resource('/visitas', 'VisitsController');
 
 
-//Retorna la vista base
+/* Retorna la vista base */
 Route::view('/', 'welcome')->name('index');
 
-//Retorna la tabla de los visitantes
+/* Retorna la tabla de los visitantes */
 Route::view('/visitor', 'visitantes/index')->name('visitor');
+
+/* Retorna la tabla de las visitas */
+Route::view('/visits', 'visitas/index')->name('visits');

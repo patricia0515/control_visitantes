@@ -17,10 +17,9 @@ class VisitsController extends Controller
      */
     public function index()
     {
-        $visits = Visits::all();
-        $visitantes = DB::table('visitantes')->orderBy('id', 'desc')->paginate();
-
-        return view('visitas.index', compact('visits', 'visitantes'));
+        $visitas=Visits::all();
+        
+        return response()->json($visitas);
     }
 
     /**
