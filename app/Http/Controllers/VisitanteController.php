@@ -20,7 +20,7 @@ class VisitanteController extends Controller
 
         $visitantes = Visitante::all();
 
-        return $visitantes->toArray();
+        return view('visitantes.index', compact('visitantes'));
     }
 
     /**
@@ -41,20 +41,34 @@ class VisitanteController extends Controller
      */
     public function store(VisitanteFormRequest $request)
     {
-        Visitante::create([
+        $visitante = New Visitante;
 
-            'documento' => $request->documento,
-            'nombre' => $request->nombre,
-            'apellido' => $request->apellido,
-            'empresa' => $request->empresa,
-            'contacto' => $request->contacto,
-            'rh' => $request->rh,
-            'eps' => $request->eps,
-            't_visita' => $request->t_visita,
-            'created_at' => now(),
-        ]);
-        /* Guardo los datos en la base de datos y retorno a la vista con el mensaje de confirmación */
+        $visitante->empresa = $request->input('empresa');
+        $visitante->nombre = $request->input('nombre');
+        $visitante->apellido = $request->input('apellido');
+        $visitante->contacto = $request->input('contacto');
+        $visitante->rh = $request->input('rh');
+        $visitante->eps = $request->input('eps');
+        $visitante->t_visita = $request->input('t_visita');
+        $visitante->documento = $request->input('documento');
+        $visitante->save();
+
         return redirect()->route('visitantes.index')->with('success', 'El visitante a sido añadido con exito');
+
+        // Visitante::create([
+
+        //     'documento' => $request->documento,
+        //     'nombre' => $request->nombre,
+        //     'apellido' => $request->apellido,
+        //     'empresa' => $request->empresa,
+        //     'contacto' => $request->contacto,
+        //     'rh' => $request->rh,
+        //     'eps' => $request->eps,
+        //     't_visita' => $request->t_visita,
+        //     'created_at' => now(),
+        // ]);
+        /* Guardo los datos en la base de datos y retorno a la vista con el mensaje de confirmación */
+        // return redirect()->route('visitantes.index')->with('success', 'El visitante a sido añadido con exito');
     }
 
     /**

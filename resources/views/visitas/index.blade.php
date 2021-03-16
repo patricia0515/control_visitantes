@@ -7,6 +7,18 @@
                 <span id="visitantes-total">{{ $visitantes->total() }}</span> registro |
                 p&aacute;gina {{ $visitantes->currentPage() }} de {{ $visitantes->lastPage() }}
             </caption>
+
+            {{-- Mensaje de confirmación (visita creada) --}}
+
+            @if (session('success'))
+                <div class="alert alert-success" role="alert">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <p>{{session('success')}}.</p>
+                </div>
+            @endif
+
+            {{-- tabla con los datos registrados --}}
+
             <thead class="text-center" style="border-bottom: 2px solid #e7e7e7;  border-top: 2px solid #e7e7e7;">
                 <tr>
                     <th>Visitas</th>

@@ -25,12 +25,12 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalCreateTitle"></h5>
                 </div>
-                <form name="departmentForm" id="departments" action="" method="POST">
                     <div class="modal-body">
                         <div class="container">
                             <div class="row">
                                 <div class="col">
-                                    <form action="" method="POST">
+                                    <form action="{{ route('visitantes.store') }}" method="POST">
+                                        @csrf
                                         <div class="card-body">
     
                                             <div class="row form-group mt-2">
@@ -239,7 +239,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalRegisterVisitTitle"></h5>
                 </div>
-                <form name="departmentForm" id="departments" action="{{ route('visitas.store') }}" method="POST">
+                <form name="departmentForm" id="departments" action="{{ route('visitas.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
                         <div class="row">
@@ -247,7 +247,7 @@
 
                                 <div class="form-group mt-2">
                                     <label for="gender">Registro de pertenencias: *</label>
-                                    <select name="gender" class="form-control" id="btnGender">
+                                    <select name="reg_pertenencias" class="form-control" id="btnGender">
                                         <option selected="true" disabled="disabled">Seleccione una pertenencia</option>
                                         <option value="">Ninguno</option>
                                         <option value="">Equipos-computo</option>
@@ -258,17 +258,17 @@
 
                                 <div class="form-group mt-2">
                                     <label for="body">Descripci&oacute;n *</label>
-                                    <textarea name="body" id="body" rows="3" class="form-control"></textarea>
+                                    <textarea name="descripcion" id="body" rows="3" class="form-control" required></textarea>
                                 </div>
 
                                 <div class="form-group mt-2">
                                     <label for="name">Serial: *</label>
-                                    <input type="text" name="name" id="name" class="form-control" placeholder="Nombre">
+                                    <input type="text" name="serial" id="name" class="form-control" placeholder="Nombre">
                                 </div>
 
                                 <div class="form-group mt-2">
                                     <label for="gender">Motivo: *</label>
-                                    <select name="gender" class="form-control" id="btnGender">
+                                    <select name="motivo" class="form-control" id="btnGender">
                                         <option selected="true" disabled="disabled">Seleccione un motivo</option>
                                         <option value="">Trabajo</option>
                                         <option value="">Visitas</option>
@@ -280,7 +280,7 @@
 
                                 <div class="form-group mt-2">
                                     <label for="gender">Sede: *</label>
-                                    <select name="gender" class="form-control" id="btnGender">
+                                    <select name="sede" class="form-control" id="btnGender">
                                         <option selected="true" disabled="disabled">Seleccione una sede</option>
                                         <option value="">Itagui</option>
                                         <option value="">Site - 1</option>
@@ -298,7 +298,7 @@
 
                                 <div class="form-group mt-2">
                                     <label for="gender">Tipo de visitante: *</label>
-                                    <select name="gender" class="form-control" id="btnGender">
+                                    <select name="t_visitante" class="form-control" id="btnGender">
                                         <option selected="true" disabled="disabled">Seleccione un visitante</option>
                                         <option value="">Contratista</option>
                                         <option value="">Proveedor</option>
@@ -309,17 +309,22 @@
 
                                 <div class="form-group mt-2">
                                     <label for="name">Visita a: *</label>
-                                    <input type="text" name="name" id="name" class="form-control" placeholder="Nombre">
+                                    <input type="text" name="visit" id="name" class="form-control" placeholder="Nombre" required>
+                                </div>
+
+                                <div class="form-group mt-2">
+                                    <label for="name">Responsable de la visita: *</label>
+                                    <input type="text" name="resp_visita" id="name" class="form-control" placeholder="Responsable de la visita" required>
                                 </div>
 
                                 <div class="form-group mt-2">
                                     <label for="body">Registrar veh&iacute;culo: *</label>
-                                    <textarea name="body" id="body" rows="3" class="form-control"></textarea>
+                                    <textarea name="reg_vehicle" id="body" rows="3" class="form-control" required></textarea>
                                 </div>
 
                                 <div class="form-group mt-2">
                                     <label for="gender">¿Veh&iacute;culo? *</label>
-                                    <select name="gender" class="form-control" id="btnGender">
+                                    <select name="vehicle" class="form-control" id="btnGender">
                                         <option selected="true" disabled="disabled">Seleccione ...</option>
                                         <option value="">Si</option>
                                         <option value="">No</option>
@@ -328,8 +333,8 @@
 
                                 <div class="input-group mt-3">
                                     <input type="file" class="form-control" id="inputGroupFile04" name="files"
-                                        aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                                </div>
+                                        aria-describedby="inputGroupFileAddon04" aria-label="Upload" accept="image/*">
+                                </div><br>
                                 <!-- error al cargar un archivo que no sea imagen -->
                                 @error('files')
                                     <small class="text-danger">{{ $message }}</small>
