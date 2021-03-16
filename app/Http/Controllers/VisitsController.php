@@ -46,24 +46,6 @@ class VisitsController extends Controller
         $img = $request->file('files')->store('public/img');
         $data = Storage::url($img);
 
-        // print_r($data);
-        // exit();
-
-        // Almacenamiento de todos los datos a la BD
-
-        // $visita = New Visits;
-        // $visita->reg_pertenencias = $request->input('reg_pertenencias');
-        // $visita->descripcion = $request->input('descripcion');
-        // $visita->serial = $request->input('serial');
-        // $visita->motivo = $request->input('motivo');
-        // $visita->sede = $request->input('sede');
-        // $visita->tip_visitante = $request->input('tip_visitante');
-        // $visita->visita = $request->input('visita');
-        // $visita->resp_visita = $request->input('resp_visita');
-        // $visita->reg_vehiculo = $request->input('reg_vehicle');
-        // $visita->vehiculo = $request->input('vehicle');
-        // $visita->save();
-
         Visits::create([
             'reg_pertenencias' => $request->reg_pertenencias,
             'descripcion' => $request->descripcion,
@@ -75,7 +57,7 @@ class VisitsController extends Controller
             'resp_visita' => $request->resp_visita,
             'reg_vehiculo' => $request->reg_vehiculo,
             'vehiculo' => $request->vehiculo,
-            'img_vehiculo' => $img,
+            'img_vehiculo' => $data,
         ]);
 
         return redirect()->route('index')->with('success', 'La visita ha sido registrada');
