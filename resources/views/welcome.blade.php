@@ -336,7 +336,7 @@
 
                                 <div class="form-group mt-2">
                                     <label for="gender">¿Veh&iacute;culo? *</label>
-                                    <select name="vehiculo" class="form-control" id="btnGender">
+                                    <select name="vehiculo" class="form-control" id="inputimagen">
                                         <option selected="true" disabled="disabled">Seleccione ...</option>
                                         <option value="Si">Si</option>
                                         <option value="No">No</option>
@@ -344,7 +344,7 @@
                                 </div>
 
                                 <div class="input-group mt-3">
-                                    <input type="file" class="form-control" id="inputGroupFile04" name="files"
+                                    <input type="file" class="form-control hideClass" id="imputimg" name="files"
                                         aria-describedby="inputGroupFileAddon04" aria-label="Upload" accept="image/*">
                                 </div><br>
                                 <!-- error al cargar un archivo que no sea imagen -->
