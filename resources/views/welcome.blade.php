@@ -215,13 +215,13 @@
                         <div class="col-xs-12 col-sm-12 col-md-12" id="inputs">
 
                         </div>
-                    </div> --}}
+                    </div>
 
                     {{-- FINAL DE FORMULARIO QUE ME MUESTRA LOS DATOS DEL USUARIO QUE YA EXISTE EN LA BASE DE DATOS --}}
                 </div>
                 <div class="modal-footer">
                     <div class="col-xs-12 col-sm-12 col-md-12">
-                        <a href="" class="btn btn-light">Aceptar</a>
+                        <a href="{{ route('index')}}" class="btn btn-light">Aceptar</a>
                         <a class="btn btn-dark" id="btnRegisterVisit"><i lass="far fa-edit pe-1"></i></i>Registrar Visita</a>
                     </div>
                 </div>
@@ -332,7 +332,7 @@
                     <div class="modal-footer">
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <button type="submit"  class="btn btn-primary">Guardar</button>
-                            <a href="" class="btn btn-danger">Cancelar</a>
+                            <a href="{{ route('index')}}" class="btn btn-danger">Cancelar</a>
                         </div>
                     </div>
                 </form>
