@@ -198,9 +198,10 @@ const datatableVisitas = (tablavisitas) => {
         //Datos
         data: tablavisitas,
 
-        // Columnas que estan el la tabla registro visitas
+        // Columnas que estan el la tabla
         columns: [
-
+            // { "data": "cedula" },
+            // { "data": "fecha" },
             { data: "reg_pertenencias" },
             { data: "sede" },
             { data: "descripcion" },

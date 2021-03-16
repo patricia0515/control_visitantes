@@ -20,6 +20,10 @@ class VisitanteController extends Controller
         $visitantes = Visitante::all();
 
         return $visitantes->toArray();
+        
+        // return response()->json($visitantes);
+
+        // return view('visitantes.index', compact('visitantes'));
     }
 
 

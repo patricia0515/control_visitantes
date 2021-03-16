@@ -17,14 +17,15 @@ class CreateVisitasTable extends Migration
             $table->bigIncrements('id'); //primary key
             $table->string('reg_pertenencias');
             $table->string('sede');
-            $table->text('descripcion')->nullable();
+            $table->text('descripcion');
             $table->string('tip_visitante');
             $table->string('serial');
             $table->string('visita');
             $table->string('motivo');
             $table->string('resp_visita');
             $table->string('vehiculo');
-            $table->string('reg_vehiculo')->nullable();
+            $table->string('reg_vehiculo');
+            $table->string('img_vehiculo');
 
             $table->timestamps();
         });
