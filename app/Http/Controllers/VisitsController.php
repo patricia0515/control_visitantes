@@ -19,7 +19,7 @@ class VisitsController extends Controller
     {
         $visitas=Visits::all();
         
-        return response()->json($visitas);
+        return $visitas->toArray();
     }
 
     /**
@@ -78,7 +78,7 @@ class VisitsController extends Controller
             'img_vehiculo' => $img,
         ]);
 
-        return redirect()->route('visitas.index')->with('success', 'La visita ha sido registrada');
+        return redirect()->route('index')->with('success', 'La visita ha sido registrada');
 
 
     }
