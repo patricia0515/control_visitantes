@@ -9,13 +9,14 @@
         <div class="card-option">
             <input type="text" id="SearchText">
             <a id='btnSearch' class="btn-card-option"><i class="fas fa-search"></i></a>
-            <a id='btnViewUser' class="btn-card-option"><i class="far fa-eye"></i></a>
+            <a id='btnViewUser' class="btn-card-option hideClass"><i class="far fa-eye"></i></a>
         </div>
         <br>
         {{-- Si me esta retornando un mensaje desde el controlador, me lo imprime por pantalla --}}
         @if ($message = Session::get('success'))
-            <div class="alert alert-success">
-                <p>{{$message}}.</p>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <p>{{ $message }}.</p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
     </div>
@@ -31,7 +32,6 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalCreateTitle"></h5>
                 </div>
-                
                     <div class="modal-body">
                         <div class="container">
                             <div class="row">
@@ -41,27 +41,27 @@
                                         <div class="card-body">
     
                                             <div class="row form-group mt-2">
-                                                <label for="" class="col-2">Empresa</label>
+                                                <label for="empresa" class="col-2">Empresa:</label>
                                                 <input type="text" name="empresa" class="form-control col-md-9" required>
                                             </div>
     
                                             <div class="row form-group mt-2">
-                                                <label for="" class="col-2">Nombre</label>
+                                                <label for="nombre" class="col-2">Nombre:</label>
                                                 <input type="text" name="nombre" class="form-control col-md-9" required>
                                             </div>
     
                                             <div class="row form-group mt-2">
-                                                <label for="" class="col-2">Apellido</label>
+                                                <label for="apellido" class="col-2">Apellido:</label>
                                                 <input type="text" name="apellido" class="form-control col-md-9" required>
                                             </div>
     
                                             <div class="row form-group mt-2">
-                                                <label for="">Telefono de emergencia</label>
+                                                <label for="contacto">Tel&eacute;fono de emergencia:</label>
                                                 <input type="text" name="contacto" class="form-control col-md-9" required>
                                             </div>
     
                                             <div class="row form-group mt-2">
-                                                <label for="" class="col-2">RH</label>
+                                                <label for="" class="col-2">RH:</label>
                                                 <select name="rh" required value="{{old('rh')}}" class="form-control">
                                                     <option disabled selected>Seleccione...</option>
                                                     <option>A+</option>
@@ -76,7 +76,7 @@
                                             </div>
     
                                             <div class="row form-group mt-2">
-                                                <label for="" class="col-2">EPS</label>
+                                                <label for="eps" class="col-2">EPS:</label>
                                                 <select name="eps" required value="{{old('eps')}}" class="form-control">
                                                     <option value="" disabled selected>Seleccione...</option>
                                                     <option value="Colisalud">Colisalud</option>
@@ -144,7 +144,7 @@
                                             </div>
     
                                             <div class="row form-group mt-2">
-                                                <label for="">Tipo de Visitante</label>
+                                                <label for="t_visita">Tipo de visitante:</label>
                                                 <select name="t_visita" required value="{{old('t_visita')}}"
                                                     class="form-control">
                                                     <option value="" disabled selected>Seleccione...</option>
@@ -154,25 +154,20 @@
                                                     <option value="OTRO">Otro</option>
                                                 </select>
                                             </div>
-    
                                             <div class="row form-group mt-2">
-                                                <label for="" class="col-2">C.C</label>
+                                                <label for="documento" class="col-2">CC:</label>
                                                 <input type="text" id="searchText2" name="documento" class="form-control col-md-9" readonly>
                                             </div>
-    
                                             <br>
-    
                                             <div class="modal-footer">
                                                 <div class="col-xs-12 col-sm-12 col-md-12">
-                                                    <button type="submit" id="btn_save"
+                                                    <button type="submit" 
                                                         class="btn btn-primary">Guardar</button>
                                                     <a href="" class="btn btn-danger">Cancelar</a>
                                                 </div>
                                             </div>
-    
                                         </div>
                                     </form>
-                                    
                                 </div>
                                 <div class="col">
                                     <div class="text-center">
@@ -181,14 +176,14 @@
                                     <div class="custom-control custom-checkbox mt-3">
                                         <input class="form-check-input" name="politica_confidencialidad" type="checkbox" value="Estoy de acuerdo" id="flexCheckDefault" required>
                                         <label class="form-check-label" for="flexCheckDefault">
-                                            Recibe información y firma de politicas de confidencialidad
+                                            Recibe informaci&oacute;n y firma de politicas de confidencialidad
                                         </label>
                                     </div>
     
                                     <div class="custom-control custom-checkbox mt-3">
                                         <input class="form-check-input" name="proteccion_datos" type="checkbox" value="Estoy de acuerdo" id="flexCheckChecked" required>
                                         <label class="form-check-label" for="flexCheckChecked">
-                                            Recibe y firma información de politica de protección y tratamiento de datos 
+                                            Recibe y firma informaci&oacute;n de politica de protecci&oacute;n y tratamiento de datos 
                                             personales
                                         </label>
                                     </div>
@@ -216,95 +211,13 @@
                     <h5 class="modal-title" id="modalTitleShowUser"></h5>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
-                     
+                    <div class="row"> 
+                        <div class="col-xs-12 col-sm-12 col-md-12" id="inputs">
 
-                        {{-- EN ESTE FORMULARIO VOY A MOSTRAR LOS DATOS DEL USUARIO REGISTRADO --}}
-                        <div class="col">
-
-                            {{-- aqui estoy mostrando los datos que vienen de la consulta si existe un usuario registrado --}}
-                            {{-- <div class="card-body">
-
-                                @foreach ($visitantes as $visitante)
-                                    
-                                
-
-                                <div class="row form-group mt-2">
-                                    <label for="" class="col-2">Empresa</label>
-                                    <input type="text" name="empresa" class="form-control col-md-9" value="{{$visitante->empresa}}" readonly>
-                                </div>
-
-                                <div class="row form-group mt-2">
-                                    <label for="" class="col-2">Nombre</label>
-                                    <input type="text" name="nombre" class="form-control col-md-9" value="{{$visitante->nombre}}" readonly>
-                                </div>
-
-                                <div class="row form-group mt-2">
-                                    <label for="" class="col-2">Apellido</label>
-                                    <input type="text" name="apellido" class="form-control col-md-9" value="{{$visitante->apellido}}" readonly>
-                                </div>
-
-                                <div class="row form-group mt-2">
-                                    <label for="">Telefono de emergencia</label>
-                                    <input type="text" name="contacto" class="form-control col-md-9" value="{{$visitante->contacto}}" readonly>
-                                </div>
-
-                                <div class="row form-group mt-2">
-                                    <label for="" class="col-2">RH</label>
-                                    <input type="text" name="rh" class="form-control col-md-9" value="{{$visitante->rh}}" readonly>
-                                    
-                                </div>
-
-                                <div class="row form-group mt-2">
-                                    <label for="" class="col-2">EPS</label>
-                                    <input type="text" name="eps" class="form-control col-md-9" value="{{$visitante->eps}}" readonly>
-                                </div>
-
-                                <div class="row form-group mt-2">
-                                    <label for="">Tipo de Visitante</label>
-                                    <input type="text" name="t_visita" class="form-control col-md-9" value="{{$visitante->t_visita}}" readonly>
-                                </div>
-
-                                <div class="row form-group mt-2">
-                                    <label for="" class="col-2">C.C</label>
-                                    <input type="text" name="documento" class="form-control col-md-9" value="{{$visitante->documento}}" readonly>
-                                </div>
-
-                                <br>
-                                @endforeach
-                            </div> --}}
-                    </div>
-                    {{-- <div class="col">
-                        <div class="text-center">
-                            <img src="imagenes/logo.png" alt="" width="200px" height="200px">
-                        </div>
-                        
-                        <div class="custom-control custom-checkbox mt-3">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
-                                Recibe información y firma de politicas de confidencialidad
-                            </label>
-                        </div>
-
-                        <div class="custom-control custom-checkbox mt-3">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                            <label class="form-check-label" for="flexCheckChecked">
-                                Recibe y firma información de politica de protección y tratamiento de datos
-                                personales
-                            </label>
-                        </div>
-
-                        <div class="custom-control custom-checkbox mt-3">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                            <label class="form-check-label" for="flexCheckChecked">
-                                Recibe y firma de seguridad y salud en el trabajo
-                            </label>
                         </div>
                     </div> --}}
 
                     {{-- FINAL DE FORMULARIO QUE ME MUESTRA LOS DATOS DEL USUARIO QUE YA EXISTE EN LA BASE DE DATOS --}}
-                        
-                    </div>
                 </div>
                 <div class="modal-footer">
                     <div class="col-xs-12 col-sm-12 col-md-12">
@@ -328,10 +241,9 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
-
                                 <div class="form-group mt-2">
-                                    <label for="gender">Registro de pertenencias: *</label>
-                                    <select name="gender" class="form-control" id="btnGender">
+                                    <label for="registro_pertencias">Registro de pertenencias: *</label>
+                                    <select name="reg_pertencias" class="form-control">
                                         <option selected="true" disabled="disabled">Seleccione una pertenencia</option>
                                         <option value="">Ninguno</option>
                                         <option value="">Equipos-computo</option>
@@ -341,18 +253,18 @@
                                 </div>
 
                                 <div class="form-group mt-2">
-                                    <label for="body">Descripci&oacute;n *</label>
-                                    <textarea name="body" id="body" rows="3" class="form-control"></textarea>
+                                    <label for="descripcion">Descripci&oacute;n: *</label>
+                                    <textarea name="despcripcion" rows="3" class="form-control"></textarea>
                                 </div>
 
                                 <div class="form-group mt-2">
                                     <label for="name">Serial: *</label>
-                                    <input type="text" name="name" id="name" class="form-control" placeholder="Nombre">
+                                    <input type="text" name="name" class="form-control" placeholder="Nombre">
                                 </div>
 
                                 <div class="form-group mt-2">
                                     <label for="gender">Motivo: *</label>
-                                    <select name="gender" class="form-control" id="btnGender">
+                                    <select name="gender" class="form-control">
                                         <option selected="true" disabled="disabled">Seleccione un motivo</option>
                                         <option value="">Trabajo</option>
                                         <option value="">Visitas</option>
@@ -364,7 +276,7 @@
 
                                 <div class="form-group mt-2">
                                     <label for="gender">Sede: *</label>
-                                    <select name="gender" class="form-control" id="btnGender">
+                                    <select name="gender" class="form-control">
                                         <option selected="true" disabled="disabled">Seleccione una sede</option>
                                         <option value="">Itagui</option>
                                         <option value="">Site - 1</option>
@@ -382,7 +294,7 @@
 
                                 <div class="form-group mt-2">
                                     <label for="gender">Tipo de visitante: *</label>
-                                    <select name="gender" class="form-control" id="btnGender">
+                                    <select name="gender" class="form-control">
                                         <option selected="true" disabled="disabled">Seleccione un visitante</option>
                                         <option value="">Contratista</option>
                                         <option value="">Proveedor</option>
@@ -398,12 +310,12 @@
 
                                 <div class="form-group mt-2">
                                     <label for="body">Registrar veh&iacute;culo: *</label>
-                                    <textarea name="body" id="body" rows="3" class="form-control"></textarea>
+                                    <textarea name="body" rows="3" class="form-control"></textarea>
                                 </div>
 
                                 <div class="form-group mt-2">
-                                    <label for="gender">Veh&iacute;culo? *</label>
-                                    <select name="gender" class="form-control" id="btnGender">
+                                    <label for="gender">¿Veh&iacute;culo? *</label>
+                                    <select name="gender" class="form-control">
                                         <option selected="true" disabled="disabled">Seleccione ...</option>
                                         <option value="">Si</option>
                                         <option value="">No</option>
@@ -419,7 +331,7 @@
                     </div>
                     <div class="modal-footer">
                         <div class="col-xs-12 col-sm-12 col-md-12">
-                            <button type="submit" id="btn_save" class="btn btn-primary">Guardar</button>
+                            <button type="submit"  class="btn btn-primary">Guardar</button>
                             <a href="" class="btn btn-danger">Cancelar</a>
                         </div>
                     </div>
