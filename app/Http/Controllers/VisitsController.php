@@ -4,6 +4,7 @@ namespace control_visitantes\Http\Controllers;
 
 use Illuminate\Http\Request;
 use control_visitantes\Visits;
+use DB;
 
 class VisitsController extends Controller
 {
@@ -14,9 +15,9 @@ class VisitsController extends Controller
      */
     public function index()
     {
-        $visits = Visits::all();
-
-        return view('visitas.index', compact('visits'));
+        $visitas=Visits::all();
+        
+        return response()->json($visitas);
     }
 
     /**

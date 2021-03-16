@@ -2,9 +2,6 @@
 @section('content')
 <h1>Esta es la vista Crear Visitante</h1>
 
-
-
-
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col md-7 mt-5">
@@ -146,9 +143,6 @@
                         <button type="submit" class="btn btn-success col-md-9 offset-2">Guardar</button>
                     </div>
 
-
-
-                    </div>
                 </form>
             </div>
 

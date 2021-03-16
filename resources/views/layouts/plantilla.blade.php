@@ -38,7 +38,7 @@
         <div class="header">
             <div class="title-header">
                 <div class="title-icon">
-                    <i class="fas fa-bars"></i>
+                    <i  class="fas fa-bars"></i>
                 </div>
                 <h2>Sistema control de visitas</h2>
             </div>
@@ -57,7 +57,7 @@
                 <ul class="menu-list">
                     <li><a href="{{ route('index')}}"><i class="cont-icons fas fa-home"></i>inicio</a></li>
                     <li><a href="{{ route('visitor')}}"><i class="cont-icons fas fa-book-open"></i>visitantes</a></li>
-                    <li><a href="#"><i class="cont-icons fas fa-book"></i>registros visitas</a></li>
+                    <li><a href="{{ route('visits')}}"><i class="cont-icons fas fa-book"></i>registros visitas</a></li>
                 </ul>
             </div>
         </div> 
