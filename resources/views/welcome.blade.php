@@ -9,7 +9,7 @@
         <div class="card-option">
             <input type="text" id="SearchText">
             <a id='btnSearch' class="btn-card-option"><i class="fas fa-search"></i></a>
-            <a id='btnViewUser' class="btn-card-option hideClass"><i class="far fa-eye"></i></a>
+            <a id='btnViewUser' class="btn-card-option hideClass"><i class="far fa-eye"></i></a>    
         </div>
         <br>
         {{-- Si me esta retornando un mensaje desde el controlador, me lo imprime por pantalla --}}
@@ -57,7 +57,7 @@
     
                                             <div class="row form-group mt-2">
                                                 <label for="contacto">Tel&eacute;fono de emergencia:</label>
-                                                <input type="text" name="contacto" class="form-control col-md-9" required>
+                                                <input type="number" name="contacto" class="form-control col-md-9" required>
                                             </div>
     
                                             <div class="row form-group mt-2">
