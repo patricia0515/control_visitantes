@@ -75,7 +75,7 @@ class VisitsController extends Controller
             'resp_visita' => $request->resp_visita,
             'reg_vehiculo' => $request->reg_vehiculo,
             'vehiculo' => $request->vehiculo,
-            'img_vehiculo' => $img,
+            'img_vehiculo' => $data,
         ]);
 
         return redirect()->route('index')->with('success', 'La visita ha sido registrada');
