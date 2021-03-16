@@ -204,8 +204,8 @@
     </div>
 
     <!-- Show user modal -->
-    <div class="modal fade" id="modalShowUser" aria-hidden="true">
-        <div class="modal-dialog modal-dialog modal-dialog-scrollable">
+    <div class="modal fade" id="modalShowUser" data-bs-backdrop="static" data-bs-keyboard="false" tapindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog modal-dialog-scrollable modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalTitleShowUser"></h5>
@@ -221,7 +221,7 @@
                 </div>
                 <div class="modal-footer">
                     <div class="col-xs-12 col-sm-12 col-md-12">
-                        <a href="" class="btn btn-light">Aceptar</a>
+                        <a href="{{ route('index')}}" class="btn btn-light">Aceptar</a>
                         <a class="btn btn-dark" id="btnRegisterVisit"><i lass="far fa-edit pe-1"></i></i>Registrar Visita</a>
                     </div>
                 </div>
@@ -332,7 +332,7 @@
                     <div class="modal-footer">
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <button type="submit"  class="btn btn-primary">Guardar</button>
-                            <a href="" class="btn btn-danger">Cancelar</a>
+                            <a href="{{ route('index')}}" class="btn btn-danger">Cancelar</a>
                         </div>
                     </div>
                 </form>

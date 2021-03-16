@@ -38,7 +38,7 @@
         <div class="header">
             <div class="title-header">
                 <div class="title-icon">
-                    <i class="fas fa-bars"></i>
+                    <i  class="fas fa-bars"></i>
                 </div>
                 <h2>Sistema control de visitas</h2>
             </div>
