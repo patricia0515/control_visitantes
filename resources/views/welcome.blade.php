@@ -154,11 +154,6 @@
                                                     <option value="OTRO">Otro</option>
                                                 </select>
                                             </div>
-                                            <div class="row form-group mt-2">
-                                                <label for="documento" class="col-2">CC:</label>
-                                                <input type="text" id="searchText2" name="documento" class="form-control col-md-9" readonly>
-                                            </div>
-                                            <br>
                                             <div class="modal-footer">
                                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                                     <button type="submit" 
@@ -166,12 +161,19 @@
                                                     <a href="" class="btn btn-danger">Cancelar</a>
                                                 </div>
                                             </div>
+                                            
+                                            <br>
+                                            
                                         </div>
-                                    </form>
+                                    
                                 </div>
                                 <div class="col">
                                     <div class="text-center">
                                         <img src="imagenes/logo.png" alt="" width="200px" height="200px">
+                                    </div>
+                                    <div class="row form-group mt-2">
+                                        <label for="documento" class="col-2">CC:</label>
+                                        <input type="text" id="searchText2" name="documento" class="form-control col-md-9" readonly>
                                     </div>
                                     <div class="custom-control custom-checkbox mt-3">
                                         <input class="form-check-input" name="politica_confidencialidad" type="checkbox" value="Estoy de acuerdo" id="flexCheckDefault" required>
@@ -194,9 +196,12 @@
                                             Recibe y firma de seguridad y salud en el trabajo
                                         </label>
                                     </div>
+                                    <br>
+                                    
                                 </div>
                             </div>
                         </div>
+                    </form>
                     </div>
                 </div>
             </div>
