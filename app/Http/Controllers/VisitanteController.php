@@ -69,19 +69,6 @@ class VisitanteController extends Controller
      */
     public function show($id)
     {
-
-        /* 
-            Si viene algun dato desde el buscador
-            lo almaceno en la variable $query sin 
-            espacios en blaco con el metodo trim */
-        // $searchText = trim($request->get('searchText'));
-        // $visitantes = Visitante::orderBy('id', 'desc')
-        //     ->where('documento', '=', $searchText)
-        //     ->simplePaginate(3);
-        // return view('visitantes.show', compact('visitantes', 'searchText'));
-
-        /* return response()->json($visitantes); */
-
         $visitantes = Visitante::where('documento', '=', $id)->get();
 
         return response()->json($visitantes);
