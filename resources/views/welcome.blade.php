@@ -209,24 +209,15 @@
     </div>
 
     <!-- Show user modal -->
-    <div class="modal fade" id="modalShowUser" aria-hidden="true">
-        <div class="modal-dialog modal-dialog modal-dialog-scrollable">
+    <div class="modal fade" id="modalShowUser" data-bs-backdrop="static" data-bs-keyboard="false" tapindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog modal-dialog-scrollable modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalTitleShowUser"></h5>
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        {{-- <div class="col-xs-10 col-sm-10 col-md-10 " id="table">
-                            <ul>
-                                <li>test</li>
-                                <li>test</li>
-                                <li>test</li>
-                                <li>test</li>
-                                <li>test</li>
-                                <li>test</li>
-                            </ul>
-                        </div> --}}
+                     
 
                         {{-- EN ESTE FORMULARIO VOY A MOSTRAR LOS DATOS DEL USUARIO REGISTRADO --}}
                         <div class="col">
@@ -283,7 +274,7 @@
                                 @endforeach
                             </div> --}}
                     </div>
-                    <div class="col">
+                    {{-- <div class="col">
                         <div class="text-center">
                             <img src="imagenes/logo.png" alt="" width="200px" height="200px">
                         </div>
@@ -309,7 +300,7 @@
                                 Recibe y firma de seguridad y salud en el trabajo
                             </label>
                         </div>
-                    </div>
+                    </div> --}}
 
                     {{-- FINAL DE FORMULARIO QUE ME MUESTRA LOS DATOS DEL USUARIO QUE YA EXISTE EN LA BASE DE DATOS --}}
                         
