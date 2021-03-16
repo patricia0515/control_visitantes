@@ -1,11 +1,13 @@
 $(document).ready(function () {
+    $("#btnViewUser").hide();
     loadTableVisitor();
-    loadTableVisitas();
 
     $("body").on("click", "#btnSearch", function () {
         let visitor_number = $.trim($("#SearchText").val());
         let token = $("meta[name='csrf-token']").attr("content");
-        $("#btnViewUser").hide();
+
+        /* Esta es una banderita para vr que trae la variable-se visualiza desde la consola del navegador */
+        console.log(visitor_number);
 
         /* si la variable no viene vacia ejecuta la petición ajax =se la asignamos a "id" */
         if (visitor_number) {
@@ -21,17 +23,8 @@ $(document).ready(function () {
                     /* si la respuesta no viene vacia muestra el boton del ojito */
                     if (response.length) {
                         $("#btnViewUser").show();
-                        document.getElementById(
-                            "SearchText"
-                        ).style.borderColor = "#dbdbe2";
-                        // Mensaje informativo para el usuario
-                        Toast.fire({
-                            type: "success",
-                            title: "El visitante ha sido ¡Encontrado!",
-                        });
                     } else {
                         $("#btnViewUser").hide();
-                        // Mensaje informativo para el usuario
                         Swal.fire({
                             type: "error",
                             title: "Error",
@@ -40,6 +33,7 @@ $(document).ready(function () {
                             confirmButtonText: `Registrar!`,
                         }).then((result) => {
                             if (result.value) {
+                                // let visitor_number = $.trim($('#SearchText').val());
                                 $("#modalCreateTitle").html(
                                     "Registro de nuevo visitante"
                                 );
@@ -52,13 +46,6 @@ $(document).ready(function () {
                     }
                 },
             });
-        } else {
-            // Mensaje informativo para el usuario
-            Toast.fire({
-                type: "error",
-                title: "Debes ingresar la cédula",
-            });
-            document.getElementById("SearchText").style.borderColor = "#ed7677";
         }
     });
 
@@ -99,20 +86,9 @@ $(document).ready(function () {
     $("body").on("click", "#btnRegisterVisit", function () {
         $("#modalRegisterVisitTitle").html("Registrar visita");
         $("#modalRegisterVisit").modal("show");
+
+        
     });
-});
-
-/**
- * Mensaje esquina superior derecha
- *
- * @return void
- */
-
-const Toast = Swal.mixin({
-    toast: true,
-    position: "top-end",
-    showConfirmButton: false,
-    timer: 3000,
 });
 
 /**
@@ -156,76 +132,11 @@ const dataTableVisitor = (data) => {
 
         //Para cambiar el lenguaje a español
         language: {
-            lengthMenu: "Mostrar _MENU_ registros",
+            lengthMenu: "Mostrar MENU registros",
             zeroRecords: "No se encontraron resultados",
             info:
-                "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-            infroFiltered: "(Filtrado de un total de _MAX_ registros)",
-            sSearch: "Buscar: ",
-            oPaginate: {
-                sFirst: "Primero",
-                sLast: "Último",
-                sNext: "Siguiente",
-                sPrevious: "Anterior",
-            },
-            sProcessing: "Procesando...",
-        },
-    });
-};
-
-/**
- * Captura los datos para
- * luego ponerlos en la datatable
- *
- * @return void
- */
-const loadTableVisitas = () => {
-    $.get("/visitas", (data) => {
-        datatableVisitas(data);
-    }).fail(function () {
-        console.log("Error en la tabla");
-    });
-};
-
-/**
- * Realiza la carga
- * de los datos en la datatable
- *
- * @return void
- */
-const datatableVisitas = (tablavisitas) => {
-    $("#tableVisitas").DataTable({
-        //Datos
-        data: tablavisitas,
-
-        // Columnas que estan el la tabla
-        columns: [
-            // { "data": "cedula" },
-            // { "data": "fecha" },
-            { data: "reg_pertenencias" },
-            { data: "sede" },
-            { data: "descripcion" },
-            { data: "tip_visitante" },
-            { data: "serial" },
-            { data: "visita" },
-            { data: "motivo" },
-            { data: "resp_visita" },
-            { data: "vehiculo" },
-            { data: "reg_vehiculo" },
-            // { "data": "imagen_vehiculo" },
-            {
-                defaultContent:
-                    "<div class='text-center'><button class='btn btn-outline-info btnBorrar'><i class='fas fa-eye'></i></button></div>",
-            },
-        ],
-
-        //Para cambiar el lenguaje a español
-        language: {
-            lengthMenu: "Mostrar _MENU_ registros",
-            zeroRecords: "No se encontraron resultados",
-            info:
-                "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-            infroFiltered: "(Filtrado de un total de _MAX_ registros)",
+                "Mostrando registros del START al END de un total de TOTAL registros",
+            infroFiltered: "(Filtrado de un total de MAX registros)",
             sSearch: "Buscar: ",
             oPaginate: {
                 sFirst: "Primero",

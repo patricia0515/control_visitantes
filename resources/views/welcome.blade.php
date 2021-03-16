@@ -19,6 +19,15 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
+        @if (count($errors)>0)
+		  <div class="alert alert-danger">
+			  <ul>
+			  @foreach ($errors->all() as $error)	
+				  <li> {{$error}} </li>
+			  @endforeach	
+			  </ul>			
+		  </div>
+		@endif
     </div>
 @endsection
 
@@ -252,10 +261,10 @@
                                     <label for="gender">Registro de pertenencias: *</label>
                                     <select name="reg_pertenencias" class="form-control" id="btnGender">
                                         <option selected="true" disabled="disabled">Seleccione una pertenencia</option>
-                                        <option value="">Ninguno</option>
-                                        <option value="">Equipos-computo</option>
-                                        <option value="">Equipos-herramientas</option>
-                                        <option value="">Art&iacute;culos-personales</option>
+                                        <option value="Ninguno">Ninguno</option>
+                                        <option value="Equipos-computo">Equipos-computo</option>
+                                        <option value="Equipos-herramientas">Equipos-herramientas</option>
+                                        <option value="Art&iacute;culos-personales">Art&iacute;culos-personales</option>
                                     </select>
                                 </div>
 
@@ -273,11 +282,11 @@
                                     <label for="gender">Motivo: *</label>
                                     <select name="motivo" class="form-control" id="btnGender">
                                         <option selected="true" disabled="disabled">Seleccione un motivo</option>
-                                        <option value="">Trabajo</option>
-                                        <option value="">Visitas</option>
-                                        <option value="">Capacitacion</option>
-                                        <option value="">Reuni&oacute;n</option>
-                                        <option value="">Otros</option>
+                                        <option value="Trabajo">Trabajo</option>
+                                        <option value="Visitas">Visitas</option>
+                                        <option value="Capacitacion">Capacitacion</option>
+                                        <option value="Reuni&oacute;n">Reuni&oacute;n</option>
+                                        <option value="Otros">Otros</option>
                                     </select>
                                 </div>
 
@@ -285,34 +294,34 @@
                                     <label for="gender">Sede: *</label>
                                     <select name="sede" class="form-control" id="btnGender">
                                         <option selected="true" disabled="disabled">Seleccione una sede</option>
-                                        <option value="">Itagui</option>
-                                        <option value="">Site - 1</option>
-                                        <option value="">Site - 2</option>
-                                        <option value="">Site - 3</option>
-                                        <option value="">Site - 4</option>
-                                        <option value="">Site - 5</option>
-                                        <option value="">Site - 6</option>
-                                        <option value="">Site - 7</option>
-                                        <option value="">Recursos Humanos</option>
-                                        <option value="">Calle 80</option>
-                                        <option value="">Carrera 30</option>
+                                        <option value="Itagui">Itagui</option>
+                                        <option value="Site - 1">Site - 1</option>
+                                        <option value="Site - 2">Site - 2</option>
+                                        <option value="Site - 3">Site - 3</option>
+                                        <option value="Site - 4">Site - 4</option>
+                                        <option value="Site - 5">Site - 5</option>
+                                        <option value="Site - 6">Site - 6</option>
+                                        <option value="Site - 7">Site - 7</option>
+                                        <option value="Recursos Humanos">Recursos Humanos</option>
+                                        <option value="Calle 80">Calle 80</option>
+                                        <option value="Carrera 30">Carrera 30</option>
                                     </select>
                                 </div>
 
                                 <div class="form-group mt-2">
                                     <label for="gender">Tipo de visitante: *</label>
-                                    <select name="t_visitante" class="form-control" id="btnGender">
+                                    <select name="tip_visitante" class="form-control" id="btnGender">
                                         <option selected="true" disabled="disabled">Seleccione un visitante</option>
-                                        <option value="">Contratista</option>
-                                        <option value="">Proveedor</option>
-                                        <option value="">Cliente</option>
-                                        <option value="">Otro</option>
+                                        <option value="Contratista">Contratista</option>
+                                        <option value="Proveedor">Proveedor</option>
+                                        <option value="Cliente">Cliente</option>
+                                        <option value="Otro">Otro</option>
                                     </select>
                                 </div>
 
                                 <div class="form-group mt-2">
                                     <label for="name">Visita a: *</label>
-                                    <input type="text" name="visit" id="name" class="form-control" placeholder="Nombre" required>
+                                    <input type="text" name="visita" id="name" class="form-control" placeholder="Nombre" required>
                                 </div>
 
                                 <div class="form-group mt-2">
@@ -322,15 +331,15 @@
 
                                 <div class="form-group mt-2">
                                     <label for="body">Registrar veh&iacute;culo: *</label>
-                                    <textarea name="reg_vehicle" id="body" rows="3" class="form-control" required></textarea>
+                                    <textarea name="reg_vehiculo" id="body" rows="3" class="form-control" required></textarea>
                                 </div>
 
                                 <div class="form-group mt-2">
                                     <label for="gender">¿Veh&iacute;culo? *</label>
-                                    <select name="vehicle" class="form-control" id="btnGender">
+                                    <select name="vehiculo" class="form-control" id="btnGender">
                                         <option selected="true" disabled="disabled">Seleccione ...</option>
-                                        <option value="">Si</option>
-                                        <option value="">No</option>
+                                        <option value="Si">Si</option>
+                                        <option value="No">No</option>
                                     </select>
                                 </div>
 

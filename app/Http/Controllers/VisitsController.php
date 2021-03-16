@@ -2,11 +2,11 @@
 
 namespace control_visitantes\Http\Controllers;
 
-use control_visitantes\visitante;
 use Illuminate\Http\Request;
 use control_visitantes\Visits;
 use DB;
 use Illuminate\Support\Facades\Storage;
+use control_visitantes\Http\Requests\VisitsFormRequest;
 
 class VisitsController extends Controller
 {
@@ -40,38 +40,46 @@ class VisitsController extends Controller
      */
     public function store(Request $request)
     {
-        //validacion por el lado del backend
-
-        $request->validate([
-            'descripcion' => 'required',
-            'serial' => 'required',
-            'visita' => 'required',
-            'reg_vehiculo' => 'required',
-            'img_vehiculo' => 'required|image',
-        ]);
 
         // Almacenamiento de la imagen al servidor
 
         $img = $request->file('files')->store('public/img');
         $data = Storage::url($img);
 
+        // print_r($data);
+        // exit();
+
         // Almacenamiento de todos los datos a la BD
 
-        $visita = New Visits;
-        $visita->reg_pertenencias = $request->input('reg_pertenencias');
-        $visita->descripcion = $request->input('descripcion');
-        $visita->serial = $request->input('serial');
-        $visita->motivo = $request->input('motivo');
-        $visita->sede = $request->input('sede');
-        $visita->tip_visitante = $request->input('t_visit');
-        $visita->visita = $request->input('visit');
-        $visita->resp_visita = $request->input('resp_visita');
-        $visita->reg_vehiculo = $request->input('reg_vehicle');
-        $visita->vehiculo = $request->input('vehicle');
-        $visita->img_vehiculo = $request->input($data);
-        $visita->save();
+        // $visita = New Visits;
+        // $visita->reg_pertenencias = $request->input('reg_pertenencias');
+        // $visita->descripcion = $request->input('descripcion');
+        // $visita->serial = $request->input('serial');
+        // $visita->motivo = $request->input('motivo');
+        // $visita->sede = $request->input('sede');
+        // $visita->tip_visitante = $request->input('tip_visitante');
+        // $visita->visita = $request->input('visita');
+        // $visita->resp_visita = $request->input('resp_visita');
+        // $visita->reg_vehiculo = $request->input('reg_vehicle');
+        // $visita->vehiculo = $request->input('vehicle');
+        // $visita->save();
+
+        Visits::create([
+            'reg_pertenencias' => $request->reg_pertenencias,
+            'descripcion' => $request->descripcion,
+            'serial' => $request->serial,
+            'motivo' => $request->motivo,
+            'sede' => $request->sede,
+            'tip_visitante' => $request->tip_visitante,
+            'visita' => $request->visita,
+            'resp_visita' => $request->resp_visita,
+            'reg_vehiculo' => $request->reg_vehiculo,
+            'vehiculo' => $request->vehiculo,
+            'img_vehiculo' => $img,
+        ]);
 
         return redirect()->route('visitas.index')->with('success', 'La visita ha sido registrada');
+
 
     }
 

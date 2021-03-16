@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::resource('/visitantes', 'VisitanteController');
-Route::resource('/visitas', 'VisitsController');
 
 Route::resource('/visitas', 'VisitsController');
 
