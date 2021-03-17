@@ -23,7 +23,7 @@ $(document).ready(function () {
                         $("#btnViewUser").show();
                         document.getElementById(
                             "SearchText"
-                        ).style.borderColor = "#dbdbe2";
+                        ).style.borderColor = "#c31f1e";
                         // Mensaje informativo para el usuario
                         Toast.fire({
                             type: "success",
@@ -100,6 +100,8 @@ $(document).ready(function () {
         $("#modalRegisterVisitTitle").html("Registrar visita");
         $("#modalRegisterVisit").modal("show");
     });
+
+
 });
 
 /**
@@ -110,7 +112,7 @@ $(document).ready(function () {
 
 const Toast = Swal.mixin({
     toast: true,
-    position: "top-end",
+    position: "top",
     showConfirmButton: false,
     timer: 3000,
 });
