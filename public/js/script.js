@@ -104,6 +104,17 @@ $(document).ready(function () {
 
 });
 
+
+$('#inputimagen').on("change", function () {
+    let imagen = $.trim($("#inputimagen").val());
+    const VALIDOR = "Si"
+    if (imagen === VALIDOR) {
+        $('#imputimg').show()
+    } else {
+        $('#imputimg').hide()
+    }
+})
+
 /**
  * Mensaje esquina superior derecha
  *
@@ -214,11 +225,11 @@ const datatableVisitas = (tablavisitas) => {
             { data: "resp_visita" },
             { data: "vehiculo" },
             { data: "reg_vehiculo" },
-            // { "data": "imagen_vehiculo" },
-            {
-                defaultContent:
-                    "<div class='text-center'><button class='btn btn-outline-info btnBorrar'><i class='fas fa-eye'></i></button></div>",
-            },
+            { data: "img_vehiculo" },
+            // {
+            //     defaultContent:
+            //         "<div class='text-center'><button class='btn btn-outline-info btnBorrar'><i class='fas fa-eye'></i></button></div>",
+            // },
         ],
 
         //Para cambiar el lenguaje a español
