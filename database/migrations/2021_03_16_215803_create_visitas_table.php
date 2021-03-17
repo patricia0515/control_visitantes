@@ -20,7 +20,7 @@ class CreateVisitasTable extends Migration
 
             $table->string('reg_pertenencias');
             $table->string('sede');
-            $table->text('descripcion');
+            $table->text('descripcion')->nullable();
             $table->string('tip_visitante');
             $table->string('serial');
             $table->string('visita');
@@ -28,7 +28,7 @@ class CreateVisitasTable extends Migration
             $table->string('resp_visita');
             $table->string('vehiculo');
             $table->string('reg_vehiculo');
-            $table->string('img_vehiculo');
+            $table->string('img_vehiculo')->nullable();
 
             $table->timestamps();
 

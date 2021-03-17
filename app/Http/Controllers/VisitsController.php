@@ -4,6 +4,7 @@ namespace control_visitantes\Http\Controllers;
 
 use Illuminate\Http\Request;
 use control_visitantes\Visits;
+use control_visitantes\Visitante;
 use DB;
 use Illuminate\Support\Facades\Storage;
 use control_visitantes\Http\Requests\VisitsFormRequest;
@@ -81,7 +82,9 @@ class VisitsController extends Controller
      */
     public function show($id)
     {
-        //
+        // $visitas = Visitante::where('documento', '=', $id)->select('');
+
+        // return response()->json($visitas);
     }
 
     /**

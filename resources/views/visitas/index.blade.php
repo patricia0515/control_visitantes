@@ -9,7 +9,7 @@
                         <table id="tableVisitas" class="table  table-hover table-borderless" style="width:100%">
                             <thead class="text-center">
                                 <tr>
-                                    <th>visitante_id</th>
+
                                     <th>reg_pertenencias</th>
                                     <th>sede</th>
                                     <th>descripcion</th>
@@ -21,6 +21,7 @@
                                     <th>vehiculo</th>
                                     <th>reg_vehiculo</th>
                                     <th>imagen_vehiculo</th>
+                                    <th>Accion</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
@@ -37,13 +38,11 @@
         <div class="modal-dialog modal-dialog modal-dialog-scrollable modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalTitleShowUser"></h5>
+                    <h5 class="modal-title" id="modalTitleimagen"></h5>
                 </div>
                 <div class="modal-body">
-                    <div class="row"> 
-                        <div class="col-xs-12 col-sm-12 col-md-12" id="inputs">
-
-                        </div>
+                    <div id="imagenmodal" class="row"> 
+                        
                     </div>
 
                     

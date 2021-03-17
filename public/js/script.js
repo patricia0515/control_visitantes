@@ -71,7 +71,7 @@ $(document).ready(function () {
         $.ajax({
             type: "GET",
             url: `/visitantes/${visitor_number}`,
-            ddata: {
+            data: {
                 id: visitor_number,
                 _token: token,
             },
@@ -224,10 +224,10 @@ const datatableVisitas = (tablavisitas) => {
             { data: "vehiculo" },
             { data: "reg_vehiculo" },
             { data: "img_vehiculo" },
-            // {
-            //     defaultContent:
-            //         "<div class='text-center'><button class='btn btn-outline-info btnBorrar'><i class='fas fa-eye'></i></button></div>",
-            // },
+            {
+                defaultContent:
+                    "<div class='text-center'><button class='btn btn-outline-info btnimagen'><i class='fas fa-eye'></i></button></div>",
+            },
         ],
 
         //Para cambiar el lenguaje a español
@@ -248,3 +248,29 @@ const datatableVisitas = (tablavisitas) => {
         },
     });
 };
+
+
+
+$("body").on("click", ".btnimagen", function () {
+    let token = $("meta[name='csrf-token']").attr("content");
+    $("#modalTitleimagen").html("Informacion visitante");
+    $("#modalimagen").modal("show");
+    let fila = $(this).closest("tr");
+    let id = fila.find('td:eq(2)').text();
+    console.log(id)
+
+    $.ajax({
+        type: "GET",
+        url: `/visitas/${id}`,
+        data: {
+            id: id,
+            _token: token,
+        },
+        success:function(respuesta){
+           let imagen = `<img srf='${respuesta}'>`
+           console.log(respuesta)
+           $('#imagenmodal').append(imagen)
+        }
+
+    });
+});
