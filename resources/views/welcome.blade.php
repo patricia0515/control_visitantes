@@ -252,7 +252,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalRegisterVisitTitle"></h5>
                 </div>
-                <form name="departmentForm" id="departments" action="{{ route('visitas.store') }}" method="POST" enctype="multipart/form-data">
+                <form name="departmentForm" id="departments" action="{{ route('visitas.store') }}" method="POST"  enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
                         <div class="row">

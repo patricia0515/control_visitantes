@@ -102,16 +102,15 @@ $(document).ready(function () {
     });
 });
 
-
-$('#inputimagen').on("change", function () {
+$("#inputimagen").on("change", function () {
     let imagen = $.trim($("#inputimagen").val());
-    const VALIDOR = "Si"
+    const VALIDOR = "Si";
     if (imagen === VALIDOR) {
-        $('#imputimg').show()
+        $("#imputimg").show();
     } else {
-        $('#imputimg').hide()
+        $("#imputimg").hide();
     }
-})
+});
 
 /**
  * Mensaje esquina superior derecha
@@ -155,7 +154,7 @@ const dataTableVisitor = (data) => {
 
         // Columnas que estan el la tabla
         columns: [
-            { data: "visitas" },
+            { data: "no_visitas" },
             { data: "empresa" },
             { data: "nombre" },
             { data: "apellido" },

@@ -7,6 +7,8 @@ use control_visitantes\Visits;
 use DB;
 use Illuminate\Support\Facades\Storage;
 use control_visitantes\Http\Requests\VisitsFormRequest;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Input;
 
 class VisitsController extends Controller
 {
@@ -17,8 +19,8 @@ class VisitsController extends Controller
      */
     public function index()
     {
-        $visitas=Visits::all();
-        
+        $visitas = Visits::all();
+
         return $visitas->toArray();
     }
 
@@ -40,7 +42,6 @@ class VisitsController extends Controller
      */
     public function store(Request $request)
     {
-
         // Almacenamiento de la imagen al servidor
 
         $img = $request->file('files')->store('public/img');
@@ -79,8 +80,6 @@ class VisitsController extends Controller
         ]);
 
         return redirect()->route('index')->with('success', 'La visita ha sido registrada');
-
-
     }
 
     /**
