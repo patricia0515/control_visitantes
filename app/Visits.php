@@ -23,5 +23,5 @@ class Visits extends Model
         'img_vehiculo'
     ];
 
-    protected $dateFormat = 'Y-m-d';
+    // protected $dateFormat = 'U';
 }

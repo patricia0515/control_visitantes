@@ -20,10 +20,6 @@ class VisitsController extends Controller
     public function index()
     {
 
-        // $ticket = Ticket::findOrFail(1);
-        // $date = new \Carbon\Carbon($ticket->created_at);
-        // echo $date->format('d-m-Y');
-
         $visitas = Visits::join('visitantes', 'visitas.visitante_id', '=', 'visitantes.id')
                         ->select('visitas.*', 'visitantes.documento AS documentoVisitante',
                                 'visitantes.no_visitas AS cantidadVisitas')

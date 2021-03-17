@@ -34,6 +34,9 @@ class CreateVisitasTable extends Migration
 
             $table->timestamps();
 
+            // $table->date('created_at');
+            // $table->date('updated_at');
+
             $table->foreign("visitante_id")
                 ->references("id")
                 ->on("visitantes")
