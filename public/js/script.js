@@ -245,8 +245,26 @@ const datatableVisitas = (data) => {
     });
 };
 
-$('body').on('click', '.btnImagen', function () {
-    let fila = $(this).closest('tr')
-    let cedula = parseInt(fila.find('td:eq(3)').text())
-    console.log(cedula)
-})
+$("body").on("click", ".btnImagen", function () {
+
+    $("#modalTitleimagen").html("Informacion visitante");
+    $("#modalimagen").modal("show");
+    let token = $("meta[name='csrf-token']").attr("content")
+    let fila = $(this).closest("tr")
+    let visita_id = parseInt(fila.find('td:eq(0)').text())
+    
+    $.ajax({
+        type: "GET",
+        url: `/visitas/${visita_id}`,
+        data: {
+            id: visita_id,
+            _token: token,
+        },
+        success:function(respuesta){
+            respuesta.forEach(data => {
+                let imagen = `<img srf='${data.img_vehiculo}'>`
+                // $('#imagenmodal').append(imagen)
+            });
+        }
+    });
+ });
