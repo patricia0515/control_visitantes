@@ -150,6 +150,8 @@ const dataTableVisitor = (data) => {
         //Datos
         data: data,
 
+        responsive: true,
+
         // Columnas que estan el la tabla
         columns: [
             { data: "no_visitas" },
@@ -207,6 +209,8 @@ const datatableVisitas = (data) => {
         //Datos
         data: data,
 
+        responsive: true,
+
         // Columnas que estan el la tabla
         columns: [
             { data: "visitante_id" },
@@ -245,28 +249,26 @@ const datatableVisitas = (data) => {
     });
 };
 
+$("body").on("click", ".btnImagen", function () {
 
-
-$("body").on("click", ".btnimagen", function () {
-    let token = $("meta[name='csrf-token']").attr("content");
     $("#modalTitleimagen").html("Informacion visitante");
     $("#modalimagen").modal("show");
-    let fila = $(this).closest("tr");
-    let id = fila.find('td:eq(0)').text();
-    console.log(id)
-
+    let token = $("meta[name='csrf-token']").attr("content")
+    let fila = $(this).closest("tr")
+    let visita_id = parseInt(fila.find('td:eq(0)').text())
+    
     $.ajax({
         type: "GET",
-        url: `/visitas/${id}`,
+        url: `/visitas/${visita_id}`,
         data: {
-            id: id,
+            id: visita_id,
             _token: token,
         },
         success:function(respuesta){
-           let imagen = `<img srf='${respuesta}'>`
-           console.log(respuesta)
-           $('#imagenmodal').append(imagen)
+            respuesta.forEach(data => {
+                let imagen = `<img srf='${data.img_vehiculo}'>`
+                $('#imagenmodal').append(imagen)
+            });
         }
-
     });
-});
+ });
