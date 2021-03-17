@@ -16,8 +16,12 @@ class Visits extends Model
         'visita',
         'motivo',
         'resp_visita',
+        'visitante_id',
         'vehiculo',
         'reg_vehiculo',
+        'tipo',
         'img_vehiculo'
     ];
+
+    protected $dateFormat = 'Y-m-d';
 }

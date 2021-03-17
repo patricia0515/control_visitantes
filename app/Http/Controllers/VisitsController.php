@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use control_visitantes\Visits;
 use DB;
 use Illuminate\Support\Facades\Storage;
-use control_visitantes\Http\Requests\VisitsFormRequest;
 
 class VisitsController extends Controller
 {
@@ -17,6 +16,10 @@ class VisitsController extends Controller
      */
     public function index()
     {
+
+        // $ticket = Ticket::findOrFail(1);
+        // $date = new \Carbon\Carbon($ticket->created_at);
+        // echo $date->format('d-m-Y');
 
         $visitas = Visits::join('visitantes', 'visitas.visitante_id', '=', 'visitantes.id')
                         ->select('visitas.*', 'visitantes.documento AS documentoVisitante',
@@ -44,6 +47,7 @@ class VisitsController extends Controller
      */
     public function store(Request $request)
     {
+        // dd ($request->all());
 
         $data = '';
 
@@ -67,6 +71,8 @@ class VisitsController extends Controller
             'visita' => $request->visita,
             'resp_visita' => $request->resp_visita,
             'reg_vehiculo' => $request->reg_vehiculo,
+            'tipo' => $request->tipo,
+            'visitante_id' => $request->visitante_id,
             'vehiculo' => $request->vehiculo,
             'img_vehiculo' => $data,
         ]);

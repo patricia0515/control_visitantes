@@ -75,13 +75,8 @@ $(document).ready(function () {
                 response.forEach((data) => {
                     // se crea un elemento div
                     let element = document.createElement("div");
-<<<<<<< HEAD
-                    // se agrega a ese elemento los input con sus label
-                    element.innerHTML += `<input type="hidden" class="form-control" value="${data.id}   " disabled>`;
-=======
                     // se agrega a ese elemento los input con sus label\
-                    element.innerHTML += `<input type="hidden" class="form-control" value="${data.id}" disabled>`;
->>>>>>> 85a42318689175fb993d70be6ac0db7af4d44e1e
+                    element.innerHTML += `<input type="hidden" class="form-control" value="${data.id}" id="data_id" disabled>`;
                     element.innerHTML += `<label for="${data.empresa}">Empresa:</label><input type="text" name="${data.empresa}" class="form-control" value="${data.empresa}" disabled>`;
                     element.innerHTML += `<label for="${data.nombre}">Nombre:</label><input type="text" name="${data.nombre}" class="form-control" value="${data.nombre}" disabled>`;
                     element.innerHTML += `<label for="${data.apellido}">Apellido:</label><input type="text" name="${data.apellido}" class="form-control" value="${data.apellido}" disabled>`;
@@ -101,6 +96,7 @@ $(document).ready(function () {
         $("#modalRegisterVisitTitle").html("Registrar visita");
         $("#modalRegisterVisit").modal("show");
 
+        $("#visitante_id").val($.trim($("#data_id").val()));
     });
 });
 
