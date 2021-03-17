@@ -60,6 +60,7 @@
                     <li><a class="none"href="{{ route('visits')}}"><i class="cont-icons fas fa-book"></i>registros visitas</a></li>
                 </ul>
             </div>
+            <input type="hidden" name="">
         </div> 
 
         <!-- content -->   

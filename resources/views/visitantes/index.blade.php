@@ -5,8 +5,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="table-responsive mt-4 mb-4">
-                        <table id="tableVisitor" class="table  table-hover table-borderless" style="width:100%">
+                    <div class="table-responsive-xxl">
+                        <table id="tableVisitor" class="table table-hover table-borderless" style="width:100%">
                             <thead class="text-center">
                                 <tr>
                                     <th>Visitas</th>
