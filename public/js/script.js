@@ -223,13 +223,12 @@ const datatableVisitas = (tablavisitas) => {
             { data: "resp_visita" },
             { data: "vehiculo" },
             { data: "reg_vehiculo" },
-            // { data: "img_vehiculo" },
-            {
-                defaultContent:
-                    "<div class='text-center'><button data-id='' class='btn btn-outline-info btnimagen'><i class='fas fa-eye'></i></button></div>",
-            },
+            { data: "img_vehiculo" },
+            // {
+            //     defaultContent:
+            //         "<div class='text-center'><button class='btn btn-outline-info btnBorrar'><i class='fas fa-eye'></i></button></div>",
+            // },
         ],
-
 
         //Para cambiar el lenguaje a español
         language: {
@@ -249,9 +248,3 @@ const datatableVisitas = (tablavisitas) => {
         },
     });
 };
-
-$("body").on("click", ".btnimagen", function () {
-    let  = $.trim($("#SearchText").val());
-    let token = $("meta[name='csrf-token']").attr("content");
-    $("#btnViewUser").hide();
-})
