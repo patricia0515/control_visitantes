@@ -9,6 +9,7 @@
                         <table id="tableVisitas" class="table  table-hover table-borderless" style="width:100%">
                             <thead class="text-center">
                                 <tr>
+                                    <th>ID</th>
                                     <th>Cantidad</th>
                                     <th>C&eacute;dula</th>
                                     <th>Fecha</th>
@@ -25,6 +26,32 @@
                             <tbody class="text-center">
                             </tbody>
                         </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal imagen -->
+    <div class="modal fade" id="modalimagen" data-bs-backdrop="static" data-bs-keyboard="false" tapindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitleShowUser"></h5>
+                </div>
+                <div class="modal-body">
+                    <div class="row"> 
+                        <div class="col-xs-12 col-sm-12 col-md-12" id="inputs">
+
+                        </div>
+                    </div>
+
+                    
+                </div>
+                <div class="modal-footer">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <a href="" class="btn btn-light">Aceptar</a>
+                        
                     </div>
                 </div>
             </div>

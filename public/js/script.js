@@ -203,12 +203,14 @@ const loadTableVisitas = () => {
  * @return void
  */
 const datatableVisitas = (data) => {
+
     $("#tableVisitas").DataTable({
         //Datos
         data: data,
 
         // Columnas que estan el la tabla
         columns: [
+            { data: "visitante_id" },
             { data: "cantidadVisitas" },
             { data: "documentoVisitante" },
             { data: "created_at" },
