@@ -17,7 +17,11 @@ class VisitsController extends Controller
      */
     public function index()
     {
-        $visitas=Visits::all();
+
+        $visitas = Visits::join('visitantes', 'visitas.visitante_id', '=', 'visitantes.id')
+                        ->select('visitas.*', 'visitantes.documento AS documentoVisitante',
+                                'visitantes.visitas AS cantidadVisitas')
+                        ->get();
         
         return $visitas->toArray();
     }
