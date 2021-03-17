@@ -253,7 +253,7 @@ $("body").on("click", ".btnimagen", function () {
     $("#modalTitleimagen").html("Informacion visitante");
     $("#modalimagen").modal("show");
     let fila = $(this).closest("tr");
-    let id = fila.find('td:eq(2)').text();
+    let id = fila.find('td:eq(0)').text();
     console.log(id)
 
     $.ajax({
