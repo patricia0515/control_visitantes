@@ -15,6 +15,9 @@ class CreateVisitasTable extends Migration
     {
         Schema::create('visitas', function (Blueprint $table) {
             $table->bigIncrements('id'); //primary key
+            /* Este es el campo FK con la tabla visitantes */
+            $table->unsignedBigInteger('visitante_id');
+
             $table->string('reg_pertenencias');
             $table->foreignId('visitante_id')->references('id')->('visitantes')->onDelete('cascade');
             $table->string('sede');
@@ -29,6 +32,12 @@ class CreateVisitasTable extends Migration
             $table->string('img_vehiculo');
 
             $table->timestamps();
+
+            $table->foreign("visitante_id")
+                ->references("id")
+                ->on("visitantes")
+                ->onDelete("cascade")
+                ->onUpdate("cascade");
         });
     }
 
