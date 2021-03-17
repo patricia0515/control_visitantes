@@ -41,7 +41,9 @@ $(document).ready(function () {
                                     "Registro de nuevo visitante"
                                 );
                                 $("#modalCreate").modal("show");
-                                $("#searchText2").val($.trim($("#SearchText").val()));
+                                $("#searchText2").val(
+                                    $.trim($("#SearchText").val())
+                                );
                             }
                         });
                     }
@@ -102,7 +104,7 @@ $(document).ready(function () {
 
 $("#inputimagen").on("change", function () {
     let imagen = $.trim($("#inputimagen").val());
-    const VALIDOR = "Si"
+    const VALIDOR = "Si";
 
     if (imagen === VALIDOR) {
         $("#imputimg").show();
@@ -203,7 +205,6 @@ const loadTableVisitas = () => {
  * @return void
  */
 const datatableVisitas = (data) => {
-
     $("#tableVisitas").DataTable({
         //Datos
         data: data,
@@ -247,13 +248,12 @@ const datatableVisitas = (data) => {
 };
 
 $("body").on("click", ".btnImagen", function () {
-
     $("#modalTitleimagen").html("Informacion visitante");
     $("#modalimagen").modal("show");
-    let token = $("meta[name='csrf-token']").attr("content")
-    let fila = $(this).closest("tr")
-    let visita_id = parseInt(fila.find('td:eq(0)').text())
-    
+    let token = $("meta[name='csrf-token']").attr("content");
+    let fila = $(this).closest("tr");
+    let visita_id = parseInt(fila.find("td:eq(0)").text());
+
     $.ajax({
         type: "GET",
         url: `/visitas/${visita_id}`,
@@ -261,11 +261,12 @@ $("body").on("click", ".btnImagen", function () {
             id: visita_id,
             _token: token,
         },
-        success:function(respuesta){
-            respuesta.forEach(data => {
-                let imagen = `<img srf='${data.img_vehiculo}'>`
-                // $('#imagenmodal').append(imagen)
+        success: function (respuesta) {
+            respuesta.forEach((data) => {
+                let imagen = `<img src='${data.img_vehiculo}' width='100 px' >`;
+                $("#imagenmodal").append(imagen);
+                console.log(imagen);
             });
-        }
+        },
     });
- });
+});

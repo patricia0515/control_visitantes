@@ -24,8 +24,10 @@ Route::resource('/visitas', 'VisitsController');
 /* Retorna la vista base */
 Route::view('/', 'welcome')->name('index');
 
+
 /* Retorna la tabla de los visitantes */
 Route::view('/visitor', 'visitantes/index')->name('visitor');
 
 /* Retorna la tabla de las visitas */
 Route::view('/visits', 'visitas/index')->name('visits');
+Route::view('reportes', 'reportes');
