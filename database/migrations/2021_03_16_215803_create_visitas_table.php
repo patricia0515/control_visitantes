@@ -28,6 +28,7 @@ class CreateVisitasTable extends Migration
             $table->string('motivo');
             $table->string('resp_visita');
             $table->string('vehiculo');
+            $table->string('img_vehiculo')->nullable();
             $table->string('reg_vehiculo')->nullable();
 
             $table->timestamps();
