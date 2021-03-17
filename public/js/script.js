@@ -21,9 +21,6 @@ $(document).ready(function () {
                     /* si la respuesta no viene vacia muestra el boton del ojito */
                     if (response.length) {
                         $("#btnViewUser").show();
-                        document.getElementById(
-                            "SearchText"
-                        ).style.borderColor = "#dbdbe2";
                         // Mensaje informativo para el usuario
                         Toast.fire({
                             type: "success",
@@ -44,9 +41,7 @@ $(document).ready(function () {
                                     "Registro de nuevo visitante"
                                 );
                                 $("#modalCreate").modal("show");
-                                $("#searchText2").val(
-                                    $.trim($("#SearchText").val())
-                                );
+                                $("#searchText2").val($.trim($("#SearchText").val()));
                             }
                         });
                     }
@@ -80,7 +75,8 @@ $(document).ready(function () {
                 response.forEach((data) => {
                     // se crea un elemento div
                     let element = document.createElement("div");
-                    // se agrega a ese elemento los input con sus label
+                    // se agrega a ese elemento los input con sus label\
+                    element.innerHTML += `<input type="hidden" class="form-control" value="${data.id}" disabled>`;
                     element.innerHTML += `<label for="${data.empresa}">Empresa:</label><input type="text" name="${data.empresa}" class="form-control" value="${data.empresa}" disabled>`;
                     element.innerHTML += `<label for="${data.nombre}">Nombre:</label><input type="text" name="${data.nombre}" class="form-control" value="${data.nombre}" disabled>`;
                     element.innerHTML += `<label for="${data.apellido}">Apellido:</label><input type="text" name="${data.apellido}" class="form-control" value="${data.apellido}" disabled>`;
@@ -99,12 +95,14 @@ $(document).ready(function () {
     $("body").on("click", "#btnRegisterVisit", function () {
         $("#modalRegisterVisitTitle").html("Registrar visita");
         $("#modalRegisterVisit").modal("show");
+
     });
 });
 
 $("#inputimagen").on("change", function () {
     let imagen = $.trim($("#inputimagen").val());
-    const VALIDOR = "Si";
+    const VALIDOR = "Si"
+
     if (imagen === VALIDOR) {
         $("#imputimg").show();
     } else {
@@ -120,7 +118,7 @@ $("#inputimagen").on("change", function () {
 
 const Toast = Swal.mixin({
     toast: true,
-    position: "top-end",
+    position: "top",
     showConfirmButton: false,
     timer: 3000,
 });
@@ -203,30 +201,29 @@ const loadTableVisitas = () => {
  *
  * @return void
  */
-const datatableVisitas = (tablavisitas) => {
+const datatableVisitas = (data) => {
+
     $("#tableVisitas").DataTable({
         //Datos
-        data: tablavisitas,
+        data: data,
 
         // Columnas que estan el la tabla
         columns: [
-            // { "data": "cedula" },
-            // { "data": "fecha" },
+            { data: "visitante_id" },
+            { data: "cantidadVisitas" },
+            { data: "documentoVisitante" },
+            { data: "created_at" },
             { data: "reg_pertenencias" },
-            { data: "sede" },
-            { data: "descripcion" },
-            { data: "tip_visitante" },
             { data: "serial" },
-            { data: "visita" },
+            { data: "sede" },
             { data: "motivo" },
-            { data: "resp_visita" },
-            { data: "vehiculo" },
-            { data: "reg_vehiculo" },
-            { data: "img_vehiculo" },
-            // {
-            //     defaultContent:
-            //         "<div class='text-center'><button class='btn btn-outline-info btnBorrar'><i class='fas fa-eye'></i></button></div>",
-            // },
+            { data: "descripcion" },
+            { data: "visita" },
+            { data: "tip_visitante" },
+            {
+                defaultContent:
+                    "<div class='text-center'><button class='btn btn-danger btnImagen' style='background-color: #c31f1e;'><i class='fas fa-eye'></i></button></div>",
+            },
         ],
 
         //Para cambiar el lenguaje a español
@@ -247,3 +244,9 @@ const datatableVisitas = (tablavisitas) => {
         },
     });
 };
+
+$('body').on('click', '.btnImagen', function () {
+    let fila = $(this).closest('tr')
+    let cedula = parseInt(fila.find('td:eq(3)').text())
+    console.log(cedula)
+})
