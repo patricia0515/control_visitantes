@@ -90,6 +90,5 @@ $factory->define(Visitante::class, function (Faker $faker) {
         'politica_confidencialidad' => 'Si acepto',
         'proteccion_datos' => 'Si acepto',
         'seguridad_salud_trabajo' => 'Si acepto',
-        
     ];
 });

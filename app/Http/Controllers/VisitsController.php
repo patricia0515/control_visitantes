@@ -23,7 +23,7 @@ class VisitsController extends Controller
 
         $visitas = Visits::join('visitantes', 'visitas.visitante_id', '=', 'visitantes.id')
                         ->select('visitas.*', 'visitantes.documento AS documentoVisitante',
-                                'visitantes.visitas AS cantidadVisitas')
+                                'visitantes.no_visitas AS cantidadVisitas')
                         ->get();
         
         return $visitas->toArray();
