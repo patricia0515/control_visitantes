@@ -20,7 +20,7 @@ class VisitanteController extends Controller
         $visitantes = Visitante::all();
 
         return $visitantes->toArray();
-        
+
         // return response()->json($visitantes);
 
         // return view('visitantes.index', compact('visitantes'));
@@ -45,6 +45,7 @@ class VisitanteController extends Controller
      */
     public function store(VisitanteFormRequest $request)
     {
+
         Visitante::create([
 
             'documento' => $request->documento,
@@ -55,6 +56,7 @@ class VisitanteController extends Controller
             'rh' => $request->rh,
             'eps' => $request->eps,
             'estado' => 'Activo',
+            'visitas' => 0,
             'politica_confidencialidad' => $request->politica_confidencialidad,
             'proteccion_datos' => $request->proteccion_datos,
             'seguridad_salud_trabajo' => $request->seguridad_salud_trabajo,

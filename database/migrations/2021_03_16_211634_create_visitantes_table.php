@@ -16,8 +16,9 @@ class CreateVisitantesTable extends Migration
         Schema::create('visitantes', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            /* Este campo viene siendo la FK con la tabla visitas */
-            $table->string('visitas')->nullable();
+            /* Este campo podemos quitarlo de la base de datos y trabajar el count desde la table 
+            en la vista visitas */
+            $table->integer('no_visitas');
             $table->string('empresa');
 
             $table->string('nombre');

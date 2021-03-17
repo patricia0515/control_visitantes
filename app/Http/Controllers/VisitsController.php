@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use control_visitantes\Visits;
 use DB;
 use Illuminate\Support\Facades\Storage;
+use control_visitantes\Http\Requests\VisitsFormRequest;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Input;
 
 class VisitsController extends Controller
 {
@@ -23,7 +26,7 @@ class VisitsController extends Controller
 
         $visitas = Visits::join('visitantes', 'visitas.visitante_id', '=', 'visitantes.id')
                         ->select('visitas.*', 'visitantes.documento AS documentoVisitante',
-                                'visitantes.visitas AS cantidadVisitas')
+                                'visitantes.no_visitas AS cantidadVisitas')
                         ->get();
         
         return $visitas->toArray();
@@ -78,8 +81,6 @@ class VisitsController extends Controller
         ]);
 
         return redirect()->route('index')->with('success', 'La visita ha sido registrada');
-
-
     }
 
     /**
