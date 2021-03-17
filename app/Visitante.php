@@ -22,6 +22,7 @@ class Visitante extends Model
         'eps',
         't_visita',
         'estado',
+        'visitas',
         'politica_confidencialidad',
         'proteccion_datos',
         'seguridad_salud_trabajo'

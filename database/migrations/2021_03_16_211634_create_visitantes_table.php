@@ -18,7 +18,7 @@ class CreateVisitantesTable extends Migration
 
             /* Este campo podemos quitarlo de la base de datos y trabajar el count desde la table 
             en la vista visitas */
-            $table->string('visitas')->nullable();
+            $table->integer('no_visitas');
             $table->string('empresa');
             $table->string('nombre');
             $table->string('apellido');
