@@ -16,6 +16,7 @@ class CreateVisitasTable extends Migration
         Schema::create('visitas', function (Blueprint $table) {
             $table->bigIncrements('id'); //primary key
             $table->string('reg_pertenencias');
+            $table->foreignId('visitante_id')->references('id')->('visitantes')->onDelete('cascade');
             $table->string('sede');
             $table->text('descripcion');
             $table->string('tip_visitante');

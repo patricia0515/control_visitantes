@@ -20,6 +20,8 @@ class VisitsController extends Controller
         $visitas=Visits::all();
         
         return $visitas->toArray();
+
+
     }
 
     /**
@@ -42,10 +44,14 @@ class VisitsController extends Controller
     {
 
         // Almacenamiento de la imagen al servidor
+        $data = '';
 
-        $img = $request->file('files')->store('public/img');
-        $data = Storage::url($img);
+        if($request->file('files')){
+            $img = $request->file('files')->store('public/img');
+            $data = Storage::url($img);
 
+        }
+        
         // print_r($data);
         // exit();
 
