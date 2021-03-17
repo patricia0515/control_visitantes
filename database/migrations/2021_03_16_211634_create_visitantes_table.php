@@ -20,20 +20,25 @@ class CreateVisitantesTable extends Migration
             en la vista visitas */
             $table->integer('no_visitas');
             $table->string('empresa');
+
             $table->string('nombre');
             $table->string('apellido');
             $table->string('contacto');
             $table->string('rh');
             $table->string('eps');
             $table->string('t_visita');
-            $table->string('documento')->unique();
-            $table->text('politica_confidencialidad');
-            $table->text('proteccion_datos');
-            $table->text('seguridad_salud_trabajo');
+            $table->string('documento');
+
+
+            $table->text('politica_confidencialidad')->nullable();
+            $table->text('proteccion_datos')->nullable();
+            $table->text('seguridad_salud_trabajo')->nullable();
 
             /* este campo hace referencia a el estado del vivisitante
             en el sistema Activo/Inactivo */
             $table->string('estado');
+
+
             $table->timestamps();
         });
     }

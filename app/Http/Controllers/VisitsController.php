@@ -48,17 +48,16 @@ class VisitsController extends Controller
         // dd($request->all());
         $data = '';
 
-        // Almacenamiento de la imagen al servidor
-        if($request->file('files')) {
+        if ($request->file('files')) {
 
+            // Almacenamiento de la imagen al servidor
+            
             $img = $request->file('files')->store('public/img');
             $data = Storage::url($img);
-
         }
-        // Almacenamiento de todos los datos a la BD
 
-        
-        
+        //Almacenamiento de los datos a la BD
+
         Visits::create([
             'reg_pertenencias' => $request->reg_pertenencias,
             'descripcion' => $request->descripcion,
@@ -69,6 +68,8 @@ class VisitsController extends Controller
             'visita' => $request->visita,
             'resp_visita' => $request->resp_visita,
             'reg_vehiculo' => $request->reg_vehiculo,
+            'tipo' => $request->tipo,
+            'visitante_id' => $request->visitante_id,
             'vehiculo' => $request->vehiculo,
             'img_vehiculo' => $data,
         ]);
