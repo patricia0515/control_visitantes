@@ -4,7 +4,6 @@ namespace control_visitantes\Http\Controllers;
 
 use Illuminate\Http\Request;
 use control_visitantes\Visits;
-use DB;
 use Illuminate\Support\Facades\Storage;
 use control_visitantes\Http\Requests\VisitsFormRequest;
 use Illuminate\Support\Facades\Redirect;
@@ -46,7 +45,7 @@ class VisitsController extends Controller
      */
     public function store(Request $request)
     {
-
+        // dd($request->all());
         $data = '';
 
         // Almacenamiento de la imagen al servidor
@@ -85,7 +84,11 @@ class VisitsController extends Controller
      */
     public function show($id)
     {
-        //
+        $visitImg = Visits::where('visitante_id', '=', $id)
+                        ->select('visitas.img_vehiculo')
+                        ->get();
+
+        return response()->json($visitImg);
     }
 
     /**
