@@ -41,10 +41,17 @@ class VisitsController extends Controller
     public function store(Request $request)
     {
 
-        // Almacenamiento de la imagen al servidor
+        $data = '';
 
-        $img = $request->file('files')->store('public/img');
-        $data = Storage::url($img);
+        if ($request->file('files')) {
+
+            // Almacenamiento de la imagen al servidor
+            
+            $img = $request->file('files')->store('public/img');
+            $data = Storage::url($img);
+        }
+
+        //Almacenamiento de los datos a la BD
 
         Visits::create([
             'reg_pertenencias' => $request->reg_pertenencias,

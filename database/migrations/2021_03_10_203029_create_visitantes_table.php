@@ -14,31 +14,28 @@ class CreateVisitantesTable extends Migration
     public function up()
     {
         Schema::create('visitantes', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('id'); //primary key
 
-            /* Este campo viene siendo la FK con la tabla visitas */
-            $table->string('visitas')->nullable();
-            $table->string('empresa');
+            $table->unsignedBigInteger('visitante_id');
 
-            $table->string('nombre');
-            $table->string('apellido');
-            $table->string('contacto');
-            $table->string('rh');
-            $table->string('eps');
-            $table->string('t_visita');
-            $table->string('documento');
-
-
-            $table->text('politica_confidencialidad')->nullable();
-            $table->text('proteccion_datos')->nullable();
-            $table->text('seguridad_salud_trabajo')->nullable();
-
-            /* este campo hace referencia a el estado del vivisitante
-            en el sistema Activo/Inactivo */
-            $table->string('estado');
-
+            $table->string('reg_pertenencias');
+            $table->string('sede');
+            $table->text('descripcion')->nullable();
+            $table->string('tip_visitante');
+            $table->string('serial');
+            $table->string('visita');
+            $table->string('motivo');
+            $table->string('resp_visita');
+            $table->string('vehiculo');
+            $table->string('reg_vehiculo')->nullable();
 
             $table->timestamps();
+
+            $table->foreign("visitante_id")
+                ->references("id")
+                ->on("visitantes")
+                ->onDelete("cascade")
+                ->onUpdate("cascade");
         });
     }
 
