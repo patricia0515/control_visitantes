@@ -13,7 +13,6 @@ class Visits extends Model
         'sede', 'descripcion', 
         'tip_visitante', 
         'serial',
-        'no_visita',
         'motivo',
         'resp_visita',
         'visitante_id',
