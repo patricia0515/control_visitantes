@@ -157,7 +157,6 @@ const dataTableVisitor = (data) => {
     $("#tableVisitor").DataTable({
         //Datos
         data: data,
-
         responsive: true,
 
         // Columnas que estan el la tabla
@@ -215,7 +214,6 @@ const datatableVisitas = (data) => {
     $("#tableVisitas").DataTable({
         //Datos
         data: data,
-
         responsive: true,
 
         // Columnas que estan en la tabla
