@@ -35,5 +35,5 @@ Route::view('reportes', 'reportes');
 /* Aqui pongo la ruta para generar el excel */
 Route::get('visit-list-excel', 'VisitsController@exportExcel')->name('visitas.excel');
 
-
-Route::get('/visitaComprobante/{id}', 'VisitsController@comprobarTipo');
+/* Ruta poara el metodo checkStateVisit */
+Route::get('/visitaComprobante/{id}', 'VisitsController@checkStateVisit');

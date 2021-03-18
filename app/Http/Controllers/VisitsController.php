@@ -118,7 +118,7 @@ class VisitsController extends Controller
         $updateVisit = Visits::find($id);
         $updateVisit->tipo = 'salida';
         $updateVisit->save();
-        $msg = 'Visita actualizada con exito!';
+        $msg = '¡Visita actualizada con exito!';
 
         return response()->json($msg);
     }
@@ -134,23 +134,20 @@ class VisitsController extends Controller
         //
     }
 
-    public function comprobarTipo($id) {
-
-        // $visitantes = Visitante::where('id', '=', $id)
-        //    ->whereExists(function ($query) {
-        //        $query->select(DB::raw(1))
-        //              ->from('visitas')
-        //              ->whereRaw('visitas.visitante_id = visitantes.id');
-        //    })
-        //    ->get();
-        // return response()->json($visitantes);
+    /**
+     * Comprueba que el visitante 
+     * este registrado en la tabla visitas
+     *
+     * @param  int  $id 
+     * @return array
+    */
+    public function checkStateVisit($id) {
 
         $visitante = Visits::where('visitante_id', '=', $id)
-                    ->select('tipo')
+                    ->select('tipo', 'id')
                     ->get();
-
-        return response()->json($visitante);
-      
+        return $visitante->toArray();
+ 
     }
 
     public function exportExcel(){

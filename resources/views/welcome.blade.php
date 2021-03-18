@@ -7,7 +7,7 @@
             Ingresar n&uacute;mero de c&eacute;dula:
         </h3>
         <div class="input-card">
-            <input type="text" name="" id="idVistanteHidden">
+            <input type="hidden" id="idVistanteHidden">
             <input type="text" id="SearchText">
             @if ($message = Session::get('success'))
                 <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
@@ -238,9 +238,9 @@
                 </div>
                 <div class="modal-footer">
                     <div class="col-xs-12 col-sm-12 col-md-12">
-                        <a href="{{ route('index')}}" class="btn btn-light">Aceptar</a>
-                        <a class="btn btn-dark" id="btnRegisterVisit">Registrar Visita</a>
-                        <a class="btn btn-dark hideClass" id="btnRegisterExit">Registrar Salida</a>
+                        <a href="{{ route('index')}}" class="btn btn-secondary">Aceptar</a>
+                        <a class="btn btn-success" id="btnRegisterVisit">Registrar visita</a>
+                        <a class="btn btn-danger hideClass p-2" id="btnRegisterExit">Registrar salida</a>
                     </div>
                 </div>
             </div>
