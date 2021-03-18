@@ -7,31 +7,30 @@
             Ingresar n&uacute;mero de c&eacute;dula:
         </h3>
         <div class="input-card">
+            <input type="hidden" id="idVistanteHidden">
             <input type="text" id="SearchText">
-            <br>
+            @if ($message = Session::get('success'))
+                <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+                    <p>{{ $message }}.</p>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
             <!-- Si me esta retornando un mensaje desde el controlador, me lo imprime por pantalla -->
-        @if ($message = Session::get('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <p>{{ $message }}.</p>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        @endif
-        @if (count($errors)>0)
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li> {{$error}} </li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
+            @if (count($errors)>0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li> {{$error}} </li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
         </div>
         <div class="button-card">
             <a id='btnSearch' class="btn-card-option"><i class="fas fa-search"></i></a>
             <a id='btnViewUser' class="btn-card-option hideClass"><i class="far fa-eye"></i></a>
         </div>
         <br>
-        
     </div>
 @endsection
 
@@ -239,9 +238,9 @@
                 </div>
                 <div class="modal-footer">
                     <div class="col-xs-12 col-sm-12 col-md-12">
-                        <a href="{{ route('index')}}" class="btn btn-light">Aceptar</a>
-                        <a class="btn btn-dark" id="btnRegisterVisit"><i lass="far fa-edit pe-1"></i></i>Registrar
-                            Visita</a>
+                        <a href="{{ route('index')}}" class="btn btn-secondary">Aceptar</a>
+                        <a class="btn btn-success" id="btnRegisterVisit">Registrar visita</a>
+                        <a class="btn btn-danger hideClass p-2" id="btnRegisterExit">Registrar salida</a>
                     </div>
                 </div>
             </div>
