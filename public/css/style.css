@@ -130,7 +130,7 @@
 .card-hero {
     
     background-color: #fff;
-    width: 75%;
+    width: 85%;
     display: grid;
     grid-template-rows: 1fr;
     justify-items: center;
@@ -238,5 +238,17 @@
     }
     .input-card {
         padding: 0px 0px 0px 20px;
+    }
+}
+@media screen and (max-width: 1400px) {
+    .card-table {
+        width: 100%;
+    }
+
+}
+@media screen and (max-width: 1024px) {
+    
+    .card-hero{
+        width: 98%;
     }
 }
