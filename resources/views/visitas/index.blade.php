@@ -41,7 +41,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="row"> 
-                        <div class="col-xs-12 col-sm-12 col-md-12" id="inputs">
+                        <div class="col-xs-12 col-sm-12 col-md-12" id="imagenmodal">
 
                         </div>
                     </div>

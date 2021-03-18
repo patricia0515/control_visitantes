@@ -8,28 +8,28 @@
         </h3>
         <div class="input-card">
             <input type="text" id="SearchText">
+            @if ($message = Session::get('success'))
+                <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+                    <p>{{ $message }}.</p>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+            <!-- Si me esta retornando un mensaje desde el controlador, me lo imprime por pantalla -->
+            @if (count($errors)>0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li> {{$error}} </li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
         </div>
         <div class="button-card">
             <a id='btnSearch' class="btn-card-option"><i class="fas fa-search"></i></a>
             <a id='btnViewUser' class="btn-card-option hideClass"><i class="far fa-eye"></i></a>
         </div>
         <br>
-        <!-- Si me esta retornando un mensaje desde el controlador, me lo imprime por pantalla -->
-        @if ($message = Session::get('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <p>{{ $message }}.</p>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        @endif
-        @if (count($errors)>0)
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li> {{$error}} </li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
     </div>
 @endsection
 
