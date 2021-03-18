@@ -20,6 +20,7 @@
                                     <th>Descripci&oacute;n</th>
                                     <th>Visita a</th>
                                     <th>Tipo</th>
+                                    <th>Tipo Vehiculo</th>
                                     <th>Imagen Veh&iacute;culo</th>
                                 </tr>
                             </thead>
