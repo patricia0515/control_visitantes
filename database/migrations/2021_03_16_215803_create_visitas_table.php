@@ -14,23 +14,28 @@ class CreateVisitasTable extends Migration
     public function up()
     {
         Schema::create('visitas', function (Blueprint $table) {
+
             $table->bigIncrements('id'); //primary key
             /* Este es el campo FK con la tabla visitantes */
             $table->unsignedBigInteger('visitante_id');
 
             $table->string('reg_pertenencias');
             $table->string('sede');
-            $table->text('descripcion');
+            $table->text('descripcion')->nullable();
             $table->string('tip_visitante');
             $table->string('serial');
             $table->string('visita');
             $table->string('motivo');
             $table->string('resp_visita');
             $table->string('vehiculo');
-            $table->string('reg_vehiculo');
-            $table->string('img_vehiculo');
+            $table->string('img_vehiculo')->nullable();
+            $table->string('tipo')->nullable();
+            $table->string('reg_vehiculo')->nullable();
 
             $table->timestamps();
+
+            // $table->date('created_at');
+            // $table->date('updated_at');
 
             $table->foreign("visitante_id")
                 ->references("id")

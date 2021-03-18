@@ -337,9 +337,23 @@
                                 </div>
 
                                 <div class="form-group mt-2">
+                                    <input type="hidden" name="visitante_id" id="visitante_id" class="form-control"
+                                        placeholder="Responsable de la visita">
+                                </div>
+
+                                <div class="form-group mt-2">
                                     <label for="body">Registrar veh&iacute;culo: *</label>
                                     <textarea name="reg_vehiculo" rows="3" class="form-control"
                                         required></textarea>
+                                </div>
+
+                                <div class="form-group mt-2">
+                                    <label for="gender">Tipo: *</label>
+                                    <select name="tipo" class="form-control">
+                                        <option selected="true" disabled="disabled">Seleccione ...</option>
+                                        <option value="entrada">Entrada</option>
+                                        <option value="salida">Salida</option>
+                                    </select>
                                 </div>
 
                                 <div class="form-group mt-2">

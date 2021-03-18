@@ -41,7 +41,9 @@ $(document).ready(function () {
                                     "Registro de nuevo visitante"
                                 );
                                 $("#modalCreate").modal("show");
-                                $("#searchText2").val($.trim($("#SearchText").val()));
+                                $("#searchText2").val(
+                                    $.trim($("#SearchText").val())
+                                );
                             }
                         });
                     }
@@ -76,7 +78,7 @@ $(document).ready(function () {
                     // se crea un elemento div
                     let element = document.createElement("div");
                     // se agrega a ese elemento los input con sus label\
-                    element.innerHTML += `<input type="hidden" class="form-control" value="${data.id}" disabled>`;
+                    element.innerHTML += `<input type="hidden" class="form-control" value="${data.id}" id="data_id" disabled>`;
                     element.innerHTML += `<label for="${data.empresa}">Empresa:</label><input type="text" name="${data.empresa}" class="form-control" value="${data.empresa}" disabled>`;
                     element.innerHTML += `<label for="${data.nombre}">Nombre:</label><input type="text" name="${data.nombre}" class="form-control" value="${data.nombre}" disabled>`;
                     element.innerHTML += `<label for="${data.apellido}">Apellido:</label><input type="text" name="${data.apellido}" class="form-control" value="${data.apellido}" disabled>`;
@@ -96,12 +98,13 @@ $(document).ready(function () {
         $("#modalRegisterVisitTitle").html("Registrar visita");
         $("#modalRegisterVisit").modal("show");
 
+        $("#visitante_id").val($.trim($("#data_id").val()));
     });
 });
 
 $("#inputimagen").on("change", function () {
     let imagen = $.trim($("#inputimagen").val());
-    const VALIDOR = "Si"
+    const VALIDOR = "Si";
 
     if (imagen === VALIDOR) {
         $("#imputimg").show();
@@ -202,7 +205,6 @@ const loadTableVisitas = () => {
  * @return void
  */
 const datatableVisitas = (data) => {
-
     $("#tableVisitas").DataTable({
         //Datos
         data: data,
@@ -246,12 +248,11 @@ const datatableVisitas = (data) => {
 };
 
 $("body").on("click", ".btnImagen", function () {
-
     $("#modalTitleimagen").html("Informacion visitante");
     $("#modalimagen").modal("show");
-    let token = $("meta[name='csrf-token']").attr("content")
-    let fila = $(this).closest("tr")
-    let visita_id = parseInt(fila.find('td:eq(0)').text())
+    let token = $("meta[name='csrf-token']").attr("content");
+    let fila = $(this).closest("tr");
+    let visita_id = parseInt(fila.find("td:eq(0)").text());
 
     $.ajax({
         type: "GET",
@@ -260,12 +261,12 @@ $("body").on("click", ".btnImagen", function () {
             id: visita_id,
             _token: token,
         },
-        success:function(respuesta){
-            respuesta.forEach(data => {
-                let imagen = `<img srf='${data.img_vehiculo}'>`
-                console.log(imagen)
-                $('#imagenmodal').append(imagen)
+        success: function (respuesta) {
+            respuesta.forEach((data) => {
+                let imagen = `<img src='${data.img_vehiculo}' width='100px' >`;
+                $("#imagenmodal").append(imagen);
+                console.log(imagen);
             });
-        }
+        },
     });
- });
+});
