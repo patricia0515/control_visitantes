@@ -68,7 +68,7 @@ $(document).ready(function () {
         $.ajax({
             type: "GET",
             url: `/visitantes/${visitor_number}`,
-            data: {
+            ddata: {
                 id: visitor_number,
                 _token: token,
             },
@@ -157,8 +157,6 @@ const dataTableVisitor = (data) => {
     $("#tableVisitor").DataTable({
         //Datos
         data: data,
-
-        responsive: true,
 
         // Columnas que estan el la tabla
         columns: [
@@ -269,12 +267,11 @@ $("body").on("click", ".btnImagen", function () {
             id: visita_id,
             _token: token,
         },
-        success:function(respuesta){
-            respuesta.forEach(data => {
-                let imagen = `<img src='${data.img_vehiculo}' width="500" height="500">`
-                $('#imagenmodal').append(imagen)
-                console.log(imagen)
-
+        success: function (respuesta) {
+            respuesta.forEach((data) => {
+                let imagen = `<img src='${data.img_vehiculo}' width='100 px' >`;
+                $("#imagenmodal").append(imagen);
+                console.log(imagen);
             });
         },
     });
