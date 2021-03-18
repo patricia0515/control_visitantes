@@ -20,6 +20,7 @@
                                     <th>Descripci&oacute;n</th>
                                     <th>Visita a</th>
                                     <th>Tipo</th>
+                                    <th>Tipo Vehiculo</th>
                                     <th>Imagen Veh&iacute;culo</th>
                                 </tr>
                             </thead>
@@ -41,7 +42,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="row"> 
-                        <div class="col-xs-12 col-sm-12 col-md-12" id="inputs">
+                        <div class="col-xs-12 col-sm-12 col-md-12" id="imagenmodal">
 
                         </div>
                     </div>

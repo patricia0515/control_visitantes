@@ -365,6 +365,17 @@
                                     </select>
                                 </div>
 
+                                <div class="form-group mt-2">
+                                    <label for="gender" class="hideClass" id="textveh">Tipo de vehiculo: *</label>
+                                    <select name="tip_vehiculo" class="form-control hideClass" id="inputveh">
+                                        <option selected="true" disabled="disabled">Seleccione el tipo de vehiculo</option>
+                                        <option value="Carro">Carro</option>
+                                        <option value="Moto">Moto</option>
+                                        <option value="Bicicleta">Bicicleta</option>
+                                        <option value="Otro">Otro</option>
+                                    </select>
+                                </div>
+
                                 <div class="input-group mt-3">
                                     <input type="file" class="form-control hideClass" id="imputimg" name="files"
                                         aria-describedby="inputGroupFileAddon04" aria-label="Upload" accept="image/*">
