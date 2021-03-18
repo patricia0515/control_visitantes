@@ -267,8 +267,9 @@ $("body").on("click", ".btnImagen", function () {
         },
         success:function(respuesta){
             respuesta.forEach(data => {
-                let imagen = `<img srf='${data.img_vehiculo}'>`
+                let imagen = `<img src='${data.img_vehiculo}' width="500" height="500">`
                 $('#imagenmodal').append(imagen)
+                console.log(imagen)
             });
         }
     });
