@@ -20,7 +20,7 @@ class CreateVisitantesTable extends Migration
             en la vista visitas */
             $table->integer('no_visitas');
             $table->string('empresa');
-
+            
             $table->string('nombre');
             $table->string('apellido');
             $table->string('contacto');
@@ -37,6 +37,7 @@ class CreateVisitantesTable extends Migration
             /* este campo hace referencia a el estado del vivisitante
             en el sistema Activo/Inactivo */
             $table->string('estado');
+            $table->integer('no_salidas');
 
 
             $table->timestamps();
