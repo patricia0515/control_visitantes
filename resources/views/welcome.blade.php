@@ -8,13 +8,8 @@
         </h3>
         <div class="input-card">
             <input type="text" id="SearchText">
-        </div>
-        <div class="button-card">
-            <a id='btnSearch' class="btn-card-option"><i class="fas fa-search"></i></a>
-            <a id='btnViewUser' class="btn-card-option hideClass"><i class="far fa-eye"></i></a>
-        </div>
-        <br>
-        <!-- Si me esta retornando un mensaje desde el controlador, me lo imprime por pantalla -->
+            <br>
+            <!-- Si me esta retornando un mensaje desde el controlador, me lo imprime por pantalla -->
         @if ($message = Session::get('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <p>{{ $message }}.</p>
@@ -30,6 +25,13 @@
             </ul>
         </div>
         @endif
+        </div>
+        <div class="button-card">
+            <a id='btnSearch' class="btn-card-option"><i class="fas fa-search"></i></a>
+            <a id='btnViewUser' class="btn-card-option hideClass"><i class="far fa-eye"></i></a>
+        </div>
+        <br>
+        
     </div>
 @endsection
 
@@ -362,6 +364,17 @@
                                         <option selected="true" disabled="disabled">Seleccione ...</option>
                                         <option value="Si">Si</option>
                                         <option value="No">No</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group mt-2">
+                                    <label for="gender" class="hideClass" id="textveh">Tipo de vehiculo: *</label>
+                                    <select name="tip_vehiculo" class="form-control hideClass" id="inputveh">
+                                        <option selected="true" disabled="disabled">Seleccione el tipo de vehiculo</option>
+                                        <option value="Carro">Carro</option>
+                                        <option value="Moto">Moto</option>
+                                        <option value="Bicicleta">Bicicleta</option>
+                                        <option value="Otro">Otro</option>
                                     </select>
                                 </div>
 

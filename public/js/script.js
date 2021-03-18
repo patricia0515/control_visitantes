@@ -41,7 +41,9 @@ $(document).ready(function () {
                                     "Registro de nuevo visitante"
                                 );
                                 $("#modalCreate").modal("show");
-                                $("#searchText2").val($.trim($("#SearchText").val()));
+                                $("#searchText2").val(
+                                    $.trim($("#SearchText").val())
+                                );
                             }
                         });
                     }
@@ -102,12 +104,17 @@ $(document).ready(function () {
 
 $("#inputimagen").on("change", function () {
     let imagen = $.trim($("#inputimagen").val());
-    const VALIDOR = "Si"
+    const VALIDOR = "Si";
 
     if (imagen === VALIDOR) {
         $("#imputimg").show();
+        $("#textveh").show();
+        $("#inputveh").show();
     } else {
         $("#imputimg").hide();
+        $("#textveh").hide();
+        $("#inputveh").hide();
+
     }
 });
 
@@ -205,14 +212,11 @@ const loadTableVisitas = () => {
  * @return void
  */
 const datatableVisitas = (data) => {
-
     $("#tableVisitas").DataTable({
         //Datos
         data: data,
 
-        responsive: true,
-
-        // Columnas que estan el la tabla
+        // Columnas que estan en la tabla
         columns: [
             { data: "visitante_id" },
             { data: "cantidadVisitas" },
@@ -223,8 +227,9 @@ const datatableVisitas = (data) => {
             { data: "sede" },
             { data: "motivo" },
             { data: "descripcion" },
-            { data: "visita" },
+            { data: "no_visita" },
             { data: "tip_visitante" },
+            { data: "tip_vehiculo" },
             {
                 defaultContent:
                     "<div class='text-center'><button class='btn btn-danger btnImagen' style='background-color: #c31f1e;'><i class='fas fa-eye'></i></button></div>",
@@ -251,13 +256,12 @@ const datatableVisitas = (data) => {
 };
 
 $("body").on("click", ".btnImagen", function () {
-
     $("#modalTitleimagen").html("Informacion visitante");
     $("#modalimagen").modal("show");
-    let token = $("meta[name='csrf-token']").attr("content")
-    let fila = $(this).closest("tr")
-    let visita_id = parseInt(fila.find('td:eq(0)').text())
-    
+    let token = $("meta[name='csrf-token']").attr("content");
+    let fila = $(this).closest("tr");
+    let visita_id = parseInt(fila.find("td:eq(0)").text());
+
     $.ajax({
         type: "GET",
         url: `/visitas/${visita_id}`,
@@ -270,7 +274,9 @@ $("body").on("click", ".btnImagen", function () {
                 let imagen = `<img src='${data.img_vehiculo}' width="500" height="500">`
                 $('#imagenmodal').append(imagen)
                 console.log(imagen)
+
             });
-        }
+        },
     });
- });
+});
+
