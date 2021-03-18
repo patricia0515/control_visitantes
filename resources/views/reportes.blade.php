@@ -2,33 +2,99 @@
 
 @section('content')
 <br>
-<div class="col-md-7 mb-4">
+<div class="col-11">
     <div class="card">
         <div class="card-body">
             <div class="row">
                 <div>
-                    <h1>CARRUSEL</h1>
+                    <h4 class="text-center">Aqui va el carrusel</h4>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <br>
-<div class="col-md-7 mb-4">
-    <div class="card">
-        <div class="card-body">
-            <div class="row">
-                <div>
-                    <h1>Hola Grafica</h1>
-                    <canvas id="myChart" width="534" height="267" class="chartjs-render-monitor" style="display: block; width: 534px; height: 267px;"></canvas>
-                
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div>
+                            <h4 class="text-center">Aqui va la gráfica</h4>            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <!--Card-->
+            <div class="card mb-4">
+                <!--Card content-->
+                <div class="card-body">
+                    <form action="{{ route('visitas.excel')}}" method="POST">
+                        @csrf
+                        <div class="panel panel-primary" style="border-color: #227547;">
+                            <div class="panel-heading" style="background: #227547; border-color: #227547;">
+                                <i class="fa fa-download"></i><i class="text">Reporte Excel</i> 
+                            </div>
+                            <div class="panel-body" style="font-size: x-small;">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                        <img src="imagenes/logo-excel.png" alt="excel" width="100" height="50">
+                                        </div>
+                                        <br>
+                                        <div class="col-sm-12">
+                                            <div class="col-sm-6"><b>Fecha inicial:</b>
+                                                <input name="fecha_inicial" type="date" class="form-control" id="datepicker" required="">
+                                            </div>
+        
+                                            <div class="col-sm-6"><b>Fecha Final:</b>
+                                                <input name="fecha_final" type="date" class="form-control" id="datepicker2" required="">
+                                            </div>
+                                        </div>
+                                        <!-- <div class="col-sm-3"></div> -->
+                                    </div>
+                                </div>
+                                <div class="row">
+        
+                                    <div class="col-sm-12">
+                                        <br>
+                                        <span class="waves-input-wrapper waves-effect waves-light"><input type="submit" name="Filtrar" value="Descargar" class="btn  btn-susess btn-block" style="background-color:#227547;"></span>
+                                    </div>
+        
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+        
+                    <!-- <canvas id="pieChart"></canvas> -->
+        
+                </div>
+        
+            </div>
+            <!--/.Card-->
+        
+            <!--Card-->
+            <div class="card mb-4">
+        
+                <!--Card content-->
+                <div class="card-body">
+        
+                    <!-- List group links -->
+                    <div class="list-group list-group-flush">
+                        <a class="list-group-item list-group-item-action waves-effect">Total personas que
+                            ingresaron:</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <br>
-<div class="col-md-5 mb-4">
+{{-- <div class="col-md-5 mb-4">
     <div class="card">
         <div class="card-body">
             <div class="row">
@@ -42,71 +108,8 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
-<div class="col-md-5 mb-4">
-    <!--Card-->
-    <div class="card mb-4">
-        <!--Card content-->
-        <div class="card-body">
-            <form action="{{ route('visitas.excel')}}" method="POST">
-                @csrf
-                <div class="panel panel-primary" style="border-color: #227547;">
-                    <div class="panel-heading" style="background: #227547; border-color: #227547;">
-                        <i class="fa fa-download"></i> Reporte Excel
-                    </div>
-                    <div class="panel-body" style="font-size: x-small;">
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                <img src="/public/imagenes/logo-excel.png" alt="excel" width="100" height="50">
-                                </div>
-                                <br>
-                                <div class="col-sm-12">
-                                    <div class="col-sm-6"><b>Fecha inicial:</b>
-                                        <input name="fecha_inicial" type="date" class="form-control" id="datepicker" required="">
-                                    </div>
-
-                                    <div class="col-sm-6"><b>Fecha Final:</b>
-                                        <input name="fecha_final" type="date" class="form-control" id="datepicker2" required="">
-                                    </div>
-                                </div>
-                                <!-- <div class="col-sm-3"></div> -->
-                            </div>
-                        </div>
-                        <div class="row">
-
-                            <div class="col-sm-12">
-                                <br>
-                                <span class="waves-input-wrapper waves-effect waves-light"><input type="submit" name="Filtrar" value="Descargar" class="btn  btn-susess btn-block" style="background-color:#227547;"></span>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </form>
-
-            <!-- <canvas id="pieChart"></canvas> -->
-
-        </div>
-
-    </div>
-    <!--/.Card-->
-
-    <!--Card-->
-    <div class="card mb-4">
-
-        <!--Card content-->
-        <div class="card-body">
-
-            <!-- List group links -->
-            <div class="list-group list-group-flush">
-                <a class="list-group-item list-group-item-action waves-effect">Total personas que
-                    ingresaron:</a>
-                </div>
-            </div>
-        </div>
-    </div>
 
 <br>
 
@@ -116,9 +119,9 @@
 @endsection
 
 {{-- scrit de la grafica --}}
-<script>
-    var ctx = document.getElementById("myChart").getContext('2d');
-    var myChart = new Chart(ctx, {
+{{-- <script>
+    let ctx = document.getElementById("myChart").getContext('2d');
+    let myChart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: ["Total entrada", "Total salida", "Total registrados", "Activos", "Inactivos", "Total áreas visitadas"],
@@ -163,7 +166,7 @@
             }
         }
     });
-    </script>
+    </script> --}}
 
 @section('script')
 
