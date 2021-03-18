@@ -20,6 +20,7 @@ $(document).ready(function () {
                 success: function (response) {
                     /* si la respuesta no viene vacia muestra el boton del ojito */
                     if (response.length) {
+                        $("#idVistanteHidden").val(response[0].id);
                         $("#btnViewUser").show();
                         // Mensaje informativo para el usuario
                         Toast.fire({
@@ -60,6 +61,7 @@ $(document).ready(function () {
     });
 
     $("body").on("click", "#btnViewUser", function () {
+        let visitor_id = $.trim($("#idVistanteHidden").val());
         let visitor_number = $.trim($("#SearchText").val());
         let token = $("meta[name='csrf-token']").attr("content");
         $("#modalTitleShowUser").html("Informacion visitante");
@@ -90,6 +92,26 @@ $(document).ready(function () {
                     // y agreamos todo eso al div con el id inputs
                     $("#inputs").append(element);
                 });
+            
+                $.ajax({
+                    type: "GET",
+                    url: `/visitaComprobante/${visitor_id}`,
+                    data: {
+                        id: visitor_id,
+                        _token: token
+                    },
+                    success: function (data) {
+                        const SALIDA = 'salida'
+                        let dataReturn = data[0].tipo 
+                    
+                        if (dataReturn === SALIDA || dataReturn ==  '') {
+                           console.log('ok!')
+                        }else {
+                            $('#btnRegisterVisit').hide();
+                            $('#btnRegisterExit').show();
+                        }
+                    }
+                });     
             },
         });
     });
@@ -100,6 +122,29 @@ $(document).ready(function () {
 
         $("#visitante_id").val($.trim($("#data_id").val()));
     });
+
+
+    $("body").on("click", "#btnRegisterExit", function() {
+
+        let visitor_number = $.trim($("#idVistanteHidden").val());
+        let token = $("meta[name='csrf-token']").attr("content");
+
+        $.ajax({
+            type: "PUT",
+            url: `visitas/${visitor_number}`,
+            data: {
+                cedula: visitor_number,
+                _token: token
+            },
+            success: function (response) {
+                Toast.fire({
+                    type: "success",
+                    title: response,
+                });
+                setTimeout(() => location.href = '/', 3000)
+            }
+        });
+    })
 });
 
 $("#inputimagen").on("change", function () {

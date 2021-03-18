@@ -112,9 +112,14 @@ class VisitsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        //
+        $updateVisit = Visits::find($id);
+        $updateVisit->tipo = 'salida';
+        $updateVisit->save();
+        $msg = 'Visita actualizada con exito!';
+
+        return response()->json($msg);
     }
 
     /**
@@ -126,6 +131,25 @@ class VisitsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function comprobarTipo($id) {
+
+        // $visitantes = Visitante::where('id', '=', $id)
+        //    ->whereExists(function ($query) {
+        //        $query->select(DB::raw(1))
+        //              ->from('visitas')
+        //              ->whereRaw('visitas.visitante_id = visitantes.id');
+        //    })
+        //    ->get();
+        // return response()->json($visitantes);
+
+        $visitante = Visits::where('visitante_id', '=', $id)
+                    ->select('tipo')
+                    ->get();
+
+        return response()->json($visitante);
+      
     }
 
     public function exportExcel(){
