@@ -158,6 +158,8 @@ const dataTableVisitor = (data) => {
         //Datos
         data: data,
 
+        responsive: true,
+
         // Columnas que estan el la tabla
         columns: [
             { data: "no_visitas" },
@@ -214,6 +216,8 @@ const datatableVisitas = (data) => {
         //Datos
         data: data,
 
+        responsive: true,
+
         // Columnas que estan en la tabla
         columns: [
             { data: "visitante_id" },
@@ -269,10 +273,11 @@ $("body").on("click", ".btnImagen", function () {
         },
         success: function (respuesta) {
             respuesta.forEach((data) => {
-                let imagen = `<img src='${data.img_vehiculo}' width='100 px' >`;
+                let imagen = `<img src='${data.img_vehiculo}' width='100%'>`;
                 $("#imagenmodal").append(imagen);
                 console.log(imagen);
             });
         },
     });
 });
+

@@ -25,11 +25,14 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
     
+    
     <!-- Icons -->
     <script src="https://kit.fontawesome.com/f89bfe8215.js" crossorigin="anonymous"></script>
 
     <!-- Datatables -->
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.js"></script>
+
 </head>
 
 <body>
