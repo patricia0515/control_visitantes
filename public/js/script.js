@@ -229,7 +229,7 @@ const datatableVisitas = (data) => {
             { data: "sede" },
             { data: "motivo" },
             { data: "descripcion" },
-            { data: "no_visita" },
+            { data: "visita" },
             { data: "tip_visitante" },
             { data: "tip_vehiculo" },
             {
