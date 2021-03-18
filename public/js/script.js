@@ -267,19 +267,11 @@ $("body").on("click", ".btnImagen", function () {
             id: visita_id,
             _token: token,
         },
-<<<<<<< HEAD
-        success:function(respuesta){
-            respuesta.forEach(data => {
-                let imagen = `<img src='${data.img_vehiculo}' width="500" height="500">`
-                $('#imagenmodal').append(imagen)
-                console.log(imagen)
-=======
         success: function (respuesta) {
             respuesta.forEach((data) => {
                 let imagen = `<img src='${data.img_vehiculo}' width='100 px' >`;
                 $("#imagenmodal").append(imagen);
                 console.log(imagen);
->>>>>>> 622fc628d628569a11fcb7a625752bc65ed31501
             });
         },
     });
