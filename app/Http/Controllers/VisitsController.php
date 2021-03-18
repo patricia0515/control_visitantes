@@ -3,11 +3,13 @@
 namespace control_visitantes\Http\Controllers;
 
 use Illuminate\Http\Request;
-use control_visitantes\Visits;
 use Illuminate\Support\Facades\Storage;
 use control_visitantes\Http\Requests\VisitsFormRequest;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Input;
+use Maatwebsite\Excel\Facades\Excel;
+use control_visitantes\Exports\VisitsExport;
+
+use control_visitantes\Visits;
 
 class VisitsController extends Controller
 {
@@ -124,5 +126,9 @@ class VisitsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function exportExcel(){
+        return Excel::download(new VisitsExport, 'visits-list.xlsx');
     }
 }
