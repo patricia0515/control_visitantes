@@ -67,7 +67,7 @@ class VisitsController extends Controller
             'motivo' => $request->motivo,
             'sede' => $request->sede,
             'tip_visitante' => $request->tip_visitante,
-            'no_visita' => $request->visita,
+            'visita' => $request->visita,
             'resp_visita' => $request->resp_visita,
             'reg_vehiculo' => $request->reg_vehiculo,
             'tipo' => $request->tipo,
