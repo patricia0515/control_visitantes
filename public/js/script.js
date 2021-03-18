@@ -153,8 +153,13 @@ $("#inputimagen").on("change", function () {
 
     if (imagen === VALIDOR) {
         $("#imputimg").show();
+        $("#textveh").show();
+        $("#inputveh").show();
     } else {
         $("#imputimg").hide();
+        $("#textveh").hide();
+        $("#inputveh").hide();
+
     }
 });
 
@@ -197,6 +202,8 @@ const dataTableVisitor = (data) => {
     $("#tableVisitor").DataTable({
         //Datos
         data: data,
+
+        responsive: true,
 
         // Columnas que estan el la tabla
         columns: [
@@ -254,7 +261,9 @@ const datatableVisitas = (data) => {
         //Datos
         data: data,
 
-        // Columnas que estan el la tabla
+        responsive: true,
+
+        // Columnas que estan en la tabla
         columns: [
             { data: "visitante_id" },
             { data: "cantidadVisitas" },
@@ -265,8 +274,9 @@ const datatableVisitas = (data) => {
             { data: "sede" },
             { data: "motivo" },
             { data: "descripcion" },
-            { data: "visita" },
+            { data: "no_visita" },
             { data: "tip_visitante" },
+            { data: "tip_vehiculo" },
             {
                 defaultContent:
                     "<div class='text-center'><button class='btn btn-danger btnImagen' style='background-color: #c31f1e;'><i class='fas fa-eye'></i></button></div>",
@@ -308,10 +318,11 @@ $("body").on("click", ".btnImagen", function () {
         },
         success: function (respuesta) {
             respuesta.forEach((data) => {
-                let imagen = `<img src='${data.img_vehiculo}' width='100px' >`;
+                let imagen = `<img src='${data.img_vehiculo}' width='100%'>`;
                 $("#imagenmodal").append(imagen);
                 console.log(imagen);
             });
         },
     });
 });
+

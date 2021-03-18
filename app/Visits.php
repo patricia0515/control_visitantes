@@ -13,13 +13,13 @@ class Visits extends Model
         'sede', 'descripcion', 
         'tip_visitante', 
         'serial',
-        'visita',
         'motivo',
         'resp_visita',
         'visitante_id',
         'vehiculo',
         'reg_vehiculo',
         'tipo',
+        'tip_vehiculo',
         'img_vehiculo'
     ];
 

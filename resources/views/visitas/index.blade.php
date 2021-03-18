@@ -5,8 +5,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="table-responsive mt-4 mb-4">
-                        <table id="tableVisitas" class="table  table-hover table-borderless" style="width:100%">
+                    <div class="table-responsive">
+                        <table id="tableVisitas" class="table  table-hover table-borderless display responsive no-wrap" style="width:100%">
                             <thead class="text-center">
                                 <tr>
                                     <th>ID</th>
@@ -20,6 +20,7 @@
                                     <th>Descripci&oacute;n</th>
                                     <th>Visita a</th>
                                     <th>Tipo</th>
+                                    <th>Tipo Vehiculo</th>
                                     <th>Imagen Veh&iacute;culo</th>
                                 </tr>
                             </thead>
