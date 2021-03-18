@@ -61,7 +61,7 @@
         
                                     <div class="col-sm-12">
                                         <br>
-                                        <span class="waves-input-wrapper waves-effect waves-light"><input type="submit" name="Filtrar" value="Descargar" class="btn  btn-susess btn-block" style="background-color:#227547;"></span>
+                                        <span class="waves-input-wrapper waves-effect waves-light"><a type="submit" name="Filtrar" value="Descargar" class="btn  btn-susess btn-block" style="background-color:#227547;" href=" {{ route('visitas.excel') }} ">Descargar</a></span>
                                     </div>
         
                                 </div>
@@ -94,21 +94,8 @@
     </div>
 </div>
 <br>
-{{-- <div class="col-md-5 mb-4">
-    <div class="card">
-        <div class="card-body">
-            <div class="row">
-                <div>
-                    <h1>Hola Boton</h1>
-                    <P>
-                        Clic <a href=" {{ route('visitas.excel') }} ">aqui</a>
-                        Para descargar en EXCEL las visitas
-                    </P>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> --}}
+
+
 
 
 <br>
