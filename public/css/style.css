@@ -130,7 +130,7 @@
 .card-hero {
     
     background-color: #fff;
-    width: 85%;
+    width: 95%;
     display: grid;
     grid-template-rows: 1fr;
     justify-items: center;
@@ -318,7 +318,7 @@
         padding: 0px 0px 0px 20px;
     }
     .card-hero{
-        width: 98%;
+        width: 150%;
     }
     .graficabarras{
         width: 100%;

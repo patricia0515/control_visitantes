@@ -23,7 +23,7 @@ class CreateVisitasTable extends Migration
             $table->string('sede');
             $table->text('descripcion')->nullable();
             $table->string('tip_visitante');
-            $table->string('serial');
+            $table->string('serial')->nullable();
             $table->string('visita');
             $table->string('motivo');
             $table->string('resp_visita');

@@ -264,7 +264,7 @@
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group mt-2">
                                     <label for="gender">Registro de pertenencias: *</label>
-                                    <select name="reg_pertenencias" class="form-control">
+                                    <select name="reg_pertenencias" class="form-control" id="inputpertenencias">
                                         <option selected="true" disabled="disabled">Seleccione una pertenencia</option>
                                         <option value="Ninguno">Ninguno</option>
                                         <option value="Equipos-computo">Equipos-computo</option>
@@ -274,14 +274,14 @@
                                 </div>
 
                                 <div class="form-group mt-2">
-                                    <label for="body">Descripci&oacute;n *</label>
-                                    <textarea name="descripcion" id="body" rows="3" class="form-control"
-                                        required></textarea>
+                                    <label for="name" id="textserial" class="hideClass">Serial: *</label>
+                                    <input type="text" name="serial" id="inputserial" class="form-control hideClass" placeholder="Nombre">
                                 </div>
 
                                 <div class="form-group mt-2">
-                                    <label for="name">Serial: *</label>
-                                    <input type="text" name="serial" id="name" class="form-control" placeholder="Nombre">
+                                    <label for="body">Descripci&oacute;n *</label>
+                                    <textarea name="descripcion" id="body" rows="3" class="form-control"
+                                        required></textarea>
                                 </div>
 
                                 <div class="form-group mt-2">
@@ -346,15 +346,6 @@
                                     <label for="body">Registrar veh&iacute;culo: *</label>
                                     <textarea name="reg_vehiculo" rows="3" class="form-control"
                                         required></textarea>
-                                </div>
-
-                                <div class="form-group mt-2">
-                                    <label for="gender">Tipo: *</label>
-                                    <select name="tipo" class="form-control">
-                                        <option selected="true" disabled="disabled">Seleccione ...</option>
-                                        <option value="entrada">Entrada</option>
-                                        <option value="salida">Salida</option>
-                                    </select>
                                 </div>
 
                                 <div class="form-group mt-2">
