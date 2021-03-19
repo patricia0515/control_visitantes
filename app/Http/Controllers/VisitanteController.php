@@ -5,7 +5,7 @@ namespace control_visitantes\Http\Controllers;
 use Illuminate\Http\Request;
 use control_visitantes\Visitante;
 use control_visitantes\Http\Requests\VisitanteFormRequest;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class VisitanteController extends Controller
 {
@@ -114,4 +114,6 @@ class VisitanteController extends Controller
     {
         //
     }
+
+    
 }
