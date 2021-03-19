@@ -118,9 +118,14 @@ class VisitsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        //
+        $updateVisit = Visits::find($id);
+        $updateVisit->tipo = 'salida';
+        $updateVisit->save();
+        $msg = '¡Visita actualizada con exito!';
+
+        return response()->json($msg);
     }
 
     /**
@@ -133,6 +138,14 @@ class VisitsController extends Controller
     {
         //
     }
+    public function checkStateVisit($id) {
+
+        $visitante = Visits::where('visitante_id', '=', $id)
+                    ->select('tipo', 'id')
+                    ->get();
+        return $visitante->toArray();
+ 
+    }
 
     public function exportExcel(Request $request)
     {
@@ -140,6 +153,5 @@ class VisitsController extends Controller
         $filtro2 = $request->fecha_final;
 
         return (new VisitsExport($filtro1, $filtro2))->download('visits-list.xlsx');
-        /* return Excel::download(new VisitsExport($request), 'visits-list.xlsx'); */
     }
 }

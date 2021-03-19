@@ -150,6 +150,41 @@
     flex-direction: column;
     padding: 30px;
 }
+/* style reportes */
+.fa-download{
+    padding: 0px 0px 0px 7px;
+    color: #ffffff;
+}
+.text{
+    padding: 0px 0px 0px 10px;
+    color: #ffffff;
+}
+.btn-block{
+    color: #ffffff;
+}
+.col-sm-6{
+    float:left;
+    padding: 0px 0px 0px 7px;
+}
+.col-sm-6{
+    float:left;
+    
+}
+.waves-effect{
+    color: rgb(0, 0, 0);
+}
+#footer {
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    height:21px;
+    width:100%;
+    background:#c31f1e;
+    padding: 0px 0px 0px 0px;
+}
+.texto{
+    color: #ffffff;
+}
 
 /* Targeta search */
 .card-search {
@@ -219,13 +254,56 @@
 }
 
 
+/* reporte style */
+
+.fa-download{
+    padding: 0px 0px 0px 7px;
+    color: #ffffff;
+}
+.text{
+    padding: 0px 0px 0px 10px;
+    color: #ffffff;
+}
+.btn-block{
+    color: #ffffff;
+}
+.col-sm-6{
+    float:left;
+    padding: 0px 0px 0px 7px;
+}
+.col-sm-6{
+    float:left;
+    
+}
+.waves-effect{
+    color: rgb(0, 0, 0);
+}
+#footer {
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    height:21px;
+    width:100%;
+    background:#c31f1e;
+    padding: 0px 0px 0px 0px;
+}
+.texto{
+    color: #ffffff;
+}
+
 /* Responsive */
 
 @media screen and (max-width: 1400px) {
     .card-search {
         width: 80%;
     }
-    
+    .card-table {
+        width: 100%;
+    }
+    .col-12{
+        width: 100%;
+    }
+  
 }
 
 @media screen and (max-width: 1024px) {
@@ -239,16 +317,16 @@
     .input-card {
         padding: 0px 0px 0px 20px;
     }
-}
-@media screen and (max-width: 1400px) {
-    .card-table {
-        width: 100%;
-    }
-
-}
-@media screen and (max-width: 1024px) {
-    
     .card-hero{
         width: 98%;
+    }
+    .graficabarras{
+        width: 100%;
+    }
+    .excel{
+        width: 100%;
+    }
+    .col-6{
+        width: 100%;
     }
 }
