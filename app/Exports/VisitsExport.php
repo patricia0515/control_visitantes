@@ -13,27 +13,34 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 /* Me permite exportar la consulta en especifico */
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromQuery;
+use Carbon\Carbon;
+use DB;
 
 use control_visitantes\Visits;
+
 
 class VisitsExport implements FromQuery, WithHeadings, ShouldAutoSize, WithStyles
 {
     use Exportable;
-    /**
-     * @return \Illuminate\Support\Collection
-     */
-    // public function collection()
-    // {
-    // }
+
+    
+
+
+    public function __construct(string $filtro1, string $filtro2)
+    {
+        $this->fecha_inicial = $filtro1;
+        $this->fecha_final = $filtro2;
+    }
 
     public function query()
+    
     {
         return Visits::join('visitantes', 'visitas.visitante_id', '=', 'visitantes.id')
             ->select(
                 'visitantes.documento as cedula',
                 'visitantes.nombre',
                 'visitantes.apellido',
-                'visitantes.created_at as fecha_ing',
+                'visitas.created_at as entrada',
                 'visitas.reg_pertenencias as pertenencias',
                 'visitas.sede',
                 'visitas.serial',
@@ -43,7 +50,10 @@ class VisitsExport implements FromQuery, WithHeadings, ShouldAutoSize, WithStyle
                 'visitas.visita',
                 'visitas.tip_visitante',
                 'visitas.updated_at as salida'
-            );
+            )
+            
+            /* ->whereBetween('visitas.created_at', [$this->fecha_inicial, $this->fecha_final]) */
+            ->orderBy('visitas.id', 'desc');
     }
 
     public function headings(): array
