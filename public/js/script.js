@@ -194,6 +194,23 @@ $(document).ready(function () {
     
         }
     });
+    /**
+     * Botón que muestra
+     * campo serial si el usuario
+     * trae pertenencias
+     */
+    $("#inputpertenencias").on("change", function () {
+        let pertenencia = $.trim($("#inputpertenencias").val());
+        const validate = "Ninguno";
+    
+        if (pertenencia === validate) {
+            $("#textserial").hide();
+            $("#inputserial").hide();
+        } else {
+            $("#textserial").show();
+            $("#inputserial").show();
+        }
+    });
 
     /**
      * Botón que carga la
@@ -282,11 +299,11 @@ const dataTableVisitor = (data) => {
 
         //Para cambiar el lenguaje a español
         language: {
-            lengthMenu: "Mostrar _MENU_ registros",
+            lengthMenu: "Mostrar MENU registros",
             zeroRecords: "No se encontraron resultados",
             info:
-                "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-            infroFiltered: "(Filtrado de un total de _MAX_ registros)",
+                "Mostrando registros del START al END de un total de TOTAL registros",
+            infroFiltered: "(Filtrado de un total de MAX registros)",
             sSearch: "Buscar: ",
             oPaginate: {
                 sFirst: "Primero",
@@ -351,11 +368,11 @@ const datatableVisitas = (data) => {
 
         //Para cambiar el lenguaje a español
         language: {
-            lengthMenu: "Mostrar _MENU_ registros",
+            lengthMenu: "Mostrar MENU registros",
             zeroRecords: "No se encontraron resultados",
             info:
-                "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-            infroFiltered: "(Filtrado de un total de _MAX_ registros)",
+                "Mostrando registros del START al END de un total de TOTAL registros",
+            infroFiltered: "(Filtrado de un total de MAX registros)",
             sSearch: "Buscar: ",
             oPaginate: {
                 sFirst: "Primero",

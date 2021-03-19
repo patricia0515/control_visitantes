@@ -23,6 +23,7 @@ class Visits extends Model
         'serial',
         'visita',
         'motivo',
+        'visita',
         'resp_visita',
         'visitante_id',
         'vehiculo',
