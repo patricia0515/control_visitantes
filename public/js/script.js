@@ -1,10 +1,21 @@
 $(document).ready(function () {
+    /**
+     * Llamado a funciones
+     * que cargan las tablas 
+    */
     loadTableVisitor();
     loadTableVisitas();
 
+    /**
+     * Botón para realizar
+     * la busqueda de un visitante
+     */
     $("body").on("click", "#btnSearch", function () {
+        // variables
         let visitor_number = $.trim($("#SearchText").val());
         let token = $("meta[name='csrf-token']").attr("content");
+
+        // boton para ver visitate
         $("#btnViewUser").hide();
 
         /* si la variable no viene vacia ejecuta la petición ajax =se la asignamos a "id" */
@@ -20,6 +31,7 @@ $(document).ready(function () {
                 success: function (response) {
                     /* si la respuesta no viene vacia muestra el boton del ojito */
                     if (response.length) {
+                        $("#idVistanteHidden").val(response[0].id);
                         $("#btnViewUser").show();
                         // Mensaje informativo para el usuario
                         Toast.fire({
@@ -59,16 +71,25 @@ $(document).ready(function () {
         }
     });
 
+    /**
+     * Botón view que muestra
+     * la informacion del visitante
+     */
     $("body").on("click", "#btnViewUser", function () {
+        // variables
+        let visitor_id = $.trim($("#idVistanteHidden").val());
         let visitor_number = $.trim($("#SearchText").val());
         let token = $("meta[name='csrf-token']").attr("content");
-        $("#modalTitleShowUser").html("Informacion visitante");
+
+        // opciones modal
+        $("#modalTitleShowUser").html("Informacion visitante <span class='badge bg-success'>Entrada</span>");
         $("#modalShowUser").modal("show");
+
         /* si la respuesta es correcta, trajo un dato sin errores,  */
         $.ajax({
             type: "GET",
             url: `/visitantes/${visitor_number}`,
-            ddata: {
+            data: {
                 id: visitor_number,
                 _token: token,
             },
@@ -90,17 +111,43 @@ $(document).ready(function () {
                     // y agreamos todo eso al div con el id inputs
                     $("#inputs").append(element);
                 });
+
+                // Peticion para validar si existe la visita 
+                $.ajax({
+                    type: "GET",
+                    url: `/visitaComprobante/${visitor_id}`,
+                    data: {
+                        id: visitor_id,
+                        _token: token
+                    },
+                    success: function (data) {
+                        let endElement = data.pop()
+                        $("#idVistanteHidden").val(endElement.id);
+                        const SALIDA = 'salida'
+                        const DATARETURN = endElement.tipo
+                        if (DATARETURN === SALIDA || DATARETURN ==  '') {
+                           console.log('ok!')
+                        }else {
+                            $('#btnRegisterVisit').hide();
+                            $('#btnRegisterExit').show();
+                            $("#modalTitleShowUser").html("Informacion visitante <span class='badge bg-danger'>Salida</span>");
+                        }
+                    }
+                });     
             },
         });
     });
 
+    /**
+     * Botón que muestra
+     * el modal de registra visita
+    */
     $("body").on("click", "#btnRegisterVisit", function () {
         $("#modalRegisterVisitTitle").html("Registrar visita");
         $("#modalRegisterVisit").modal("show");
 
         $("#visitante_id").val($.trim($("#data_id").val()));
     });
-});
 
 // Aparicion de los campos al momento de seleccionar la confirmacion del vehiculo
 
@@ -108,16 +155,70 @@ $("#inputimagen").on("change", function () {
     let imagen = $.trim($("#inputimagen").val());
     const VALIDOR = "Si";
 
-    if (imagen === VALIDOR) {
-        $("#imputimg").show();
-        $("#textveh").show();
-        $("#inputveh").show();
-    } else {
-        $("#imputimg").hide();
-        $("#textveh").hide();
-        $("#inputveh").hide();
+        $.ajax({
+            type: "PUT",
+            url: `visitas/${visitaId}`,
+            data: {
+                idVisita: visitaId,
+                _token: token
+            },
+            success: function (response) {
+                Toast.fire({
+                    type: "success",
+                    title: response,
+                });
+                setTimeout(() => location.href = '/', 3000)
+            }
+        });
+    })
 
-    }
+    /**
+     * Botón que muestra
+     * select imagen si es true
+    */
+    $("#inputimagen").on("change", function () {
+        let imagen = $.trim($("#inputimagen").val());
+        const VALIDOR = "Si";
+    
+        if (imagen === VALIDOR) {
+            $("#imputimg").show();
+            $("#textveh").show();
+            $("#inputveh").show();
+        } else {
+            $("#imputimg").hide();
+            $("#textveh").hide();
+            $("#inputveh").hide();
+    
+        }
+    });
+
+    /**
+     * Botón que carga la
+     * imagen de un vehiculo 
+    */
+    $("body").on("click", ".btnImagen", function () {
+        $("#modalTitleimagen").html("Informacion visitante");
+        $("#modalimagen").modal("show");
+        let token = $("meta[name='csrf-token']").attr("content");
+        let fila = $(this).closest("tr");
+        let visita_id = parseInt(fila.find("td:eq(0)").text());
+    
+        $.ajax({
+            type: "GET",
+            url: `/visitas/${visita_id}`,
+            data: {
+                id: visita_id,
+                _token: token,
+            },
+            success: function (respuesta) {
+                respuesta.forEach((data) => {
+                    let imagen = `<img src='${data.img_vehiculo}' width='100%'>`;
+                    $("#imagenmodal").append(imagen);
+                    console.log(imagen);
+                });
+            },
+        });
+    });
 });
 
 // Aparicion del campo serial al momento de confirmar alguna pertenencia
@@ -235,7 +336,7 @@ const datatableVisitas = (data) => {
 
         // Columnas que estan en la tabla
         columns: [
-            { data: "visitante_id" },
+            { data: "id" },
             { data: "cantidadVisitas" },
             { data: "documentoVisitante" },
             { data: "created_at" },
@@ -272,27 +373,5 @@ const datatableVisitas = (data) => {
     });
 };
 
-$("body").on("click", ".btnImagen", function () {
-    $("#modalTitleimagen").html("Informacion visitante");
-    $("#modalimagen").modal("show");
-    let token = $("meta[name='csrf-token']").attr("content");
-    let fila = $(this).closest("tr");
-    let visita_id = parseInt(fila.find("td:eq(0)").text());
 
-    $.ajax({
-        type: "GET",
-        url: `/visitas/${visita_id}`,
-        data: {
-            id: visita_id,
-            _token: token,
-        },
-        success: function (respuesta) {
-            respuesta.forEach((data) => {
-                let imagen = `<img src='${data.img_vehiculo}' width='100%'>`;
-                $("#imagenmodal").append(imagen);
-                console.log(imagen);
-            });
-        },
-    });
-});
 

@@ -77,6 +77,11 @@
         </div>
     </div>
 
+    <div class="texto">
+        <div id="footer" class="text-center">© Desarrollado con el ♥ por Montechelo</div>
+    </div>
+    
+
     @yield('modal')
 
     @yield('script')
