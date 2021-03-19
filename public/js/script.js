@@ -194,6 +194,23 @@ $(document).ready(function () {
     
         }
     });
+    /**
+     * Botón que muestra
+     * campo serial si el usuario
+     * trae pertenencias
+     */
+    $("#inputpertenencias").on("change", function () {
+        let pertenencia = $.trim($("#inputpertenencias").val());
+        const validate = "Ninguno";
+    
+        if (pertenencia === validate) {
+            $("#textserial").hide();
+            $("#inputserial").hide();
+        } else {
+            $("#textserial").show();
+            $("#inputserial").show();
+        }
+    });
 
     /**
      * Botón que carga la
@@ -341,6 +358,7 @@ const datatableVisitas = (data) => {
             { data: "motivo" },
             { data: "descripcion" },
             { data: "visita" },
+            { data: "tipo" },
             { data: "tip_vehiculo" },
             {
                 defaultContent:
