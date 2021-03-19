@@ -217,7 +217,7 @@ $(document).ready(function () {
                 respuesta.forEach((data) => {
                     let imagen = `<img src='${data.img_vehiculo}' width='100%'>`;
                     $("#imagenmodal").append(imagen);
-                    console.log(imagen);
+                    // console.log(imagen);
                 });
             },
         });
@@ -327,7 +327,7 @@ const datatableVisitas = (data) => {
 
         // Columnas que estan en la tabla
         columns: [
-            { data: "id" },
+            { data: "visitante_id" },
             { data: "cantidadVisitas" },
             { data: "documentoVisitante" },
             { data: "created_at" },
@@ -336,7 +336,7 @@ const datatableVisitas = (data) => {
             { data: "sede" },
             { data: "motivo" },
             { data: "descripcion" },
-            { data: "no_visita" },
+            { data: "visita" },
             { data: "tipo" },
             { data: "tip_vehiculo" },
             {
@@ -363,6 +363,3 @@ const datatableVisitas = (data) => {
         },
     });
 };
-
-
-

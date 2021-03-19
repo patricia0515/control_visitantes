@@ -10,13 +10,13 @@
                     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                           <div class="carousel-item active">
-                            <img src="storage/img/TPVCflIYmpb7QtfjcTf5VNECsju4CnXxSPSkZ7xR.png" class="d-block w-100" alt="...">
+                            <img src="storage/img/DHPYUe0NrdNWZ0eRZ1ChyMv39JJhP53Tn6qTncIk.png" class="d-block w-100" alt="...">
                           </div>
                           <div class="carousel-item">
-                            <img src="storage/img/2KwTwWN6H2khBFcjC77ZgZohlnUQ0p912riShZba.jpg" class="d-block w-100" alt="...">
+                            <img src="storage/img/DHPYUe0NrdNWZ0eRZ1ChyMv39JJhP53Tn6qTncIk.png" class="d-block w-100" alt="...">
                           </div>
                           <div class="carousel-item">
-                            <img src="storage/img/TPVCflIYmpb7QtfjcTf5VNECsju4CnXxSPSkZ7xR.png" class="d-block w-100" alt="...">
+                            <img src="storage/img/DHPYUe0NrdNWZ0eRZ1ChyMv39JJhP53Tn6qTncIk.png" class="d-block w-100" alt="...">
                           </div>
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="prev">
