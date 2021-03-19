@@ -16,33 +16,27 @@ class VisitanteController extends Controller
      */
     public function index()
     {
-
         $visitantes = Visitante::all();
-
         return $visitantes->toArray();
-
-        // return response()->json($visitantes);
-
-        // return view('visitantes.index', compact('visitantes'));
     }
 
+    public function all(Request $request)
+    {
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+        /* $report = Visitante::withCount(['id', 'no_visitas', 'no_salidas']); */
+        $report = Visitante::select('visitantes.id as registrados')->count();
+
+
+        return response(json_encode($report), 200)->header('Content-type', 'text/plain');
+        /* return "HOLA"; */
+    }
+
     public function create()
     {
         return view('visitantes.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(VisitanteFormRequest $request)
     {
 
@@ -68,12 +62,6 @@ class VisitanteController extends Controller
         return redirect()->route('index')->with('success', 'El visitante a sido añadido con exito');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $visitantes = Visitante::where('documento', '=', $id)->get();
@@ -81,24 +69,12 @@ class VisitanteController extends Controller
         return response()->json($visitantes);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
         //
@@ -114,6 +90,4 @@ class VisitanteController extends Controller
     {
         //
     }
-
-    
 }
