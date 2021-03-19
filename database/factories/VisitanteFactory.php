@@ -87,6 +87,7 @@ $factory->define(Visitante::class, function (Faker $faker) {
         )),
         'estado' => 'Activo',
         'no_visitas' => 0,
+        'no_salidas' => 0,
         'politica_confidencialidad' => 'Si acepto',
         'proteccion_datos' => 'Si acepto',
         'seguridad_salud_trabajo' => 'Si acepto'

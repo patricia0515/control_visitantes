@@ -21,7 +21,7 @@
                 <div>
                     <h1>Hola Grafica</h1>
                     <canvas id="myChart" width="534" height="267" class="chartjs-render-monitor" style="display: block; width: 534px; height: 267px;"></canvas>
-                
+                    
                 </div>
             </div>
         </div>

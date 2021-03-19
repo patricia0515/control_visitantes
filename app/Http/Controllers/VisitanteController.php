@@ -57,6 +57,7 @@ class VisitanteController extends Controller
             'eps' => $request->eps,
             'estado' => 'Activo',
             'no_visitas' => 0,
+            'no_salidas' => 0,
             'politica_confidencialidad' => $request->politica_confidencialidad,
             'proteccion_datos' => $request->proteccion_datos,
             'seguridad_salud_trabajo' => $request->seguridad_salud_trabajo,

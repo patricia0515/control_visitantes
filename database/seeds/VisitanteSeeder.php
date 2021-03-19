@@ -22,9 +22,11 @@ class VisitanteSeeder extends Seeder
             't_visita' => 'Cliente',
             'estado' => 'Activo',
             'no_visitas' => 0,
+            'no_salidas' => 0,
             'politica_confidencialidad' => 'Si acepto',
             'proteccion_datos' => 'Si acepto',
             'seguridad_salud_trabajo' => 'Si acepto'
+            
         ]);
 
         factory(control_visitantes\Visitante::class, 50)->create();

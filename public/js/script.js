@@ -102,6 +102,8 @@ $(document).ready(function () {
     });
 });
 
+// Aparicion de los campos al momento de seleccionar la confirmacion del vehiculo
+
 $("#inputimagen").on("change", function () {
     let imagen = $.trim($("#inputimagen").val());
     const VALIDOR = "Si";
@@ -115,6 +117,21 @@ $("#inputimagen").on("change", function () {
         $("#textveh").hide();
         $("#inputveh").hide();
 
+    }
+});
+
+// Aparicion del campo serial al momento de confirmar alguna pertenencia
+
+$("#inputpertenencias").on("change", function () {
+    let serial = $.trim($("#inputpertenencias").val());
+    const validate = "Ninguno";
+
+    if (serial === validate) {
+        $("#textserial").hide();
+        $("#inputserial").hide();
+    } else {
+        $("#textserial").show();
+        $("#inputserial").show();
     }
 });
 
@@ -227,7 +244,7 @@ const datatableVisitas = (data) => {
             { data: "sede" },
             { data: "motivo" },
             { data: "descripcion" },
-            { data: "no_visita" },
+            { data: "visita" },
             { data: "tip_visitante" },
             { data: "tip_vehiculo" },
             {

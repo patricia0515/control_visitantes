@@ -37,6 +37,7 @@ class CreateVisitantesTable extends Migration
             /* este campo hace referencia a el estado del vivisitante
             en el sistema Activo/Inactivo */
             $table->string('estado');
+            $table->integer('no_salidas');
 
 
             $table->timestamps();
