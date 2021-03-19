@@ -3,16 +3,25 @@
 namespace control_visitantes;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Visits extends Model
 {
+    public function getDates()
+{
+    return [
+        'created_at',
+        'updated_at',
+    ];
+}
     protected $table = 'visitas';
 
     protected $fillable = [
         'reg_pertenencias',
-        'sede', 'descripcion', 
-        'tip_visitante', 
+        'sede', 'descripcion',
+        'tip_visitante',
         'serial',
+        'visita',
         'motivo',
         'resp_visita',
         'visitante_id',
@@ -20,7 +29,8 @@ class Visits extends Model
         'reg_vehiculo',
         'tipo',
         'tip_vehiculo',
-        'img_vehiculo'
+        'img_vehiculo',
+        
     ];
 
     // protected $dateFormat = 'U';

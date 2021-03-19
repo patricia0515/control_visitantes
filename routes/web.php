@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use control_visitantes\Exports\VisitsExport;
 
 
 
@@ -33,4 +34,4 @@ Route::view('/visits', 'visitas/index')->name('visits');
 Route::view('reportes', 'reportes');
 
 /* Aqui pongo la ruta para generar el excel */
-Route::get('visit-list-excel', 'VisitsController@exportExcel')->name('visitas.excel');
+Route::post('visit-list-excel', 'VisitsController@exportExcel')->name('visitas.excel');
