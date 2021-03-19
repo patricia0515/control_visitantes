@@ -196,6 +196,23 @@ $(document).ready(function () {
             $("#inputveh").hide();
         }
     });
+    /**
+     * Botón que muestra
+     * campo serial si el usuario
+     * trae pertenencias
+     */
+    $("#inputpertenencias").on("change", function () {
+        let pertenencia = $.trim($("#inputpertenencias").val());
+        const validate = "Ninguno";
+    
+        if (pertenencia === validate) {
+            $("#textserial").hide();
+            $("#inputserial").hide();
+        } else {
+            $("#textserial").show();
+            $("#inputserial").show();
+        }
+    });
 
     /**
      * Botón que carga la
@@ -219,12 +236,14 @@ $(document).ready(function () {
                 respuesta.forEach((data) => {
                     let imagen = `<img src='${data.img_vehiculo}' width='100%'>`;
                     $("#imagenmodal").append(imagen);
-                    console.log(imagen);
+                    // console.log(imagen);
                 });
             },
         });
     });
 });
+
+
 
 /**
  * Mensaje esquina superior derecha
@@ -282,11 +301,11 @@ const dataTableVisitor = (data) => {
 
         //Para cambiar el lenguaje a español
         language: {
-            lengthMenu: "Mostrar _MENU_ registros",
+            lengthMenu: "Mostrar MENU registros",
             zeroRecords: "No se encontraron resultados",
             info:
-                "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-            infroFiltered: "(Filtrado de un total de _MAX_ registros)",
+                "Mostrando registros del START al END de un total de TOTAL registros",
+            infroFiltered: "(Filtrado de un total de MAX registros)",
             sSearch: "Buscar: ",
             oPaginate: {
                 sFirst: "Primero",
@@ -328,16 +347,19 @@ const datatableVisitas = (data) => {
 
         // Columnas que estan en la tabla
         columns: [
-            { data: "id" },
+            { data: "visitante_id" },
             { data: "cantidadVisitas" },
             { data: "documentoVisitante" },
-            { data: "created_at" },
+            { data: 'created_at', render: function (data, type, row) {
+                let oDate = new Date(data)
+                return `${oDate.getDate()}/${oDate.getMonth() + 1}/${oDate.getFullYear()}`
+            }},
             { data: "reg_pertenencias" },
             { data: "serial" },
             { data: "sede" },
             { data: "motivo" },
             { data: "descripcion" },
-            { data: "no_visita" },
+            { data: "visita" },
             { data: "tipo" },
             { data: "tip_vehiculo" },
             {
@@ -348,11 +370,11 @@ const datatableVisitas = (data) => {
 
         //Para cambiar el lenguaje a español
         language: {
-            lengthMenu: "Mostrar _MENU_ registros",
+            lengthMenu: "Mostrar MENU registros",
             zeroRecords: "No se encontraron resultados",
             info:
-                "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-            infroFiltered: "(Filtrado de un total de _MAX_ registros)",
+                "Mostrando registros del START al END de un total de TOTAL registros",
+            infroFiltered: "(Filtrado de un total de MAX registros)",
             sSearch: "Buscar: ",
             oPaginate: {
                 sFirst: "Primero",
@@ -363,4 +385,8 @@ const datatableVisitas = (data) => {
             sProcessing: "Procesando...",
         },
     });
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> 73e5f33c6c494b3bca25da6f2be6aa8fe78746ee
