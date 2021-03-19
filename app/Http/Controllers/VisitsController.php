@@ -8,6 +8,7 @@ use control_visitantes\Http\Requests\VisitsFormRequest;
 use Illuminate\Support\Facades\Redirect;
 use Maatwebsite\Excel\Facades\Excel;
 use control_visitantes\Exports\VisitsExport;
+use Carbon\Carbon;
 
 use control_visitantes\Visits;
 
@@ -22,10 +23,13 @@ class VisitsController extends Controller
     {
 
         $visitas = Visits::join('visitantes', 'visitas.visitante_id', '=', 'visitantes.id')
-                        ->select('visitas.*', 'visitantes.documento AS documentoVisitante',
-                                'visitantes.no_visitas AS cantidadVisitas')
-                        ->get();
-        
+            ->select(
+                'visitas.*',
+                'visitantes.documento AS documentoVisitante',
+                'visitantes.no_visitas AS cantidadVisitas'
+            )
+            ->get();
+
         return $visitas->toArray();
     }
 
@@ -53,7 +57,7 @@ class VisitsController extends Controller
         if ($request->file('files')) {
 
             // Almacenamiento de la imagen al servidor
-            
+
             $img = $request->file('files')->store('public/img');
             $data = Storage::url($img);
         }
@@ -75,6 +79,7 @@ class VisitsController extends Controller
             'vehiculo' => $request->vehiculo,
             'tip_vehiculo' => $request->tip_vehiculo,
             'img_vehiculo' => $data,
+            'entrada'=> Carbon::now()
         ]);
 
         return redirect()->route('index')->with('success', 'La visita ha sido registrada');
@@ -89,8 +94,8 @@ class VisitsController extends Controller
     public function show($id)
     {
         $visitImg = Visits::where('visitante_id', '=', $id)
-                        ->select('visitas.img_vehiculo')
-                        ->get();
+            ->select('visitas.img_vehiculo')
+            ->get();
 
         return response()->json($visitImg);
     }
@@ -133,14 +138,6 @@ class VisitsController extends Controller
     {
         //
     }
-
-    /**
-     * Comprueba que el visitante 
-     * este registrado en la tabla visitas
-     *
-     * @param  int  $id 
-     * @return array
-    */
     public function checkStateVisit($id) {
 
         $visitante = Visits::where('visitante_id', '=', $id)
@@ -150,7 +147,11 @@ class VisitsController extends Controller
  
     }
 
-    public function exportExcel(){
-        return Excel::download(new VisitsExport, 'visits-list.xlsx');
+    public function exportExcel(Request $request)
+    {
+        $filtro1 = $request->fecha_inicial;
+        $filtro2 = $request->fecha_final;
+
+        return (new VisitsExport($filtro1, $filtro2))->download('visits-list.xlsx');
     }
 }

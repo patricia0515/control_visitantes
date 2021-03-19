@@ -15,7 +15,8 @@
         "laravel-lang/lang": "~7.0",
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
-        "maatwebsite/excel": "^3.1"
+        "maatwebsite/excel": "^3.1",
+        "nesbot/carbon": "^2.46"
     },
     "require-dev": {
         "andrey-helldar/laravel-app": "^1.0",
