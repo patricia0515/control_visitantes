@@ -225,6 +225,7 @@ $(document).ready(function () {
 });
 
 
+
 /**
  * Mensaje esquina superior derecha
  *
@@ -330,7 +331,10 @@ const datatableVisitas = (data) => {
             { data: "id" },
             { data: "cantidadVisitas" },
             { data: "documentoVisitante" },
-            { data: "created_at" },
+            { data: 'created_at', render: function (data, type, row) {
+                let oDate = new Date(data)
+                return `${oDate.getDate()}/${oDate.getMonth() + 1}/${oDate.getFullYear()}`
+            }},
             { data: "reg_pertenencias" },
             { data: "serial" },
             { data: "sede" },
