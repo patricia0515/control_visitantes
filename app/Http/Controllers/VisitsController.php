@@ -75,6 +75,7 @@ class VisitsController extends Controller
             'resp_visita' => $request->resp_visita,
             'reg_vehiculo' => $request->reg_vehiculo,
             'visitante_id' => $request->visitante_id,
+            'tipo' => 'entrada',
             'vehiculo' => $request->vehiculo,
             'tip_vehiculo' => $request->tip_vehiculo,
             'img_vehiculo' => $data,

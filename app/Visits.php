@@ -28,6 +28,7 @@ class Visits extends Model
         'visitante_id',
         'vehiculo',
         'reg_vehiculo',
+        'tipo',
         'tip_vehiculo',
         'img_vehiculo',
         
