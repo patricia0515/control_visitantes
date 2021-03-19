@@ -151,10 +151,6 @@ $(document).ready(function () {
 
 // Aparicion de los campos al momento de seleccionar la confirmacion del vehiculo
 
-$("#inputimagen").on("change", function () {
-    let imagen = $.trim($("#inputimagen").val());
-    const VALIDOR = "Si";
-
         $.ajax({
             type: "PUT",
             url: `visitas/${visitaId}`,
@@ -219,7 +215,6 @@ $("#inputimagen").on("change", function () {
             },
         });
     });
-});
 
 // Aparicion del campo serial al momento de confirmar alguna pertenencia
 
