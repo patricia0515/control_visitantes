@@ -149,7 +149,14 @@ $(document).ready(function () {
         $("#visitante_id").val($.trim($("#data_id").val()));
     });
 
-// Aparicion de los campos al momento de seleccionar la confirmacion del vehiculo
+    /**
+     * Botón que guarda
+     * la salida de una visita
+     */
+    $("body").on("click", "#btnRegisterExit", function() {
+
+        let visitaId = $.trim($("#idVistanteHidden").val());
+        let token = $("meta[name='csrf-token']").attr("content");
 
         $.ajax({
             type: "PUT",
@@ -210,26 +217,13 @@ $(document).ready(function () {
                 respuesta.forEach((data) => {
                     let imagen = `<img src='${data.img_vehiculo}' width='100%'>`;
                     $("#imagenmodal").append(imagen);
-                    console.log(imagen);
+                    // console.log(imagen);
                 });
             },
         });
     });
-
-// Aparicion del campo serial al momento de confirmar alguna pertenencia
-
-$("#inputpertenencias").on("change", function () {
-    let serial = $.trim($("#inputpertenencias").val());
-    const validate = "Ninguno";
-
-    if (serial === validate) {
-        $("#textserial").hide();
-        $("#inputserial").hide();
-    } else {
-        $("#textserial").show();
-        $("#inputserial").show();
-    }
 });
+
 
 /**
  * Mensaje esquina superior derecha
@@ -270,6 +264,7 @@ const dataTableVisitor = (data) => {
     $("#tableVisitor").DataTable({
         //Datos
         data: data,
+
         responsive: true,
 
         // Columnas que estan el la tabla
@@ -286,11 +281,11 @@ const dataTableVisitor = (data) => {
 
         //Para cambiar el lenguaje a español
         language: {
-            lengthMenu: "Mostrar _MENU_ registros",
+            lengthMenu: "Mostrar MENU registros",
             zeroRecords: "No se encontraron resultados",
             info:
-                "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-            infroFiltered: "(Filtrado de un total de _MAX_ registros)",
+                "Mostrando registros del START al END de un total de TOTAL registros",
+            infroFiltered: "(Filtrado de un total de MAX registros)",
             sSearch: "Buscar: ",
             oPaginate: {
                 sFirst: "Primero",
@@ -327,11 +322,12 @@ const datatableVisitas = (data) => {
     $("#tableVisitas").DataTable({
         //Datos
         data: data,
+
         responsive: true,
 
         // Columnas que estan en la tabla
         columns: [
-            { data: "id" },
+            { data: "visitante_id" },
             { data: "cantidadVisitas" },
             { data: "documentoVisitante" },
             { data: "created_at" },
@@ -341,7 +337,6 @@ const datatableVisitas = (data) => {
             { data: "motivo" },
             { data: "descripcion" },
             { data: "visita" },
-            { data: "tip_visitante" },
             { data: "tip_vehiculo" },
             {
                 defaultContent:
@@ -351,11 +346,11 @@ const datatableVisitas = (data) => {
 
         //Para cambiar el lenguaje a español
         language: {
-            lengthMenu: "Mostrar _MENU_ registros",
+            lengthMenu: "Mostrar MENU registros",
             zeroRecords: "No se encontraron resultados",
             info:
-                "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-            infroFiltered: "(Filtrado de un total de _MAX_ registros)",
+                "Mostrando registros del START al END de un total de TOTAL registros",
+            infroFiltered: "(Filtrado de un total de MAX registros)",
             sSearch: "Buscar: ",
             oPaginate: {
                 sFirst: "Primero",
@@ -367,6 +362,3 @@ const datatableVisitas = (data) => {
         },
     });
 };
-
-
-
