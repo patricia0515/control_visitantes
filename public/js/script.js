@@ -1,8 +1,8 @@
 $(document).ready(function () {
     /**
      * Llamado a funciones
-     * que cargan las tablas 
-    */
+     * que cargan las tablas
+     */
     loadTableVisitor();
     loadTableVisitas();
 
@@ -82,7 +82,9 @@ $(document).ready(function () {
         let token = $("meta[name='csrf-token']").attr("content");
 
         // opciones modal
-        $("#modalTitleShowUser").html("Informacion visitante <span class='badge bg-success'>Entrada</span>");
+        $("#modalTitleShowUser").html(
+            "Informacion visitante <span class='badge bg-success'>Entrada</span>"
+        );
         $("#modalShowUser").modal("show");
 
         /* si la respuesta es correcta, trajo un dato sin errores,  */
@@ -112,28 +114,30 @@ $(document).ready(function () {
                     $("#inputs").append(element);
                 });
 
-                // Peticion para validar si existe la visita 
+                // Peticion para validar si existe la visita
                 $.ajax({
                     type: "GET",
                     url: `/visitaComprobante/${visitor_id}`,
                     data: {
                         id: visitor_id,
-                        _token: token
+                        _token: token,
                     },
                     success: function (data) {
-                        let endElement = data.pop()
+                        let endElement = data.pop();
                         $("#idVistanteHidden").val(endElement.id);
-                        const SALIDA = 'salida'
-                        const DATARETURN = endElement.tipo
-                        if (DATARETURN === SALIDA || DATARETURN ==  '') {
-                           console.log('ok!')
-                        }else {
-                            $('#btnRegisterVisit').hide();
-                            $('#btnRegisterExit').show();
-                            $("#modalTitleShowUser").html("Informacion visitante <span class='badge bg-danger'>Salida</span>");
+                        const SALIDA = "salida";
+                        const DATARETURN = endElement.tipo;
+                        if (DATARETURN === SALIDA || DATARETURN == "") {
+                            console.log("ok!");
+                        } else {
+                            $("#btnRegisterVisit").hide();
+                            $("#btnRegisterExit").show();
+                            $("#modalTitleShowUser").html(
+                                "Informacion visitante <span class='badge bg-danger'>Salida</span>"
+                            );
                         }
-                    }
-                });     
+                    },
+                });
             },
         });
     });
@@ -141,7 +145,7 @@ $(document).ready(function () {
     /**
      * Botón que muestra
      * el modal de registra visita
-    */
+     */
     $("body").on("click", "#btnRegisterVisit", function () {
         $("#modalRegisterVisitTitle").html("Registrar visita");
         $("#modalRegisterVisit").modal("show");
@@ -153,8 +157,7 @@ $(document).ready(function () {
      * Botón que guarda
      * la salida de una visita
      */
-    $("body").on("click", "#btnRegisterExit", function() {
-
+    $("body").on("click", "#btnRegisterExit", function () {
         let visitaId = $.trim($("#idVistanteHidden").val());
         let token = $("meta[name='csrf-token']").attr("content");
 
@@ -163,26 +166,26 @@ $(document).ready(function () {
             url: `visitas/${visitaId}`,
             data: {
                 idVisita: visitaId,
-                _token: token
+                _token: token,
             },
             success: function (response) {
                 Toast.fire({
                     type: "success",
                     title: response,
                 });
-                setTimeout(() => location.href = '/', 3000)
-            }
+                setTimeout(() => (location.href = "/"), 3000);
+            },
         });
-    })
+    });
 
     /**
      * Botón que muestra
      * select imagen si es true
-    */
+     */
     $("#inputimagen").on("change", function () {
         let imagen = $.trim($("#inputimagen").val());
         const VALIDOR = "Si";
-    
+
         if (imagen === VALIDOR) {
             $("#imputimg").show();
             $("#textveh").show();
@@ -191,7 +194,6 @@ $(document).ready(function () {
             $("#imputimg").hide();
             $("#textveh").hide();
             $("#inputveh").hide();
-    
         }
     });
     /**
@@ -214,15 +216,15 @@ $(document).ready(function () {
 
     /**
      * Botón que carga la
-     * imagen de un vehiculo 
-    */
+     * imagen de un vehiculo
+     */
     $("body").on("click", ".btnImagen", function () {
         $("#modalTitleimagen").html("Informacion visitante");
         $("#modalimagen").modal("show");
         let token = $("meta[name='csrf-token']").attr("content");
         let fila = $(this).closest("tr");
         let visita_id = parseInt(fila.find("td:eq(0)").text());
-    
+
         $.ajax({
             type: "GET",
             url: `/visitas/${visita_id}`,
@@ -390,4 +392,8 @@ const datatableVisitas = (data) => {
             sProcessing: "Procesando...",
         },
     });
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> 73e5f33c6c494b3bca25da6f2be6aa8fe78746ee
