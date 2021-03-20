@@ -9,19 +9,19 @@
                         <table id="tableVisitas" class="table  table-hover table-borderless display responsive no-wrap" style="width:100%">
                             <thead class="text-center">
                                 <tr>
-                                    <th>ID</th>
+                                    <th data-priority="1">ID</th>
                                     <th>Cantidad</th>
-                                    <th>C&eacute;dula</th>
-                                    <th>Fecha</th>
+                                    <th data-priority="1">C&eacute;dula</th>
+                                    <th data-priority="1">Fecha</th>
                                     <th>Registro de pertenecias</th>
                                     <th>serial</th>
                                     <th>&Aacute;rea</th>
-                                    <th>Motivo</th>
+                                    <th data-priority="2">Motivo</th>
                                     <th>Descripci&oacute;n</th>
                                     <th>Visita a</th>
                                     <th>Tipo</th>
                                     <th>Tipo Vehiculo</th>
-                                    <th>Imagen Veh&iacute;culo</th>
+                                    <th data-priority="2">Imagen Veh&iacute;culo</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
