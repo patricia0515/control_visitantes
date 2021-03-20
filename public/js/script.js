@@ -219,7 +219,7 @@ $(document).ready(function () {
      * imagen de un vehiculo
      */
     $("body").on("click", ".btnImagen", function () {
-       
+
         let token = $("meta[name='csrf-token']").attr("content");
         let fila = $(this).closest("tr");
         let visita_id = parseInt(fila.find("td:eq(0)").text());
@@ -233,12 +233,12 @@ $(document).ready(function () {
             },
             success: function (respuesta) {
                 respuesta.forEach((data) => {
-                    if(data.img_vehiculo !== ''){
+                    if (data.img_vehiculo !== '') {
                         let imagen = `<img src='${data.img_vehiculo}' class='img-thumbnail frounded float-start' width="400px" heigh="400px">`;
                         $("#imagenmodal").append(imagen);
                         $("#modalimagen").modal("show");
                         $("#modalTitleModalImage").html("Imagen del vehículo")
-                    }else {
+                    } else {
                         Toast.fire({
                             type: "error",
                             title: "No hay imagen registrada",
@@ -307,21 +307,21 @@ const dataTableVisitor = (data) => {
         ],
 
         //Para cambiar el lenguaje a español
-        language: {
-            lengthMenu: "Mostrar MENU registros",
-            zeroRecords: "No se encontraron resultados",
-            info:
-                "Mostrando registros del START al END de un total de TOTAL registros",
-            infroFiltered: "(Filtrado de un total de MAX registros)",
-            sSearch: "Buscar: ",
-            oPaginate: {
-                sFirst: "Primero",
-                sLast: "Último",
-                sNext: "Siguiente",
-                sPrevious: "Anterior",
+        "language": {
+            "lengthMenu": "Mostrar _MENU_ registros",
+            "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "zeroRecords": "No se encontraron resultados",
+            "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "infroFiltered": "(Filtrado de un total de _MAX_ registros)",
+            "sSearch": "Buscar: ",
+            "oPaginate": {
+                "sFirst": "Primero",
+                "sLast": "Último",
+                "sNext": "Siguiente",
+                "sPrevious": "Anterior"
             },
-            sProcessing: "Procesando...",
-        },
+            "sProcessing": "Procesando...",
+        }
     });
 };
 
@@ -354,9 +354,9 @@ const datatableVisitas = (data) => {
         scrollX: true,
 
         columnDefs: [
-        { responsivePriority: 1, targets: 0 },
-        { responsivePriority: 2, targets: -1 }
-  
+            { responsivePriority: 1, targets: 0 },
+            { responsivePriority: 2, targets: -1 }
+
         ],
 
         // Columnas que estan en la tabla
@@ -376,14 +376,16 @@ const datatableVisitas = (data) => {
             { data: "motivo" },
             { data: "descripcion" },
             { data: "visita" },
-            { data: "tipo" , render: function (data, type, row) {
-                const exit = 'salida';
-                if(data === exit){
-                    return `<span class='badge bg-danger'>${data}</span>` 
-                }else {
-                    return `<span class='badge bg-success'>${data}</span>`
+            {
+                data: "tipo", render: function (data, type, row) {
+                    const exit = 'salida';
+                    if (data === exit) {
+                        return `<span class='badge bg-danger'>${data}</span>`
+                    } else {
+                        return `<span class='badge bg-success'>${data}</span>`
+                    }
                 }
-            }},
+            },
             { data: "tip_vehiculo" },
             {
                 defaultContent:
@@ -392,20 +394,20 @@ const datatableVisitas = (data) => {
         ],
 
         //Para cambiar el lenguaje a español
-        language: {
-            lengthMenu: "Mostrar MENU registros",
-            zeroRecords: "No se encontraron resultados",
-            info:
-                "Mostrando registros del START al END de un total de TOTAL registros",
-            infroFiltered: "(Filtrado de un total de MAX registros)",
-            sSearch: "Buscar: ",
-            oPaginate: {
-                sFirst: "Primero",
-                sLast: "Último",
-                sNext: "Siguiente",
-                sPrevious: "Anterior",
+        "language": {
+            "lengthMenu": "Mostrar _MENU_ registros",
+            "zeroRecords": "No se encontraron resultados",
+            "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "infroFiltered": "(Filtrado de un total de _MAX_ registros)",
+            "sSearch": "Buscar: ",
+            "oPaginate": {
+                "sFirst": "Primero",
+                "sLast": "Último",
+                "sNext": "Siguiente",
+                "sPrevious": "Anterior"
             },
-            sProcessing: "Procesando...",
-        },
+            "sProcessing": "Procesando...",
+        }
     });
 };
