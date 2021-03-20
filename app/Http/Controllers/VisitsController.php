@@ -93,11 +93,17 @@ class VisitsController extends Controller
      */
     public function show($id)
     {
-        $visitImg = Visits::where('visitante_id', '=', $id)
-            ->select('visitas.img_vehiculo')
+        $visitID = Visits::where('id', '=', $id)
+            ->select('visitas.visitante_id')
             ->get();
 
-        return response()->json($visitImg);
+        $visitImg = Visits::where('id', '=', $id)
+            ->where('visitante_id', '=', $visitID[0]["visitante_id"])
+            ->select('visitas.img_vehiculo')
+            ->get();
+            
+        return $visitImg->toArray();
+        
     }
 
     /**
