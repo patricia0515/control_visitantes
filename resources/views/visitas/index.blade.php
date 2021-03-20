@@ -14,7 +14,7 @@
                                     <th>C&eacute;dula</th>
                                     <th>Fecha</th>
                                     <th>Registro de pertenecias</th>
-                                    <th>serial</th>
+                                    <th>Serial</th>
                                     <th>&Aacute;rea</th>
                                     <th>Motivo</th>
                                     <th>Descripci&oacute;n</th>
@@ -35,24 +35,21 @@
 
     <!-- Modal imagen -->
     <div class="modal fade" id="modalimagen" data-bs-backdrop="static" data-bs-keyboard="false" tapindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog modal-dialog-scrollable modal-lg">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalTitleShowUser"></h5>
+                    <h5 class="modal-title" id="modalTitleModalImage"></h5>
                 </div>
                 <div class="modal-body">
                     <div class="row"> 
-                        <div class="col-xs-12 col-sm-12 col-md-12" id="imagenmodal">
+                        <div class="d-flex justify-content-center" id="imagenmodal">
 
                         </div>
                     </div>
-
-                    
                 </div>
                 <div class="modal-footer">
                     <div class="col-xs-12 col-sm-12 col-md-12">
-                        <a href="" class="btn btn-light">Aceptar</a>
-                        
+                        <a href="" class="btn btn-danger" style="background-color: #c31f1e;">Aceptar</a>
                     </div>
                 </div>
             </div>
