@@ -351,6 +351,13 @@ const datatableVisitas = (data) => {
         data: data,
 
         responsive: true,
+        scrollX: true,
+
+        columnDefs: [
+        { responsivePriority: 1, targets: 0 },
+        { responsivePriority: 2, targets: -1 }
+  
+        ],
 
         // Columnas que estan en la tabla
         columns: [
