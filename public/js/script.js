@@ -392,8 +392,4 @@ const datatableVisitas = (data) => {
             sProcessing: "Procesando...",
         },
     });
-<<<<<<< HEAD
 };
-=======
-};
->>>>>>> 73e5f33c6c494b3bca25da6f2be6aa8fe78746ee
