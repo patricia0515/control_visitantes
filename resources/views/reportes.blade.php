@@ -162,13 +162,13 @@
                 var valores = JSON.parse(res);
                 console.log(valores);
                 
-                /* for(var x=0;x<arreglo.lenght;x++){
+                for(var x=0;x<arreglo.lenght;x++){
                     valores.push(arreglo[x].entradas);
                     valores.push(arreglo[x].salidas);
                     valores.push(arreglo[x].sedes);
                     valores.push(arreglo[x].registrados);
                     console.log(valores)
-                } */ 
+                } 
                 generarGrafica(valores)
             }
            

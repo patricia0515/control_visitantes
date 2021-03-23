@@ -204,7 +204,7 @@ $(document).ready(function () {
     $("#inputpertenencias").on("change", function () {
         let pertenencia = $.trim($("#inputpertenencias").val());
         const validate = "Ninguno";
-    
+
         if (pertenencia === validate) {
             $("#textserial").hide();
             $("#inputserial").hide();
@@ -242,8 +242,6 @@ $(document).ready(function () {
         });
     });
 });
-
-
 
 /**
  * Mensaje esquina superior derecha
@@ -350,10 +348,15 @@ const datatableVisitas = (data) => {
             { data: "visitante_id" },
             { data: "cantidadVisitas" },
             { data: "documentoVisitante" },
-            { data: 'created_at', render: function (data, type, row) {
-                let oDate = new Date(data)
-                return `${oDate.getDate()}/${oDate.getMonth() + 1}/${oDate.getFullYear()}`
-            }},
+            {
+                data: "created_at",
+                render: function (data, type, row) {
+                    let oDate = new Date(data);
+                    return `${oDate.getDate()}/${
+                        oDate.getMonth() + 1
+                    }/${oDate.getFullYear()}`;
+                },
+            },
             { data: "reg_pertenencias" },
             { data: "serial" },
             { data: "sede" },
@@ -385,8 +388,4 @@ const datatableVisitas = (data) => {
             sProcessing: "Procesando...",
         },
     });
-<<<<<<< HEAD
 };
-=======
-};
->>>>>>> 73e5f33c6c494b3bca25da6f2be6aa8fe78746ee
