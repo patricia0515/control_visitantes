@@ -372,8 +372,9 @@
                                     <input type="file" class="form-control hideClass" id="imputimg" name="files"
                                         aria-describedby="inputGroupFileAddon04" aria-label="Upload" accept="image/*">
                                 </div><br>
+
                                 <!-- error al cargar un archivo que no sea imagen -->
-                                @error('files')
+                                @error('file')
                                 <small class="text-danger">{{ $message }}</small>
                                 @enderror
 

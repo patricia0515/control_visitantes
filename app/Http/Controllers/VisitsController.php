@@ -51,7 +51,12 @@ class VisitsController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
+        // validacion del campo imagen
+
+        $request->validate([
+            'file' => 'required|image|max:10',
+        ]);
+
         $data = '';
 
         if ($request->file('files')) {
