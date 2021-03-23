@@ -240,7 +240,7 @@
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <a href="{{ route('index')}}" class="btn btn-secondary">Aceptar</a>
                         <a class="btn btn-success" id="btnRegisterVisit">Registrar visita</a>
-                        <a class="btn btn-danger hideClass p-2" id="btnRegisterExit">Registrar salida</a>
+                        <a class="btn btn-danger hideClass p-2" id="btnRegisterExit" style="background-color: #c31f1e;">Registrar salida</a>
                     </div>
                 </div>
             </div>
