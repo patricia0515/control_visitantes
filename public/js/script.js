@@ -173,7 +173,7 @@ $(document).ready(function () {
                     type: "success",
                     title: response,
                 });
-                setTimeout(() => (location.href = "/"), 3000);
+                setTimeout(() => (location.href = "/"), 1500);
             },
         });
     });
@@ -219,8 +219,7 @@ $(document).ready(function () {
      * imagen de un vehiculo
      */
     $("body").on("click", ".btnImagen", function () {
-        $("#modalTitleimagen").html("Informacion visitante");
-        $("#modalimagen").modal("show");
+
         let token = $("meta[name='csrf-token']").attr("content");
         let fila = $(this).closest("tr");
         let visita_id = parseInt(fila.find("td:eq(0)").text());
@@ -234,9 +233,17 @@ $(document).ready(function () {
             },
             success: function (respuesta) {
                 respuesta.forEach((data) => {
-                    let imagen = `<img src='${data.img_vehiculo}' width='100%'>`;
-                    $("#imagenmodal").append(imagen);
-                    // console.log(imagen);
+                    if (data.img_vehiculo !== '') {
+                        let imagen = `<img src='${data.img_vehiculo}' class='img-thumbnail frounded float-start' width="400px" heigh="400px">`;
+                        $("#imagenmodal").append(imagen);
+                        $("#modalimagen").modal("show");
+                        $("#modalTitleModalImage").html("Imagen del vehículo")
+                    } else {
+                        Toast.fire({
+                            type: "error",
+                            title: "No hay imagen registrada",
+                        })
+                    }
                 });
             },
         });
@@ -298,21 +305,21 @@ const dataTableVisitor = (data) => {
         ],
 
         //Para cambiar el lenguaje a español
-        language: {
-            lengthMenu: "Mostrar MENU registros",
-            zeroRecords: "No se encontraron resultados",
-            info:
-                "Mostrando registros del START al END de un total de TOTAL registros",
-            infroFiltered: "(Filtrado de un total de MAX registros)",
-            sSearch: "Buscar: ",
-            oPaginate: {
-                sFirst: "Primero",
-                sLast: "Último",
-                sNext: "Siguiente",
-                sPrevious: "Anterior",
+        "language": {
+            "lengthMenu": "Mostrar _MENU_ registros",
+            "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "zeroRecords": "No se encontraron resultados",
+            "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "infroFiltered": "(Filtrado de un total de _MAX_ registros)",
+            "sSearch": "Buscar: ",
+            "oPaginate": {
+                "sFirst": "Primero",
+                "sLast": "Último",
+                "sNext": "Siguiente",
+                "sPrevious": "Anterior"
             },
-            sProcessing: "Procesando...",
-        },
+            "sProcessing": "Procesando...",
+        }
     });
 };
 
@@ -342,13 +349,21 @@ const datatableVisitas = (data) => {
         data: data,
 
         responsive: true,
+        scrollX: true,
+
+        columnDefs: [
+            { responsivePriority: 1, targets: 0 },
+            { responsivePriority: 2, targets: -1 }
+
+        ],
 
         // Columnas que estan en la tabla
         columns: [
-            { data: "visitante_id" },
+            { data: "id" },
             { data: "cantidadVisitas" },
             { data: "documentoVisitante" },
             {
+<<<<<<< HEAD
                 data: "created_at",
                 render: function (data, type, row) {
                     let oDate = new Date(data);
@@ -356,6 +371,12 @@ const datatableVisitas = (data) => {
                         oDate.getMonth() + 1
                     }/${oDate.getFullYear()}`;
                 },
+=======
+                data: 'created_at', render: function (data, type, row) {
+                    let oDate = new Date(data)
+                    return `${oDate.getDate()}/${oDate.getMonth() + 1}/${oDate.getFullYear()}`
+                }
+>>>>>>> 6f70f1dd3d6058cd5caf68c9b8a66664da284046
             },
             { data: "reg_pertenencias" },
             { data: "serial" },
@@ -363,7 +384,16 @@ const datatableVisitas = (data) => {
             { data: "motivo" },
             { data: "descripcion" },
             { data: "visita" },
-            { data: "tipo" },
+            {
+                data: "tipo", render: function (data, type, row) {
+                    const exit = 'salida';
+                    if (data === exit) {
+                        return `<span class='badge bg-danger'>${data}</span>`
+                    } else {
+                        return `<span class='badge bg-success'>${data}</span>`
+                    }
+                }
+            },
             { data: "tip_vehiculo" },
             {
                 defaultContent:
@@ -372,20 +402,20 @@ const datatableVisitas = (data) => {
         ],
 
         //Para cambiar el lenguaje a español
-        language: {
-            lengthMenu: "Mostrar MENU registros",
-            zeroRecords: "No se encontraron resultados",
-            info:
-                "Mostrando registros del START al END de un total de TOTAL registros",
-            infroFiltered: "(Filtrado de un total de MAX registros)",
-            sSearch: "Buscar: ",
-            oPaginate: {
-                sFirst: "Primero",
-                sLast: "Último",
-                sNext: "Siguiente",
-                sPrevious: "Anterior",
+        "language": {
+            "lengthMenu": "Mostrar _MENU_ registros",
+            "zeroRecords": "No se encontraron resultados",
+            "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "infroFiltered": "(Filtrado de un total de _MAX_ registros)",
+            "sSearch": "Buscar: ",
+            "oPaginate": {
+                "sFirst": "Primero",
+                "sLast": "Último",
+                "sNext": "Siguiente",
+                "sPrevious": "Anterior"
             },
-            sProcessing: "Procesando...",
-        },
+            "sProcessing": "Procesando...",
+        }
     });
 };
