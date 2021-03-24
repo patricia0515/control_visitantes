@@ -15,7 +15,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
    
     <!-- Jquery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src=" {{ asset('assets/jQuery/jquery-3.6.0.min.js')}}"></script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -40,9 +40,6 @@
         <!-- header -->
         <div class="header">
             <div class="title-header">
-                <div class="title-icon">
-                    <i  class="fas fa-bars" style="color: #fff;"></i>
-                </div>
                 <h2>Sistema control de visitas</h2>
             </div>
         </div>
