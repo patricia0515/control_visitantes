@@ -363,20 +363,10 @@ const datatableVisitas = (data) => {
             { data: "cantidadVisitas" },
             { data: "documentoVisitante" },
             {
-<<<<<<< HEAD
-                data: "created_at",
-                render: function (data, type, row) {
-                    let oDate = new Date(data);
-                    return `${oDate.getDate()}/${
-                        oDate.getMonth() + 1
-                    }/${oDate.getFullYear()}`;
-                },
-=======
                 data: 'created_at', render: function (data, type, row) {
                     let oDate = new Date(data)
                     return `${oDate.getDate()}/${oDate.getMonth() + 1}/${oDate.getFullYear()}`
                 }
->>>>>>> 6f70f1dd3d6058cd5caf68c9b8a66664da284046
             },
             { data: "reg_pertenencias" },
             { data: "serial" },
