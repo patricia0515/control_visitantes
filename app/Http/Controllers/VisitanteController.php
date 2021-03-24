@@ -17,8 +17,18 @@ class VisitanteController extends Controller
     public function index()
     {
         $visitantes = Visitante::all();
-
         return $visitantes->toArray();
+    }
+
+    public function all(Request $request)
+    {
+
+        /* $report = Visitante::withCount(['id', 'no_visitas', 'no_salidas']); */
+        $report = Visitante::select('visitantes.id as registrados')->count();
+
+
+        return response(json_encode($report), 200)->header('Content-type', 'text/plain');
+        /* return "HOLA"; */
     }
 
     public function create()

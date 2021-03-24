@@ -23,7 +23,7 @@ class VisitsExport implements FromQuery, WithHeadings, ShouldAutoSize, WithStyle
 {
     use Exportable;
 
-
+    
 
 
     public function __construct(string $filtro1, string $filtro2)
@@ -33,7 +33,7 @@ class VisitsExport implements FromQuery, WithHeadings, ShouldAutoSize, WithStyle
     }
 
     public function query()
-
+    
     {
         return Visits::join('visitantes', 'visitas.visitante_id', '=', 'visitantes.id')
             ->select(
@@ -51,8 +51,8 @@ class VisitsExport implements FromQuery, WithHeadings, ShouldAutoSize, WithStyle
                 'visitas.tip_visitante',
                 'visitas.updated_at as salida'
             )
-
-            ->whereBetween('visitas.created_at', [$this->fecha_inicial, $this->fecha_final])
+            
+            /* ->whereBetween('visitas.created_at', [$this->fecha_inicial, $this->fecha_final]) */
             ->orderBy('visitas.id', 'desc');
     }
 

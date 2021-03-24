@@ -41,8 +41,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="graficabarras">
-                            <h3>Control Acceso Visitantes</h3>
-                            <div id="chart" style="height: 300px;"></div>         
+                            <canvas id="myChart" width="400" height="400"></canvas>           
                         </div>
                     </div>
                 </div>
@@ -130,20 +129,6 @@
 
 @section('script')
 
-    <!-- Charting library -->
-    <script src="https://unpkg.com/echarts/dist/echarts.min.js"></script>
-    <!-- Chartisan -->
-    <script src="https://unpkg.com/@chartisan/echarts/dist/chartisan_echarts.js"></script>
-
-    <script>
-    const chart = new Chartisan({
-        /* llamo el id del div que contiene mi grafica */
-        el: '#chart',
-       /*  llamo la ruta con  la clase de la grafica que cree en app/Charts/ReportChart */
-        url: "@chart('report_chart')",
-    });
-    </script>
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 
     <!-- Boostrap-->
@@ -157,4 +142,80 @@
     <script src="{{ asset('assets/sweetAlert2/sweetalert2.all.min.js')}}"></script>
     <!-- Scripts -->
     <script src="{{ asset('js/script.js') }}"></script>
+
+    {{-- Scrip de la grafica de barras --}}
+    <script>
+        /* declaro valriable globales */
+        var valores=[];
+        
+
+        let token = $("meta[name='csrf-token']").attr("content");
+        console.log(token)
+        $.ajax({
+            url:'all',
+            typo: 'get',
+            data:{
+                _token: token,
+            
+            },
+            success: function (res){
+                var valores = JSON.parse(res);
+                console.log(valores);
+                
+                /* for(var x=0;x<arreglo.lenght;x++){
+                    valores.push(arreglo[x].entradas);
+                    valores.push(arreglo[x].salidas);
+                    valores.push(arreglo[x].sedes);
+                    valores.push(arreglo[x].registrados);
+                    console.log(valores)
+                } */ 
+                generarGrafica(valores)
+            }
+           
+        });
+        
+
+
+        function generarGrafica(valores){
+            console.log(valores);
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Total Registrados','Otros'],
+                    datasets: [{
+                        label: 'Control Acceso Visitantes',
+                        data: valores,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        }
+    </script>
+
 @endsection
