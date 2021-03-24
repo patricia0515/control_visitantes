@@ -28,7 +28,7 @@ class CreateTrigger extends Migration
         FOR EACH ROW
             
         UPDATE visitantes set no_salidas = no_salidas + 1 
-        WHERE updated_at <=> NEW.updated_at;');
+        WHERE tipo <=> NEW.tipo;');
     }
 
     /**

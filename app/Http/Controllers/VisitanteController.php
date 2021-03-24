@@ -22,9 +22,39 @@ class VisitanteController extends Controller
 
     public function all(Request $request)
     {
+        /* cuenta visitas-entradas en la base */
+        $data1 = DB::table('visitantes')
+            ->sum('no_visitas');
+
+        /* cuenta número de salidas*/
+        $data2 = DB::table('visitantes')
+            ->sum('no_salidas');
+
+        /* cuenta número visitantes registrados en la base de datos*/
+        $data3 = DB::table('visitantes')
+            ->count();
+
+        /* cuenta número visitantes Activos en la base de datos*/
+        $data4 = DB::table('visitantes')
+            ->select('estado')
+            ->where('estado', '=', 'Activo')
+            ->count();
+
+        /* cuenta número visitantes Inactivos en la base de datos*/
+        $data5 = DB::table('visitantes')
+            ->select('estado')
+            ->where('estado', '=', 'Inactivo')
+            ->count();
+
+        /* cuenta la cantidad de sedes visitadas*/
+        $data6 = DB::table('visitas')
+            ->distinct()
+            ->count('sede');
+
+        $report = [$data1, $data2, $data3, $data4, $data5, $data6];
 
         /* $report = Visitante::withCount(['id', 'no_visitas', 'no_salidas']); */
-        $report = Visitante::select('visitantes.id as registrados')->count();
+        /* $report = Visitante::select('visitantes.id as registrados')->count(); */
 
 
         return response(json_encode($report), 200)->header('Content-type', 'text/plain');
