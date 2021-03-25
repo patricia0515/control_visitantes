@@ -131,10 +131,7 @@
 @section('script')
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
-    
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
-
     <!-- Boostrap-->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"
         integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi"
@@ -149,9 +146,6 @@
 
     {{-- Scrip de la grafica de barras --}}
     <script>
-        /* declaro valriable globales */
-        var valores=[];
-        
 
         let token = $("meta[name='csrf-token']").attr("content");
         console.log(token)
@@ -164,15 +158,11 @@
             },
             success: function (res){
                 var arreglo = JSON.parse(res);
-                console.log(arreglo);
-                
-                
-                generarGrafica(arreglo)
-            }
-           
-        });
-        
+                console.log(arreglo);  
 
+                generarGrafica(arreglo)
+            } 
+        });
 
         function generarGrafica(arreglo){
             console.log(arreglo);

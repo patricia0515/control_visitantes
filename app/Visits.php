@@ -8,12 +8,12 @@ use Carbon\Carbon;
 class Visits extends Model
 {
     public function getDates()
-{
-    return [
-        'created_at',
-        'updated_at',
-    ];
-}
+    {
+        return [
+            'created_at',
+            'updated_at',
+        ];
+    }
     protected $table = 'visitas';
 
     protected $fillable = [
@@ -31,7 +31,7 @@ class Visits extends Model
         'tipo',
         'tip_vehiculo',
         'img_vehiculo',
-        
+
     ];
 
     // protected $dateFormat = 'U';

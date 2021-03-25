@@ -128,6 +128,7 @@ class VisitsController extends Controller
     {
         $updateVisit = Visits::find($id);
         $updateVisit->tipo = 'salida';
+        
         $updateVisit->save();
         $msg = '¡Visita actualizada con exito!';
 
@@ -160,5 +161,4 @@ class VisitsController extends Controller
 
         return (new VisitsExport($filtro1, $filtro2))->download('visits-list.xlsx');
     }
-    
 }

@@ -26,7 +26,7 @@ class VisitanteSeeder extends Seeder
             'politica_confidencialidad' => 'Si acepto',
             'proteccion_datos' => 'Si acepto',
             'seguridad_salud_trabajo' => 'Si acepto'
-            
+
         ]);
 
         factory(control_visitantes\Visitante::class, 50)->create();
