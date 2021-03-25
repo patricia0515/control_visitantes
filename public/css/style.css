@@ -273,10 +273,15 @@
 }
 .col-sm-6{
     float:left;
-    
 }
 .waves-effect{
     color: rgb(0, 0, 0);
+}
+
+/* estilos imagen miniatura */
+
+#miniaturaimg{
+    border-radius: 7px;
 }
 #footer {
     position:fixed;
