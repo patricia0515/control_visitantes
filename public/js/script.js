@@ -194,13 +194,23 @@ $(document).ready(function () {
         const VALIDOR = "Si";
 
         if (imagen === VALIDOR) {
-            $("#imputimg").show();
-            $("#textveh").show();
-            $("#inputveh").show();
+            $("#imputimg").show('slow');
+            $("#textveh").show('slow');
+            $("#inputveh").show('slow');
+            $("#miniatura").show('slow');
+            $("#miniaturaimg").show('slow');
+            $("#info").show('slow');
         } else {
-            $("#imputimg").hide();
-            $("#textveh").hide();
-            $("#inputveh").hide();
+            $("#imputimg").hide('slow');
+            $("#imputimg").val('');
+            $("#textveh").hide('slow');
+            $("#inputveh").hide('slow');
+            $("#inputveh").val('');
+            $("#miniatura").hide('slow');
+            $("#miniaturaimg").hide('slow');
+            $('#miniaturaimg').attr('src', '');
+            $("#miniaturaimg").val('');
+            $("#info").hide('slow');
         }
     });
 
@@ -215,11 +225,12 @@ $(document).ready(function () {
         const validate = "Ninguno";
 
         if (pertenencia === validate) {
-            $("#textserial").hide();
-            $("#inputserial").hide();
+            $("#textserial").hide('slow');
+            $("#inputserial").hide('slow');
+            $("#inputserial").val('');
         } else {
-            $("#textserial").show();
-            $("#inputserial").show();
+            $("#textserial").show('slow');
+            $("#inputserial").show('slow');
         }
     });
 
@@ -332,6 +343,26 @@ const dataTableVisitor = (data) => {
         }
     });
 };
+
+/**
+ * Vizualizar la imagen en miniatura
+ */
+ function readImg(input) {
+    if (input.files[0]) { 
+      var reader = new FileReader(); 
+      
+      reader.onload = function(e) { 
+        $('#miniaturaimg').attr('src', e.target.result);
+        // console.log(e.target);
+      }
+      reader.readAsDataURL(input.files[0]);
+    } else {
+        $('#miniaturaimg').attr('src', '');
+    }
+  }
+  $("#imputimg").change(function() { 
+    readImg(this);
+  });
 
 /**
  * Captura los datos para
