@@ -20,13 +20,12 @@ class CreateTrigger extends Migration
                 UPDATE visitantes set no_visitas = no_visitas + 1 
                 WHERE visitantes.id = NEW.visitante_id;');
 
-        DB::unprepared('CREATE TRIGGER contar_salidas
+        /* DB::unprepared('CREATE TRIGGER contar_salidas
         AFTER UPDATE ON visitas
         FOR EACH ROW
 
-            
             UPDATE visitantes set no_salidas = no_salidas + 1 
-            WHERE  tipo = "salida";');
+            WHERE  old.tipo <=> new.tipo;'); */
     }
 
     /**
