@@ -41,7 +41,8 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="graficabarras">
-                            <canvas id="myChart" width="400" height="400"></canvas>           
+                            <canvas id="myChart" width="400" height="400"></canvas>
+                                      
                         </div>
                     </div>
                 </div>
@@ -129,6 +130,9 @@
 
 @section('script')
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
+    
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 
     <!-- Boostrap-->
@@ -159,33 +163,27 @@
             
             },
             success: function (res){
-                var valores = JSON.parse(res);
-                console.log(valores);
+                var arreglo = JSON.parse(res);
+                console.log(arreglo);
                 
-                /* for(var x=0;x<arreglo.lenght;x++){
-                    valores.push(arreglo[x].entradas);
-                    valores.push(arreglo[x].salidas);
-                    valores.push(arreglo[x].sedes);
-                    valores.push(arreglo[x].registrados);
-                    console.log(valores)
-                } */ 
-                generarGrafica(valores)
+                
+                generarGrafica(arreglo)
             }
            
         });
         
 
 
-        function generarGrafica(valores){
-            console.log(valores);
+        function generarGrafica(arreglo){
+            console.log(arreglo);
             var ctx = document.getElementById('myChart').getContext('2d');
             var myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['Total Registrados','Otros'],
+                    labels: ['T. Entradas', 'T. Salidas', 'T. Registrados', 'Activos', 'Inactivos', 'Total Áreas Visitadas'],
                     datasets: [{
                         label: 'Control Acceso Visitantes',
-                        data: valores,
+                        data: arreglo,
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
                             'rgba(54, 162, 235, 0.2)',

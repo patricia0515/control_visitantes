@@ -25,7 +25,5 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Ponemos en el metodo Boot la sigiente linea de codigo. llamamos al metodo estatico de Schema y le indicamos la longitud de las cadenas.
-        /* Schema::defaultStringLength(191); */
     }
 }

@@ -261,8 +261,6 @@ $(document).ready(function () {
     });
 });
 
-
-
 /**
  * Mensaje esquina superior derecha
  *

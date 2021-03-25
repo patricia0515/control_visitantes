@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Redirect;
 use Maatwebsite\Excel\Facades\Excel;
 use control_visitantes\Exports\VisitsExport;
 use Carbon\Carbon;
+use control_visitantes\Charts\ReporteVisitas;
 
 use control_visitantes\Visits;
 
@@ -87,7 +88,7 @@ class VisitsController extends Controller
             'vehiculo' => $request->vehiculo,
             'tip_vehiculo' => $request->tip_vehiculo,
             'img_vehiculo' => $data,
-            'entrada'=> Carbon::now()
+            'entrada' => Carbon::now()
         ]);
 
         return redirect()->route('index')->with('success', 'La visita ha sido registrada');
@@ -109,9 +110,8 @@ class VisitsController extends Controller
             ->where('visitante_id', '=', $visitID[0]["visitante_id"])
             ->select('visitas.img_vehiculo')
             ->get();
-            
+
         return $visitImg->toArray();
-        
     }
 
     /**
@@ -152,13 +152,13 @@ class VisitsController extends Controller
     {
         //
     }
-    public function checkStateVisit($id) {
+    public function checkStateVisit($id)
+    {
 
         $visitante = Visits::where('visitante_id', '=', $id)
-                    ->select('tipo', 'id')
-                    ->get();
+            ->select('tipo', 'id')
+            ->get();
         return $visitante->toArray();
- 
     }
 
     public function exportExcel(Request $request)
@@ -168,4 +168,5 @@ class VisitsController extends Controller
 
         return (new VisitsExport($filtro1, $filtro2))->download('visits-list.xlsx');
     }
+    
 }
