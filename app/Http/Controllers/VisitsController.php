@@ -10,8 +10,8 @@ use Maatwebsite\Excel\Facades\Excel;
 use control_visitantes\Exports\VisitsExport;
 use Carbon\Carbon;
 use control_visitantes\Charts\ReporteVisitas;
-
 use control_visitantes\Visits;
+use control_visitantes\Visitante;
 
 class VisitsController extends Controller
 {
@@ -134,10 +134,17 @@ class VisitsController extends Controller
      */
     public function update($id)
     {
-        $updateVisit = Visits::find($id);
+        /* $updateVisit = Visits::find($id);
         $updateVisit->tipo = 'salida';
-        
+        $updateVisit->save(); */
+
+        $updateVisit = Visits::join('visitantes', 'visitas.visitante_id', '=', 'visitantes.id')
+            ->find($id);
+        $updateVisit->tipo = 'salida';
+        $updateVisit->no_salidas->increment('no_salidas');
         $updateVisit->save();
+
+
         $msg = '¡Visita actualizada con exito!';
 
         return response()->json($msg);
@@ -153,6 +160,14 @@ class VisitsController extends Controller
     {
         //
     }
+
+    /**
+     * Devuelve el la consulta para verificar 
+     * el estado de una visita
+     *
+     * @param  int  $id
+     * @return array
+     */
     public function checkStateVisit($id)
     {
 
