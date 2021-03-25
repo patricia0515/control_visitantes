@@ -10,7 +10,6 @@ use Maatwebsite\Excel\Facades\Excel;
 use control_visitantes\Exports\VisitsExport;
 use Carbon\Carbon;
 use control_visitantes\Charts\ReporteVisitas;
-
 use control_visitantes\Visits;
 
 class VisitsController extends Controller
@@ -52,7 +51,15 @@ class VisitsController extends Controller
      */
     public function store(Request $request)
     {
+        // validacion del campo imagen
+
+        $request->validate([
+            // 'file' => 'image|10',
+            'files' => 'mimes:jpeg,jpg,png,gif | max:10100',
+        ]);
+
         // dd($request->all());
+
         $data = '';
 
         if ($request->file('files')) {
@@ -144,6 +151,14 @@ class VisitsController extends Controller
     {
         //
     }
+
+    /**
+     * Devuelve el la consulta para verificar 
+     * el estado de una visita
+     *
+     * @param  int  $id
+     * @return array
+     */
     public function checkStateVisit($id)
     {
 

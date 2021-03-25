@@ -1,8 +1,10 @@
 $(document).ready(function () {
+
     /**
      * Llamado a funciones
      * que cargan las tablas
      */
+
     loadTableVisitor();
     loadTableVisitas();
 
@@ -10,6 +12,7 @@ $(document).ready(function () {
      * Botón para realizar
      * la busqueda de un visitante
      */
+
     $("body").on("click", "#btnSearch", function () {
         // variables
         let visitor_number = $.trim($("#SearchText").val());
@@ -75,6 +78,7 @@ $(document).ready(function () {
      * Botón view que muestra
      * la informacion del visitante
      */
+
     $("body").on("click", "#btnViewUser", function () {
         // variables
         let visitor_id = $.trim($("#idVistanteHidden").val());
@@ -146,6 +150,7 @@ $(document).ready(function () {
      * Botón que muestra
      * el modal de registra visita
      */
+
     $("body").on("click", "#btnRegisterVisit", function () {
         $("#modalRegisterVisitTitle").html("Registrar visita");
         $("#modalRegisterVisit").modal("show");
@@ -157,6 +162,7 @@ $(document).ready(function () {
      * Botón que guarda
      * la salida de una visita
      */
+
     $("body").on("click", "#btnRegisterExit", function () {
         let visitaId = $.trim($("#idVistanteHidden").val());
         let token = $("meta[name='csrf-token']").attr("content");
@@ -182,35 +188,49 @@ $(document).ready(function () {
      * Botón que muestra
      * select imagen si es true
      */
+
     $("#inputimagen").on("change", function () {
         let imagen = $.trim($("#inputimagen").val());
         const VALIDOR = "Si";
 
         if (imagen === VALIDOR) {
-            $("#imputimg").show();
-            $("#textveh").show();
-            $("#inputveh").show();
+            $("#imputimg").show('slow');
+            $("#textveh").show('slow');
+            $("#inputveh").show('slow');
+            $("#miniatura").show('slow');
+            $("#miniaturaimg").show('slow');
+            $("#info").show('slow');
         } else {
-            $("#imputimg").hide();
-            $("#textveh").hide();
-            $("#inputveh").hide();
+            $("#imputimg").hide('slow');
+            $("#imputimg").val('');
+            $("#textveh").hide('slow');
+            $("#inputveh").hide('slow');
+            $("#inputveh").val('');
+            $("#miniatura").hide('slow');
+            $("#miniaturaimg").hide('slow');
+            $('#miniaturaimg').attr('src', '');
+            $("#miniaturaimg").val('');
+            $("#info").hide('slow');
         }
     });
+
     /**
      * Botón que muestra
      * campo serial si el usuario
      * trae pertenencias
      */
+
     $("#inputpertenencias").on("change", function () {
         let pertenencia = $.trim($("#inputpertenencias").val());
         const validate = "Ninguno";
 
         if (pertenencia === validate) {
-            $("#textserial").hide();
-            $("#inputserial").hide();
+            $("#textserial").hide('slow');
+            $("#inputserial").hide('slow');
+            $("#inputserial").val('');
         } else {
-            $("#textserial").show();
-            $("#inputserial").show();
+            $("#textserial").show('slow');
+            $("#inputserial").show('slow');
         }
     });
 
@@ -218,6 +238,7 @@ $(document).ready(function () {
      * Botón que carga la
      * imagen de un vehiculo
      */
+
     $("body").on("click", ".btnImagen", function () {
 
         let token = $("meta[name='csrf-token']").attr("content");
@@ -248,9 +269,34 @@ $(document).ready(function () {
             },
         });
     });
+
+    /**
+     * Input que carga la
+     * imagen subida
+     */
+    
+    $("#imputimg").change(function() { 
+        readImg(this);
+    });
 });
 
 
+
+/**
+ * Vizualizar la imagen en miniatura
+ * 
+ * @return void
+ */
+
+ const readImg = (input) => {
+    if (input.files[0]) { 
+      let reader = new FileReader(); 
+      reader.onload = function(e) { 
+        $('#miniaturaimg').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    } 
+}
 
 /**
  * Mensaje esquina superior derecha
@@ -324,6 +370,7 @@ const dataTableVisitor = (data) => {
         }
     });
 };
+
 
 /**
  * Captura los datos para

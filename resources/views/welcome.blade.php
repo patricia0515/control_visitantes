@@ -371,11 +371,35 @@
                                 <div class="input-group mt-3">
                                     <input type="file" class="form-control hideClass" id="imputimg" name="files"
                                         aria-describedby="inputGroupFileAddon04" aria-label="Upload" accept="image/*">
-                                </div><br>
+                                </div>
+
+                                <!-- Miniatura de la imagen al seleccionarla -->
+
+                                <div class="card mt-3 hideClass" id="miniatura">
+                                    <div class="card-body">
+                                      <h5 class="text-center">Miniatura de la imagen</h5><br>
+                                      <div class="text-center">
+                                        <img id="miniaturaimg" class="text-center hideClass" src="#" alt="miniatura" height="250">
+                                      </div>
+                                    </div>
+                                </div>
+
                                 <!-- error al cargar un archivo que no sea imagen -->
-                                @error('files')
+                                @error('file')
                                 <small class="text-danger">{{ $message }}</small>
                                 @enderror
+
+                                <div class="input-group mt-3 hideClass" id="info">
+                                    <h5>Instrucciones</h5>
+                                    <p>
+                                        <b>1. </b>Hacer click en "seleccionar archivo".<br>
+                                        <b>2. </b>El archivo tiene que ser de tipo imagen.<br>
+                                        <b>3. </b>El tamaño del archivo debe de ser menor a 10MB.<br>
+                                        <b>4. </b>Hacer click en "subir" una vez seleccionado el archivo.<br>
+                                        <b>5. </b>El nombre del archivo no puede tener caracteres especiales ni exceder el largo de 20 caracteres.<br>
+                                        <b>6. </b>Para mejor uso de la herramienta subir las fotos con la cedula como nombre, ejemplo: 123456789.PNG.
+                                    </p>
+                                </div>
 
                             </div>
                         </div>
