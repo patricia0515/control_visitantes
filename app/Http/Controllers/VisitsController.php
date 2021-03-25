@@ -54,8 +54,11 @@ class VisitsController extends Controller
         // validacion del campo imagen
 
         $request->validate([
-            'file' => 'required|image|max:10',
+            // 'file' => 'image|10',
+            'files' => 'mimes:jpeg,jpg,png,gif | max:10100',
         ]);
+
+        // dd($request->all());
 
         $data = '';
 
