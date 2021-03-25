@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    
+
     /**
      * Llamado a funciones
      * que cargan las tablas
@@ -269,7 +269,32 @@ $(document).ready(function () {
             },
         });
     });
+
+    /**
+     * Input que carga la
+     * imagen subida
+     */
+    
+    $("#imputimg").change(function() { 
+        readImg(this);
+    });
 });
+
+/**
+ * Vizualizar la imagen en miniatura
+ * 
+ * @return void
+ */
+
+ const readImg = (input) => {
+    if (input.files[0]) { 
+      let reader = new FileReader(); 
+      reader.onload = function(e) { 
+        $('#miniaturaimg').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    } 
+}
 
 /**
  * Mensaje esquina superior derecha
@@ -344,25 +369,6 @@ const dataTableVisitor = (data) => {
     });
 };
 
-/**
- * Vizualizar la imagen en miniatura
- */
- function readImg(input) {
-    if (input.files[0]) { 
-      var reader = new FileReader(); 
-      
-      reader.onload = function(e) { 
-        $('#miniaturaimg').attr('src', e.target.result);
-        // console.log(e.target);
-      }
-      reader.readAsDataURL(input.files[0]);
-    } else {
-        $('#miniaturaimg').attr('src', '');
-    }
-  }
-  $("#imputimg").change(function() { 
-    readImg(this);
-  });
 
 /**
  * Captura los datos para

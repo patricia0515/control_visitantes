@@ -64,7 +64,6 @@
 
         <!-- content -->   
         <div class="content">
-            <!-- <img src="SharedScreenshot.jpg" alt=""> -->
             <div class="card-hero">
             
                 @yield('content')
