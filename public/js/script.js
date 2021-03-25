@@ -1,8 +1,10 @@
 $(document).ready(function () {
+
     /**
      * Llamado a funciones
      * que cargan las tablas
      */
+
     loadTableVisitor();
     loadTableVisitas();
 
@@ -10,6 +12,7 @@ $(document).ready(function () {
      * Botón para realizar
      * la busqueda de un visitante
      */
+
     $("body").on("click", "#btnSearch", function () {
         // variables
         let visitor_number = $.trim($("#SearchText").val());
@@ -75,6 +78,7 @@ $(document).ready(function () {
      * Botón view que muestra
      * la informacion del visitante
      */
+
     $("body").on("click", "#btnViewUser", function () {
         // variables
         let visitor_id = $.trim($("#idVistanteHidden").val());
@@ -146,6 +150,7 @@ $(document).ready(function () {
      * Botón que muestra
      * el modal de registra visita
      */
+
     $("body").on("click", "#btnRegisterVisit", function () {
         $("#modalRegisterVisitTitle").html("Registrar visita");
         $("#modalRegisterVisit").modal("show");
@@ -157,6 +162,7 @@ $(document).ready(function () {
      * Botón que guarda
      * la salida de una visita
      */
+
     $("body").on("click", "#btnRegisterExit", function () {
         let visitaId = $.trim($("#idVistanteHidden").val());
         let token = $("meta[name='csrf-token']").attr("content");
@@ -182,6 +188,7 @@ $(document).ready(function () {
      * Botón que muestra
      * select imagen si es true
      */
+
     $("#inputimagen").on("change", function () {
         let imagen = $.trim($("#inputimagen").val());
         const VALIDOR = "Si";
@@ -206,11 +213,13 @@ $(document).ready(function () {
             $("#info").hide('slow');
         }
     });
+
     /**
      * Botón que muestra
      * campo serial si el usuario
      * trae pertenencias
      */
+
     $("#inputpertenencias").on("change", function () {
         let pertenencia = $.trim($("#inputpertenencias").val());
         const validate = "Ninguno";
@@ -229,6 +238,7 @@ $(document).ready(function () {
      * Botón que carga la
      * imagen de un vehiculo
      */
+
     $("body").on("click", ".btnImagen", function () {
 
         let token = $("meta[name='csrf-token']").attr("content");
@@ -259,7 +269,32 @@ $(document).ready(function () {
             },
         });
     });
+
+    /**
+     * Input que carga la
+     * imagen subida
+     */
+    
+    $("#imputimg").change(function() { 
+        readImg(this);
+    });
 });
+
+/**
+ * Vizualizar la imagen en miniatura
+ * 
+ * @return void
+ */
+
+ const readImg = (input) => {
+    if (input.files[0]) { 
+      let reader = new FileReader(); 
+      reader.onload = function(e) { 
+        $('#miniaturaimg').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    } 
+}
 
 /**
  * Mensaje esquina superior derecha
@@ -334,25 +369,6 @@ const dataTableVisitor = (data) => {
     });
 };
 
-/**
- * Vizualizar la imagen en miniatura
- */
- function readImg(input) {
-    if (input.files[0]) { 
-      var reader = new FileReader(); 
-      
-      reader.onload = function(e) { 
-        $('#miniaturaimg').attr('src', e.target.result);
-        // console.log(e.target);
-      }
-      reader.readAsDataURL(input.files[0]);
-    } else {
-        $('#miniaturaimg').attr('src', '');
-    }
-  }
-  $("#imputimg").change(function() { 
-    readImg(this);
-  });
 
 /**
  * Captura los datos para

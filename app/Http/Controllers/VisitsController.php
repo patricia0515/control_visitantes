@@ -10,7 +10,6 @@ use Maatwebsite\Excel\Facades\Excel;
 use control_visitantes\Exports\VisitsExport;
 use Carbon\Carbon;
 use control_visitantes\Charts\ReporteVisitas;
-
 use control_visitantes\Visits;
 
 class VisitsController extends Controller
@@ -152,6 +151,14 @@ class VisitsController extends Controller
     {
         //
     }
+
+    /**
+     * Devuelve el la consulta para verificar 
+     * el estado de una visita
+     *
+     * @param  int  $id
+     * @return array
+     */
     public function checkStateVisit($id)
     {
 
