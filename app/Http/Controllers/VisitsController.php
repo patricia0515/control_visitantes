@@ -9,9 +9,10 @@ use Illuminate\Support\Facades\Redirect;
 use Maatwebsite\Excel\Facades\Excel;
 use control_visitantes\Exports\VisitsExport;
 use Carbon\Carbon;
-use control_visitantes\Charts\ReporteVisitas;
 use control_visitantes\Visits;
 use control_visitantes\Visitante;
+
+
 
 class VisitsController extends Controller
 {
@@ -134,15 +135,13 @@ class VisitsController extends Controller
      */
     public function update($id)
     {
-        /* $updateVisit = Visits::find($id);
+        $updateVisit = Visits::find($id);
         $updateVisit->tipo = 'salida';
-        $updateVisit->save(); */
-
-        $updateVisit = Visits::join('visitantes', 'visitas.visitante_id', '=', 'visitantes.id')
-            ->find($id);
-        $updateVisit->tipo = 'salida';
-        $updateVisit->no_salidas->increment('no_salidas');
         $updateVisit->save();
+
+        $visitas = Visits::join('visitantes', 'visitas.visitante_id', '=', 'visitantes.id')
+        ->where('visitas.id' ,'=', $id )
+        ->increment('no_salidas');
 
 
         $msg = '¡Visita actualizada con exito!';

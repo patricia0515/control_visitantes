@@ -36,6 +36,6 @@ class CreateTrigger extends Migration
     public function down()
     {
         Schema::dropIfExists('contar_visitas');
-        Schema::dropIfExists('contar_salidas');
+        /* Schema::dropIfExists('contar_salidas'); */
     }
 }
