@@ -15,8 +15,10 @@ class VisitanteController extends Controller
         return $visitantes->toArray();
     }
 
-    public function all($inicio, $fin)
-    {
+    public function all($data)
+    {       
+
+        
         /* cuenta visitas-entradas en la base */
         $data1 = DB::table('visitantes')
             ->join('visitas', 'visitantes.id', '=', 'visitas.visitante_id')
@@ -63,6 +65,7 @@ class VisitanteController extends Controller
 
         $report = [$data1, $data2, $data3, $data4, $data5, $data6];
         return response(json_encode($report), 200)->header('Content-type', 'text/plain');
+        
     }
 
     public function create()
