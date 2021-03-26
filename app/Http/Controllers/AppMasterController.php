@@ -40,7 +40,7 @@ class AppMasterController extends Controller
                 if (isset($rol)) {
                     
                     // Hacemos la consulta en la tabla usuarios de master_connection
-                    $userAppMaster = UsuarioAppMaster::where('id_usuario', '=', $usuario_id)
+                    $userAppMaster = UsuarioAppMaster::where('id_usuario', '=', $user_id)
                                 ->where('estado', '=', $status_user)
                                 ->first();
 
