@@ -15,13 +15,13 @@ class VisitanteController extends Controller
         return $visitantes->toArray();
     }
 
-    public function all($inicio, $fin)
+    public function all()
     {
         /* cuenta visitas-entradas en la base */
         $data1 = DB::table('visitantes')
             ->join('visitas', 'visitantes.id', '=', 'visitas.visitante_id')
             ->select('visitas.created_at,', 'visitantes.no_visitas')
-            ->whereBetween('visitas.created_at', [$inicio, $fin])
+            // ->whereBetween('visitas.created_at', [$inicio, $fin])
             ->sum('no_visitas');
 
 
@@ -29,14 +29,14 @@ class VisitanteController extends Controller
         $data2 = DB::table('visitantes')
             ->join('visitas', 'visitantes.id', '=', 'visitas.visitante_id')
             ->select('visitas.created_at,', 'visitantes.no_salidas')
-            ->whereBetween('visitas.created_at', [$inicio, $fin])
+            // ->whereBetween('visitas.created_at', [$inicio, $fin])
             ->sum('no_salidas');
 
         /* cuenta número visitantes registrados en la base de datos*/
         $data3 = DB::table('visitantes')
             ->join('visitas', 'visitantes.id', '=', 'visitas.visitante_id')
             ->select('visitas.created_at,')
-            ->whereBetween('visitas.created_at', [$inicio, $fin])
+            // ->whereBetween('visitas.created_at', [$inicio, $fin])
             ->count();
 
         /* cuenta número visitantes Activos en la base de datos*/
@@ -44,7 +44,7 @@ class VisitanteController extends Controller
             ->join('visitas', 'visitantes.id', '=', 'visitas.visitante_id')
             ->select('visitantes.estado', 'visitas.created_at')
             ->where('estado', '=', 'Activo')
-            ->whereBetween('visitas.created_at', [$inicio, $fin])
+            // ->whereBetween('visitas.created_at', [$inicio, $fin])
             ->count();
 
         /* cuenta número visitantes Inactivos en la base de datos*/
@@ -52,13 +52,13 @@ class VisitanteController extends Controller
             ->join('visitas', 'visitantes.id', '=', 'visitas.visitante_id')
             ->select('visitantes.estado', 'visitas.created_at')
             ->where('estado', '=', 'Inactivo')
-            ->whereBetween('visitas.created_at', [$inicio, $fin])
+            // ->whereBetween('visitas.created_at', [$inicio, $fin])
             ->count();
 
         /* cuenta la cantidad de sedes visitadas*/
         $data6 = DB::table('visitas')
             ->distinct()
-            ->whereBetween('visitas.created_at', [$inicio, $fin])
+            // ->whereBetween('visitas.created_at', [$inicio, $fin])
             ->count('sede');
 
         $report = [$data1, $data2, $data3, $data4, $data5, $data6];
