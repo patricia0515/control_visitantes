@@ -32,7 +32,7 @@ $('body').on('click', '#btnFiltroGrafica', function () {
  */
 
 const loadBanner = () => {
-    $.get("/banner", (data) => {
+    $.get("/slider", (data) => {
         data.forEach(element => {
             let div = `<div class="carousel-item" id="carousel-img">
                             <img src="${element.img_vehiculo}" class="d-block w-100" alt="${element.img_vehiculo}" height="320px">

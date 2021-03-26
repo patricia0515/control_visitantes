@@ -17,14 +17,15 @@ class CreateTrigger extends Migration
         DB::unprepared('CREATE TRIGGER contar_visitas
 	        AFTER INSERT ON visitas
             FOR EACH ROW
-            UPDATE visitantes set no_visitas = no_visitas + 1 
-			WHERE visitantes.id = NEW.visitante_id;');
+                UPDATE visitantes set no_visitas = no_visitas + 1 
+                WHERE visitantes.id = NEW.visitante_id;');
 
-        DB::unprepared('CREATE TRIGGER contar_salidas
-            AFTER UPDATE ON visitas
-            FOR EACH ROW
+        /* DB::unprepared('CREATE TRIGGER contar_salidas
+        AFTER UPDATE ON visitas
+        FOR EACH ROW
+
             UPDATE visitantes set no_salidas = no_salidas + 1 
-            WHERE old.tipo <=> new.tipo');
+            WHERE  old.tipo <=> new.tipo;'); */
     }
 
     /**
@@ -35,6 +36,6 @@ class CreateTrigger extends Migration
     public function down()
     {
         Schema::dropIfExists('contar_visitas');
-        Schema::dropIfExists('contar_salidas');
+        /* Schema::dropIfExists('contar_salidas'); */
     }
 }

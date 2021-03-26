@@ -26,6 +26,7 @@
 <br>
 <div class="container">
     <div class="row">
+        {{--  Grafica  --}}
         <div class="col-6">
             <div class="card">
                 <div class="card-body">
@@ -41,7 +42,7 @@
         <div class="col-6">
             <!--Card-->
             <div class="card mb-4">
-                <!--Card content-->
+                <!--Card content FORMULARIO EXCEL-->
                 <div class="card-body">
 
                     <div class="excel">
@@ -106,13 +107,10 @@
     </div>
 </div>
 @endsection
-
-
 @section('script')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
-
     <!-- Boostrap-->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"
         integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi"
