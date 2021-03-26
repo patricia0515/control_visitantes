@@ -9,19 +9,15 @@ use Illuminate\Support\Facades\Redirect;
 use Maatwebsite\Excel\Facades\Excel;
 use control_visitantes\Exports\VisitsExport;
 use Carbon\Carbon;
-use control_visitantes\Charts\ReporteVisitas;
 use control_visitantes\Visits;
+use control_visitantes\Visitante;
+
+
 
 class VisitsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-
         $visitas = Visits::join('visitantes', 'visitas.visitante_id', '=', 'visitantes.id')
             ->select(
                 'visitas.*',
@@ -29,8 +25,17 @@ class VisitsController extends Controller
                 'visitantes.no_visitas AS cantidadVisitas'
             )
             ->get();
-
         return $visitas->toArray();
+    }
+
+    public function slider() {
+        $fotos = Visits::select('img_vehiculo')
+                    ->wherenotNull('img_vehiculo')
+                    ->latest()
+                    ->take(5)
+                    ->get();
+
+        return $fotos->toArray();
     }
 
     /**
@@ -43,12 +48,6 @@ class VisitsController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         // validacion del campo imagen
@@ -60,12 +59,11 @@ class VisitsController extends Controller
 
         // dd($request->all());
 
-        $data = '';
+        $data = null;
 
         if ($request->file('files')) {
 
             // Almacenamiento de la imagen al servidor
-
             $img = $request->file('files')->store('public/img');
             $data = Storage::url($img);
         }
@@ -93,12 +91,6 @@ class VisitsController extends Controller
         return redirect()->route('index')->with('success', 'La visita ha sido registrada');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $visitID = Visits::where('id', '=', $id)
@@ -113,52 +105,31 @@ class VisitsController extends Controller
         return $visitImg->toArray();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update($id)
     {
         $updateVisit = Visits::find($id);
         $updateVisit->tipo = 'salida';
         $updateVisit->save();
+
+        $salidas = Visits::join('visitantes', 'visitas.visitante_id', '=', 'visitantes.id')
+            ->where('visitas.id', '=', $id)
+            ->increment('no_salidas');
+
         $msg = '¡Visita actualizada con exito!';
 
         return response()->json($msg);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //
     }
 
-    /**
-     * Devuelve el la consulta para verificar 
-     * el estado de una visita
-     *
-     * @param  int  $id
-     * @return array
-     */
     public function checkStateVisit($id)
     {
 
@@ -175,5 +146,4 @@ class VisitsController extends Controller
 
         return (new VisitsExport($filtro1, $filtro2))->download('visits-list.xlsx');
     }
-    
 }

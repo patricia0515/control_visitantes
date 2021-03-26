@@ -8,26 +8,32 @@
             <div class="row">
                 <div class="col-12">
                     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+<<<<<<< HEAD
                         <div class="carousel-inner">
-                          <div class="carousel-item active">
-                            <img src="storage/img/DHPYUe0NrdNWZ0eRZ1ChyMv39JJhP53Tn6qTncIk.png" class="d-block w-100" alt="...">
-                          </div>
-                          <div class="carousel-item">
-                            <img src="storage/img/DHPYUe0NrdNWZ0eRZ1ChyMv39JJhP53Tn6qTncIk.png" class="d-block w-100" alt="...">
-                          </div>
-                          <div class="carousel-item">
-                            <img src="storage/img/DHPYUe0NrdNWZ0eRZ1ChyMv39JJhP53Tn6qTncIk.png" class="d-block w-100" alt="...">
-                          </div>
+
+                         
+                            <div id="fotos" class="carousel-item active " >
+                                
+                            </div>
+                          
                         </div>
+                        
+=======
+                        <div class="carousel-inner" id="inner"></div>
+>>>>>>> 8f1bc3eaf80630cad6e8ac9b1c5bc1e149bbb077
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="prev">
                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                           <span class="visually-hidden">Previous</span>
                         </button>
+
                         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="next">
                           <span class="carousel-control-next-icon" aria-hidden="true"></span>
                           <span class="visually-hidden">Next</span>
                         </button>
+
                     </div>
+
+
                 </div>
             </div>
         </div>
@@ -36,13 +42,13 @@
 <br>
 <div class="container">
     <div class="row">
+        {{--  Grafica  --}}
         <div class="col-6">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
                         <div class="graficabarras">
-                            <canvas id="myChart" width="400" height="400"></canvas>
-                                      
+                            <canvas id="myChart" width="400" height="400"></canvas>  
                         </div>
                     </div>
                 </div>
@@ -52,7 +58,7 @@
         <div class="col-6">
             <!--Card-->
             <div class="card mb-4">
-                <!--Card content-->
+                <!--Card content FORMULARIO EXCEL-->
                 <div class="card-body">
 
                     <div class="excel">
@@ -71,23 +77,23 @@
                                             <br>
                                             <div class="col-sm-12">
                                                 <div class="col-sm-6"><b>Fecha inicial:</b>
-                                                    <input name="fecha_inicial" type="date" class="form-control" id="datepicker" required="">
+                                                    <input name="fecha_inicial" type="date" class="form-control" id="datepickerInicio" required="">
                                                 </div>
             
                                                 <div class="col-sm-6"><b>Fecha Final:</b>
-                                                    <input name="fecha_final" type="date" class="form-control" id="datepicker2" required="">
+                                                    <input name="fecha_final" type="date" class="form-control" id="datepickerFin" required="">
                                                 </div>
                                             </div>
                                             <!-- <div class="col-sm-3"></div> -->
                                         </div>
                                     </div>
                                     <div class="row">
-            
                                         <div class="col-sm-12">
                                             <br>
-                                            <span class="waves-input-wrapper waves-effect waves-light"><input type="submit" name="Filtrar" value="Descargar" class="btn  btn-susess btn-block" style="background-color:#227547;"></span>
+                                            <span class="waves-input-wrapper waves-effect waves-light">
+                                                <input type="submit" name="Filtrar" value="Descargar" class="btn  btn-susess btn-block" id="btnFiltroGrafica" style="background-color:#227547;">
+                                            </span>
                                         </div>
-            
                                     </div>
                                 </div>
                             </div>
@@ -116,25 +122,11 @@
         </div>
     </div>
 </div>
-<br>
-
-
-
-
-<br>
-
-{{-- AQUI COPIO EL CODIGO --}}
-
 @endsection
-
-
 @section('script')
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
     
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
-
     <!-- Boostrap-->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"
         integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi"
@@ -145,75 +137,5 @@
     <!-- SweetAlert -->
     <script src="{{ asset('assets/sweetAlert2/sweetalert2.all.min.js')}}"></script>
     <!-- Scripts -->
-    <script src="{{ asset('js/script.js') }}"></script>
-
-    {{-- Scrip de la grafica de barras --}}
-    <script>
-        /* declaro valriable globales */
-        var valores=[];
-        
-
-        let token = $("meta[name='csrf-token']").attr("content");
-        console.log(token)
-        $.ajax({
-            url:'all',
-            typo: 'get',
-            data:{
-                _token: token,
-            
-            },
-            success: function (res){
-                var arreglo = JSON.parse(res);
-                console.log(arreglo);
-                
-                
-                generarGrafica(arreglo)
-            }
-           
-        });
-        
-
-
-        function generarGrafica(arreglo){
-            console.log(arreglo);
-            var ctx = document.getElementById('myChart').getContext('2d');
-            var myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['T. Entradas', 'T. Salidas', 'T. Registrados', 'Activos', 'Inactivos', 'Total Áreas Visitadas'],
-                    datasets: [{
-                        label: 'Control Acceso Visitantes',
-                        data: arreglo,
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }]
-                    }
-                }
-            });
-        }
-    </script>
-
+    <script src="{{ asset('js/reportes.js') }}"></script>
 @endsection

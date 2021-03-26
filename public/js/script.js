@@ -229,8 +229,8 @@ $(document).ready(function () {
             $("#inputserial").hide('slow');
             $("#inputserial").val('');
         } else {
-            $("#textserial").show('slow');
-            $("#inputserial").show('slow');
+            $("#textserial").show();
+            $("#inputserial").show();
         }
     });
 
@@ -254,7 +254,8 @@ $(document).ready(function () {
             },
             success: function (respuesta) {
                 respuesta.forEach((data) => {
-                    if (data.img_vehiculo !== '') {
+                    console.log(data)
+                    if (data.img_vehiculo !== null) {
                         let imagen = `<img src='${data.img_vehiculo}' class='img-thumbnail frounded float-start' width="400px" heigh="400px">`;
                         $("#imagenmodal").append(imagen);
                         $("#modalimagen").modal("show");
@@ -266,6 +267,7 @@ $(document).ready(function () {
                         })
                     }
                 });
+
             },
         });
     });
@@ -274,12 +276,11 @@ $(document).ready(function () {
      * Input que carga la
      * imagen subida
      */
-    
-    $("#imputimg").change(function() { 
+
+    $("#imputimg").change(function () {
         readImg(this);
     });
 });
-
 
 
 /**
@@ -288,14 +289,14 @@ $(document).ready(function () {
  * @return void
  */
 
- const readImg = (input) => {
-    if (input.files[0]) { 
-      let reader = new FileReader(); 
-      reader.onload = function(e) { 
-        $('#miniaturaimg').attr('src', e.target.result);
-      }
-      reader.readAsDataURL(input.files[0]);
-    } 
+const readImg = (input) => {
+    if (input.files[0]) {
+        let reader = new FileReader();
+        reader.onload = function (e) {
+            $('#miniaturaimg').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
 }
 
 /**
@@ -458,3 +459,4 @@ const datatableVisitas = (data) => {
         }
     });
 };
+
