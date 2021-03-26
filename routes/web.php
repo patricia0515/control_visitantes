@@ -45,4 +45,5 @@ Route::post('visit-list-excel', 'VisitsController@exportExcel')->name('visitas.e
 Route::get('/visitaComprobante/{id}', 'VisitsController@checkStateVisit');
 
 Route::get('all', 'VisitanteController@all');
+Route::get('filtro', 'VisitanteController@filtro');
 Route::get('slider', 'VisitsController@slider');

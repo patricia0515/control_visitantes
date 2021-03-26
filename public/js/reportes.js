@@ -55,7 +55,7 @@ const loadGrafica = (inicio, fin) => {
     let token = $("meta[name='csrf-token']").attr("content");
     $.ajax({
         url: 'all',
-        typo: 'GET',
+        type: 'GET',
         data: {
             inicio: inicio,
             fin: fin,
