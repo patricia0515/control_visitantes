@@ -17,7 +17,6 @@ class VisitanteController extends Controller
 
     public function all($data)
     {       
-
         
         /* cuenta visitas-entradas en la base */
         $data1 = DB::table('visitantes')
