@@ -349,6 +349,7 @@ const dataTableVisitor = (data) => {
     } else {
         $('#miniaturaimg').attr('src', '');
     }
+    
   }
   $("#imputimg").change(function() { 
     readImg(this);
