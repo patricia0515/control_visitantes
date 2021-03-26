@@ -52,13 +52,14 @@ const loadBanner = () => {
  */
 
 const loadGrafica = (inicio, fin) => {
+    let data = `${inicio},${fin}`
+    console.log(data)
     let token = $("meta[name='csrf-token']").attr("content");
     $.ajax({
-        url: 'all',
-        type: 'GET',
+        url: `all/${data}`,
+        typo: 'GET',
         data: {
-            inicio: inicio,
-            fin: fin,
+            data: data,
             _token: token,
         },
         success: function (data) {
