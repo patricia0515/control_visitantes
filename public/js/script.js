@@ -229,8 +229,8 @@ $(document).ready(function () {
             $("#inputserial").hide('slow');
             $("#inputserial").val('');
         } else {
-            $("#textserial").show();
-            $("#inputserial").show();
+            $("#textserial").show('slow');
+            $("#inputserial").show('slow');
         }
     });
 
@@ -375,20 +375,20 @@ const dataTableVisitor = (data) => {
 /**
  * Vizualizar la imagen en miniatura
  */
- function readImg(input) {
-    if (input.files[0]) { 
-      var reader = new FileReader(); 
+//  function readImg(input) {
+//     if (input.files[0]) { 
+//       var reader = new FileReader(); 
       
-      reader.onload = function(e) { 
-        $('#miniaturaimg').attr('src', e.target.result);
-        // console.log(e.target);
-      }
-      reader.readAsDataURL(input.files[0]);
-    } 
-  }
-  $("#imputimg").change(function() { 
-    readImg(this);
-  });
+//       reader.onload = function(e) { 
+//         $('#miniaturaimg').attr('src', e.target.result);
+//         // console.log(e.target);
+//       }
+//       reader.readAsDataURL(input.files[0]);
+//     } 
+//   }
+//   $("#imputimg").change(function() { 
+//     readImg(this);
+//   });
 
 /**
  * Captura los datos para
