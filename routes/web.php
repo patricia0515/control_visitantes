@@ -21,6 +21,8 @@ Route::resource('/visitantes', 'VisitanteController');
 
 Route::resource('/visitas', 'VisitsController');
 
+Route::get('/banner', 'VisitsController@banner');
+
 
 /* Retorna la vista base */
 Route::view('/', 'welcome')->name('index');

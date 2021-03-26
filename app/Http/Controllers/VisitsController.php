@@ -33,6 +33,16 @@ class VisitsController extends Controller
         return $visitas->toArray();
     }
 
+    public function banner() {
+        $fotos = Visits::select('img_vehiculo')
+                    ->wherenotNull('img_vehiculo')
+                    ->latest()
+                    ->take(5)
+                    ->get();
+
+        return $fotos->toArray();
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -60,12 +70,11 @@ class VisitsController extends Controller
 
         // dd($request->all());
 
-        $data = '';
+        $data = null;
 
         if ($request->file('files')) {
 
             // Almacenamiento de la imagen al servidor
-
             $img = $request->file('files')->store('public/img');
             $data = Storage::url($img);
         }
