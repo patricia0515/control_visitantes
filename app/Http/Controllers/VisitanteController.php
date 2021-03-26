@@ -9,11 +9,6 @@ use Illuminate\Support\Facades\DB;
 
 class VisitanteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $visitantes = Visitante::all();
@@ -52,11 +47,6 @@ class VisitanteController extends Controller
             ->count('sede');
 
         $report = [$data1, $data2, $data3, $data4, $data5, $data6];
-
-        /* $report = Visitante::withCount(['id', 'no_visitas', 'no_salidas']); */
-        /* $report = Visitante::select('visitantes.id as registrados')->count(); */
-
-
         return response(json_encode($report), 200)->header('Content-type', 'text/plain');
         /* return "HOLA"; */
     }
@@ -103,19 +93,11 @@ class VisitanteController extends Controller
     {
         //
     }
-
-
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //

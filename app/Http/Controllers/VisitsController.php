@@ -16,14 +16,8 @@ use control_visitantes\Visitante;
 
 class VisitsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-
         $visitas = Visits::join('visitantes', 'visitas.visitante_id', '=', 'visitantes.id')
             ->select(
                 'visitas.*',
@@ -35,22 +29,20 @@ class VisitsController extends Controller
         return $visitas->toArray();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function slider()
+    {
+        $fotos = Visits::latest()
+            ->take(5)
+            ->get();
+
+            return view('reportes',compact('fotos'));
+    }
+
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         // validacion del campo imagen
@@ -95,12 +87,6 @@ class VisitsController extends Controller
         return redirect()->route('index')->with('success', 'La visita ha sido registrada');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $visitID = Visits::where('id', '=', $id)
@@ -115,24 +101,11 @@ class VisitsController extends Controller
         return $visitImg->toArray();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update($id)
     {
         $updateVisit = Visits::find($id);
@@ -143,30 +116,16 @@ class VisitsController extends Controller
             ->where('visitas.id', '=', $id)
             ->increment('no_salidas');
 
-
         $msg = '¡Visita actualizada con exito!';
 
         return response()->json($msg);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //
     }
 
-    /**
-     * Devuelve el la consulta para verificar 
-     * el estado de una visita
-     *
-     * @param  int  $id
-     * @return array
-     */
     public function checkStateVisit($id)
     {
 

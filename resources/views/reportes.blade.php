@@ -9,15 +9,15 @@
                 <div class="col-12">
                     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
-                          <div class="carousel-item active">
-                            <img src="storage/img/DHPYUe0NrdNWZ0eRZ1ChyMv39JJhP53Tn6qTncIk.png" class="d-block w-100" alt="...">
-                          </div>
-                          <div class="carousel-item">
-                            <img src="storage/img/DHPYUe0NrdNWZ0eRZ1ChyMv39JJhP53Tn6qTncIk.png" class="d-block w-100" alt="...">
-                          </div>
-                          <div class="carousel-item">
-                            <img src="storage/img/DHPYUe0NrdNWZ0eRZ1ChyMv39JJhP53Tn6qTncIk.png" class="d-block w-100" alt="...">
-                          </div>
+
+                        @forelse ( $fotos as $f )
+                            <div class="carousel-item @if ($look->index==0) active @endif ">
+                                {{--  debo validar como se esta guardando solo el nombre de la imagen o laruta completa,de ello depende como la muestro  --}}
+                                <img src="/public/storage/img/{{ $f->img_vehiculo }}" class="d-block w-100" alt="{{ $f->reg_vehiculo }}">
+                            </div>
+                        @empty
+                        @endforelse
+                          
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="prev">
                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -36,6 +36,7 @@
 <br>
 <div class="container">
     <div class="row">
+        {{--  Grafica  --}}
         <div class="col-6">
             <div class="card">
                 <div class="card-body">
@@ -52,7 +53,7 @@
         <div class="col-6">
             <!--Card-->
             <div class="card mb-4">
-                <!--Card content-->
+                <!--Card content FORMULARIO EXCEL-->
                 <div class="card-body">
 
                     <div class="excel">
@@ -117,17 +118,8 @@
     </div>
 </div>
 <br>
-
-
-
-
 <br>
-
-{{-- AQUI COPIO EL CODIGO --}}
-
 @endsection
-
-
 @section('script')
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
