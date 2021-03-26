@@ -139,9 +139,9 @@ class VisitsController extends Controller
         $updateVisit->tipo = 'salida';
         $updateVisit->save();
 
-        $visitas = Visits::join('visitantes', 'visitas.visitante_id', '=', 'visitantes.id')
-        ->where('visitas.id' ,'=', $id )
-        ->increment('no_salidas');
+        $salidas = Visits::join('visitantes', 'visitas.visitante_id', '=', 'visitantes.id')
+            ->where('visitas.id', '=', $id)
+            ->increment('no_salidas');
 
 
         $msg = '¡Visita actualizada con exito!';
