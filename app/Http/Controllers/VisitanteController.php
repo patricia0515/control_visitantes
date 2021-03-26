@@ -9,56 +9,60 @@ use Illuminate\Support\Facades\DB;
 
 class VisitanteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $visitantes = Visitante::all();
         return $visitantes->toArray();
     }
 
-    public function all(Request $request)
+    public function all($inicio, $fin)
     {
         /* cuenta visitas-entradas en la base */
         $data1 = DB::table('visitantes')
+            ->join('visitas', 'visitantes.id', '=', 'visitas.visitante_id')
+            ->select('visitas.created_at,', 'visitantes.no_visitas')
+            ->whereBetween('visitas.created_at', [$inicio, $fin])
             ->sum('no_visitas');
+
 
         /* cuenta número de salidas*/
         $data2 = DB::table('visitantes')
+            ->join('visitas', 'visitantes.id', '=', 'visitas.visitante_id')
+            ->select('visitas.created_at,', 'visitantes.no_salidas')
+            ->whereBetween('visitas.created_at', [$inicio, $fin])
             ->sum('no_salidas');
 
         /* cuenta número visitantes registrados en la base de datos*/
         $data3 = DB::table('visitantes')
+            ->join('visitas', 'visitantes.id', '=', 'visitas.visitante_id')
+            ->select('visitas.created_at,')
+            ->whereBetween('visitas.created_at', [$inicio, $fin])
             ->count();
 
         /* cuenta número visitantes Activos en la base de datos*/
         $data4 = DB::table('visitantes')
-            ->select('estado')
+            ->join('visitas', 'visitantes.id', '=', 'visitas.visitante_id')
+            ->select('visitantes.estado', 'visitas.created_at')
             ->where('estado', '=', 'Activo')
+            ->whereBetween('visitas.created_at', [$inicio, $fin])
             ->count();
 
         /* cuenta número visitantes Inactivos en la base de datos*/
         $data5 = DB::table('visitantes')
-            ->select('estado')
+            ->join('visitas', 'visitantes.id', '=', 'visitas.visitante_id')
+            ->select('visitantes.estado', 'visitas.created_at')
             ->where('estado', '=', 'Inactivo')
+            ->whereBetween('visitas.created_at', [$inicio, $fin])
             ->count();
 
         /* cuenta la cantidad de sedes visitadas*/
         $data6 = DB::table('visitas')
             ->distinct()
+            ->whereBetween('visitas.created_at', [$inicio, $fin])
             ->count('sede');
 
         $report = [$data1, $data2, $data3, $data4, $data5, $data6];
-
-        /* $report = Visitante::withCount(['id', 'no_visitas', 'no_salidas']); */
-        /* $report = Visitante::select('visitantes.id as registrados')->count(); */
-
-
         return response(json_encode($report), 200)->header('Content-type', 'text/plain');
-        /* return "HOLA"; */
     }
 
     public function create()
@@ -103,19 +107,11 @@ class VisitanteController extends Controller
     {
         //
     }
-
-
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //

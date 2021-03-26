@@ -21,6 +21,9 @@ Route::resource('/visitantes', 'VisitanteController');
 
 Route::resource('/visitas', 'VisitsController');
 
+/* Retorna las imagenes del slide de reportes */
+Route::get('/slider', 'VisitsController@slider');
+
 
 /* Retorna la vista base */
 Route::view('/', 'welcome')->name('index');
@@ -34,6 +37,7 @@ Route::view('/visits', 'visitas/index')->name('visits');
 
 Route::view('reportes', 'reportes');
 
+
 /* Aqui pongo la ruta para generar el excel */
 Route::post('visit-list-excel', 'VisitsController@exportExcel')->name('visitas.excel');
 
@@ -41,3 +45,4 @@ Route::post('visit-list-excel', 'VisitsController@exportExcel')->name('visitas.e
 Route::get('/visitaComprobante/{id}', 'VisitsController@checkStateVisit');
 
 Route::get('all', 'VisitanteController@all');
+Route::get('slider', 'VisitsController@slider');
