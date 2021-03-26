@@ -10,24 +10,26 @@
                     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
 
-                        @forelse ( $fotos as $f )
-                            <div class="carousel-item @if ($look->index==0) active @endif ">
-                                {{--  debo validar como se esta guardando solo el nombre de la imagen o laruta completa,de ello depende como la muestro  --}}
-                                <img src="/public/storage/img/{{ $f->img_vehiculo }}" class="d-block w-100" alt="{{ $f->reg_vehiculo }}">
+                         
+                            <div id="fotos" class="carousel-item active " >
+                                
                             </div>
-                        @empty
-                        @endforelse
                           
                         </div>
+                        
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="prev">
                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                           <span class="visually-hidden">Previous</span>
                         </button>
+
                         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="next">
                           <span class="carousel-control-next-icon" aria-hidden="true"></span>
                           <span class="visually-hidden">Next</span>
                         </button>
+
                     </div>
+
+
                 </div>
             </div>
         </div>
@@ -138,15 +140,35 @@
 
     {{-- Scrip de la grafica de barras --}}
     <script>
-
+        
         let token = $("meta[name='csrf-token']").attr("content");
         console.log(token)
+        {{--  consulta para el slider  --}}
+        $.ajax({
+            url:'slider',
+            typo: 'get',
+            data:{
+                _token: token,
+            },
+            success: function (res){
+                //console.log(res);
+
+                for (let imagen of res){
+                    console.log(imagen.img_vehiculo)
+                    let fotos = `<img src='${imagen.img_vehiculo}' class='d-block w-100'  width="100px" heigh="100px">`;
+                    $("#fotos").append(fotos);
+                }
+
+            } 
+        });
+
+        {{--  consulta para la Grafica --}}
+
         $.ajax({
             url:'all',
             typo: 'get',
             data:{
                 _token: token,
-            
             },
             success: function (res){
                 var arreglo = JSON.parse(res);

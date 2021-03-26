@@ -25,17 +25,17 @@ class VisitsController extends Controller
                 'visitantes.no_visitas AS cantidadVisitas'
             )
             ->get();
-
         return $visitas->toArray();
     }
 
     public function slider()
     {
-        $fotos = Visits::latest()
+        $fotos = Visits::select('img_vehiculo')
+            ->latest()
             ->take(5)
+            ->whereNotNull('img_vehiculo')
             ->get();
-
-            return view('reportes',compact('fotos'));
+        return $fotos->toArray();
     }
 
     public function create()
