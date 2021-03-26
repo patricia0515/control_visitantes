@@ -8,19 +8,7 @@
             <div class="row">
                 <div class="col-12">
                     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-<<<<<<< HEAD
-                        <div class="carousel-inner">
-
-                         
-                            <div id="fotos" class="carousel-item active " >
-                                
-                            </div>
-                          
-                        </div>
-                        
-=======
                         <div class="carousel-inner" id="inner"></div>
->>>>>>> 8f1bc3eaf80630cad6e8ac9b1c5bc1e149bbb077
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="prev">
                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                           <span class="visually-hidden">Previous</span>
