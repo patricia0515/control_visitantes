@@ -29,15 +29,21 @@ class VisitsController extends Controller
         return $visitas->toArray();
     }
 
-    public function slider()
-    {
-        $fotos = Visits::latest()
-            ->take(5)
-            ->get();
+    public function slider() {
+        $fotos = Visits::select('img_vehiculo')
+                    ->wherenotNull('img_vehiculo')
+                    ->latest()
+                    ->take(5)
+                    ->get();
 
-            return view('reportes',compact('fotos'));
+        return $fotos->toArray();
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         //
@@ -54,12 +60,11 @@ class VisitsController extends Controller
 
         // dd($request->all());
 
-        $data = '';
+        $data = null;
 
         if ($request->file('files')) {
 
             // Almacenamiento de la imagen al servidor
-
             $img = $request->file('files')->store('public/img');
             $data = Storage::url($img);
         }

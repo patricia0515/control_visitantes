@@ -21,6 +21,9 @@ Route::resource('/visitantes', 'VisitanteController');
 
 Route::resource('/visitas', 'VisitsController');
 
+/* Retorna las imagenes del slide de reportes */
+Route::get('/slider', 'VisitsController@slider');
+
 
 /* Retorna la vista base */
 Route::view('/', 'welcome')->name('index');
