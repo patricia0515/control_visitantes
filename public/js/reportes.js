@@ -56,27 +56,19 @@ const loadGraficaDona = () => {
     let arreglo2 =[];
     let data2 =[];
     $.get("/lastDays", (data) => {
-            console.log(data)
             let arreglo = JSON.parse(data);
             console.log(arreglo)
 
             for(x=0;x<6;x++){
                 arreglo2.push(arreglo[x]);
             }   
-
             data2.push(arreglo[6]);
-
-            console.log(arreglo2)
-            console.log(data2)
 
             $("#num_personas").val(data2);
 
             generarGraficaDona(arreglo2)
     });
 }
-
-
-
 /**
  * Realiza la carga
  * de los datos en la Dona
@@ -84,7 +76,6 @@ const loadGraficaDona = () => {
  * @return void
  */
 const generarGraficaDona = (arreglo2) => {
-
     let ctx = document.getElementById('myChart2').getContext('2d');
     let myChart = new Chart(ctx, {
         type: 'doughnut',
