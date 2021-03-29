@@ -22,46 +22,50 @@ class VisitanteController extends Controller
         $data1 = DB::table('visitantes')
             ->join('visitas', 'visitantes.id', '=', 'visitas.visitante_id')
             ->select('visitas.created_at,', 'visitantes.no_visitas')
-            ->where('visitas.created_at', '>', Carbon::now()->subDays(30))
+            ->where('visitas.created_at', '>=', Carbon::now()->subDays(30))
             ->sum('no_visitas');
 
         /* cuenta número de salidas*/
         $data2 = DB::table('visitantes')
             ->join('visitas', 'visitantes.id', '=', 'visitas.visitante_id')
             ->select('visitas.created_at,', 'visitantes.no_salidas')
-            ->where('visitas.created_at', '>', Carbon::now()->subDays(30))
+            ->where('visitas.created_at', '>=', Carbon::now()->subDays(30))
             ->sum('no_salidas');
 
         /* cuenta número visitantes registrados en la base de datos*/
         $data3 = DB::table('visitantes')
-            ->join('visitas', 'visitantes.id', '=', 'visitas.visitante_id')
-            ->select('visitas.created_at,')
-            ->where('visitas.created_at', '>', Carbon::now()->subDays(30))
+            /* ->join('visitas', 'visitantes.id', '=', 'visitas.visitante_id') */
+            ->select('created_at,')
+            ->where('created_at', '>=', Carbon::now()->subDays(30))
             ->count();
 
         /* cuenta número visitantes Activos en la base de datos*/
         $data4 = DB::table('visitantes')
-            ->join('visitas', 'visitantes.id', '=', 'visitas.visitante_id')
-            ->select('visitantes.estado', 'visitas.created_at')
+            ->select('estado', 'created_at')
             ->where('estado', '=', 'Activo')
-            ->where('visitas.created_at', '>', Carbon::now()->subDays(30))
+            /* ->where('created_at', '>=', Carbon::now()->subDays(30)) */
             ->count();
 
         /* cuenta número visitantes Inactivos en la base de datos*/
         $data5 = DB::table('visitantes')
-            ->join('visitas', 'visitantes.id', '=', 'visitas.visitante_id')
-            ->select('visitantes.estado', 'visitas.created_at')
+            ->select('estado')
             ->where('estado', '=', 'Inactivo')
-            ->where('visitas.created_at', '>', Carbon::now()->subDays(30))
+            /* ->where('created_at', '>=', Carbon::now()->subDays(30)) */
             ->count();
 
         /* cuenta la cantidad de sedes visitadas*/
         $data6 = DB::table('visitas')
             ->distinct()
-            ->where('visitas.created_at', '>', Carbon::now()->subDays(30))
+            ->where('visitas.created_at', '>=', Carbon::now()->subDays(30))
             ->count('sede');
 
-        $report = [$data1, $data2, $data3, $data4, $data5, $data6];
+        /* cuenta la cantidad personas que ingresarón*/
+        $data7 = DB::table('visitas')
+            ->distinct()
+            ->where('visitas.created_at', '>=', Carbon::now()->subDays(30))
+            ->count('visitante_id');
+
+        $report = [$data1, $data2, $data3, $data4, $data5, $data6, $data7];
         return response(json_encode($report), 200)->header('Content-type', 'text/plain');
     }
 

@@ -53,11 +53,25 @@ const loadBanner = () => {
  */
 
 const loadGraficaDona = () => {
+    let arreglo2 =[];
+    let data2 =[];
     $.get("/lastDays", (data) => {
             console.log(data)
             let arreglo = JSON.parse(data);
-            generarGraficaDona(arreglo)
-        
+            console.log(arreglo)
+
+            for(x=0;x<6;x++){
+                arreglo2.push(arreglo[x]);
+            }   
+
+            data2.push(arreglo[6]);
+            
+            console.log(arreglo2)
+            console.log(data2)
+
+            $("#num_personas").val(data2);
+
+            generarGraficaDona(arreglo2)
     });
 }
 
@@ -69,19 +83,7 @@ const loadGraficaDona = () => {
  *
  * @return void
  */
-const generarGraficaDona = (arreglo) => {
-
-    /* var myPieChart = new Chart(ctx, {
-        type: 'pie',
-        data: ['T. Entradas', 'T. Salidas', 'T. Registrados', 'Activos', 'Inactivos', 'Total Áreas Visitadas'],
-        options: options
-    });
-    var myDoughnutChart = new Chart(ctx, {
-        type: 'doughnut',
-        data: data,
-        options: options
-    }); */
-
+const generarGraficaDona = (arreglo2) => {
 
     let ctx = document.getElementById('myChart2').getContext('2d');
     let myChart = new Chart(ctx, {
@@ -90,7 +92,7 @@ const generarGraficaDona = (arreglo) => {
             labels: ['Total Entradas', 'Total Salidas', 'Visitantes Registrados', 'Visitantes Activos', 'Visitantes Inactivos', 'Áreas Visitadas'],
             datasets: [{
                 label: 'Control Acceso Visitantes Ultimos 30 Días',
-                data: arreglo,
+                data: arreglo2,
                 backgroundColor: [
                     'rgba(255, 105, 180)',
                     'rgba(255, 140, 0)',
