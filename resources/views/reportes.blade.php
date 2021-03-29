@@ -35,10 +35,20 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row">
+                        <h3>Reporte Ultimos 30 días Visitas</h3>
+                        <div class="graficaDona">
+                            <canvas id="myChart2" width="400" height="400"></canvas>  
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="card-body">
+                    <div class="row">
                         <div class="graficabarras">
                             <canvas id="myChart" width="400" height="400"></canvas>  
                         </div>
                     </div>
+                    
                 </div>
             </div>
             <br>
