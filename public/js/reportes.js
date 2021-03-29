@@ -60,15 +60,12 @@ const loadGraficaDona = () => {
             let arreglo = JSON.parse(data);
             console.log(arreglo)
 
-            
-                arreglo2.push(arreglo[0]);
-                arreglo2.push(arreglo[1]);
-                arreglo2.push(arreglo[2]);
-                arreglo2.push(arreglo[3]);
-                arreglo2.push(arreglo[4]);
-                arreglo2.push(arreglo[5]);
-            
+            for(x=0;x<6;x++){
+                arreglo2.push(arreglo[x]);
+            }   
+
             data2.push(arreglo[6]);
+            
             console.log(arreglo2)
             console.log(data2)
 
