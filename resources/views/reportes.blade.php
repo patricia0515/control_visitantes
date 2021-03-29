@@ -1,6 +1,7 @@
 @extends('layouts.plantilla')
 
 @section('content')
+<h2>CONTROL DE ACCESO VISITANTES SUPERVISOR</h2>
 <br>
 <div class="col-6">
     <div class="card">
@@ -112,7 +113,9 @@
                     <!-- List group links -->
                     <div class="list-group list-group-flush">
                         <a class="list-group-item list-group-item-action waves-effect">Total personas que
-                            ingresaron:</a>
+                            ingresaron en los ultimos 30 días:</a>
+                            <input type="text" id="num_personas" name="num_personas" class="form-control col-md-3"
+                                                readonly>
                         </div>
                     </div>
                 </div>
