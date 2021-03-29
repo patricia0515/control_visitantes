@@ -7,6 +7,7 @@ $(document).ready(function () {
      */
 
     loadGrafica();
+    loadGraficaDona();
     loadBanner();
 
 })
@@ -46,17 +47,66 @@ const loadBanner = () => {
 
 /**
  * Captura los datos para
- * luego ponerlos en la grafica
+ * luego ponerlos en la grafica Dona
+ *
+ * @return void
+ */
+
+const loadGraficaDona = () => {
+    $.get("/lastDays", (data) => {
+            console.log(data)
+            let arreglo = JSON.parse(data);
+            generarGraficaDona(arreglo)
+        
+    });
+}
+
+
+
+/**
+ * Realiza la carga
+ * de los datos en la Dona
+ *
+ * @return void
+ */
+const generarGraficaDona = (arreglo) => {
+
+    let ctx = document.getElementById('myChart2').getContext('2d');
+    let myChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Total Entradas', 'Total Salidas', 'Visitantes Registrados', 'Visitantes Activos', 'Visitantes Inactivos', 'Áreas Visitadas'],
+            datasets: [{
+                label: 'Control Acceso Visitantes Ultimos 30 Días',
+                data: arreglo,
+                backgroundColor: [
+                    'rgba(255, 105, 180)',
+                    'rgba(255, 140, 0)',
+                    'rgba(152, 251, 152)',
+                    'rgba(188, 143, 143)',
+                    'rgba(255, 140, 0)',
+                    'rgba(70, 130, 180 )'
+                ],
+                
+            }]
+        },
+        
+    });
+}
+
+
+/**
+ * Captura los datos para
+ * luego ponerlos en la grafica de barras
  *
  * @return void
  */
 
 const loadGrafica = (inicio, fin) => {
     let data = `${inicio},${fin}`
-    console.log(data)
     let token = $("meta[name='csrf-token']").attr("content");
     $.ajax({
-        url: `all/${data}`,
+        url: `filter/${data}`,
         typo: 'GET',
         data: {
             data: data,

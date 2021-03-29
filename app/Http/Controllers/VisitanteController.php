@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use control_visitantes\Visitante;
 use control_visitantes\Http\Requests\VisitanteFormRequest;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class VisitanteController extends Controller
 {
@@ -15,18 +16,65 @@ class VisitanteController extends Controller
         return $visitantes->toArray();
     }
 
-    public function all($data)
-    {       
-        
+    public function lastDays()
+    {
+        /* cuenta visitas-entradas en la base */
+        $data1 = DB::table('visitantes')
+            ->join('visitas', 'visitantes.id', '=', 'visitas.visitante_id')
+            ->select('visitas.created_at,', 'visitantes.no_visitas')
+            ->where('visitas.created_at', '>', Carbon::now()->subDays(30))
+            ->sum('no_visitas');
+
+        /* cuenta número de salidas*/
+        $data2 = DB::table('visitantes')
+            ->join('visitas', 'visitantes.id', '=', 'visitas.visitante_id')
+            ->select('visitas.created_at,', 'visitantes.no_salidas')
+            ->where('visitas.created_at', '>', Carbon::now()->subDays(30))
+            ->sum('no_salidas');
+
+        /* cuenta número visitantes registrados en la base de datos*/
+        $data3 = DB::table('visitantes')
+            ->join('visitas', 'visitantes.id', '=', 'visitas.visitante_id')
+            ->select('visitas.created_at,')
+            ->where('visitas.created_at', '>', Carbon::now()->subDays(30))
+            ->count();
+
+        /* cuenta número visitantes Activos en la base de datos*/
+        $data4 = DB::table('visitantes')
+            ->join('visitas', 'visitantes.id', '=', 'visitas.visitante_id')
+            ->select('visitantes.estado', 'visitas.created_at')
+            ->where('estado', '=', 'Activo')
+            ->where('visitas.created_at', '>', Carbon::now()->subDays(30))
+            ->count();
+
+        /* cuenta número visitantes Inactivos en la base de datos*/
+        $data5 = DB::table('visitantes')
+            ->join('visitas', 'visitantes.id', '=', 'visitas.visitante_id')
+            ->select('visitantes.estado', 'visitas.created_at')
+            ->where('estado', '=', 'Inactivo')
+            ->where('visitas.created_at', '>', Carbon::now()->subDays(30))
+            ->count();
+
+        /* cuenta la cantidad de sedes visitadas*/
+        $data6 = DB::table('visitas')
+            ->distinct()
+            ->where('visitas.created_at', '>', Carbon::now()->subDays(30))
+            ->count('sede');
+
+        $report = [$data1, $data2, $data3, $data4, $data5, $data6];
+        return response(json_encode($report), 200)->header('Content-type', 'text/plain');
+    }
+
+    public function filter($data)
+    {
         list($inicio, $fin) = explode(",", $data);
-        
+
         /* cuenta visitas-entradas en la base */
         $data1 = DB::table('visitantes')
             ->join('visitas', 'visitantes.id', '=', 'visitas.visitante_id')
             ->select('visitas.created_at,', 'visitantes.no_visitas')
             ->whereBetween('visitas.created_at', [$inicio, $fin])
             ->sum('no_visitas');
-
 
         /* cuenta número de salidas*/
         $data2 = DB::table('visitantes')
@@ -66,9 +114,7 @@ class VisitanteController extends Controller
 
         $report = [$data1, $data2, $data3, $data4, $data5, $data6];
         return response(json_encode($report), 200)->header('Content-type', 'text/plain');
-        
     }
-
     public function create()
     {
         return view('visitantes.create');
