@@ -71,18 +71,6 @@ const loadGraficaDona = () => {
  */
 const generarGraficaDona = (arreglo) => {
 
-    /* var myPieChart = new Chart(ctx, {
-        type: 'pie',
-        data: ['T. Entradas', 'T. Salidas', 'T. Registrados', 'Activos', 'Inactivos', 'Total Áreas Visitadas'],
-        options: options
-    });
-    var myDoughnutChart = new Chart(ctx, {
-        type: 'doughnut',
-        data: data,
-        options: options
-    }); */
-
-
     let ctx = document.getElementById('myChart2').getContext('2d');
     let myChart = new Chart(ctx, {
         type: 'doughnut',
