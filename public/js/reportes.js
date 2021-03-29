@@ -65,7 +65,7 @@ const loadGraficaDona = () => {
             }   
 
             data2.push(arreglo[6]);
-            
+
             console.log(arreglo2)
             console.log(data2)
 
@@ -98,14 +98,17 @@ const generarGraficaDona = (arreglo2) => {
                     'rgba(255, 140, 0)',
                     'rgba(152, 251, 152)',
                     'rgba(188, 143, 143)',
-                    'rgba(255, 140, 0)',
+                    'rgba(146, 43, 33)',
                     'rgba(70, 130, 180 )'
                 ],
-                
             }]
         },
-        
+        options:{
+            rotation: -Math.PI,
+            circumference : Math.PI,
+        },
     });
+    
 }
 
 
