@@ -406,7 +406,7 @@
                     </div>
                     <div class="modal-footer">
                         <div class="col-xs-12 col-sm-12 col-md-12">
-                            <button type="submit" class="btn btn-primary">Guardar</button>
+                            <button type="submit" id="formVisits" class="btn btn-primary">Guardar</button>
                             <a href="{{ route('index')}}" class="btn btn-danger">Cancelar</a>
                         </div>
                     </div>
@@ -431,5 +431,6 @@
     <script src="{{ asset('assets/sweetAlert2/sweetalert2.all.min.js')}}"></script>
     <!-- Scripts -->
     <script src="{{ asset('js/script.js') }}"></script>
+    <script src="{{ asset('js/forms.js') }}"></script>
 
 @endsection
