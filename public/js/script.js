@@ -59,9 +59,12 @@ $(document).ready(function () {
                                 $("#searchText2").val(
                                     $.trim($("#SearchText").val())
                                 );
+
                             }
                         });
+                        
                     }
+                
                 },
             });
         } else {
@@ -487,6 +490,31 @@ const datatableVisitas = (data) => {
                 "sPrevious": "Anterior"
             },
             "sProcessing": "Procesando...",
+        }
+    });
+
+    var checkbox1 = document.getElementById('checkbox1');
+    $("body").on("change", "#checkbox1", function () {
+        var checked = checkbox1.checked;
+        if(checked){
+            
+            return false;
+        }
+    });
+    var checkbox2 = document.getElementById('checkbox2');
+    $("body").on("change", "#checkbox2", function () {
+        var checked = checkbox2.checked;
+        if(checked){
+            
+            return false;
+        }
+    });
+    var checkbox3 = document.getElementById('checkbox3');
+    $("body").on("change", "#checkbox3", function () {
+        var checked = checkbox3.checked;
+        if(checked){
+            
+            return false;
         }
     });
 };
