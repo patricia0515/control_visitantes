@@ -17,6 +17,7 @@ class AppMasterController extends Controller
     public function appmaster()
     {
         try {
+            // dd('dsfds');
             
             //recibimos el crm y el id user
             if (!isset($_GET['crm']) || !isset($_GET['idusuario'])) {
@@ -40,7 +41,7 @@ class AppMasterController extends Controller
                 if (isset($rol)) {
                     
                     // Hacemos la consulta en la tabla usuarios de master_connection
-                    $userAppMaster = UsuarioAppMaster::where('id_usuario', '=', $usuario_id)
+                    $userAppMaster = UsuarioAppMaster::where('id_usuario', '=', $user_id)
                                 ->where('estado', '=', $status_user)
                                 ->first();
 
@@ -61,6 +62,7 @@ class AppMasterController extends Controller
                 // Si no existe el usuario en la tabla user de control de visitas lo creamos
                 if (!isset($user)) {
 
+                    dd('aqui entró');
                     $newUser = new User();
                     $newUser->nombre = $userAppMaster->nombre_usuario . ' ' . $userAppMaster->apellido_usuario;
                     $newUser->numero_documento = $userAppMaster->cedula_usuario;
