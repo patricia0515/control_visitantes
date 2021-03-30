@@ -62,8 +62,9 @@ $(document).ready(function () {
 
                             }
                         });
+                        
                     }
-                  
+                
                 },
             });
         } else {
@@ -458,6 +459,58 @@ const datatableVisitas = (data) => {
                 "sPrevious": "Anterior"
             },
             "sProcessing": "Procesando...",
+        }
+    });
+
+    
+    
+
+    // var checkbox3 = document.getElementById('checkbox3');
+    // var checkbox2 = document.getElementById('checkbox2');
+    // var checkbox1 = document.getElementById('checkbox1');
+    
+    // checkbox3.addEventListener("change", validaCheckbox, false);
+    // checkbox2.addEventListener("change", validaCheckbox, false);
+    // checkbox1.addEventListener("change", validaCheckbox, false);
+    // function validaCheckbox()
+    // {
+    //     var checked = checkbox3.checked;
+    //     var checked = checkbox2.checked;
+    //     var checked = checkbox1.checked;
+    //     if(checked){
+    //         console.log(checked)
+    //         return false;
+          
+    //     }
+    // }
+
+    // 
+    
+    //    function myfunction(){
+
+    //    }
+    var checkbox1 = document.getElementById('checkbox1');
+    $("body").on("change", "#checkbox1", function () {
+        var checked = checkbox1.checked;
+        if(checked){
+            
+            return false;
+        }
+    });
+    var checkbox2 = document.getElementById('checkbox2');
+    $("body").on("change", "#checkbox2", function () {
+        var checked = checkbox2.checked;
+        if(checked){
+            
+            return false;
+        }
+    });
+    var checkbox3 = document.getElementById('checkbox3');
+    $("body").on("change", "#checkbox3", function () {
+        var checked = checkbox3.checked;
+        if(checked){
+            
+            return false;
         }
     });
 };
