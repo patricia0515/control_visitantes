@@ -229,8 +229,8 @@ $(document).ready(function () {
             $("#inputserial").hide('slow');
             $("#inputserial").val('');
         } else {
-            $("#textserial").show('slow');
-            $("#inputserial").show('slow');
+            $("#textserial").show();
+            $("#inputserial").show();
         }
     });
 
