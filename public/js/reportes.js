@@ -97,6 +97,8 @@ const generarGraficaDona = (arreglo2) => {
         options:{
             rotation: -Math.PI,
             circumference : Math.PI,
+            responsive: true,
+            maintainAspectRatio: false
         },
     });
     
