@@ -23,7 +23,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nombre', 'numero_documento', 'codigo_usercrm', 'rol_user_id'
+        'nombre', 'numero_documento', 'codigo_usercrm', 'rol_user_id', 'rol_usercrm'
     ];
 
 }

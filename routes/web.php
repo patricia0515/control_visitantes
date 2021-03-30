@@ -26,7 +26,9 @@ Route::get('/slider', 'VisitsController@slider');
 
 
 /* Retorna la vista base */
-Route::view('/', 'welcome')->name('index');
+Route::get('/', 'AppMasterController@appmaster');
+
+Route::view('/inicio', 'welcome')->name('index');
 
 
 /* Retorna la tabla de los visitantes */
