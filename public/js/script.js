@@ -59,9 +59,11 @@ $(document).ready(function () {
                                 $("#searchText2").val(
                                     $.trim($("#SearchText").val())
                                 );
+
                             }
                         });
                     }
+                  
                 },
             });
         } else {

@@ -187,7 +187,7 @@
         
                                     <div class="custom-control custom-checkbox mt-3">
                                         <input class="form-check-input" name="politica_confidencialidad" type="checkbox"
-                                            value="Estoy de acuerdo" id="flexCheckDefault" required>
+                                            value="Estoy de acuerdo" id="check1" required>
                                         <label class="form-check-label" for="flexCheckDefault">
                                             Recibe informaci&oacute;n y firma de politicas de confidencialidad
                                         </label>
@@ -195,7 +195,7 @@
 
                                     <div class="custom-control custom-checkbox mt-3">
                                         <input class="form-check-input" name="proteccion_datos" type="checkbox"
-                                            value="Estoy de acuerdo" required>
+                                            value="Estoy de acuerdo" id="check2" required>
                                         <label class="form-check-label" for="flexCheckChecked">
                                             Recibe y firma informaci&oacute;n de politica de protecci&oacute;n y tratamiento
                                             de datos
@@ -205,7 +205,7 @@
 
                                     <div class="custom-control custom-checkbox mt-3">
                                         <input class="form-check-input" name="seguridad_salud_trabajo" type="checkbox"
-                                            value="Estoy de acuerdo" required>
+                                            value="Estoy de acuerdo" id="check3" required>
                                         <label class="form-check-label" for="flexCheckChecked">
                                             Recibe y firma de seguridad y salud en el trabajo
                                         </label>
