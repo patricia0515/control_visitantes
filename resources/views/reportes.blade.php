@@ -1,10 +1,10 @@
 @extends('layouts.plantilla')
 
 @section('content')
+<br>
 <h2>CONTROL DE ACCESO VISITANTES SUPERVISOR</h2>
 <br>
 
-<br>
 <div class="container">
     <div class="row">
         <div class="col-6">
@@ -17,24 +17,22 @@
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Previous</span>
                             </button>
-    
+
                             <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Next</span>
                             </button>
-    
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
-                
         <div class="col-6">
             <!--Card-->
             <div class="card mb-4">
                 <!--Card content FORMULARIO EXCEL-->
-                <div class="card-body">
+                <div class="card-body ">
 
                     <div class="excel">
                         <form action="{{ route('visitas.excel')}}" method="POST">
@@ -97,34 +95,40 @@
                 </div>
             </div>
         </div>
-        {{--  Grafica  --}}
-        <div class="col-6">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <h3>Reporte Ultimos 30 días Visitas</h3>
-                        <div class="graficaDona">
-                            <canvas id="myChart2" width="400" height="400"></canvas>  
+        <br>
+
+        <div class="row">
+            {{--  Grafica  --}}
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <h5 class="text-center">Reporte Ultimos 30 días Visitas</h5>
+                            <div class="graficaDona">
+                                <canvas id="myChart2" width="400" height="570"></canvas>  
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <br>
+            </div>
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="graficabarras">
+                                <canvas id="myChart" width="400" height="400"></canvas>  
+                            </div>
                         </div>
                     </div>
-                    
                 </div>
             </div>
             <br>
         </div>
-        <div class="col-6">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="graficabarras">
-                            <canvas id="myChart" width="400" height="400"></canvas>  
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
+        <br>
     </div>
+    <br>
 </div>
 @endsection
 @section('script')
