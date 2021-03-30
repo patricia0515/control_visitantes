@@ -476,33 +476,6 @@ const datatableVisitas = (data) => {
         }
     });
 
-    
-    
-
-    // var checkbox3 = document.getElementById('checkbox3');
-    // var checkbox2 = document.getElementById('checkbox2');
-    // var checkbox1 = document.getElementById('checkbox1');
-    
-    // checkbox3.addEventListener("change", validaCheckbox, false);
-    // checkbox2.addEventListener("change", validaCheckbox, false);
-    // checkbox1.addEventListener("change", validaCheckbox, false);
-    // function validaCheckbox()
-    // {
-    //     var checked = checkbox3.checked;
-    //     var checked = checkbox2.checked;
-    //     var checked = checkbox1.checked;
-    //     if(checked){
-    //         console.log(checked)
-    //         return false;
-          
-    //     }
-    // }
-
-    // 
-    
-    //    function myfunction(){
-
-    //    }
     var checkbox1 = document.getElementById('checkbox1');
     $("body").on("change", "#checkbox1", function () {
         var checked = checkbox1.checked;
