@@ -12,7 +12,7 @@ class VisitanteController extends Controller
 {
     public function index()
     {
-        $visitantes = Visitante::orderBy('created_at', 'desc')->get();
+        $visitantes = Visitante::all();
         return $visitantes->toArray();
     }
 
@@ -69,10 +69,6 @@ class VisitanteController extends Controller
         return response(json_encode($report), 200)->header('Content-type', 'text/plain');
     }
 
-
-
-
-    
     public function filter($data)
     {
         list($inicio, $fin) = explode(",", $data);
