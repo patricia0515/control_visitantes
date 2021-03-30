@@ -53,30 +53,20 @@ const loadBanner = () => {
  */
 
 const loadGraficaDona = () => {
-    let arreglo2 =[];
-    let data2 =[];
+    let arreglo2 = [];
+    let data2 = [];
     $.get("/lastDays", (data) => {
-            console.log(data)
-            let arreglo = JSON.parse(data);
-            console.log(arreglo)
 
-            for(x=0;x<6;x++){
-                arreglo2.push(arreglo[x]);
-            }   
-
-            data2.push(arreglo[6]);
-
-            console.log(arreglo2)
-            console.log(data2)
-
-            $("#num_personas").val(data2);
-
-            generarGraficaDona(arreglo2)
+        let arreglo = JSON.parse(data);
+        for (let x = 0; x < 6; x++) {
+            arreglo2.push(arreglo[x]);
+        }
+        
+        data2.push(arreglo[6]);
+        $("#num_personas").val(data2);
+        generarGraficaDona(arreglo2)
     });
 }
-
-
-
 /**
  * Realiza la carga
  * de los datos en la Dona
@@ -84,7 +74,6 @@ const loadGraficaDona = () => {
  * @return void
  */
 const generarGraficaDona = (arreglo2) => {
-
     let ctx = document.getElementById('myChart2').getContext('2d');
     let myChart = new Chart(ctx, {
         type: 'doughnut',
@@ -94,21 +83,23 @@ const generarGraficaDona = (arreglo2) => {
                 label: 'Control Acceso Visitantes Ultimos 30 Días',
                 data: arreglo2,
                 backgroundColor: [
-                    'rgba(255, 105, 180)',
-                    'rgba(255, 140, 0)',
-                    'rgba(152, 251, 152)',
-                    'rgba(188, 143, 143)',
-                    'rgba(146, 43, 33)',
-                    'rgba(70, 130, 180 )'
-                ],
+                    'rgba(84, 111, 123, 1)',
+                    'rgba(8, 170, 104, 1)',
+                    'rgba(254, 208, 51, 1)',
+                    'rgba(254, 97, 58, 1)',
+                    'rgba(252, 69, 72, 1)',
+                    'rgba(132, 68, 243, 1)'
+                ]
             }]
         },
-        options:{
+        options: {
             rotation: -Math.PI,
-            circumference : Math.PI,
+            circumference: Math.PI,
+            responsive: true,
+            maintainAspectRatio: false
         },
     });
-    
+
 }
 
 
@@ -152,20 +143,20 @@ const generarGrafica = (arreglo) => {
                 label: 'Control Acceso Visitantes',
                 data: arreglo,
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
+                    'rgba(84, 111, 123, 0.2)',
+                    'rgba(8, 170, 104, 0.2)',
+                    'rgba(254, 208, 51, 0.2)',
+                    'rgba(254, 97, 58, 0.2)',
+                    'rgba(252, 69, 72, 0.2)',
+                    'rgba(132, 68, 243, 0.2)'
                 ],
                 borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
+                    'rgba(84, 111, 123, 1)',
+                    'rgba(8, 170, 104, 1)',
+                    'rgba(254, 208, 51, 1)',
+                    'rgba(254, 97, 58, 1)',
+                    'rgba(252, 69, 72, 1)',
+                    'rgba(132, 68, 243, 1)'
                 ],
                 borderWidth: 1
             }]
