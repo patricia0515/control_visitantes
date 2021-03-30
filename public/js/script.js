@@ -342,10 +342,20 @@ const dataTableVisitor = (data) => {
         //Datos
         data: data,
 
+        // Responsive
         responsive: true,
+
+        // Ordenar por la primera columna
+        aaSorting: [[ 0, "desc" ]],
+
+        // Ocultar columna
+        columnDefs: [
+            { "visible": false, "targets": 0 }
+        ],
 
         // Columnas que estan el la tabla
         columns: [
+            { data: "created_at"},
             { data: "no_visitas" },
             { data: "empresa" },
             { data: "nombre" },
@@ -354,6 +364,7 @@ const dataTableVisitor = (data) => {
             { data: "rh" },
             { data: "eps" },
             { data: "documento" },
+            
         ],
 
         //Para cambiar el lenguaje a español
@@ -406,9 +417,12 @@ const datatableVisitas = (data) => {
 
         columnDefs: [
             { responsivePriority: 1, targets: 0 },
-            { responsivePriority: 2, targets: -1 }
-
+            { responsivePriority: 2, targets: -1 },
+         
         ],
+
+        // Ordenar por la columna
+        aaSorting: [[ 0, "desc" ]],
 
         // Columnas que estan en la tabla
         columns: [
@@ -443,7 +457,7 @@ const datatableVisitas = (data) => {
                     "<div class='text-center'><button class='btn btn-danger btnImagen' style='background-color: #c31f1e;'><i class='fas fa-eye'></i></button></div>",
             },
         ],
-
+     
         //Para cambiar el lenguaje a español
         "language": {
             "lengthMenu": "Mostrar _MENU_ registros",
