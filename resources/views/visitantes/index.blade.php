@@ -9,6 +9,7 @@
                         <table id="tableVisitor" class="table table-hover table-borderless display responsive no-wrap" style="width:100%">
                             <thead class="text-center">
                                 <tr>
+                                    <th></th>
                                     <th>Visitas</th>
                                     <th>Empresa</th>
                                     <th>Nombre</th>
