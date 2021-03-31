@@ -52,7 +52,7 @@ class AppMasterController extends Controller
                             ->first();
 
                         if (!isset($user)) {
-                            $user = User::where('rol_usercrm', '<=>', $rol->numero_rol)
+                            $user = User::where('rol_usercrm', '<>', $rol->numero_rol)
                                 ->update([
                                     'rol_usercrm' => $rol->numero_rol,
                                 ]);
