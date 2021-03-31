@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
+
 class RolSeeder extends Seeder
 {
     /**
@@ -10,7 +11,7 @@ class RolSeeder extends Seeder
      * @return void
      */
     public function run()
-    {   
+    {
         DB::table('roles')->insert([
             'name' => 'Recepción'    
         ]);
