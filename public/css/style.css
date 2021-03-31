@@ -297,11 +297,29 @@
     color: #848484;
 }
 
+
+
+/* Estilos jquery-validation */
+.error {
+    color: #ee1c1c;
+    font-size: 1rem;
+    display: block;
+    margin-top: 5px;
+}
+
+input.error {
+    border: 1px dashed #ee1c1c;
+    font-weight: 300;
+    color: #ee1c1c;
+}
+
+
 /* estilos imagen miniatura */
 
 #miniaturaimg{
     border-radius: 7px;
 }
+
 #footer {
     position:fixed;
     left:0px;
@@ -311,6 +329,7 @@
     background:#c31f1e;
     padding: 0px 0px 0px 0px;
 }
+
 .texto{
     color: #ffffff;
 }
