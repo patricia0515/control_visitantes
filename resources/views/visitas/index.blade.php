@@ -9,7 +9,7 @@
                         <table id="tableVisitas" class="table  table-hover table-borderless display responsive no-wrap" style="width:100%">
                             <thead class="text-center">
                                 <tr>
-                                    <th data-priority="1">ID</th>
+                                    <th data-priority="1">#</th>
                                     <th>Cantidad</th>
                                     <th data-priority="1">C&eacute;dula</th>
                                     <th data-priority="1">Fecha</th>

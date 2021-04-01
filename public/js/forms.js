@@ -1,13 +1,16 @@
-//validacion formulario visitas
+//validacion campo file formulario visitas
 
-function validate() {
-    let file = document.getElementById('visitante_id').value;
+function validateFile() {
+    let fileInput, fileRoute, fileType;
 
-    if (file.lenght > 0 || file.lenght == '') {
-        alert('Debes de seleccionar un archivo que sea tipo imagen.');
+    fileInput = document.getElementById('imputimg');
+    fileRoute = fileInput.value;
+    fileType = /(.JPG|.JPEG|.PNG|.GIF)$/i;
+
+    if (!fileType.exec(fileRoute)) {
+        alert('Recuerda que el archivo debe de ser una imagen.');
+        fileInput.value = '';
         return false;
     }
-    return true;
-}
 
-// return true;
+}

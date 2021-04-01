@@ -22,8 +22,8 @@ class AppMasterController extends Controller
             //recibimos el crm y el id user
             if (!isset($_GET['crm']) || !isset($_GET['idusuario'])) {
 
-
                 return abort('404');
+
             } else {
 
                 // creamos las variables con los datos
@@ -36,7 +36,7 @@ class AppMasterController extends Controller
                     ->where('id_modulo', '=', $crm)
                     ->first();
 
-
+    
                 // Si existe o la consulta devuleve valor entra al if
                 if (isset($rol)) {
 
@@ -44,18 +44,17 @@ class AppMasterController extends Controller
                     $userAppMaster = UsuarioAppMaster::where('id_usuario', '=', $user_id)
                         ->where('estado', '=', $status_user)
                         ->first();
-
+                   
+                    
                     // Si existe o la consulta devuleve valor entra al if
                     if (isset($userAppMaster)) {
 
                         $user = User::where('codigo_usercrm',  $rol->id_usuario)
                             ->first();
-
-                        if (!isset($user)) {
-                            $user = User::where('rol_usercrm', '<>', $rol->numero_rol)
-                                ->update([
-                                    'rol_usercrm' => $rol->numero_rol,
-                                ]);
+                      
+                        if (isset($user)) {
+                            $user = User::where('rol_usercrm', '!=', $rol->numero_rol)
+                                ->update(['rol_usercrm' => $rol->numero_rol]);
                         }
                     } else {
                         return abort('404');
@@ -81,11 +80,11 @@ class AppMasterController extends Controller
                 // Creamos un switch para devolver la vista que corresponda al rol 
                 switch ($rolUser) {
                     case '1':
-                        return view('reportes', compact('idusuario', 'crm'));
+                        return view('welcome', compact('user_id', 'crm'));
                         break;
 
                     case '2':
-                        return view('welcome', compact('idusuario', 'crm'));
+                        return view('reportes', compact('user_id', 'crm'));
                         break;
 
                     default:

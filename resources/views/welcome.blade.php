@@ -370,7 +370,7 @@
 
                                 <div class="input-group mt-3">
                                     <input type="file" class="form-control hideClass" id="imputimg" name="files"
-                                        aria-describedby="inputGroupFileAddon04" aria-label="Upload" accept="image/*">
+                                        aria-describedby="inputGroupFileAddon04" aria-label="Upload" accept="image/*" onchange=" validateFile()">
                                 </div>
 
                                 <!-- Miniatura de la imagen al seleccionarla -->
