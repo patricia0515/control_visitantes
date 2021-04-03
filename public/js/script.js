@@ -17,56 +17,67 @@ $(document).ready(function () {
         // variables
         let visitor_number = $.trim($("#SearchText").val());
         let token = $("meta[name='csrf-token']").attr("content");
-
+        const regex = /^[0-9]{8,20}$/
         // boton para ver visitate
         $("#btnViewUser").hide();
 
+
         /* si la variable no viene vacia ejecuta la petición ajax =se la asignamos a "id" */
         if (visitor_number) {
-            $.ajax({
-                type: "GET",
-                url: `/visitantes/${visitor_number}`,
-                data: {
-                    id: visitor_number,
-                    _token: token,
-                },
-                /* si la respuesta es correcta, trajo un dato sin errores,  */
-                success: function (response) {
-                    /* si la respuesta no viene vacia muestra el boton del ojito */
-                    if (response.length) {
-                        $("#idVistanteHidden").val(response[0].id);
-                        $("#btnViewUser").show();
-                        // Mensaje informativo para el usuario
-                        Toast.fire({
-                            type: "success",
-                            title: "El visitante ha sido ¡Encontrado!",
-                        });
-                    } else {
-                        $("#btnViewUser").hide();
-                        // Mensaje informativo para el usuario
-                        Swal.fire({
-                            type: "error",
-                            title: "Error",
-                            text: "El usuario no se encuentra registrado",
-                            showCancelButton: true,
-                            confirmButtonText: `Registrar!`,
-                        }).then((result) => {
-                            if (result.value) {
-                                $("#modalCreateTitle").html(
-                                    "Registro de nuevo visitante"
-                                );
-                                $("#modalCreate").modal("show");
-                                $("#searchText2").val(
-                                    $.trim($("#SearchText").val())
-                                );
+            // validamos la expresion regular
+            if (regex.test(visitor_number)) {
+                $.ajax({
+                    type: "GET",
+                    url: `/visitantes/${visitor_number}`,
+                    data: {
+                        id: visitor_number,
+                        _token: token,
+                    },
+                    /* si la respuesta es correcta, trajo un dato sin errores,  */
+                    success: function (response) {
+                        /* si la respuesta no viene vacia muestra el boton del ojito */
+                        if (response.length) {
+                            $("#idVistanteHidden").val(response[0].id);
+                            $("#btnViewUser").show();
+                            // Mensaje informativo para el usuario
+                            Toast.fire({
+                                type: "success",
+                                title: "El visitante ha sido ¡Encontrado!",
+                            });
+                        } else {
+                            $("#btnViewUser").hide();
+                            // Mensaje informativo para el usuario
+                            Swal.fire({
+                                type: "error",
+                                title: "Error",
+                                text: "El usuario no se encuentra registrado",
+                                showCancelButton: true,
+                                confirmButtonText: `Registrar!`,
+                                confirmButtonColor: '#c31f1e',
+                                cancelButtonColor: '#6c747e',
+                            }).then((result) => {
+                                if (result.value) {
+                                    $("#modalCreateTitle").html(
+                                        "Registro de nuevo visitante"
+                                    );
+                                    $("#modalCreate").modal("show");
+                                    $("#searchText2").val(
+                                        $.trim($("#SearchText").val())
+                                    );
+                                }
+                            });
+                        }
+                    },
+                });
 
-                            }
-                        });
-                        
-                    }
-                
-                },
-            });
+            } else {
+                // Mensaje informativo para el usuario
+                Toast.fire({
+                    type: "error",
+                    title: `Digitos: ${visitor_number.length}, debes ingresar un número válido entre 8 y 20 digitos. `,
+                });
+                document.getElementById("SearchText").style.borderColor = "#ed7677";
+            }
         } else {
             // Mensaje informativo para el usuario
             Toast.fire({
@@ -346,7 +357,7 @@ const dataTableVisitor = (data) => {
         responsive: true,
 
         // Ordenar por la primera columna
-        aaSorting: [[ 0, "desc" ]],
+        aaSorting: [[0, "desc"]],
 
         // Ocultar columna
         columnDefs: [
@@ -355,7 +366,7 @@ const dataTableVisitor = (data) => {
 
         // Columnas que estan el la tabla
         columns: [
-            { data: "created_at"},
+            { data: "created_at" },
             { data: "no_visitas" },
             { data: "empresa" },
             { data: "nombre" },
@@ -364,7 +375,7 @@ const dataTableVisitor = (data) => {
             { data: "rh" },
             { data: "eps" },
             { data: "documento" },
-            
+
         ],
 
         //Para cambiar el lenguaje a español
@@ -386,23 +397,6 @@ const dataTableVisitor = (data) => {
     });
 };
 
-/**
- * Vizualizar la imagen en miniatura
- */
-//  function readImg(input) {
-//     if (input.files[0]) { 
-//       var reader = new FileReader(); 
-      
-//       reader.onload = function(e) { 
-//         $('#miniaturaimg').attr('src', e.target.result);
-//         // console.log(e.target);
-//       }
-//       reader.readAsDataURL(input.files[0]);
-//     } 
-//   }
-//   $("#imputimg").change(function() { 
-//     readImg(this);
-//   });
 
 /**
  * Captura los datos para
@@ -435,11 +429,11 @@ const datatableVisitas = (data) => {
         columnDefs: [
             { responsivePriority: 1, targets: 0 },
             { responsivePriority: 2, targets: -1 },
-         
+
         ],
 
         // Ordenar por la columna
-        aaSorting: [[ 0, "desc" ]],
+        aaSorting: [[0, "desc"]],
 
         // Columnas que estan en la tabla
         columns: [
@@ -474,7 +468,7 @@ const datatableVisitas = (data) => {
                     "<div class='text-center'><button class='btn btn-danger btnImagen' style='background-color: #c31f1e;'><i class='fas fa-eye'></i></button></div>",
             },
         ],
-     
+
         //Para cambiar el lenguaje a español
         "language": {
             "lengthMenu": "Mostrar _MENU_ registros",
@@ -493,29 +487,29 @@ const datatableVisitas = (data) => {
         }
     });
 
-    var checkbox1 = document.getElementById('checkbox1');
-    $("body").on("change", "#checkbox1", function () {
-        var checked = checkbox1.checked;
-        if(checked){
-            
-            return false;
-        }
-    });
-    var checkbox2 = document.getElementById('checkbox2');
-    $("body").on("change", "#checkbox2", function () {
-        var checked = checkbox2.checked;
-        if(checked){
-            
-            return false;
-        }
-    });
-    var checkbox3 = document.getElementById('checkbox3');
-    $("body").on("change", "#checkbox3", function () {
-        var checked = checkbox3.checked;
-        if(checked){
-            
-            return false;
-        }
-    });
+    // var checkbox1 = document.getElementById('checkbox1');
+    // $("body").on("change", "#checkbox1", function () {
+    //     var checked = checkbox1.checked;
+    //     if(checked){
+
+    //         return false;
+    //     }
+    // });
+    // var checkbox2 = document.getElementById('checkbox2');
+    // $("body").on("change", "#checkbox2", function () {
+    //     var checked = checkbox2.checked;
+    //     if(checked){
+
+    //         return false;
+    //     }
+    // });
+    // var checkbox3 = document.getElementById('checkbox3');
+    // $("body").on("change", "#checkbox3", function () {
+    //     var checked = checkbox3.checked;
+    //     if(checked){
+
+    //         return false;
+    //     }
+    // });
 };
 

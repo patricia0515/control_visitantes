@@ -42,7 +42,7 @@
                 <h2>Sistema control de visitas</h2>
             </div>
         </div>
-
+        
         <!-- menu -->
         <div class="menu">
             <div class="menu-header">
@@ -53,20 +53,24 @@
                 <div class="menu-option-title">
                     <h4>navegaci&oacute;n</h4>
                 </div>
+                {{--  valida la ruta para deshabilitar el link  --}}
                 <ul class="menu-list">
-                    <li><a class="none"href="{{ route('index')}}"><i class="cont-icons fas fa-home"></i>inicio</a></li>
-                    <li><a class="none"href="{{ route('visitor')}}"><i class="cont-icons fas fa-book-open"></i>visitantes</a></li>
-                    <li><a class="none"href="{{ route('visits')}}"><i class="cont-icons fas fa-book"></i>registros visitas</a></li>
+                    
+                    <li><a class="nav-link  {{ request()->is('inicio') ? 'disabled' : 'active' }} "href="{{ route('index')}}"><i class="cont-icons fas fa-home"></i>inicio</a></li>
+                    <li><a class="nav-link {{ request()->is('visitor') ? 'disabled' : 'active' }} "href="{{ route('visitor')}}"><i class="cont-icons fas fa-book-open"></i>visitantes</a></li>
+                    <li><a class="nav-link {{ request()->is('visits') ? 'disabled' : 'active' }} "href="{{ route('visits')}}"><i class="cont-icons fas fa-book"></i>registros visitas</a></li>
                 </ul>
             </div>
             <input type="hidden" name="">
         </div> 
+        
 
         <!-- content -->   
         <div class="content">
             <div class="card-hero">
             
                 @yield('content')
+
 
             </div>
         </div>

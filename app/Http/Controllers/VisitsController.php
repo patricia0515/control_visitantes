@@ -24,16 +24,19 @@ class VisitsController extends Controller
                 'visitantes.documento AS documentoVisitante',
                 'visitantes.no_visitas AS cantidadVisitas'
             )
+            ->orderBy('visitas.id', 'desc')
             ->get();
+
         return $visitas->toArray();
     }
 
-    public function slider() {
+    public function slider()
+    {
         $fotos = Visits::select('img_vehiculo')
-                    ->wherenotNull('img_vehiculo')
-                    ->latest()
-                    ->take(5)
-                    ->get();
+            ->wherenotNull('img_vehiculo')
+            ->latest()
+            ->take(5)
+            ->get();
 
         return $fotos->toArray();
     }
