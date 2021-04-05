@@ -253,7 +253,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalRegisterVisitTitle"></h5>
                 </div>
-                <form name="departmentForm" id="departments" action="{{ route('visitas.store') }}" method="POST"
+                <form name="visitsForm" id="visitsForm" action="{{ route('visitas.store') }}" method="POST"
                     enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
@@ -367,7 +367,7 @@
 
                                 <div class="input-group mt-3">
                                     <input type="file" class="form-control hideClass" id="imputimg" name="files"
-                                        aria-describedby="inputGroupFileAddon04" aria-label="Upload" accept="image/*">
+                                        aria-describedby="inputGroupFileAddon04" aria-label="Upload" accept="image/*" onchange=" validateFile()">
                                 </div>
 
                                 <!-- Miniatura de la imagen al seleccionarla -->

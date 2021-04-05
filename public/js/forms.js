@@ -53,7 +53,7 @@ $(document).ready(function () {
             }
 
         },
-        messages : {
+        messages: {
             empresa: {
                 required: "Por favor introduzca una empresa.",
                 minlength: "Por favor introduzca al menos 3 caracteres."
@@ -67,7 +67,7 @@ $(document).ready(function () {
                 minlength: "Por favor introduzca al menos 3 caracteres."
             },
             contacto: {
-                required: "Por favor introduzca un télefono.", 
+                required: "Por favor introduzca un télefono.",
                 number: "Por favor ingrese un número valido.",
             },
             rh: {
@@ -88,23 +88,118 @@ $(document).ready(function () {
                 required: "Este campo es requerido."
             }
         },
-        submitHandler: function(form) {
+        submitHandler: function (form) {
             form.submit();
         }
     });
 
+    // Validacion formulario visitas
+
+    $('#visitsForm').validate({
+
+        rules: {
+            reg_pertenencias: {
+                required: true,
+            },
+            serial: {
+                minlength: 3,
+            },
+            descripcion: {
+                required: true,
+                minlength: 10,
+            },
+            motivo: {
+                required: true,
+            },
+            sede: {
+                required: true,
+            },
+            tip_visitante: {
+                required: true,
+            },
+            visita: {
+                required: true,
+                minlength: 3,
+            },
+            resp_visita: {
+                required: true,
+                minlength: 3,
+            },
+            reg_vehiculo: {
+                required: true,
+                minlength: 10,
+            },
+            vehiculo: {
+                required: true,
+            },
+            files: {
+                accept: 'imagen/*',
+                extension: 'JPG|JPEG|PNG|GIF',
+            },
+        },
+
+        messages: {
+            reg_pertenencias: {
+                required: "Por favor seleccione una pertenencia.",
+            },
+            serial: {
+                minlength: "Por favor introduzca al menos 3 caracteres.",
+            },
+            descripcion: {
+                required: "Por favor introduzca una descripción.",
+                minlength: "Por favor introduzca al menos 10 caracteres.",
+            },
+            motivo: {
+                required: "Por favor introduzca una motivo.",
+            },
+            sede: {
+                required: "Por favor seleccione una sede.",
+            },
+            tip_visitante: {
+                required: "Por favor seleccione el tipo de visitante.",
+            },
+            visita: {
+                required: "Por favor introduzca la visita.",
+                minlength: "Por favor introduzca al menos 3 caracteres.",
+            },
+            resp_visita: {
+                required: "Por favor introduzca el responsable de la visita.",
+                minlength: "Por favor introduzca al menos 3 caracteres.",
+            },
+            reg_vehiculo: {
+                required: "Por favor introduzca un registro del vehiculo.",
+                minlength: "Por favor introduzca al menos 10 caracteres.",
+            },
+            vehiculo: {
+                required: "Por favor seleccione si tiene vehiculo.",
+            },
+            files: {
+                accept: "Solo se aceptan archivos tipo imagen",
+                extension: "la imegen debe de tener extension jpg, jpeg, png o gif",
+            },
+            submitHandler: function (form) {
+                form.submit();
+            }
+        },
+    });
+
 });
 
-//validacion formulario visitas
 
-function validate() {
-    let file = document.getElementById('visitante_id').value;
 
-    if (file.lenght > 0 || file.lenght == '') {
-        alert('Debes de seleccionar un archivo que sea tipo imagen.');
+// validacion campo file en el formulario visitas
+
+function validateFile() {
+    let fileInput, fileRoute, fileType;
+
+    fileInput = document.getElementById('imputimg');
+    fileRoute = fileInput.value;
+    fileType = /(.JPG|.JPEG|.PNG|.GIF)$/i;
+
+    if (!fileType.exec(fileRoute)) {
+        alert('Recuerda que el archivo debe de ser una imagen.');
+        fileInput.value = '';
         return false;
     }
-    return true;
-}
 
-// return true;
+}
