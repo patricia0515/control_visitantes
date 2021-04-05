@@ -47,34 +47,34 @@
                 </div>
                 <div class="modal-body">
                     <div class="container">
-                        <form action="{{ route('visitantes.store')}}" method="POST">
+                        <form id="basic-form" action="{{ route('visitantes.store') }}" method="POST">
                             @csrf
                             <div class="row">
                                 <div class="col">
                                     <div class="card-body">
                                         <div class="row form-group mt-2">
                                             <label for="empresa" class="col-2">Empresa:</label>
-                                            <input type="text" name="empresa" class="form-control col-md-9" required>
+                                            <input type="text" name="empresa" id="empresa" class="form-control col-md-9" required>
                                         </div>
 
                                         <div class="row form-group mt-2">
                                             <label for="nombre" class="col-2">Nombre:</label>
-                                            <input type="text" name="nombre" class="form-control col-md-9" required>
+                                            <input type="text" name="nombre" id="nombre" class="form-control col-md-9" required>
                                         </div>
 
                                         <div class="row form-group mt-2">
                                             <label for="apellido" class="col-2">Apellido:</label>
-                                            <input type="text" name="apellido" class="form-control col-md-9" required>
+                                            <input type="text" name="apellido" id="apellido" class="form-control col-md-9" required>
                                         </div>
 
                                         <div class="row form-group mt-2">
                                             <label for="contacto">Tel&eacute;fono de emergencia:</label>
-                                            <input type="number" name="contacto" class="form-control col-md-9" required>
+                                            <input type="text" name="contacto" id="telefono" class="form-control col-md-9" required>
                                         </div>
 
                                         <div class="row form-group mt-2">
-                                            <label for="" class="col-2">RH:</label>
-                                            <select name="rh" required value="{{old('rh')}}" class="form-control">
+                                            <label for="rh" class="col-2">RH:</label>
+                                            <select name="rh" class="form-control" id="rh" required >
                                                 <option disabled selected>Seleccione...</option>
                                                 <option>A+</option>
                                                 <option>A-</option>
@@ -89,7 +89,7 @@
 
                                         <div class="row form-group mt-2">
                                             <label for="eps" class="col-2">EPS:</label>
-                                            <select name="eps" required value="{{old('eps')}}" class="form-control">
+                                            <select name="eps" class="form-control" id="eps" required >
                                                 <option value="" disabled selected>Seleccione...</option>
                                                 <option value="Colisalud">Colisalud</option>
                                                 <option value="Caprecom">Caprecom</option>
@@ -138,9 +138,8 @@
                                                 <option value="Colseguros">Colseguros</option>
                                                 <option value="Comfenalco">Comfenalco</option>
                                                 <option
-                                                    value="EPS_Servicio_Occidental_de_Salud EPS Servicio Occidental de Salud">
-                                                    EPS
-                                                    Servicio Occidental de Salud</option>
+                                                    value="EPS_Servicio_Occidental_de_Salud">
+                                                    EPS Servicio Occidental de Salud</option>
                                                 <option value="EPS_Risaralda_Ltda_En_Liquidacion">EPS Risaralda Ltda. En
                                                     Liquidación
                                                 </option>
@@ -157,8 +156,7 @@
 
                                         <div class="row form-group mt-2">
                                             <label for="t_visita">Tipo de visitante:</label>
-                                            <select name="t_visita" required value="{{old('t_visita')}}"
-                                                class="form-control">
+                                            <select name="t_visita" class="form-control" id="t_visita" required>
                                                 <option value="" disabled selected>Seleccione...</option>
                                                 <option value="Contratista">Contratista</option>
                                                 <option value="Proveedor">Proveedor</option>
@@ -171,10 +169,11 @@
                                             <input type="text" id="searchText2" name="documento" class="form-control col-md-9"
                                                 readonly>
                                         </div>
+                                        
                                         <div class="modal-footer">
                                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                                <button type="submit" class="btn btn-primary">Guardar</button>
-                                                <a href="" class="btn btn-danger">Cancelar</a>
+                                                <button type="submit" class="btn texto" style="background-color: #c31f1e;">Guardar</button>
+                                                <a href="" class="btn texto" style="background-color: #6c747e;">Cancelar</a>
                                             </div>
                                         </div>
                                         <br>
@@ -182,35 +181,33 @@
                                 </div>
                                 <div class="col">
                                     <div class="text-center">
-                                        <img src="imagenes/logo.png" alt="" width="200px" height="200px">
+                                        <img src="imagenes/logo.png" alt="logo-imagen" width="200px" height="200px">
                                     </div>
         
                                     <div class="custom-control custom-checkbox mt-3">
-                                        <input class="form-check-input" name="politica_confidencialidad" type="checkbox"
-                                            value="Estoy de acuerdo" id="checkbox1" required>
                                         <label class="form-check-label" for="flexCheckDefault">
+                                            <input class="form-check-input" name="politica_confidencialidad" type="checkbox"
+                                            value="Estoy de acuerdo" id="checkbox1">
                                             Recibe informaci&oacute;n y firma de politicas de confidencialidad
-                                        </label>
+                                        </label> 
                                     </div>
 
                                     <div class="custom-control custom-checkbox mt-3">
-                                        <input class="form-check-input" name="proteccion_datos" type="checkbox"
-                                            value="Estoy de acuerdo" id="checkbox2" required>
                                         <label class="form-check-label" for="flexCheckChecked">
-                                            Recibe y firma informaci&oacute;n de politica de protecci&oacute;n y tratamiento
-                                            de datos
+                                            <input class="form-check-input" name="proteccion_datos" type="checkbox"
+                                            value="Estoy de acuerdo" id="checkbox2" required>
+                                            Recibe y firma informaci&oacute;n de politica de protecci&oacute;n y tratamiento de datos
                                             personales
                                         </label>
                                     </div>
 
                                     <div class="custom-control custom-checkbox mt-3">
-                                        <input class="form-check-input" name="seguridad_salud_trabajo" type="checkbox"
-                                            value="Estoy de acuerdo" id="checkbox3" required>
                                         <label class="form-check-label" for="flexCheckChecked">
+                                            <input class="form-check-input" name="seguridad_salud_trabajo" type="checkbox"
+                                            value="Estoy de acuerdo" id="checkbox3" required>
                                             Recibe y firma de seguridad y salud en el trabajo
                                         </label>
                                     </div>
-                                    <br>
                                 </div>
                             </div>
                         </form>
@@ -219,7 +216,7 @@
             </div>
         </div>
     </div>
-    </div>
+   
 
     <!-- Show user modal -->
     <div class="modal fade" id="modalShowUser" data-bs-backdrop="static" data-bs-keyboard="false" tapindex="-1"
@@ -246,7 +243,7 @@
             </div>
         </div>
     </div>
-    </div>
+
 
     <!-- modal create visit -->
     <div class="modal fade" id="modalRegisterVisit" data-bs-backdrop="static" data-bs-keyboard="false" tapindex="-1"
@@ -256,7 +253,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalRegisterVisitTitle"></h5>
                 </div>
-                <form name="departmentForm" id="departments" action="{{ route('visitas.store') }}" method="POST"
+                <form name="visitsForm" id="visitsForm" action="{{ route('visitas.store') }}" method="POST"
                     enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
@@ -370,17 +367,17 @@
 
                                 <div class="input-group mt-3">
                                     <input type="file" class="form-control hideClass" id="imputimg" name="files"
-                                        aria-describedby="inputGroupFileAddon04" aria-label="Upload" accept="image/*">
+                                        aria-describedby="inputGroupFileAddon04" aria-label="Upload" accept="image/*" onchange=" validateFile()">
                                 </div>
 
                                 <!-- Miniatura de la imagen al seleccionarla -->
 
                                 <div class="card mt-3 hideClass" id="miniatura">
                                     <div class="card-body">
-                                      <h5 class="text-center">Miniatura de la imagen</h5><br>
-                                      <div class="text-center">
+                                    <h5 class="text-center">Miniatura de la imagen</h5><br>
+                                    <div class="text-center">
                                         <img id="miniaturaimg" class="text-center hideClass" src="#" alt="miniatura" height="250">
-                                      </div>
+                                    </div>
                                     </div>
                                 </div>
 
@@ -424,9 +421,15 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"
         integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi"
         crossorigin="anonymous"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js"
         integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG"
         crossorigin="anonymous"></script>
+
+    <!-- Jquery-Validation -->
+    <script src="{{ asset('assets/jquery-validation/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('assets/jquery-validation/additional-methods.min.js') }}"></script>
+
     <!-- SweetAlert -->
     <script src="{{ asset('assets/sweetAlert2/sweetalert2.all.min.js')}}"></script>
     <!-- Scripts -->

@@ -18,11 +18,11 @@ class SoloAdmin
     {
         // condicional autenticando los diferentes tipos usuarios
 
-        if (Auth::user()->rol_usercrm == "Administrador") {
+        if (Auth::user()->rol_usercrm == "1") {
 
             return $next($request); //si es Admin va a la vista de ese rol.
 
-        } else{
+        } else {
 
             return redirect('/'); //si no es admin dirige a la vista principal del usuario
         }
