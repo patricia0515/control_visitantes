@@ -403,8 +403,8 @@
                     </div>
                     <div class="modal-footer">
                         <div class="col-xs-12 col-sm-12 col-md-12">
-                            <button type="submit" id="formVisits" class="btn btn-primary">Guardar</button>
-                            <a href="{{ route('index')}}" class="btn btn-danger">Cancelar</a>
+                            <button type="submit" id="formVisits" class="btn texto" style="background-color: #c31f1e;">Guardar</button>
+                            <a href="{{ route('index')}}" class="btn texto" style="background-color: #6c747e;">Cancelar</a>
                         </div>
                     </div>
                 </form>

@@ -1,8 +1,18 @@
 $(document).ready(function () {
 
-    // Validacion formulario crear visitante
-    $('#basic-form').validate({
+    $.validator.addMethod("alphabetsOnly", function (value, element) {
+        return this.optional(element) || /^[a-zA-Z ]*$/.test(value)
+    }, "Por favor ingresa solo letras.")
 
+    $.validator.addMethod("phoneCOL", function(phone_number, element) {
+        phone_number = phone_number.replace(/\s+/g, "");
+        return this.optional(element) || phone_number.length >= 7  &&
+            phone_number.match(/^(\(\+?\d{2,3}\)[\*|\s|\-|\.]?(([\d][\*|\s|\-|\.]?){6})(([\d][\s|\-|\.]?){2})?|(\+?[\d][\s|\-|\.]?){7,8}(([\d][\s|\-|\.]?){2}(([\d][\s|\-|\.]?){2})?)?)$/);
+    }, "Por favor, especifique un número de teléfono válido.");
+
+    // Validacion formulario crear visita
+    $("#basic-form").validate({
+        
         rules: {
             empresa: {
                 required: true,
@@ -10,16 +20,18 @@ $(document).ready(function () {
             },
             nombre: {
                 required: true,
+                alphabetsOnly: true,
                 minlength: 3
             },
             apellido: {
                 required: true,
+                alphabetsOnly: true,
                 minlength: 3
             },
             contacto: {
                 required: true,
                 number: true,
-                phoneUS: true,
+                phoneCOL: true,
             },
             rh: {
                 required: true
@@ -57,7 +69,6 @@ $(document).ready(function () {
             contacto: {
                 required: "Por favor introduzca un télefono.",
                 number: "Por favor ingrese un número valido.",
-                phoneUS: "Por favor, especifique un número de teléfono válido.",
             },
             rh: {
                 required: "Por favor seleccione un RH."
@@ -186,7 +197,10 @@ function validateFile() {
     fileType = /(.JPG|.JPEG|.PNG|.GIF)$/i;
 
     if (!fileType.exec(fileRoute)) {
-        alert('Recuerda que el archivo debe de ser una imagen.');
+        Toast.fire({
+            type: "error",
+            title: `Recuerda que el archivo debe de ser una imagen.`,
+        });
         fileInput.value = '';
         return false;
     }
