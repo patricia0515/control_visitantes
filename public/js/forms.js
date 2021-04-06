@@ -1,8 +1,22 @@
 $(document).ready(function () {
+    
+    /**
+     * Metodo para validar
+     * que solo admita letras
+     *
+     * @return void
+     */
 
     $.validator.addMethod("alphabetsOnly", function (value, element) {
         return this.optional(element) || /^[a-zA-Z ]*$/.test(value)
     }, "Por favor ingresa solo letras.")
+
+    /**
+     * Metodo para validar
+     * los digitos del telefono
+     *
+     * @return void
+     */
 
     $.validator.addMethod("phoneCOL", function(phone_number, element) {
         phone_number = phone_number.replace(/\s+/g, "");
@@ -10,7 +24,13 @@ $(document).ready(function () {
             phone_number.match(/^(\(\+?\d{2,3}\)[\*|\s|\-|\.]?(([\d][\*|\s|\-|\.]?){6})(([\d][\s|\-|\.]?){2})?|(\+?[\d][\s|\-|\.]?){7,8}(([\d][\s|\-|\.]?){2}(([\d][\s|\-|\.]?){2})?)?)$/);
     }, "Por favor, especifique un número de teléfono válido.");
 
-    // Validacion formulario crear visita
+    /**
+     * Validacion para el 
+     * formulario visitante
+     *
+     * @return void
+     */
+
     $("#basic-form").validate({
         
         rules: {
@@ -51,7 +71,6 @@ $(document).ready(function () {
             seguridad_salud_trabajo: {
                 required: true
             }
-
         },
         messages: {
             empresa: {
@@ -93,10 +112,14 @@ $(document).ready(function () {
         }
     });
 
-    // Validacion formulario visitas
+    /**
+     * Validacion para el 
+     * formulario visits
+     *
+     * @return void
+    */
 
     $('#visitsForm').validate({
-
         rules: {
             reg_pertenencias: {
                 required: true,
@@ -119,10 +142,12 @@ $(document).ready(function () {
             },
             visita: {
                 required: true,
+                alphabetsOnly: true,
                 minlength: 3,
             },
             resp_visita: {
                 required: true,
+                alphabetsOnly: true,
                 minlength: 3,
             },
             reg_vehiculo: {
@@ -133,11 +158,10 @@ $(document).ready(function () {
                 required: true,
             },
             files: {
-                accept: 'imagen/*',
+                accept: 'image/*',
                 extension: 'JPG|JPEG|PNG|GIF|jpg|jpeg|png|gif',
             },
         },
-
         messages: {
             reg_pertenencias: {
                 required: "Por favor seleccione una pertenencia.",
@@ -177,19 +201,21 @@ $(document).ready(function () {
                 accept: "Solo se aceptan archivos tipo imagen",
                 extension: "la imegen debe de tener extension jpg, jpeg, png o gif",
             },
-            submitHandler: function (form) {
-                form.submit();
-            }
         },
+        submitHandler: function (form) {
+            form.submit();
+        }
     });
-
 });
 
+/**
+ * Validacion para 
+ * el campos files
+ *
+ * @return void
+*/
 
-
-// validacion campo file en el formulario visitas
-
-function validateFile() {
+const validateFile = () => {
     let fileInput, fileRoute, fileType;
 
     fileInput = document.getElementById('imputimg');

@@ -1,8 +1,8 @@
-@extends('layouts.plantilla')
+@extends('layouts.plantilla-reporte')
 
 @section('content')
     <br>
-    <h1 class="title-report">control de acceso visitantes supervisor</h1>
+    <h1 class="title-report mt-2">control de acceso visitantes supervisor</h1>
     <br>
     <div class="container">
         <div class="row">
@@ -34,7 +34,6 @@
                 <div class="card mb-4">
                     <!--Card content FORMULARIO EXCEL-->
                     <div class="card-body ">
-
                         <div class="excel">
                             <form action="{{ route('visitas.excel')}}" method="POST">
                                 @csrf
@@ -93,9 +92,9 @@
             </div>
         </div>
         <br>
-        <div class="row">
+        <div class="row mb-4">
             {{-- Grafica --}}
-            <div class="col-6">
+            <div class="col-6 mb-4">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
@@ -107,7 +106,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-6">
+            <div class="col-6 mb-4">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
