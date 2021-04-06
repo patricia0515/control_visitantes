@@ -117,16 +117,12 @@ class VisitsController extends Controller
         return $visitImg->toArray();
     }
 
-<<<<<<< HEAD
-
-=======
     /**
      * Actualiza el estado del 
      * visitante por medio del id
      * 
      * @return \Illuminate\Http\Response
     */
->>>>>>> 6e9694e643d04a4213d87523674da477ddb273a9
     public function update($id)
     {
         $updateVisit = Visits::find($id);
@@ -142,15 +138,12 @@ class VisitsController extends Controller
         return response()->json($msg);
     }
 
-<<<<<<< HEAD
-=======
     /**
      * Consulta el estado del 
      * visitante por medio del id
      * 
      * @return array
     */
->>>>>>> 6e9694e643d04a4213d87523674da477ddb273a9
     public function checkStateVisit($id)
     {
         $visitante = Visits::where('visitante_id', '=', $id)
