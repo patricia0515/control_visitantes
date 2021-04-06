@@ -36,7 +36,8 @@ const loadBanner = () => {
     $.get("/slider", (data) => {
         data.forEach(element => {
             let div = `<div class="carousel-item" id="carousel-img">
-                            <img src="${element.img_vehiculo}" class="d-block w-100" alt="${element.img_vehiculo}" height="320px">
+                            <div class="position-absolute bottom-0 end-0 text-on rou">CC: ${element.documentoVisitante}</div>
+                            <img src="${element.img_vehiculo}" class="d-block w-100 rounded-3" alt="${element.img_vehiculo}" height="320px">
                         </div>`
             $('#inner').append(div);
         });
@@ -67,12 +68,14 @@ const loadGraficaDona = () => {
         generarGraficaDona(arreglo2)
     });
 }
+
 /**
  * Realiza la carga
  * de los datos en la Dona
  *
  * @return void
  */
+
 const generarGraficaDona = (arreglo2) => {
     let ctx = document.getElementById('myChart2').getContext('2d');
     let myChart = new Chart(ctx, {

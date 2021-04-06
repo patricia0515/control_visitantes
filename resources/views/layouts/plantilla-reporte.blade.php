@@ -28,48 +28,22 @@
     <!-- Icons -->
     <script src="{{ asset('assets/fontawesome/a89513e471.js') }}" crossorigin="anonymous"></script>
 
-    <!-- Datatables -->
-    <script type="text/javascript" charset="utf8" src="{{ asset('assets/datatables/js/jquery.dataTables.min.js') }}"></script>
-    <script type="text/javascript" charset="utf8" src="{{ asset('assets/datatables/js/dataTables.responsive.js') }}"></script>
-
 </head>
 
 <body>
-    <div class="hero">
+    <div class="hero-report" >
         <!-- header -->
         <div class="header">
             <div class="title-header">
                 <h2>Sistema control de visitas</h2>
             </div>
         </div>
-        
-        <!-- menu -->
-        <div class="menu">
-            <div class="menu-header">
-                <i class="far fa-eye"></i>
-                <h3>Sistema de visitas</h3>
-            </div>
-            <div class="menu-option">
-                <div class="menu-option-title">
-                    <h4>navegaci&oacute;n</h4>
-                </div>
-                {{--  valida la ruta para deshabilitar el link  --}}
-                <ul class="menu-list">
-                    
-                    <li><a class="nav-link  {{ request()->is('inicio') ? 'disabled' : 'active' }} "href="{{ route('index')}}"><i class="cont-icons fas fa-home"></i>inicio</a></li>
-                    <li><a class="nav-link {{ request()->is('visitor') ? 'disabled' : 'active' }} "href="{{ route('visitor')}}"><i class="cont-icons fas fa-book-open"></i>visitantes</a></li>
-                    <li><a class="nav-link {{ request()->is('visits') ? 'disabled' : 'active' }} "href="{{ route('visits')}}"><i class="cont-icons fas fa-book"></i>registros visitas</a></li>
-                </ul>
-            </div>
-        </div> 
-        
-
+    
         <!-- content -->   
         <div class="content">
             <div class="card-hero">
             
                 @yield('content')
-
 
             </div>
         </div>
