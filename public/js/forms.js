@@ -134,7 +134,7 @@ $(document).ready(function () {
             },
             files: {
                 accept: 'imagen/*',
-                extension: 'JPG|JPEG|PNG|GIF',
+                extension: 'JPG|JPEG|PNG|GIF|jpg|jpeg|png|gif',
             },
         },
 
@@ -194,7 +194,7 @@ function validateFile() {
 
     fileInput = document.getElementById('imputimg');
     fileRoute = fileInput.value;
-    fileType = /(.JPG|.JPEG|.PNG|.GIF)$/i;
+    fileType = /(.JPG|.JPEG|.PNG|.GIF|.jpg|.jpeg|.png|.gif)$/i;
 
     if (!fileType.exec(fileRoute)) {
         Toast.fire({
