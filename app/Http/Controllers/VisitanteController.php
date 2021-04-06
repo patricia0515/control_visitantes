@@ -10,12 +10,24 @@ use Carbon\Carbon;
 
 class VisitanteController extends Controller
 {
+    /**
+     * Muestra todos los datos
+     * de la tabla visitantes
+     *
+     * @return array
+    */
     public function index()
     {
         $visitantes = Visitante::all();
         return $visitantes->toArray();
     }
 
+    /**
+     * Muestra todos los datos
+     * de la grafica tipo dona
+     *
+     * @return \Illuminate\Http\Response
+    */
     public function lastDays()
     {
         /* cuenta visitas-entradas en la base */
@@ -34,7 +46,6 @@ class VisitanteController extends Controller
 
         /* cuenta número visitantes registrados en la base de datos*/
         $data3 = DB::table('visitantes')
-            /* ->join('visitas', 'visitantes.id', '=', 'visitas.visitante_id') */
             ->select('created_at,')
             ->where('created_at', '>=', Carbon::now()->subDays(30))
             ->count();
@@ -43,14 +54,12 @@ class VisitanteController extends Controller
         $data4 = DB::table('visitantes')
             ->select('estado', 'created_at')
             ->where('estado', '=', 'Activo')
-            /* ->where('created_at', '>=', Carbon::now()->subDays(30)) */
             ->count();
 
         /* cuenta número visitantes Inactivos en la base de datos*/
         $data5 = DB::table('visitantes')
             ->select('estado')
             ->where('estado', '=', 'Inactivo')
-            /* ->where('created_at', '>=', Carbon::now()->subDays(30)) */
             ->count();
 
         /* cuenta la cantidad de sedes visitadas*/
@@ -69,6 +78,12 @@ class VisitanteController extends Controller
         return response(json_encode($report), 200)->header('Content-type', 'text/plain');
     }
 
+    /**
+     * Muestra todos los datos
+     * de la grafica tipo barra
+     *
+     * @return \Illuminate\Http\Response
+    */
     public function filter($data)
     {
         list($inicio, $fin) = explode(",", $data);
@@ -119,12 +134,23 @@ class VisitanteController extends Controller
         $report = [$data1, $data2, $data3, $data4, $data5, $data6];
         return response(json_encode($report), 200)->header('Content-type', 'text/plain');
     }
+
+    /**
+     * Retorna la vista de create
+     *
+     * @return view
+    */
     public function create()
     {
         return view('visitantes.create');
     }
 
-
+    /**
+     * Guarda los datos de
+     * un nuevo visitante
+     *
+     * @return \Illuminate\Http\Response
+    */
     public function store(VisitanteFormRequest $request)
     {
 
@@ -150,6 +176,12 @@ class VisitanteController extends Controller
         return redirect()->route('index')->with('success', 'El visitante a sido añadido con exito');
     }
 
+    /**
+     * Muestra todos los datos
+     * del visitante por medio del id
+     *
+     * @return \Illuminate\Http\Response
+    */
     public function show($id)
     {
         $visitantes = Visitante::where('documento', '=', $id)->get();
