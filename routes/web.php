@@ -17,9 +17,11 @@ use control_visitantes\Exports\VisitsExport;
 |  
 */
 
-Route::resource('/visitantes', 'VisitanteController');
+Route::resource('/visitantes', 'VisitanteController')
+        ->except('edit', 'update', 'destroy');
 
-Route::resource('/visitas', 'VisitsController');
+Route::resource('/visitas', 'VisitsController')
+        ->except('create', 'edit', 'destroy');
 
 /* Retorna las imagenes del slide de reportes */
 Route::get('/slider', 'VisitsController@slider');
@@ -42,7 +44,7 @@ Route::view('reportes', 'reportes');
 /* Aqui pongo la ruta para generar el excel */
 Route::post('visit-list-excel', 'VisitsController@exportExcel')->name('visitas.excel');
 
-/* Ruta poara el metodo checkStateVisit */
+/* Ruta para el metodo checkStateVisit */
 Route::get('/visitaComprobante/{id}', 'VisitsController@checkStateVisit');
 /* grafica de barras */
 Route::get('filter/{data}', 'VisitanteController@filter');

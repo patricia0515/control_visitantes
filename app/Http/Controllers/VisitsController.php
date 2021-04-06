@@ -41,16 +41,6 @@ class VisitsController extends Controller
         return $fotos->toArray();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
     public function store(Request $request)
     {
         // validacion del campo imagen
@@ -108,10 +98,6 @@ class VisitsController extends Controller
         return $visitImg->toArray();
     }
 
-    public function edit($id)
-    {
-        //
-    }
 
     public function update($id)
     {
@@ -126,11 +112,6 @@ class VisitsController extends Controller
         $msg = '¡Visita actualizada con exito!';
 
         return response()->json($msg);
-    }
-
-    public function destroy($id)
-    {
-        //
     }
 
     public function checkStateVisit($id)

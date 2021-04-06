@@ -120,6 +120,7 @@ $(document).ready(function () {
             visita: {
                 required: true,
                 minlength: 3,
+                alphabetsOnly: true,
             },
             resp_visita: {
                 required: true,
@@ -133,7 +134,7 @@ $(document).ready(function () {
                 required: true,
             },
             files: {
-                accept: 'imagen/*',
+                accept: 'image/*',
                 extension: 'JPG|JPEG|PNG|GIF|jpg|jpeg|png|gif',
             },
         },
@@ -161,6 +162,7 @@ $(document).ready(function () {
             visita: {
                 required: "Por favor introduzca la visita.",
                 minlength: "Por favor introduzca al menos 3 caracteres.",
+                alphabetsOnly: "Por favor introduzca solo caracteres alfabeticos.",
             },
             resp_visita: {
                 required: "Por favor introduzca el responsable de la visita.",
