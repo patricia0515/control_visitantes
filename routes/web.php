@@ -43,7 +43,7 @@ Route::view('/reportes', 'reportes');
 /* Aqui pongo la ruta para generar el excel */
 Route::post('visit-list-excel', 'VisitsController@exportExcel')->name('visitas.excel');
 
-/* Ruta poara el metodo checkStateVisit */
+/* Ruta para el metodo checkStateVisit */
 Route::get('/visitaComprobante/{id}', 'VisitsController@checkStateVisit');
 
 /* grafica de barras */
