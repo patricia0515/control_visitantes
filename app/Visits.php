@@ -7,15 +7,18 @@ use Carbon\Carbon;
 
 class Visits extends Model
 {
-    public function getDates()
-    {
-        return [
-            'created_at',
-            'updated_at',
-        ];
-    }
+    /**
+     * Indica el nombre de la tabla 
+     *
+     * @var string
+    */
     protected $table = 'visitas';
 
+    /**
+     * Indica los atributos que son asginados de forma masiva
+     *
+     * @var array
+    */
     protected $fillable = [
         'reg_pertenencias',
         'sede', 'descripcion',
@@ -34,5 +37,11 @@ class Visits extends Model
 
     ];
 
-    // protected $dateFormat = 'U';
+    public function getDates()
+    {
+        return [
+            'created_at',
+            'updated_at',
+        ];
+    }
 }
