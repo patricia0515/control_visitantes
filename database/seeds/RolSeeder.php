@@ -12,11 +12,15 @@ class RolSeeder extends Seeder
     public function run()
     {
         DB::table('roles')->insert([
-            'name' => 'Recepción'
+            'descripcion' => 'test',
+            'rol' => 'Supervisor',
+            'descripcion_rol' => 'test'
         ]);
 
         DB::table('roles')->insert([
-            'name' => 'Supervisor'
+            'descripcion' => 'test',
+            'rol' => 'Supervisor',
+            'descripcion_rol' => 'test'
         ]);
     }
 }
