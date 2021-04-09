@@ -17,7 +17,7 @@ class AppMasterController extends Controller
     public function appmaster()
     {
         try {
-            // dd('dsfds');
+            //dd('dsfds');
 
             //recibimos el crm y el id user
             if (!isset($_GET['crm']) || !isset($_GET['idusuario'])) {
@@ -26,7 +26,7 @@ class AppMasterController extends Controller
             } else {
 
                 // creamos las variables con los datos
-                $crm = "8";
+                $crm = "444";
                 $user_id = $_GET['idusuario'];
                 $status_user = 'Habilitado';
 
@@ -35,7 +35,7 @@ class AppMasterController extends Controller
                     ->where('id_modulo', '=', $crm)
                     ->first();
 
-
+                //dd($rol);
                 // Si existe o la consulta devuleve valor entra al if
                 if (isset($rol)) {
 
@@ -56,7 +56,7 @@ class AppMasterController extends Controller
                                 ->update(['rol_usercrm' => $rol->numero_rol]);
                         }
                     } else {
-                        return abort('404');
+                        return abort('501');
                     }
                 } else {
                     return abort('404');
@@ -87,13 +87,13 @@ class AppMasterController extends Controller
                         break;
 
                     default:
-                        return abort('404');
+                        return abort('500');
                         break;
                 }
             }
         } catch (DecryptException $e) {
 
-            abort('404');
+            abort('500');
         }
     }
 }
