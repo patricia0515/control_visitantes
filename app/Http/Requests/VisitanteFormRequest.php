@@ -32,6 +32,9 @@ class VisitanteFormRequest extends FormRequest
             'rh' => 'required',
             'eps' => 'required',
             't_visita' => 'required'
+
+
+            /* 'imagen'   =>  'required|mimes:jpg,jpeg,bmp,png', */
         ];
     }
 }

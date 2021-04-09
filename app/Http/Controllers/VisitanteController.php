@@ -15,7 +15,7 @@ class VisitanteController extends Controller
      * de la tabla visitantes
      *
      * @return array
-    */
+     */
     public function index()
     {
         $visitantes = Visitante::all();
@@ -27,7 +27,7 @@ class VisitanteController extends Controller
      * de la grafica tipo dona
      *
      * @return \Illuminate\Http\Response
-    */
+     */
     public function lastDays()
     {
         /* cuenta visitas-entradas en la base */
@@ -83,7 +83,7 @@ class VisitanteController extends Controller
      * de la grafica tipo barra
      *
      * @return \Illuminate\Http\Response
-    */
+     */
     public function filter($data)
     {
         list($inicio, $fin) = explode(",", $data);
@@ -139,7 +139,7 @@ class VisitanteController extends Controller
      * Retorna la vista de create
      *
      * @return view
-    */
+     */
     public function create()
     {
         return view('visitantes.create');
@@ -150,7 +150,7 @@ class VisitanteController extends Controller
      * un nuevo visitante
      *
      * @return \Illuminate\Http\Response
-    */
+     */
     public function store(VisitanteFormRequest $request)
     {
 
@@ -181,10 +181,14 @@ class VisitanteController extends Controller
      * del visitante por medio del id
      *
      * @return \Illuminate\Http\Response
-    */
+     */
     public function show($id)
     {
-        $visitantes = Visitante::where('documento', '=', $id)->get();
+        $visitantes = Visitante::join('visitas', 'visitantes.id', '=', 'visitas.visitante_id')
+            ->select('visitantes.*', 'visitas.serial', 'visitas.tipo')
+            ->where('documento', '=', $id)->get();
+
+            
 
         return response()->json($visitantes);
     }

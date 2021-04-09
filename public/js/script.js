@@ -128,7 +128,13 @@ $(document).ready(function () {
                     element.innerHTML += `<label for="${data.eps}">EPS:</label><input type="text" name="${data.eps}" class="form-control" value="${data.eps}" disabled>`;
                     element.innerHTML += `<label for="${data.documento}">C.C:</label><input type="text" name="${data.documento}" class="form-control" value="${data.documento}" disabled>`;
                     element.innerHTML += `<label for="${data.t_visita}">Tipo de visitante:</label><input type="text" name="${data.t_visita}" class="form-control" value="${data.t_visita}" disabled>`;
+                    if(data.tipo === 'salida'){
+                        element.innerHTML += `<label for="observaciones">Salida Observaciones:</label><input id="observaciones"type="text" name="observaciones" class="form-control" value="" >`;
+                        element.innerHTML += `<label for="pertenencias">Serial Pertenencia:</label><input id="serial"type="text" name="pertenencias" class="form-control" value="" >`;
+                        element.innerHTML += `<label for="salida">Responsable Salida:</label><input id="responsable"type="text" name="salida" class="form-control" value="" >`;
+                    }
                     // y agreamos todo eso al div con el id inputs
+                    console.log(data);
                     $("#inputs").append(element);
                 });
 
@@ -179,6 +185,9 @@ $(document).ready(function () {
 
     $("body").on("click", "#btnRegisterExit", function () {
         let visitaId = $.trim($("#idVistanteHidden").val());
+        let observaciones = $.trim($("#observaciones").val());
+        let serial = $.trim($("#serial").val());
+        let responsable = $.trim($("#responsable").val());
         let token = $("meta[name='csrf-token']").attr("content");
 
         $.ajax({
@@ -186,6 +195,9 @@ $(document).ready(function () {
             url: `visitas/${visitaId}`,
             data: {
                 idVisita: visitaId,
+                obser: observaciones,
+                serial_pertenencia: serial,
+                resp: responsable,
                 _token: token,
             },
             success: function (response) {
@@ -193,7 +205,7 @@ $(document).ready(function () {
                     type: "success",
                     title: response,
                 });
-                setTimeout(() => (location.href = "/"), 1500);
+                setTimeout(() => (location.href = "/inicio"), 1500);
             },
         });
     });
