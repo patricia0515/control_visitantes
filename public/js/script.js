@@ -35,6 +35,7 @@ $(document).ready(function () {
                     },
                     /* si la respuesta es correcta, trajo un dato sin errores,  */
                     success: function (response) {
+                        console.log(response);
                         /* si la respuesta no viene vacia muestra el boton del ojito */
                         if (response.length) {
                             $("#idVistanteHidden").val(response[0].id);
@@ -101,7 +102,7 @@ $(document).ready(function () {
 
         // opciones modal
         $("#modalTitleShowUser").html(
-            "Informacion visitante <span class='badge bg-success'>Entrada</span>"
+            "Información visitante <span class='badge bg-success'>Entrada</span>"
         );
         $("#modalShowUser").modal("show");
 
@@ -128,11 +129,7 @@ $(document).ready(function () {
                     element.innerHTML += `<label for="${data.eps}">EPS:</label><input type="text" name="${data.eps}" class="form-control" value="${data.eps}" disabled>`;
                     element.innerHTML += `<label for="${data.documento}">C.C:</label><input type="text" name="${data.documento}" class="form-control" value="${data.documento}" disabled>`;
                     element.innerHTML += `<label for="${data.t_visita}">Tipo de visitante:</label><input type="text" name="${data.t_visita}" class="form-control" value="${data.t_visita}" disabled>`;
-                    if(data.tipo === 'salida'){
-                        element.innerHTML += `<label for="observaciones">Salida Observaciones:</label><input id="observaciones"type="text" name="observaciones" class="form-control" value="" >`;
-                        element.innerHTML += `<label for="pertenencias">Serial Pertenencia:</label><input id="serial"type="text" name="pertenencias" class="form-control" value="" >`;
-                        element.innerHTML += `<label for="salida">Responsable Salida:</label><input id="responsable"type="text" name="salida" class="form-control" value="" >`;
-                    }
+                    
                     // y agreamos todo eso al div con el id inputs
                     console.log(data);
                     $("#inputs").append(element);
@@ -154,10 +151,21 @@ $(document).ready(function () {
                         if (DATARETURN === SALIDA || DATARETURN == "") {
                             console.log("ok!");
                         } else {
+                            let elementData = document.createElement("form");
+                            elementData.setAttribute("id","formSalida")
+
+                            if(endElement.serial){
+                                 elementData.innerHTML += `<label for="pertenencias">Serial Pertenencia:</label><input id="serial"type="text" name="pertenencias" class="form-control" value="" >`;
+                            }
+                            elementData.innerHTML += `<label for="observaciones">Salida Observaciones:</label><textarea name="observaciones" id="observaciones" rows="3" class="form-control" required></textarea>`;
+                            elementData.innerHTML += `<label for="salida">Responsable Salida:</label><input id="responsable"type="text" name="salida" class="form-control" value="" >`;
+                            
+                            $("#inputs").append(elementData);
+
                             $("#btnRegisterVisit").hide();
                             $("#btnRegisterExit").show();
                             $("#modalTitleShowUser").html(
-                                "Informacion visitante <span class='badge bg-danger'>Salida</span>"
+                                "Información visitante <span class='badge bg-danger'>Salida</span>"
                             );
                         }
                     },
@@ -190,6 +198,43 @@ $(document).ready(function () {
         let responsable = $.trim($("#responsable").val());
         let token = $("meta[name='csrf-token']").attr("content");
 
+        $("#formSalida").validate({
+            rules: {
+                
+                pertenencias: {
+                    required: true,
+                    minlength: 3,
+                },
+                observaciones: {
+                    required: true,
+                    minlength: 10,
+                },
+                
+                salida: {
+                    required: true,
+                    alphabetsOnly: true,
+                    minlength: 3,
+                },
+
+            },
+            messages: {
+                
+                pertenencias: {
+                    required: "Por favor introduzca el serial.",
+                    minlength: "Por favor introduzca al menos 3 caracteres.",
+                },
+                observaciones: {
+                    required: "Por favor introduzca una descripción.",
+                    minlength: "Por favor introduzca al menos 10 caracteres.",
+                },
+                salida: {
+                    required: "Por favor introduzca el responsable de la salida.",
+                    minlength: "Por favor introduzca al menos 3 caracteres.",
+                },
+            }
+        })
+
+        if($("#formSalida").valid()){
         $.ajax({
             type: "PUT",
             url: `visitas/${visitaId}`,
@@ -208,6 +253,7 @@ $(document).ready(function () {
                 setTimeout(() => (location.href = "/inicio"), 1500);
             },
         });
+    }
     });
 
     /**

@@ -184,12 +184,7 @@ class VisitanteController extends Controller
      */
     public function show($id)
     {
-        $visitantes = Visitante::join('visitas', 'visitantes.id', '=', 'visitas.visitante_id')
-            ->select('visitantes.*', 'visitas.serial', 'visitas.tipo')
-            ->where('documento', '=', $id)->get();
-
-            
-
+        $visitantes = Visitante::where('documento', '=', $id)->get();
         return response()->json($visitantes);
     }
 }

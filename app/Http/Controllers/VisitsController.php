@@ -151,7 +151,7 @@ class VisitsController extends Controller
     public function checkStateVisit($id)
     {
         $visitante = Visits::where('visitante_id', '=', $id)
-            ->select('tipo', 'id')
+            ->select('tipo', 'id', 'serial')
             ->get();
         return $visitante->toArray();
     }
