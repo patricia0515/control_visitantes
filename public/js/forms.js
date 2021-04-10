@@ -186,22 +186,22 @@ $(document).ready(function () {
             visita: {
                 required: "Por favor introduzca la visita.",
                 minlength: "Por favor introduzca al menos 3 caracteres.",
-                alphabetsOnly: "Por favor introduzca solo caracteres alfabeticos.",
+                alphabetsOnly: "Por favor introduzca solo caracteres alfabéticos.",
             },
             resp_visita: {
                 required: "Por favor introduzca el responsable de la visita.",
                 minlength: "Por favor introduzca al menos 3 caracteres.",
             },
             reg_vehiculo: {
-                required: "Por favor introduzca un registro del vehiculo.",
+                required: "Por favor introduzca un registro del vehículo.",
                 minlength: "Por favor introduzca al menos 10 caracteres.",
             },
             vehiculo: {
-                required: "Por favor seleccione si tiene vehiculo.",
+                required: "Por favor seleccione si tiene vehículo.",
             },
             files: {
                 accept: "Solo se aceptan archivos tipo imagen",
-                extension: "la imegen debe de tener extension jpg, jpeg, png o gif",
+                extension: "la imagen debe de tener extensión jpg, jpeg, png o gif",
             },
         },
         submitHandler: function (form) {
