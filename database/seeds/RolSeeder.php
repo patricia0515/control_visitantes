@@ -15,9 +15,11 @@ class RolSeeder extends Seeder
             'descripcion' => 'test',
             'rol' => 'Supervisor',
             'descripcion_rol' => 'test'
+
         ]);
 
         DB::table('roles')->insert([
+
             'descripcion' => 'test',
             'rol' => 'Supervisor',
             'descripcion_rol' => 'test'

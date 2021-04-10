@@ -11,13 +11,13 @@ use Carbon\Carbon;
 use control_visitantes\Visits;
 
 class VisitsController extends Controller
-{   
+{
     /**
      * Muestra todos los datos
      * de la tabla visitas
      *
      * @return array
-    */
+     */
     public function index()
     {
         $visitas = Visits::join('visitantes', 'visitas.visitante_id', '=', 'visitantes.id')
@@ -37,7 +37,7 @@ class VisitsController extends Controller
      * los vehiculos en el slider
      *
      * @return array
-    */
+     */
     public function slider()
     {
         $fotos = Visits::join('visitantes', 'visitas.visitante_id', '=', 'visitantes.id')
@@ -59,7 +59,7 @@ class VisitsController extends Controller
      * un nuevo visitante
      *
      * @return \Illuminate\Http\Response
-    */
+     */
     public function store(Request $request)
     {
         // validacion del campo imagen
@@ -102,7 +102,7 @@ class VisitsController extends Controller
      * vehiculo a traves de un id
      *
      * @return array
-    */
+     */
     public function show($id)
     {
         $visitID = Visits::where('id', '=', $id)
@@ -122,15 +122,19 @@ class VisitsController extends Controller
      * visitante por medio del id
      * 
      * @return \Illuminate\Http\Response
-    */
-    public function update($id)
+     */
+    public function update(Request $request)
     {
-        $updateVisit = Visits::find($id);
+
+        $updateVisit = Visits::find($request->idVisita);
         $updateVisit->tipo = 'salida';
+        $updateVisit->descripcion = $request->obser;
+        $updateVisit->serial = $request->serial_pertenencia;
+        $updateVisit->resp_visita = $request->resp;
         $updateVisit->save();
 
         $salidas = Visits::join('visitantes', 'visitas.visitante_id', '=', 'visitantes.id')
-            ->where('visitas.id', '=', $id)
+            ->where('visitas.id', '=', $request->idVisita)
             ->increment('no_salidas');
 
         $msg = '¡Visita actualizada con exito!';
@@ -143,7 +147,7 @@ class VisitsController extends Controller
      * visitante por medio del id
      * 
      * @return array
-    */
+     */
     public function checkStateVisit($id)
     {
         $visitante = Visits::where('visitante_id', '=', $id)
@@ -157,7 +161,7 @@ class VisitsController extends Controller
      * de los datos a un archivo excel
      * 
      * @return VisitsExport
-    */
+     */
     public function exportExcel(Request $request)
     {
         $filtro1 = $request->fecha_inicial;
